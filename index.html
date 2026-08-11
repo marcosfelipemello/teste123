@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorem Ipsum — Página de Exemplo</title>
+<style>
+  :root {
+    --bg: #0f1020;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-solid: #16182e;
+    --text: #e8e9f3;
+    --text-soft: #a8abc7;
+    --accent: #7c6cff;
+    --accent-2: #3ad6c5;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    --radius: 20px;
+    --font: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Fundo com brilhos suaves */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(600px circle at 15% 10%, rgba(124, 108, 255, 0.25), transparent 45%),
+      radial-gradient(700px circle at 85% 20%, rgba(58, 214, 197, 0.18), transparent 45%),
+      radial-gradient(600px circle at 50% 100%, rgba(255, 108, 180, 0.15), transparent 45%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; }
+
+  /* Cabeçalho / navegação */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(15, 16, 32, 0.6);
+    border-bottom: 1px solid var(--border);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo .dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 16px var(--accent);
+  }
+  nav ul { display: flex; gap: 28px; list-style: none; }
+  nav a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 620px) { nav ul { display: none; } }
+
+  /* Hero */
+  .hero { text-align: center; padding: 96px 0 72px; }
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p.lead {
+    font-size: 1.2rem;
+    color: var(--text-soft);
+    max-width: 620px;
+    margin: 0 auto 36px;
+  }
+  .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0b0c1a;
+    box-shadow: 0 10px 30px rgba(124, 108, 255, 0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(124, 108, 255, 0.55); }
+  .btn-ghost {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); }
+
+  /* Seções */
+  section { padding: 56px 0; }
+  .section-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .section-sub { color: var(--text-soft); max-width: 560px; margin-bottom: 40px; }
+
+  /* Grade de cartões */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 108, 255, 0.5);
+    background: rgba(255,255,255,0.09);
+  }
+  .card .icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, rgba(124,108,255,0.25), rgba(58,214,197,0.25));
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card p { color: var(--text-soft); font-size: 0.98rem; }
+
+  /* Bloco de texto (artigo) */
+  .prose { background: var(--surface-solid); border: 1px solid var(--border); border-radius: var(--radius); padding: 44px; box-shadow: var(--shadow); }
+  .prose h2 { font-size: 1.8rem; margin-bottom: 18px; letter-spacing: -0.02em; }
+  .prose p { color: var(--text-soft); margin-bottom: 18px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 22px;
+    margin: 26px 0;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  /* Rodapé */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+  }
+  footer .logo { justify-content: center; margin-bottom: 12px; color: var(--text); }
+
+  /* Animação de entrada */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > *, .card, .prose { animation: fadeUp 0.7s ease both; }
+  .card:nth-child(2) { animation-delay: 0.1s; }
+  .card:nth-child(3) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo"><span class="dot"></span>Lorem&nbsp;Studio</div>
+      <ul>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <span class="badge">✨ Página de exemplo</span>
+      <h1>Lorem ipsum dolor sit amet consectetur</h1>
+      <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <div class="actions">
+        <a href="#recursos" class="btn btn-primary">Começar agora</a>
+        <a href="#sobre" class="btn btn-ghost">Saiba mais</a>
+      </div>
+    </section>
+
+    <section id="recursos">
+      <h2 class="section-title">Duis aute irure dolor</h2>
+      <p class="section-sub">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>Reprehenderit</h3>
+          <p>Voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>Consectetur</h3>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Adipiscing</h3>
+          <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni dolores.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="prose">
+        <h2>Sobre o Lorem Ipsum</h2>
+        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        <blockquote>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</blockquote>
+        <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contato">
+    <div class="wrap">
+      <div class="logo"><span class="dot"></span>Lorem Studio</div>
+      <p>© 2026 Lorem Ipsum. Todos os direitos reservados — feito com carinho.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
