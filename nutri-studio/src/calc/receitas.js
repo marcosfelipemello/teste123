@@ -32,8 +32,8 @@ export const DIVERGENCIAS = Object.freeze([
       'A kcal de um ingrediente aparece com 0 casas e sem espaço ("256Kcal") quando a lista é redesenhada, ou com ' +
       '1 casa ("117.6 Kcal") quando a linha é recalculada. Os totais não são afetados.',
     comportamento:
-      'Corrigido: a linha sai sempre com 1 casa + " Kcal". formatarKcalIngrediente(kcal, "redesenhada") ' +
-      'reproduz o formato antigo só para conferência.',
+      'Igual ao WebDiet na tela de receitas: a linha redesenhada mostra "256Kcal" e a recalculada "117.6 Kcal" ' +
+      '(formatarKcalIngrediente). calcularIngrediente().tela.kcal traz o formato da linha recalculada.',
   },
 ]);
 

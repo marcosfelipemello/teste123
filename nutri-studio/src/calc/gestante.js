@@ -8,10 +8,15 @@
 import { check, fx, fxn, idadeAnos, partesData } from './numeros.js';
 import CURVAS from '../dados/curvas_ganho_peso_gestacional.json' with { type: 'json' };
 
-/** Aviso para o aporte calórico quando não há nenhum peso registrado (WebDiet §12 #18). */
+/** Aviso do aporte sem nenhum peso registrado, com `corrigir: true` (aporte null; WebDiet §12 #18). */
 export const AVISO_SEM_PESO =
   'Nenhum peso registrado: registre o peso de uma semana para calcular o aporte calórico. ' +
   '(O WebDiet calcula contra 0 kg e mostra valores sem sentido, como "+7431 Kcal/dia".)';
+
+/** Aviso do aporte sem nenhum peso registrado no padrão (igual ao WebDiet, que calcula contra 0 kg). */
+export const AVISO_SEM_PESO_WEBDIET =
+  'Nenhum peso registrado: como no WebDiet, o aporte é calculado contra 0 kg e o valor não tem sentido ' +
+  'clínico. Registre o peso de uma semana.';
 
 /**
  * Divergências do WebDiet (relatório §12) tratadas neste módulo e o comportamento adotado.
@@ -24,8 +29,8 @@ export const DIVERGENCIAS = [
       'Aporte calórico sem nenhum peso registrado: o WebDiet usa peso_ult = 0 e mostra valores como ' +
       '"+7431 Kcal/dia" a partir da 10ª semana.',
     comportamento:
-      'Corrigido: sem peso registrado, o aporte das semanas ≥ 10 é null, com `aviso` em português; a tela ' +
-      'mostra "-". A fórmula pura (aporteSemana com pesoUlt = 0) ainda reproduz o número do WebDiet.',
+      'Padrão igual ao WebDiet: sem peso registrado, o aporte é calculado contra 0 kg ("+7431 Kcal/dia"), com ' +
+      '`aviso`. Com a opção { corrigir: true }, o aporte das semanas ≥ 10 é null, com `aviso`, e a tela mostra "-".',
   },
   {
     item: 19,
@@ -215,14 +220,22 @@ function ultimoPeso(pesos) {
  * "+" + (dif × 7700 / ((semana − ult) × 7)).toFixed(0) + " Kcal/dia"; senão "0 Kcal/dia".
  * Antes da 10ª semana: "-".
  *
- * WebDiet §12 #18: sem nenhum peso registrado o WebDiet usa pesoUlt = 0. Aqui, `pesoUlt` null/undefined
- * devolve kcal null + `aviso`. Passar pesoUlt = 0 explicitamente reproduz o número do WebDiet.
+ * WebDiet §12 #18: sem nenhum peso registrado (`pesoUlt` null/undefined) o WebDiet usa pesoUlt = 0. O padrão
+ * faz o mesmo e acrescenta `aviso`; com `corrigir: true`, devolve kcal null + `aviso`.
  * @param {{semana:number, esperado:number, ult:number, pesoUlt:number|null|undefined}} e
+ * @param {{corrigir?: boolean}} [opcoes]
  * @returns {{kcal:number|null, tela:string, aviso?:string}}
  */
-export function aporteSemana({ semana, esperado, ult, pesoUlt }) {
+export function aporteSemana({ semana, esperado, ult, pesoUlt }, { corrigir = false } = {}) {
   if (semana < 10) return { kcal: null, tela: '-' };
-  if (pesoUlt === null || pesoUlt === undefined) return { kcal: null, tela: '-', aviso: AVISO_SEM_PESO };
+  const semPeso = pesoUlt === null || pesoUlt === undefined;
+  if (semPeso && corrigir) return { kcal: null, tela: '-', aviso: AVISO_SEM_PESO };
+  const r = calcularAporte({ semana, esperado, ult, pesoUlt: semPeso ? 0 : pesoUlt }); // WebDiet §12 #18
+  return semPeso ? { ...r, aviso: AVISO_SEM_PESO_WEBDIET } : r;
+}
+
+/** Conta do aporte (§7.6) com um peso de referência numérico. */
+function calcularAporte({ semana, esperado, ult, pesoUlt }) {
   const dif = fxn(esperado - pesoUlt, 1);
   if (dif > 0 && semana > ult) {
     const v = (dif * 7700) / ((semana - ult) * 7);
@@ -238,6 +251,7 @@ export function aporteSemana({ semana, esperado, ult, pesoUlt }) {
  * @param {object} e
  * @param {{semana:number, esperado:number, minimo:number, maximo:number}[]} e.curva saída de curvaGestacional
  * @param {Record<string|number, number|string>|Map<number, number|string>} [e.pesos] pesos registrados por semana
+ * @param {{corrigir?: boolean}} [opcoes] repassada a aporteSemana (§12 #18)
  * @returns {{
  *   ult:number, pesoUlt:number|null, avisos:string[],
  *   linhas:{semana:number, minimo:number, maximo:number, esperado:number, peso:number|null,
@@ -245,7 +259,7 @@ export function aporteSemana({ semana, esperado, ult, pesoUlt }) {
  *   tela:string[][]
  * }}
  */
-export function tabelaSemanal({ curva, pesos }) {
+export function tabelaSemanal({ curva, pesos }, opcoes = {}) {
   const mp = mapaPesos(pesos);
   const { ult, pesoUlt } = ultimoPeso(mp);
   const avisos = new Set();
@@ -253,7 +267,7 @@ export function tabelaSemanal({ curva, pesos }) {
   const tela = [];
   for (const lc of curva) {
     const peso = mp.get(lc.semana) ?? null;
-    const a = aporteSemana({ semana: lc.semana, esperado: lc.esperado, ult, pesoUlt });
+    const a = aporteSemana({ semana: lc.semana, esperado: lc.esperado, ult, pesoUlt }, opcoes);
     if (a.aviso) avisos.add(a.aviso);
     linhas.push({
       semana: lc.semana,
@@ -391,7 +405,7 @@ function idadePaciente(e) {
  *         tabela:[number, number, number, number][], linhas:string[][]}
  * }}
  */
-export function acompanhamentoGestacional(e) {
+export function acompanhamentoGestacional(e, opcoes = {}) {
   const tipo = normalizarTipo(e.tipo);
   const altura = e.altura ?? e.alt;
   const imcPpg = imcPreGestacional(e.ppg, altura);
@@ -405,7 +419,7 @@ export function acompanhamentoGestacional(e) {
   const idade = idadePaciente(e);
 
   const curva = curvaGestacional({ ppg: e.ppg, classe, tipo });
-  const t = tabelaSemanal({ curva, pesos: e.pesos });
+  const t = tabelaSemanal({ curva, pesos: e.pesos }, opcoes);
 
   return {
     imcPpg, classe, tipo,
@@ -440,7 +454,7 @@ export function acompanhamentoGestacional(e) {
  *         pesoTotal:string, kcal:string[]}
  * }}
  */
-export function avaliarSemana(e) {
+export function avaliarSemana(e, opcoes = {}) {
   const semana = parseInt(String(check(e.semana)), 10);
   if (!(semana >= 1 && semana <= 40)) throw new RangeError('semana deve estar entre 1 e 40');
   const peso = check(e.peso);
@@ -457,7 +471,7 @@ export function avaliarSemana(e) {
   // Registra o peso da semana e recalcula a coluna de aporte.
   const pesos = Object.fromEntries(mapaPesos(e.pesos));
   pesos[semana] = peso;
-  const t = tabelaSemanal({ curva, pesos });
+  const t = tabelaSemanal({ curva, pesos }, opcoes);
 
   const imc = fxn(peso / Math.pow(altura / 100, 2), 1);
   const avaliacao = avaliarPesoSemana(peso, curva[semana - 1]);

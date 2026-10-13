@@ -37,7 +37,7 @@ PLAYWRIGHT=/tmp/pw/node_modules/playwright/index.mjs npm run e2e
 # CHROMIUM=/caminho/do/chrome se o Playwright não achar o navegador; URL=… para outro endereço
 ```
 
-Resultado atual: `npm test`: 1589 testes passando; `npm run e2e`: 94 de 94 conferências passando.
+Resultado atual: `npm test`: 1592 testes passando; `npm run e2e`: 94 de 94 conferências passando.
 
 ## O que o app faz
 
@@ -94,11 +94,16 @@ nutri-studio/
    - EER/IOM 2005 infantil com exatamente 36 meses;
    - Henry & Rees abaixo de 3 anos;
    - aporte gestacional sem peso registrado.
-3. **Divergências científicas do §12: iguais ao WebDiet até a nutricionista decidir.** Cada módulo lista as suas em `DIVERGENCIAS`, com o comportamento adotado. A página **Referências** mostra todas. Alguns erros de exibição foram corrigidos, e isso está marcado como "Corrigido" na lista:
-   - rótulo "15 mg" do selênio;
-   - `gorduratrans` não enviado;
-   - lista de compras com receitas;
-   - formato da kcal do ingrediente.
+3. **Erros e divergências do §12: iguais ao WebDiet.** Cada módulo lista os seus em `DIVERGENCIAS`, com o comportamento adotado, e a página **Referências** mostra todos. Isso vale também para os defeitos de exibição que não travam a tela:
+   - aporte gestacional sem peso registrado ("+7431 Kcal/dia"), com um aviso de que o valor não tem sentido clínico;
+   - rótulo "15 mg" do selênio de 0–6 meses;
+   - receita substituta na lista de compras pelo nome de compra;
+   - kcal do ingrediente da receita em dois formatos ("256Kcal" ao redesenhar, "117.6 Kcal" na linha recalculada).
+
+   Onde há versão corrigida, ela fica disponível no cálculo com a opção `{ corrigir: true }`. Continuam diferentes do WebDiet:
+   - os casos em que ele trava ou deixa valor antigo (item 2 acima);
+   - "com/sem receitas" nos equivalentes (§12, item 26), porque o relatório não diz qual dos dois resultados o WebDiet dá ao ignorar a escolha;
+   - o envio de `gorduratrans` no alimento pelo rótulo, que não muda nada na tela.
 4. **Na interface:**
    - Entrada faltando não vira número sem sentido. Por exemplo, sem peso e altura a TMB não é calculada (no WebDiet, campo vazio vale 0).
    - Ações que apagam dados pedem confirmação.
@@ -112,7 +117,7 @@ nutri-studio/
 | `src/dados/curvas_ganho_peso_gestacional.json` | Curvas brasileiras de ganho de peso gestacional (Kac et al., 2021), como usadas pelo WebDiet |
 | `src/dados/dris.json` | DRIs (RDA/AI): 16 perfis conferidos na tela do WebDiet (`fonte: "webdiet-conferido"`); as faixas não observadas vêm das tabelas oficiais NASEM (Na e K de 2019; fibras pela Health Canada), com `fonte: "nasem-oficial"` |
 | Alimentos | **Nenhuma tabela embutida.** A base do WebDiet não foi copiada (§1.2). Os alimentos entram pelo rótulo, por 100 g ou por CSV (TACO, TBCA, tabela própria) |
-| Listas dos grupos de equivalentes | Montadas pelo consultório a partir de "Meus alimentos" (as listas curadas do WebDiet não foram copiadas) |
+| Listas dos grupos de equivalentes | Montadas pelo consultório a partir de "Meus alimentos" (as listas curadas do WebDiet não foram copiadas). Grupo sem lista própria usa as médias padrão que o WebDiet mostra (`src/dados/equivalentes_padrao.json`, relatório §8.5), com os mesmos totais do WebDiet |
 | Textos das perguntas dos questionários | **Não copiados.** Os itens aparecem como "Item n" + categoria |
 | Base de sinais e sintomas → nutrientes | **Não copiada.** O questionário fica indisponível |
 
@@ -132,4 +137,5 @@ nutri-studio/
   - as abas sem cálculo do §11.
 - Sinais e sintomas: o motor de contagem existe (`calc/questionarios/sinais.js`), mas falta a base sinal → nutrientes.
 - Adequação no método por equivalentes: usa as regras do método por alimentos (§8.3) sobre os totais arredondados. A evidência do WebDiet para os equivalentes não mostra metas.
+- Grupos de equivalentes com a média padrão do WebDiet não têm micronutrientes (só os macronutrientes das médias foram registrados) nem alimentos para a lista de compras.
 - Meses de amamentação (EER 2023 lactante): são contados até a data do cálculo. O WebDiet usa "hoje", que é o mesmo nos casos conferidos.

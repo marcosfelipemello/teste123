@@ -32,12 +32,16 @@ test('método por alimentos: principais e substitutos, sem repetidos, em ordem a
   assert.deepEqual(importarComprasAlimentos(refeicoes), ['Arroz', 'Feijão carioca', 'Frango', 'Ovos']);
 });
 
-test('método por alimentos com receitas: principal e substituta viram ingredientes (§12 #25 corrigido)', () => {
+test('método por alimentos com receitas: igual ao WebDiet, só a principal vira ingredientes (§12 #25)', () => {
   const refeicoes = [{ itens: [{ alimento: salada, subs: [{ alimento: omelete }] }, { alimento: arroz }] }];
-  // No WebDiet, a omelete substituta entraria como "Omelete" e seus ingredientes seriam descartados.
-  assert.deepEqual(importarComprasAlimentos(refeicoes, { comReceitas: true }), ['Arroz', 'Azeite', 'Ovos', 'Tomate']);
+  // Como no WebDiet, a omelete substituta entra como "Omelete" e seus ingredientes são descartados.
+  assert.deepEqual(importarComprasAlimentos(refeicoes, { comReceitas: true }), ['Arroz', 'Azeite', 'Omelete', 'Tomate']);
+  assert.deepEqual(importarComprasAlimentos(refeicoes), ['Arroz', 'Azeite', 'Omelete', 'Tomate']);
+  // Com corrigir, principal e substituta viram ingredientes.
+  assert.deepEqual(importarComprasAlimentos(refeicoes, { comReceitas: true, corrigir: true }), ['Arroz', 'Azeite', 'Ovos', 'Tomate']);
   assert.deepEqual(importarComprasAlimentos(refeicoes, { comReceitas: false }), ['Arroz', 'Omelete', 'Salada caprese']);
   assert.deepEqual(DIVERGENCIAS.map((d) => d.item), [25, 26]);
+  assert.match(DIVERGENCIAS[0].comportamento, /^Padrão igual ao WebDiet/);
 });
 
 test('método por equivalentes: alimentos dos grupos com porção > 0 + avulsos; com/sem receitas vale (§12 #26 corrigido)', () => {

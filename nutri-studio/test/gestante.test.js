@@ -18,6 +18,7 @@ import {
   normalizarTipo,
   DIVERGENCIAS,
   AVISO_SEM_PESO,
+  AVISO_SEM_PESO_WEBDIET,
 } from '../src/calc/gestante.js';
 
 const evidencia = JSON.parse(
@@ -64,18 +65,9 @@ test('evidência: 5 cenários × 40 semanas + 4 semanas testadas, campo a campo'
           assert.equal(nossa[1], lMin, 'mínimo');
           assert.equal(nossa[2], lMax, 'máximo');
           assert.equal(nossa[3], lPeso, 'peso registrado');
-          if (r.linhas[i].aviso) {
-            // WebDiet §12 #18: sem nenhum peso registrado o WebDiet calcula contra 0 kg ("+7431 Kcal/dia").
-            // Aqui: null + aviso, tela "-". A fórmula pura com pesoUlt = 0 reproduz o número do WebDiet.
-            assert.equal(r.pesoUlt, null);
-            assert.equal(r.linhas[i].kcal, null);
-            assert.equal(r.linhas[i].aviso, AVISO_SEM_PESO);
-            assert.equal(nossa[4], '-');
-            const bruto = aporteSemana({ semana: sem, esperado: r.curva[i].esperado, ult: 1, pesoUlt: 0 });
-            assert.equal(bruto.tela, lKcal, 'fórmula do WebDiet com peso 0');
-          } else {
-            assert.equal(nossa[4], lKcal, 'kcal');
-          }
+          // Inclusive sem nenhum peso registrado (§12 #18: o WebDiet calcula contra 0 kg), com aviso.
+          assert.equal(nossa[4], lKcal, 'kcal');
+          if (r.pesoUlt === null && sem >= 10) assert.equal(r.linhas[i].aviso, AVISO_SEM_PESO_WEBDIET);
         });
       }
 
@@ -173,8 +165,19 @@ test('§7.6: aporte calórico — fórmula, semana ≤ ult e antes da 10ª', () 
   assert.equal(t.linhas[20].avaliacao, null);
 });
 
-test('§12 #18: sem nenhum peso registrado → aporte null + aviso (WebDiet: "+7431 Kcal/dia")', () => {
+test('§12 #18: sem nenhum peso registrado → padrão igual ao WebDiet ("+7431 Kcal/dia") com aviso', () => {
   const r = acompanhamentoGestacional({ ppg: 62, altura: 163, tipo: 'Única', semanas: 20 });
+  assert.equal(r.pesoUlt, null);
+  assert.deepEqual(r.avisos, [AVISO_SEM_PESO_WEBDIET]);
+  assert.equal(r.tela.linhas[9][4], '+7431 Kcal/dia');
+  assert.equal(r.linhas[9].kcal, 7431);
+  assert.equal(r.linhas[8].aviso, undefined);
+  assert.equal(r.linhas[9].aviso, AVISO_SEM_PESO_WEBDIET);
+  assert.match(DIVERGENCIAS.find((d) => d.item === 18).comportamento, /^Padrão igual ao WebDiet/);
+});
+
+test('§12 #18 com { corrigir: true }: aporte null + aviso', () => {
+  const r = acompanhamentoGestacional({ ppg: 62, altura: 163, tipo: 'Única', semanas: 20 }, { corrigir: true });
   assert.equal(r.pesoUlt, null);
   assert.deepEqual(r.avisos, [AVISO_SEM_PESO]);
   for (let i = 0; i < 40; i++) {
@@ -187,10 +190,9 @@ test('§12 #18: sem nenhum peso registrado → aporte null + aviso (WebDiet: "+7
     }
     assert.equal(r.tela.linhas[i][4], '-');
   }
-  // O comportamento do WebDiet só aparece passando pesoUlt = 0 de propósito.
   assert.equal(aporteSemana({ semana: 10, esperado: 60.76, ult: 1, pesoUlt: 0 }).tela, '+7431 Kcal/dia');
-  assert.equal(aporteSemana({ semana: 10, esperado: 60.76, ult: 1, pesoUlt: null }).aviso, AVISO_SEM_PESO);
-  assert.match(DIVERGENCIAS.find((d) => d.item === 18).comportamento, /Corrigido/);
+  assert.equal(aporteSemana({ semana: 10, esperado: 60.76, ult: 1, pesoUlt: null }).tela, '+7431 Kcal/dia');
+  assert.equal(aporteSemana({ semana: 10, esperado: 60.76, ult: 1, pesoUlt: null }, { corrigir: true }).aviso, AVISO_SEM_PESO);
 });
 
 test('§7.5: CMB = CB − 0,314 × DCT e rótulos de percentil (35 anos)', () => {

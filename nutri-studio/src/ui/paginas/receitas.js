@@ -10,9 +10,10 @@
 // origem "Receita", mc = [porção]) + ingredientes [{alimento (cópia), quantidade, medida}] + compras.
 import { h, campo, avisar } from '../dom.js';
 import { registrarRota, db } from '../app.js';
-import { fx, fxn } from '../../calc/numeros.js';
+import { fxn } from '../../calc/numeros.js';
 import {
-  calcularReceita, gerarMedida, salvarReceita, infoReceita, TEXTO_INFO_PORCAO, AVISO_GERAR_MEDIDA, NOME_PORCAO_GERADA,
+  calcularReceita, gerarMedida, salvarReceita, infoReceita, formatarKcalIngrediente, TEXTO_INFO_PORCAO, AVISO_GERAR_MEDIDA,
+  NOME_PORCAO_GERADA,
 } from '../../calc/receitas.js';
 import { criarCatalogo, criarSeletor, instantaneo, seletorMedidaLinha, campoQuantidadeLinha, chaveAlimento, num } from '../catalogo.js';
 import { criarPainel } from '../abas/painel-resultados.js';
@@ -71,6 +72,9 @@ export function paginaReceitas(raiz, banco = db) {
     let resultado = null;
     const painel = criarPainel();
     const linhas = new Map();
+    // Formato da kcal de cada linha, como no WebDiet (§12 #28): ao redesenhar a lista, "256Kcal"; a linha
+    // recalculada (o ingrediente recém-incluído ou o que teve a quantidade/medida mudada), "117.6 Kcal".
+    let modos = ingredientes.map(() => 'redesenhada');
 
     const nome = h('input', { value: existente?.nome ?? '', autocomplete: 'off', required: true });
     const rendimento = h('input', { value: existente?.rendimento ?? '', inputmode: 'decimal', autocomplete: 'off' });
@@ -83,7 +87,12 @@ export function paginaReceitas(raiz, banco = db) {
 
     const seletor = criarSeletor(catalogo, {
       rotulo: 'Ingrediente',
-      aoAdicionar: (a, q, medida) => { ingredientes.push({ alimento: instantaneo(a), quantidade: q, medida }); medidaGerada = null; desenhar(); },
+      aoAdicionar: (a, q, medida) => {
+        ingredientes.push({ alimento: instantaneo(a), quantidade: q, medida });
+        modos = [...ingredientes.map(() => 'redesenhada').slice(1), 'recalculada'];
+        medidaGerada = null;
+        desenhar();
+      },
     });
 
     function desenhar() {
@@ -97,10 +106,10 @@ export function paginaReceitas(raiz, banco = db) {
           linhas.set(i, c);
           return h('tr', {},
             h('th', { scope: 'row' }, ing.alimento.nome, ing.alimento.origem ? h('div', {}, h('small', {}, ing.alimento.origem)) : null),
-            h('td', { class: 'num' }, campoQuantidadeLinha(ing.quantidade, `Quantidade de ${ing.alimento.nome}`, (v) => { ing.quantidade = v; medidaGerada = null; recalcular(); })),
-            h('td', {}, seletorMedidaLinha(ing.alimento, ing.medida, `Medida de ${ing.alimento.nome}`, (v) => { ing.medida = v; medidaGerada = null; recalcular(); })),
+            h('td', { class: 'num' }, campoQuantidadeLinha(ing.quantidade, `Quantidade de ${ing.alimento.nome}`, (v) => { ing.quantidade = v; modos[i] = 'recalculada'; medidaGerada = null; recalcular(); })),
+            h('td', {}, seletorMedidaLinha(ing.alimento, ing.medida, `Medida de ${ing.alimento.nome}`, (v) => { ing.medida = v; modos[i] = 'recalculada'; medidaGerada = null; recalcular(); })),
             c.peso, c.ptn, c.lip, c.cho, c.kcal,
-            h('td', {}, h('button', { type: 'button', class: 'botao discreto', 'aria-label': `Remover ${ing.alimento.nome}`, onclick: () => { ingredientes.splice(i, 1); medidaGerada = null; desenhar(); } }, 'Remover')));
+            h('td', {}, h('button', { type: 'button', class: 'botao discreto', 'aria-label': `Remover ${ing.alimento.nome}`, onclick: () => { ingredientes.splice(i, 1); modos = ingredientes.map(() => 'redesenhada'); medidaGerada = null; desenhar(); } }, 'Remover')));
         })))) : h('p', { class: 'legenda' }, catalogo.itens.length ? 'Nenhum ingrediente ainda.' : 'Cadastre os ingredientes em "Meus alimentos" primeiro.'));
       recalcular();
     }
@@ -118,9 +127,10 @@ export function paginaReceitas(raiz, banco = db) {
         resultado.linhas.forEach((l, i) => {
           const c = linhas.get(i);
           if (!c) return;
-          c.peso.textContent = `${num(l.peso, 2)} ${l.unidade === 'ml' ? 'ml' : 'g'}`;
-          c.ptn.textContent = fx(l.ptn, 1); c.lip.textContent = fx(l.lip, 1); c.cho.textContent = fx(l.cho, 1);
-          c.kcal.textContent = fx(l.kcal, 1);
+          // Textos da linha como na tela do WebDiet ("200g", "5.0g").
+          c.peso.textContent = l.tela.peso;
+          c.ptn.textContent = l.tela.ptn; c.lip.textContent = l.tela.lip; c.cho.textContent = l.tela.cho;
+          c.kcal.textContent = formatarKcalIngrediente(l.kcal, modos[i] || 'redesenhada');
         });
         // O peso final acompanha a soma dos ingredientes até ser digitado (como o campo #peso do WebDiet).
         if (!pesoFinalEditado) pesoFinal.value = ingredientes.length ? resultado.tela.peso : '';

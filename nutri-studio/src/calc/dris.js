@@ -50,7 +50,9 @@ export const DIVERGENCIAS = Object.freeze([
     descricao:
       'Referência de selênio para 0–6 meses exibida como "15 mg"; a DRI é 15 mcg e os outros perfis mostram mcg. ' +
       'O % de adequação compara só os números, então a conta não muda.',
-    comportamento: 'Corrigido: o rótulo sai "15 mcg"; o valor numérico (15) é o mesmo do WebDiet.',
+    comportamento:
+      'Padrão igual ao WebDiet: o rótulo sai "15 mg" (o valor numérico, 15, e o % de adequação não mudam). ' +
+      'Com a opção { corrigir: true }, o rótulo sai "15 mcg".',
   },
 ]);
 
@@ -142,6 +144,7 @@ function procurarEstagio(perfil, dados) {
  * @param {{sexo:string, nascimento?:string, dataReferencia?:string, condicao?:string,
  *          idadeAnos?:number, idadeMeses?:number}} perfil
  * @param {object} [dados] tabela no formato de dris.json (padrão: src/dados/dris.json)
+ * @param {{corrigir?: boolean}} [opcoes] `corrigir: true` = rótulo do selênio de 0–6 meses em mcg (§12 #24)
  * @returns {{
  *   estagio: string|null, rotulo: string|null, fonte: string|null,
  *   idadeAnos: number|null, idadeMeses: number|null,
@@ -151,7 +154,7 @@ function procurarEstagio(perfil, dados) {
  * }} `valores[i]` é número, "N/D" ou null (sem referência), na ordem de NUTRIENTES; `tela.micro1..micro27`
  *    é o texto da coluna de referência ("1000 mg", "N/D", "0", ""). Sem faixa: valores e tela null + aviso.
  */
-export function referenciasMicros(perfil, dados = DRIS) {
+export function referenciasMicros(perfil, dados = DRIS, { corrigir = false } = {}) {
   const sexo = normalizarSexo(perfil?.sexo);
   const condicao = normalizarCondicao(perfil?.condicao);
   let anos = perfil?.idadeAnos ?? null;
@@ -184,6 +187,8 @@ export function referenciasMicros(perfil, dados = DRIS) {
     const v = fixo ? valorFixo(dados.fixos[nut.chave]) : estagio.valores[nut.chave] ?? null;
     valores.push(v);
     tela[`micro${nut.n}`] = textoReferencia(nut, v, dados.fixos);
+    // WebDiet §12 #24: a referência de selênio de 0–6 meses aparece em "mg" (o número é o de mcg).
+    if (!corrigir && estagio.id === 'lactente_0-6m' && nut.chave === 'se' && typeof v === 'number') tela[`micro${nut.n}`] = `${v} mg`;
   }
   return {
     estagio: estagio.id,

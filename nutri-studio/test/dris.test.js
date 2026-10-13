@@ -54,14 +54,15 @@ test('evidência: os 15 perfis de tela_dris.json, 27 referências cada', async (
       assert.equal(r.aviso, null);
       assert.equal(Object.keys(caso.refs).length, 27);
       for (const [campo, texto] of Object.entries(caso.refs)) {
-        if (r.estagio === 'lactente_0-6m' && campo === 'micro15') {
-          // §12 #24: o WebDiet mostra "15 mg"; o valor (15) é o mesmo e o rótulo sai em mcg.
-          assert.equal(texto, '15 mg');
-          assert.equal(r.valores[14], parseFloat(texto));
-          assert.equal(r.tela.micro15, '15 mcg');
-          continue;
-        }
+        // Inclusive §12 #24: o WebDiet mostra "15 mg" no selênio de 0–6 meses, e o padrão é igual.
         assert.equal(r.tela[campo], texto, campo);
+        if (r.estagio === 'lactente_0-6m' && campo === 'micro15') {
+          assert.equal(texto, '15 mg');
+          assert.equal(r.valores[14], 15);
+          const corrigido = referenciasMicros({ sexo, nascimento, condicao, dataReferencia: DATA }, undefined, { corrigir: true });
+          assert.equal(corrigido.tela.micro15, '15 mcg');
+          assert.equal(corrigido.valores[14], 15);
+        }
       }
     });
   }
@@ -207,4 +208,5 @@ test('estrutura de dris.json e §12 #24', () => {
   assert.equal(fontes.filter((f) => f === FONTES.webdiet).length, 16);
   assert.equal(fontes.filter((f) => f === FONTES.nasem).length, 8);
   assert.deepEqual(DIVERGENCIAS.map((d) => d.item), [24]);
+  assert.match(DIVERGENCIAS[0].comportamento, /^Padrão igual ao WebDiet/);
 });

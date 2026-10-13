@@ -29,12 +29,17 @@ export const DIVERGENCIAS = Object.freeze([
     descricao:
       'Método por alimentos, "com receitas": `final.concat(...)` sem atribuição descarta os ingredientes das receitas ' +
       'SUBSTITUTAS, e `parseInt(origem) == "Receita"` nunca é verdadeiro, então a receita substituta entra pelo nome de compra.',
-    comportamento: 'Corrigido: com receitas, toda receita (principal ou substituta) é trocada pelos seus ingredientes.',
+    comportamento:
+      'Padrão igual ao WebDiet: com receitas, só a receita principal é trocada pelos ingredientes; a receita ' +
+      'substituta entra pelo nome de compra. Com a opção { corrigir: true }, toda receita (principal ou ' +
+      'substituta) é trocada pelos seus ingredientes.',
   },
   {
     item: 26,
     descricao: 'Método por equivalentes: o diálogo oferece "com" ou "sem" receitas, mas `importarCompras2()` ignora a escolha.',
-    comportamento: 'Corrigido: a escolha vale — com receitas, as receitas dos grupos e os avulsos que são receitas entram pelos ingredientes.',
+    comportamento:
+      'Corrigido: a escolha vale — com receitas, as receitas dos grupos e os avulsos que são receitas entram pelos ' +
+      'ingredientes. (Não reproduzido: o relatório não diz qual dos dois resultados o WebDiet dá ao ignorar a escolha.)',
   },
 ]);
 
@@ -72,16 +77,18 @@ function unicosOrdenados(nomes) {
  * "Importar alimentos" no método por alimentos: nomes de compra de cada alimento principal e de cada
  * substituto, sem repetidos e em ordem alfabética.
  * @param {{itens:{alimento:object, subs?:({alimento:object}|object)[]}[]}[]} refeicoes
- * @param {{comReceitas?: boolean}} [opcoes] com receitas (padrão), receitas viram seus ingredientes;
- *        sem receitas, entram pelo nome de compra
+ * @param {{comReceitas?: boolean, corrigir?: boolean}} [opcoes] com receitas (padrão), a receita principal vira
+ *        seus ingredientes; sem receitas, entra pelo nome de compra. Substitutos: como no WebDiet (§12 #25), a
+ *        receita substituta entra sempre pelo nome de compra; com `corrigir: true`, também vira ingredientes.
  * @returns {string[]}
  */
-export function importarComprasAlimentos(refeicoes = [], { comReceitas = true } = {}) {
+export function importarComprasAlimentos(refeicoes = [], { comReceitas = true, corrigir = false } = {}) {
   const nomes = [];
   for (const r of refeicoes) {
     for (const it of r?.itens ?? []) {
       nomes.push(...nomesDoAlimento(it.alimento, comReceitas));
-      for (const s of it.subs ?? it.substitutos ?? []) nomes.push(...nomesDoAlimento(s?.alimento ?? s, comReceitas));
+      // WebDiet §12 #25: os ingredientes da receita substituta são descartados e ela entra pelo nome de compra.
+      for (const s of it.subs ?? it.substitutos ?? []) nomes.push(...nomesDoAlimento(s?.alimento ?? s, comReceitas && corrigir));
     }
   }
   return unicosOrdenados(nomes);

@@ -68,7 +68,8 @@ function montar(raiz, { db, paciente: p }) {
       const r = acompanhamentoGestacional(d);
       if (r.semanaAtual === null || r.semanaAtual < 1) return null;
       const linha = r.linhas[Math.min(r.semanaAtual, 40) - 1];
-      return { semanas: r.semanaAtual, classe: r.classe, aporte: linha?.kcal ?? null };
+      // Sem peso registrado o aporte segue o WebDiet (contra 0 kg, §12 #18): não é oferecido como adicional.
+      return { semanas: r.semanaAtual, classe: r.classe, aporte: r.pesoUlt === null ? null : linha?.kcal ?? null };
     } catch {
       return null;
     }

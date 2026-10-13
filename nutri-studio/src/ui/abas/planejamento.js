@@ -508,10 +508,11 @@ function montar(raiz, { db, paciente: p }) {
     }
 
     function preencherLinhas() {
-      const pc = (c, l, sufixo = '') => {
-        c.peso.textContent = `${l.peso} ${l.unidade === 'ml' ? 'ml' : 'g'}`;
-        c.ptn.textContent = fx(l.ptn, 1); c.lip.textContent = fx(l.lip, 1); c.cho.textContent = fx(l.cho, 1);
-        c.kcal.textContent = `${fx(l.kcal, 0)}${sufixo}`;
+      // Textos da linha como na tela do WebDiet ("120g", "3.0g", "33.7 g", "154 Kcal").
+      const pc = (c, l) => {
+        c.peso.textContent = l.tela.peso;
+        c.ptn.textContent = l.tela.ptn; c.lip.textContent = l.tela.lip; c.cho.textContent = l.tela.cho;
+        c.kcal.textContent = l.tela.kcal;
       };
       if (eq) {
         resultado.porRefeicao.forEach((r, ri) => r.avulsos.forEach((l, ai) => { const c = linhas.get(`${ri}.a${ai}`); if (c) pc(c, l); }));
