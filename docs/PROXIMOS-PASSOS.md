@@ -127,6 +127,7 @@ Login com as credenciais do usuário e, depois dele, um bloqueio no navegador qu
 - **Metas na aba Planejamento:** iguais ao modal do WebDiet (plano novo em g/kg zerado; trocar a distribuição zera; "Usar o GET" passa para % do GET e zera PTN/LIP/CHO; CHO = 100 − PTN − LIP; GET em g/kg refeito ao digitar PTN/LIP/CHO). Planos salvos antes são convertidos sem perder valores (os campos antigos ficam em `metas.formatoAntigo`).
 - **Novos itens do §12:** #30 (adequação do gN com o valor do cálculo anterior; ao abrir o plano, 0) e #31 (GET em g/kg não refeito ao mudar só o peso) foram **corrigidos a pedido do usuário**; #32 (CHO 100% na análise de plano vazio) fica igual ao WebDiet.
 
+- **Pacientes de teste excluídos** (autorização do usuário): os dois "Teste Rea" (18236779 e 18236776), os únicos com "teste" no nome.
 - **Simulação dos questionários na conta** (pedido do usuário): 40 cenários por questionário, marcados pelas funções da própria página, sem salvar. 360 de 360 iguais ao app (rastreamento, FINDRISC, disbiose, cafeína resumida e completa, fenótipo, sarcopenia, cronotipo, QFA). Evidência `docs/webdiet-evidencias/tela_q_simulacao.json`, teste `test/questionariosSimulacao.test.js`.
 
 ## Ainda não feito (fora desta lista)
@@ -147,8 +148,7 @@ Login com as credenciais do usuário e, depois dele, um bloqueio no navegador qu
 
 - **Não apagar nada sem consultar o usuário.**
 - **Não copiar dados de pacientes do WebDiet.** Na quarta sessão o usuário autorizou abrir a conta; ela foi usada só para leitura e só nos planos do paciente de teste. Conteúdo protegido (base de alimentos, listas de equivalentes, textos) não é copiado.
-  - O paciente de teste "Teste Rea" (id 18236779) e os registros dele continuam na conta.
-  - A exclusão depende do usuário.
+  - Os pacientes de teste "Teste Rea" (18236779 e 18236776) foram **excluídos** em 13/10/2026, com autorização do usuário. Não há mais paciente de teste na conta: uma nova conferência precisa criar outro (e excluí-lo no fim).
 - **Política de erros do app:**
   - Reproduzir o WebDiet nos casos conferidos.
   - Onde o WebDiet trava ou fica vazio, retornar `null` + `aviso`.
@@ -161,7 +161,7 @@ Login com as credenciais do usuário e, depois dele, um bloqueio no navegador qu
 2. Textos das perguntas dos questionários: hoje aparecem só "Item n". Opções: usar as versões publicadas dos instrumentos, ou o usuário fornecer os textos.
 3. Base de alimentos: o app não traz tabela. Incluir a TACO (pública, NEPA/UNICAMP)?
 4. Hospedagem e acesso por login (hoje os dados ficam só no navegador). Opção: Supabase.
-5. Excluir o paciente de teste da conta do WebDiet.
+5. ~~Excluir o paciente de teste da conta do WebDiet~~ — **feito** em 13/10/2026 (os dois "Teste Rea", com autorização do usuário).
 6. ~~Metas padrão de um plano novo~~ — **resolvido na quarta sessão:** igual ao WebDiet (g/kg com tudo 0; o botão "Usar o GET" faz a importação do cálculo energético).
 7. ~~Adequação no método por equivalentes~~ — **resolvido na quarta sessão:** o WebDiet mostra metas e adequação nos equivalentes, e o app faz o mesmo cálculo.
 8. Lista dos grupos de equivalentes: começa vazia e o consultório monta a partir de "Meus alimentos". Se a TACO entrar (decisão 3), dá para sugerir uma lista inicial.

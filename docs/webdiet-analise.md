@@ -37,6 +37,7 @@ Este relatório é a base da Etapa 3. Ele registra **o que o WebDiet faz**: fór
   - A lista de pacientes só foi consultada com o filtro "TESTE REA".
 - **Paciente de teste criado:** um único paciente, `Teste Rea` (id `18236779`), masculino, nascido em 15/06/1991, telefone fictício, sem e-mail e sem CPF. A mensagem de boas-vindas estava desativada (WhatsApp Connect inativo).
 - **Atenção:** a conta já tinha **outro** paciente "Teste Rea" (id `18236776`, modificado às 02:07, antes do meu login). Ele **não foi criado nem tocado** por esta análise.
+- **Exclusão (13/10/2026, autorizada pelo usuário: "Pode excluir depois os pacientes testes"):** os dois pacientes "Teste Rea" (18236779, criado às 02:35:44, e 18236776, criado às 02:07:09) foram removidos pelo mesmo caminho do botão "Remover paciente", depois de conferir nome, id e data de criação de cada um. Eram os únicos pacientes com "teste" no nome; a busca depois da exclusão não acha nenhum. Os registros deles foram junto (é o que o WebDiet faz). As evidências deste relatório continuam em `webdiet-evidencias/`.
 - **Registros criados dentro do paciente de teste** (todos fictícios), para abrir cada ferramenta:
   - 1 cálculo energético
   - 2 antropometrias (adulto; infantil retroativa com data de 15/12/1999)
@@ -1690,7 +1691,7 @@ Ainda em aberto:
   - periodização do plano e o PDF;
   - estatísticas.
 - **Literatura:** itens 8 (Schofield 161,08 × 161,8) e 10 (Chumlea, sexo trocado) de §12 precisam do artigo original.
-- **Itens criados na conta:** o paciente "Teste Rea" (`18236779`) e seus registros continuam lá. A exclusão depende de autorização do responsável.
+- ~~**Itens criados na conta:** o paciente "Teste Rea" (`18236779`) e seus registros continuam lá.~~ Excluídos em 13/10/2026 com autorização do usuário, junto com o outro "Teste Rea" (`18236776`); ver §1.
 
 ---
 
