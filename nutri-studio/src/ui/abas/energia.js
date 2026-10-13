@@ -22,6 +22,18 @@ import { porData, dadosAntropometria, textoNumero } from './comum.js';
 
 const TIPO = 'energia';
 const PADROES = { formula: '', injuria: '0', dias: '90' };
+/** Rótulos e ordem da lista "Escolha sua fórmula" do WebDiet (vista na conta em 13/10/2026; ids 15–20 não existem). */
+const FORMULAS_WEBDIET = [
+  [2, 'Harris-benedict (1984)'], [1, 'Harris-benedict (1919)'], [8, 'FAO/WHO (2004)'], [5, 'EER/IOM (2005)'],
+  [26, 'EER (2023)'], [3, 'Katch-McArdle (1996)'], [4, 'Cunningham (1980)'], [6, 'Mifflin-St Jeor (1990)'],
+  [7, 'Mifflin-St Jeor - por MLG (1990)'], [9, 'Henry & Rees (1991)'], [12, 'Tinsley - Por peso (2018)'],
+  [13, 'Tinsley - Por MLG (2018)'], [11, 'GET por fórmula de bolso'], [14, 'Colocar TMB manualmente'],
+  [10, 'Colocar GET manualmente'], [21, 'EER/IOM (2005) - Protocolo Infantil'], [27, 'EER (2023) - Protocolo Infantil'],
+  [22, 'FAO/WHO (2004) - Protocolo Infantil'], [23, 'Schofield (1985) - Protocolo Infantil'],
+  [25, 'Min. Saúde - Gestante (2005)'], [28, 'EER (2023) - Gestante'], [29, 'EER (2023) - Lactante'], [24, 'HandyMET'],
+];
+const ROTULO_FORMULA = new Map(FORMULAS_WEBDIET);
+const rotuloFormula = (prot) => (prot ? ROTULO_FORMULA.get(prot.id) ?? prot.nome : '-');
 /** Fórmulas em que o peso só serve ao kcal/kg (GET manual, TMB manual, HandyMET). */
 const SEM_PESO_OBRIGATORIO = [10, 14, 24];
 /** Id da injúria "Queimadura 100%" (rótulo 2,1; a conta usa 2,0 — relatório §12, item 5). */
@@ -106,7 +118,8 @@ function montar(raiz, { db, paciente: p }) {
     grupoCampos('Fórmula',
       h('div', { class: 'campos' },
         campo('Data do cálculo', h('input', { name: 'data', value: hojeTexto(), placeholder: 'dd/mm/aaaa', inputmode: 'numeric', autocomplete: 'off' })),
-        campo('Fórmula', selecao({ name: 'formula' }, [{ valor: '', rotulo: 'Escolha a fórmula' }, ...PROTOCOLOS.map((x) => ({ valor: x.id, rotulo: x.nome }))], PADROES.formula)),
+        campo('Fórmula', selecao({ name: 'formula' }, [{ valor: '', rotulo: 'Escolha sua fórmula' },
+          ...FORMULAS_WEBDIET.filter(([id]) => PROTOCOLOS.some((x) => x.id === id)).map(([id, rotulo]) => ({ valor: id, rotulo }))], PADROES.formula)),
         temNascimento ? null : numero('idade', 'Idade (anos)', { inputmode: 'numeric' }),
         temNascimento ? null : numero('meses', 'Idade (meses)', { inputmode: 'numeric' }, 'Para crianças pequenas.')),
       legendaFormula,
@@ -327,7 +340,7 @@ function montar(raiz, { db, paciente: p }) {
       ],
       grupos: [
         { titulo: 'Cálculo', itens: [
-          { chave: 'formula', rotulo: 'Fórmula', valor: c.prot?.nome ?? '-' },
+          { chave: 'formula', rotulo: 'Fórmula', valor: rotuloFormula(c.prot) },
           { chave: 'idade', rotulo: 'Idade na data', valor: textoIdade(c.anos, c.meses) },
           { chave: 'fator', rotulo: c.prot?.tipoFator === 'categoria' ? 'Categoria' : 'Fator atividade', valor: fator === null || fator === undefined ? '-' : String(fator) },
           { chave: 'injuria', rotulo: 'Fator injúria', valor: injuria ? `${fx(injuria.valor, 2)}` : '-', detalhe: injuria && injuria.id !== 0 ? injuria.nome : '' },
@@ -416,7 +429,7 @@ function montar(raiz, { db, paciente: p }) {
       ...(existente || {}),
       data: c.data,
       formula: c.prot.id,
-      protocolo: c.prot.nome,
+      protocolo: rotuloFormula(c.prot),
       entrada: { ...c.v, data: c.data },
       atividades: atividades.map((a) => ({ ...a })),
       resumo: {

@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 const { chromium } = await import(process.env.PLAYWRIGHT || 'playwright');
 const URL_APP = (process.env.URL || 'http://localhost:8080').replace(/\/$/, '');
+const FOTOS = process.env.FOTOS; // pasta para capturas de tela (opcional)
 const evidencia = (nome) => JSON.parse(readFileSync(fileURLToPath(new URL(`../../docs/webdiet-evidencias/${nome}`, import.meta.url)), 'utf8'));
 const DRIS = JSON.parse(readFileSync(fileURLToPath(new URL('../src/dados/dris.json', import.meta.url)), 'utf8'));
 
@@ -135,7 +136,16 @@ async function rodar(largura) {
   // Planejamento por alimentos (§8.4)
   await aba('Planejamento');
   await page.click('text=Novo plano por alimentos');
-  confere('Planejamento: GET da última energia', await page.inputValue('label:has-text("GET (kcal)") input'), '2799');
+  const meta = (c) => `[name=meta-${c}]`;
+  const metas = async () => (await Promise.all(['tipo', 'peso', 'ptn', 'lip', 'cho', 'get'].map((c) => page.inputValue(meta(c))))).join(' ');
+  confere('Metas de plano novo: g/kg zerado, como no WebDiet', await metas(), 'gkg 0 0 0 0 0');
+  await page.click('button:has-text("Usar o GET de 13/10/2026")');
+  confere('Metas: GET importado passa para % do GET e zera PTN/LIP/CHO', await metas(), 'percentual 80 0 0 0 2799');
+  await page.fill(meta('ptn'), '20');
+  await page.fill(meta('lip'), '30');
+  confere('Metas: CHO = 100 − PTN − LIP', await metas(), 'percentual 80 20 30 50 2799');
+  confere('Metas: meta de energia', (await destaques())[1], /^META 2799 Kcal \(35\.0 Kcal\/Kg\)/);
+  if (FOTOS) await page.locator('[aria-labelledby=plan-metas]').screenshot({ path: `${FOTOS}/metas-${largura}.png` });
   const almoco = () => page.locator('section.refeicao').nth(1);
   await adicionar(almoco(), 'Arroz cozido · TACO (teste)', 'Colher(es) de arroz rasa(s) (30 g)', 4);
   await adicionar(almoco(), 'Feijão carioca cozido · TACO (teste)', 'grama(s)', 150);
@@ -148,6 +158,7 @@ async function rodar(largura) {
   await adicionar(page.locator('section.refeicao').nth(0), 'Receita de teste · Receita', null, 1);
   await page.click('text=Importar alimentos do plano');
   await semRolagem('Planejamento (editor)');
+  if (FOTOS) await page.locator('aside').screenshot({ path: `${FOTOS}/total-do-dia-${largura}.png` });
   await page.click('aside >> text=Salvar plano');
 
   // Questionários: cronotipo com as primeiras opções (§10.5)
@@ -172,6 +183,20 @@ async function rodar(largura) {
   confere('Persistiu: plano', await texto('table[aria-labelledby=plan-historico] tbody'), /Plano alimentar Alimentos \d+ kcal/);
   await page.click('button[aria-label^="Abrir Plano alimentar"]');
   confere('Persistiu: almoço do plano', await texto('section.refeicao >> nth=1 >> .total-refeicao'), /^Total: 398g/);
+  confere('Persistiu: metas', await metas(), 'percentual 80 20 30 50 2799');
+  // §12 #30: ao abrir, a adequação do gN usa o prescrito anterior (0), como o WebDiet; depois do próximo cálculo, o atual.
+  const gN = async () => {
+    const item = (grupo) => page.locator(`aside div:has(> h4:text-is("${grupo}")) dl > div:has(> dt:text-is("kcal não proteica/g N")) dd`);
+    const adequacao = item('Adequação (prescrito − planejado)');
+    const prescrita = parseFloat(await item('Prescrito (total do dia)').locator('.valor').innerText());
+    const planejada = parseFloat((await adequacao.locator('small').innerText()).replace('planejado ', ''));
+    return { prescrita, planejada, adequacao: await adequacao.locator('.valor').innerText() };
+  };
+  const g0 = await gN();
+  confere('Ao abrir: adequação do gN = 0 − planejado', g0.adequacao, `${(0 - g0.planejada).toFixed(0)} Kcal`);
+  await page.fill(meta('get'), '2799');
+  const g1 = await gN();
+  confere('Depois de recalcular: adequação do gN = prescrito − planejado', g1.adequacao, `${(g1.prescrita - g1.planejada).toFixed(0)} Kcal`);
   confere('Persistiu: lista de compras', (await page.$$eval('.lista-compras input:not([type])', (els) => els.map((e) => e.value))).join(', '),
     'Arroz cozido, Azeite de dendê, Banana prata, Coração de frango grelhado, Feijão carioca cozido');
   await aba('Questionários');

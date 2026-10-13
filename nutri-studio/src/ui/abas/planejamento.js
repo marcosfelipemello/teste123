@@ -1,6 +1,6 @@
 // Aba "Planejamento" da ficha do paciente: planejamento alimentar (relatório §8).
 // - Método por alimentos (calc/planejamento.js, §8.3): refeições com alimentos e substitutos, total de cada
-//   refeição, total do dia, análise calórica, metas (GET do último cálculo energético), adequação e os 27
+//   refeição, total do dia, análise calórica, metas (modal do WebDiet; GET importável do cálculo energético), adequação e os 27
 //   micronutrientes contra as DRIs do paciente (calc/dris.js, §8.10).
 // - Método por equivalentes (calc/equivalentes.js, §8.5): porções dos 15 grupos por refeição, mais avulsos.
 //   As listas de alimentos de cada grupo do WebDiet não foram copiadas (§1.2). Cada grupo usa a lista do
@@ -18,8 +18,7 @@ import { registrarAba } from '../paginas/pacientes.js';
 import { normalizarData } from '../importacao.js';
 import { check, fx, fxn, hojeTexto } from '../../calc/numeros.js';
 import {
-  calcularPlanejamento, analisarTotal, calcularMetas, calcularAdequacao, ajustarSubstitutos, medidaDoAlimento,
-  nutrientesPorPeso, tabelaMicros, CORES, FATOR_NITROGENIO,
+  calcularPlanejamento, ajustarSubstitutos, medidaDoAlimento, nutrientesPorPeso, tabelaMicros, CORES,
 } from '../../calc/planejamento.js';
 import { GRUPOS, CAMPOS_GRUPO, calcularGrupos, calcularTotaisEquivalentes } from '../../calc/equivalentes.js';
 import PADRAO_EQUIVALENTES from '../../dados/equivalentes_padrao.json' with { type: 'json' };
@@ -32,15 +31,39 @@ import {
   criarCatalogo, criarSeletor, instantaneo, medidasDe, seletorMedidaLinha, campoQuantidadeLinha, num, unidadeDe,
 } from '../catalogo.js';
 import { criarPainel } from './painel-resultados.js';
-import { porData, ultimoRegistro, dadosAntropometria, textoNumero } from './comum.js';
+import { porData, ultimoRegistro, textoNumero } from './comum.js';
 
 const TIPO = 'planejamento';
 const REFEICOES_PADRAO = ['Café da manhã', 'Almoço', 'Jantar']; // planejamento em branco do WebDiet (§8.3)
-const METAS_PADRAO = { tipo: 'percentual', ptn: '20', lip: '30', cho: '' };
+// Metas de um plano novo, como no WebDiet (plano sem metas salvas): "fórmula de bolso" (g/kg) com tudo 0.
+const METAS_PADRAO = Object.freeze({ tipo: 'gkg', ptn: '0', lip: '0', cho: '0', get: '0', peso: '0' });
+const TIPOS_META = [
+  { valor: 'gkg', rotulo: 'Distribuir usando fórmula de bolso (g/Kg)' },
+  { valor: 'percentual', rotulo: 'Distribuir usando percentual do GET' },
+];
 
 const estadoDaCor = (cor) => (cor === CORES.vermelho ? 'perigo' : cor === CORES.verde ? 'ok' : '');
-const informado = (x) => String(x ?? '').trim() !== '';
-const div = (a, b) => check(a / b);
+
+/**
+ * Metas no formato do modal do WebDiet: {tipo, ptn, lip, cho, get, peso}, os mesmos campos nos dois tipos.
+ * Planos salvos por versões anteriores do app (CHO vazio; PTN/LIP/CHO em g/kg em campos à parte; CHO% e GET em
+ * g/kg sempre calculados) são convertidos com os números que mostravam; os campos antigos ficam em
+ * `formatoAntigo`.
+ */
+export function normalizarMetas(m = {}) {
+  const t = (v) => (v === undefined || v === null || String(v).trim() === '' ? '0' : String(v));
+  if (['ptnKg', 'lipKg', 'choKg'].some((k) => k in m) || m.cho === '') {
+    const { ptnKg, lipKg, choKg, ...resto } = m;
+    const formatoAntigo = { ...resto, ptnKg, lipKg, choKg };
+    if (m.tipo === 'gkg') {
+      const peso = check(m.peso);
+      const get = check(ptnKg) * peso * 4 + check(lipKg) * peso * 9 + check(choKg) * peso * 4;
+      return { tipo: 'gkg', ptn: t(ptnKg), lip: t(lipKg), cho: t(choKg), get: get > 0 ? String(get) : '-', peso: t(m.peso), formatoAntigo };
+    }
+    return { tipo: 'percentual', ptn: t(m.ptn), lip: t(m.lip), cho: String(check(100 - check(m.ptn) - check(m.lip))), get: t(m.get), peso: t(m.peso), formatoAntigo };
+  }
+  return { ...m, tipo: m.tipo === 'percentual' ? 'percentual' : 'gkg', ptn: t(m.ptn), lip: t(m.lip), cho: t(m.cho), get: t(m.get), peso: t(m.peso) };
+}
 
 /** Item de equivalentes (alimento + medida de 1 porção) → valores por porção, no formato de calc/equivalentes.js. */
 export function porcaoEquivalente(item) {
@@ -89,15 +112,8 @@ function montar(raiz, { db, paciente: p }) {
         h('p', { class: 'legenda' }, 'Os alimentos vêm de "Meus alimentos" e das receitas salvas. O método qualitativo (texto livre) e o piloto automático do WebDiet não foram reproduzidos.')));
   }
 
-  function metasIniciais() {
-    const energia = ultimoRegistro(db, p.id, 'energia');
-    const antropo = dadosAntropometria(db, p.id);
-    const peso = energia?.resumo?.peso || antropo?.peso || '';
-    return { ...METAS_PADRAO, get: energia?.resumo?.get ? String(energia.resumo.get) : '', peso: peso ? textoNumero(peso, 2) : '' };
-  }
-
   function novoPlano(metodo) {
-    const base = { data: hojeTexto(), nome: 'Plano alimentar', metodo, metas: metasIniciais(), compras: [] };
+    const base = { data: hojeTexto(), nome: 'Plano alimentar', metodo, metas: { ...METAS_PADRAO }, compras: [] };
     base.refeicoes = REFEICOES_PADRAO.map((nome) => (metodo === 'equivalentes'
       ? { nome, horario: '', calculada: true, obs: '', porcoes: {}, avulsos: [] }
       : { nome, horario: '', ativo: true, obs: '', itens: [] }));
@@ -142,42 +158,73 @@ function montar(raiz, { db, paciente: p }) {
     nomeEl.addEventListener('input', () => { plano.nome = nomeEl.value; marcarAlterado(); });
     dataEl.addEventListener('change', () => { const d = normalizarData(dataEl.value); if (d) { dataEl.value = d; plano.data = d; recalcular(); } marcarAlterado(); });
 
-    // Metas
+    // Metas: o modal "Cálculos" do WebDiet (calculoEnergetico, mudarCalculoRef, recalcularRef, importarCalculo2).
+    plano.metas = normalizarMetas(plano.metas);
     const m = plano.metas;
     const camposMeta = {};
-    const metaCampo = (chave, rotulo, extra = {}) => {
-      const el = h('input', { inputmode: 'decimal', autocomplete: 'off', value: m[chave] ?? '', ...extra });
+    const sinais = [];
+    const metaCampo = (chave, rotulo, { macro = false } = {}) => {
+      const el = h('input', { name: `meta-${chave}`, inputmode: 'decimal', autocomplete: 'off', value: m[chave] ?? '' });
       camposMeta[chave] = el;
-      el.addEventListener('input', () => { m[chave] = el.value; marcarAlterado(); recalcular(); });
-      return campo(rotulo, el);
+      el.addEventListener('input', () => {
+        m[chave] = el.value;
+        if (macro) recalcularRef();
+        marcarAlterado();
+        recalcular();
+      });
+      const sinal = macro ? h('span', { class: 'sinal-meta' }) : null;
+      if (sinal) sinais.push(sinal);
+      return campo(macro ? h('span', {}, `${rotulo} `, sinal) : rotulo, el);
     };
-    const tipoMeta = selecao({ 'aria-label': 'Tipo de meta' }, [{ valor: 'percentual', rotulo: '% do GET' }, { valor: 'gkg', rotulo: 'g/kg de peso' }], m.tipo);
-    const camposPercentual = h('div', { class: 'campos compactos' }, metaCampo('get', 'GET (kcal)'), metaCampo('ptn', 'PTN (%)'), metaCampo('lip', 'LIP (%)'));
-    const choAuto = h('p', { class: 'legenda' });
-    const camposGkg = h('div', { class: 'campos compactos' }, metaCampo('ptnKg', 'PTN (g/kg)'), metaCampo('lipKg', 'LIP (g/kg)'), metaCampo('choKg', 'CHO (g/kg)'));
-    tipoMeta.addEventListener('change', () => { m.tipo = tipoMeta.value; marcarAlterado(); mostrarTipoMeta(); recalcular(); });
+    /** Como recalcularRef(): no modo %, CHO = 100 − PTN − LIP; no g/kg, GET = PTN×P×4 + LIP×P×9 + CHO×P×4 ("-" se ≤ 0). */
+    function recalcularRef() {
+      if (m.tipo === 'percentual') {
+        m.cho = String(check(100 - check(m.ptn) - check(m.lip)));
+        camposMeta.cho.value = m.cho;
+      } else {
+        const peso = check(m.peso);
+        const get = check(m.ptn) * peso * 4 + check(m.lip) * peso * 9 + check(m.cho) * peso * 4;
+        m.get = get > 0 ? String(get) : '-';
+        camposMeta.get.value = m.get;
+      }
+    }
+    /** Como mudarCalculoRef(): trocar o tipo zera PTN, LIP, CHO e GET (o peso fica). */
+    function mudarTipoMeta(tipo) {
+      m.tipo = tipo;
+      for (const c of ['ptn', 'lip', 'cho', 'get']) { m[c] = '0'; camposMeta[c].value = '0'; }
+      mostrarTipoMeta();
+    }
+    const tipoMeta = selecao({ name: 'meta-tipo' }, TIPOS_META, m.tipo);
+    tipoMeta.addEventListener('change', () => { mudarTipoMeta(tipoMeta.value); marcarAlterado(); recalcular(); });
     function mostrarTipoMeta() {
-      camposPercentual.classList.toggle('oculto', m.tipo === 'gkg');
-      choAuto.classList.toggle('oculto', m.tipo === 'gkg');
-      camposGkg.classList.toggle('oculto', m.tipo !== 'gkg');
+      tipoMeta.value = m.tipo;
+      const pct = m.tipo === 'percentual';
+      for (const s of sinais) s.textContent = pct ? '(% do GET)' : '(g/Kg corporal)';
+      camposMeta.get.disabled = !pct; // no g/kg o GET é calculado
+      camposMeta.cho.readOnly = pct; // no % o CHO é 100 − PTN − LIP (o WebDiet sobrescreve o que for digitado)
     }
     const ultimaEnergia = ultimoRegistro(db, p.id, 'energia');
     const botaoGet = ultimaEnergia?.resumo?.get
       ? h('button', { type: 'button', class: 'botao discreto', onclick: () => {
+        // importarCalculo2(GET, peso): passa para "% do GET", zera os campos e preenche peso e GET.
+        mudarTipoMeta('percentual');
+        m.peso = ultimaEnergia.resumo.peso ? textoNumero(ultimaEnergia.resumo.peso, 2) : '0';
         m.get = String(ultimaEnergia.resumo.get);
-        if (ultimaEnergia.resumo.peso) m.peso = textoNumero(ultimaEnergia.resumo.peso, 2);
+        camposMeta.peso.value = m.peso;
         camposMeta.get.value = m.get;
-        camposMeta.peso.value = m.peso ?? '';
         marcarAlterado();
         recalcular();
-        avisar(`GET do cálculo de ${ultimaEnergia.data} aplicado.`);
+        avisar(`GET do cálculo de ${ultimaEnergia.data} importado: preencha PTN e LIP (% do GET).`);
       } }, `Usar o GET de ${ultimaEnergia.data} (${ultimaEnergia.resumo.get} kcal)`)
       : null;
     const cartaoMetas = h('div', { class: 'cartao pilha', role: 'group', 'aria-labelledby': 'plan-metas' },
       h('h3', { id: 'plan-metas' }, 'Metas'),
-      h('div', { class: 'campos compactos' }, campo('Tipo de meta', tipoMeta), metaCampo('peso', 'Peso de referência (kg)')),
-      camposPercentual, choAuto, camposGkg,
-      h('p', { class: 'legenda' }, ultimaEnergia ? `GET e peso vêm do cálculo energético de ${ultimaEnergia.data} (${ultimaEnergia.protocolo}).` : 'Nenhum cálculo energético salvo: digite o GET ou faça o cálculo na aba Cálculo energético.'),
+      h('div', { class: 'campos' }, campo('Distribuição', tipoMeta)),
+      h('div', { class: 'campos compactos' },
+        metaCampo('peso', 'Peso (kg)'), metaCampo('ptn', 'PTN', { macro: true }), metaCampo('lip', 'LIP', { macro: true }),
+        metaCampo('cho', 'CHO', { macro: true }), metaCampo('get', 'GET (kcal)')),
+      h('p', { class: 'legenda' }, 'Como no WebDiet: trocar a distribuição zera as metas; em "% do GET" o CHO é 100 − PTN − LIP; em g/kg o GET é refeito ao digitar PTN, LIP ou CHO (mudar só o peso não o refaz).'),
+      h('p', { class: 'legenda' }, ultimaEnergia ? `Último cálculo energético: ${ultimaEnergia.data} (${ultimaEnergia.protocolo}).` : 'Nenhum cálculo energético salvo: digite o GET ou faça o cálculo na aba Cálculo energético.'),
       botaoGet ? h('div', { class: 'acoes' }, botaoGet) : null);
 
     // ---- Refeições (método por alimentos) -----------------------------------------------------
@@ -435,12 +482,9 @@ function montar(raiz, { db, paciente: p }) {
     }
 
     // ---- Cálculo ------------------------------------------------------------------------------
-    function metasCalculo() {
-      const base = { tipo: m.tipo === 'gkg' ? 'gkg' : 'percentual', peso: m.peso };
-      if (base.tipo === 'gkg') return { ...base, ptn: m.ptnKg, lip: m.lipKg, cho: m.choKg };
-      return { ...base, get: m.get, ptn: m.ptn, lip: m.lip };
-    }
-    const temMetas = () => (m.tipo === 'gkg' ? [m.ptnKg, m.lipKg, m.choKg].some(informado) && check(m.peso) > 0 : check(m.get) > 0);
+    const metasCalculo = () => ({ tipo: m.tipo, ptn: m.ptn, lip: m.lip, cho: m.cho, get: m.get, peso: m.peso });
+    // kcal não proteica/g N prescrita do cálculo anterior: o WebDiet a usa na adequação (§12 #30); 0 ao abrir.
+    let gNAnterior = 0;
 
     function referencias() {
       return referenciasMicros({ sexo: p.sexo, ...(p.nascimento ? { nascimento: p.nascimento } : {}), dataReferencia: normalizarData(dataEl.value) || hojeTexto(), condicao });
@@ -449,12 +493,12 @@ function montar(raiz, { db, paciente: p }) {
     function calcularAlimentos(refs) {
       const entrada = {
         refeicoes: plano.refeicoes.map((r) => ({ nome: r.nome, ativo: r.ativo !== false, itens: r.itens.map((it) => ({ alimento: it.alimento, quantidade: it.quantidade, medida: it.medida })) })),
-        metas: temMetas() ? metasCalculo() : null,
+        metas: metasCalculo(),
         referencias: refs.valores ? refs : null,
       };
-      const res = calcularPlanejamento(entrada);
+      const res = calcularPlanejamento(entrada, { gNAnterior });
+      gNAnterior = res.total.gN;
       // Substitutos: só exibição (não entram no total, como no WebDiet).
-      if (!entrada.metas) res.total = analisarTotal(res.totalMacros, m.peso); // g/kg pelo peso de referência
       res.substitutos = plano.refeicoes.map((r) => r.itens.map((it) => (it.subs || []).map((s) => {
         const c = calcularPlanejamento({ refeicoes: [{ itens: [{ alimento: s.alimento, quantidade: s.quantidade, medida: s.medida }] }] });
         return c.refeicoes[0].linhas[0];
@@ -467,6 +511,7 @@ function montar(raiz, { db, paciente: p }) {
       const r = calcularTotaisEquivalentes({
         refeicoes: plano.refeicoes.map((x) => ({ porcoes: x.porcoes, calculada: x.calculada !== false, avulsos: (x.avulsos || []).map((a) => ({ alimento: a.alimento, quantidade: a.quantidade, medida: a.medida })) })),
         macrosGrupo: grupos.macrosGrupo, microsGrupo: grupos.microsGrupo, referencias: refs.valores ? refs : null,
+        metas: metasCalculo(),
       });
       // Por refeição (exibição): porções × média de cada grupo + avulsos.
       r.porRefeicao = plano.refeicoes.map((x) => {
@@ -476,11 +521,6 @@ function montar(raiz, { db, paciente: p }) {
         for (const l of avulsos) { t[0] += fxn(l.ptn, 1); t[1] += fxn(l.lip, 1); t[2] += fxn(l.cho, 1); t[3] += fxn(l.kcal, 1); t[4] += fxn(l.fibras, 1); }
         return { total: t, avulsos };
       });
-      // Metas e adequação com as mesmas regras do método por alimentos (§8.3), sobre os totais arredondados.
-      const [P, L, C, K] = r.totalMacros;
-      const total = { ptn: fxn(P, 1), lip: fxn(L, 1), cho: fxn(C, 1), kcal: fxn(K, 0), gN: fxn(div(L * 9 + C * 4, P / FATOR_NITROGENIO), 1) };
-      r.metas = temMetas() ? calcularMetas(metasCalculo()) : null;
-      r.adequacao = r.metas ? calcularAdequacao(total, r.metas) : null;
       r.micros = r.tabelaMicros || tabelaMicros(new Array(27).fill(0), refs.valores ? refs : null);
       return r;
     }
@@ -495,12 +535,11 @@ function montar(raiz, { db, paciente: p }) {
         resultado = null;
         avisos.push('Não foi possível calcular: ' + e.message);
       }
-      choAuto.textContent = `CHO: ${textoNumero(100 - check(m.ptn) - check(m.lip), 1)}% (automático: 100 − PTN − LIP).`;
       if (resultado) {
         preencherLinhas();
         preencherTotaisRefeicao();
       }
-      if (!temMetas()) avisos.push(m.tipo === 'gkg' ? 'Informe o peso de referência e as metas em g/kg para ver a adequação.' : 'Informe o GET para ver as metas e a adequação.');
+      if (!(check(m.get) > 0)) avisos.push('Metas zeradas (como num plano novo do WebDiet): preencha as metas ou use o GET do cálculo energético.');
       if (refs.aviso) avisos.push(`Micronutrientes: ${refs.aviso}.`);
       painel.atualizar({ ...(resultado ? itensPainel(resultado) : { destaques: [], grupos: [] }), avisos });
       legendaPainel.textContent = eq ? 'Total do dia: só as refeições calculadas.' : 'Total do dia: só as refeições que entram no cálculo. Substitutos não somam.';
@@ -559,7 +598,7 @@ function montar(raiz, { db, paciente: p }) {
           { chave: 'ptn', rotulo: 'Proteínas', valor: t.ptnPrescrita },
           { chave: 'lip', rotulo: 'Lipídios', valor: t.lipPrescrita },
           { chave: 'cho', rotulo: 'Carboidratos', valor: t.choPrescrita },
-          ...(eq ? [] : [{ chave: 'choDisp', rotulo: 'CHO disponível', valor: t.choDisponivelPrescrita }]),
+          { chave: 'choDisp', rotulo: 'CHO disponível', valor: t.choDisponivelPrescrita },
           { chave: 'fibras', rotulo: 'Fibras', valor: t.fibrasPrescrita },
           ...(eq ? [] : [{ chave: 'dens', rotulo: 'Densidade', valor: t.densidadePrescrita }]),
           { chave: 'gN', rotulo: 'kcal não proteica/g N', valor: t.gNPrescrita },
@@ -746,7 +785,9 @@ function montar(raiz, { db, paciente: p }) {
       h('div', { class: 'acoes' }, botaoSalvar,
         h('button', { type: 'button', class: 'botao secundario', onclick: imprimir }, 'Imprimir'),
         h('button', { type: 'button', class: 'botao discreto', onclick: voltar }, 'Voltar')),
-      h('p', { class: 'legenda' }, 'kcal não proteica/g N planejada: fórmula do WebDiet mantida (relatório §12, item 20).'));
+      h('p', { class: 'legenda' }, eq
+        ? 'kcal não proteica/g N planejada: fórmula do WebDiet mantida (relatório §12, item 20).'
+        : 'kcal não proteica/g N: fórmula planejada do WebDiet mantida (relatório §12, item 20); a adequação usa o valor prescrito do cálculo anterior, como o WebDiet (item 30).'));
 
     area.replaceChildren(
       catalogo.datalist,
