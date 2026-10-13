@@ -10,7 +10,7 @@
 // total do dia, os valores arredondados (`totalMacros`) alimentam densidade, análise calórica, g/kg e
 // kcal não proteica/g N.
 //
-// Divergência tratada aqui: §12 item 20 (ver DIVERGENCIAS).
+// Divergências tratadas aqui: §12 itens 20, 30, 31 e 32 (ver DIVERGENCIAS).
 
 import { check, fx, fxn } from './numeros.js';
 
@@ -19,11 +19,13 @@ export const FATOR_NITROGENIO = 6.25;
 
 /**
  * Cores da adequação, como o navegador devolve na evidência: vermelho #EE091D, verde #83C688, neutro (preto).
+ * No método por equivalentes o neutro é cinza #8E8E92 (`neutroEquivalentes`, visto na conta em 13/10/2026).
  */
 export const CORES = Object.freeze({
   vermelho: 'rgb(238, 9, 29)',
   verde: 'rgb(131, 198, 136)',
   neutro: 'rgb(0, 0, 0)',
+  neutroEquivalentes: 'rgb(142, 142, 146)',
 });
 
 /**
@@ -53,6 +55,30 @@ export const DIVERGENCIAS = Object.freeze([
     comportamento:
       'Padrão igual ao WebDiet (paridade com a evidência: 72.9 e 71.9 Kcal); com a opção { corrigir: true } usa ' +
       '(gLIP×9 + gCHO×4) / (gPTN/6,25). A adequação acompanha o valor escolhido.',
+  },
+  {
+    item: 30,
+    descricao:
+      'Método por alimentos: a adequação da kcal não proteica/g N lê o texto de #gNPrescrita ANTES de recalcular, ' +
+      'então usa o valor do cálculo anterior; ao abrir o plano, o texto inicial "0 Kcal" (paciente de teste: ' +
+      '"-72 Kcal" ao abrir, "26 Kcal" depois de recalcular).',
+    comportamento:
+      'calcularPlanejamento recebe { gNAnterior } (o valor que a tela mostrava; a aba Planejamento passa 0 ao abrir ' +
+      'e depois o do cálculo anterior), igual ao WebDiet; sem gNAnterior, ou com { corrigir: true }, usa o atual.',
+  },
+  {
+    item: 31,
+    descricao:
+      'Metas em g/kg: o modal refaz o GET só ao digitar PTN, LIP ou CHO; mudar o peso não refaz o GET, que fica ' +
+      'com o valor antigo na kcal planejada e na adequação de kcal.',
+    comportamento:
+      'calcularMetas usa o GET guardado (como o WebDiet); a aba Planejamento refaz o GET nos mesmos momentos que ' +
+      'o modal.',
+  },
+  {
+    item: 32,
+    descricao: 'Análise calórica com 0 kcal no plano: %CHO = 100 − 0 − 0, e a tela mostra "0.0 Kcal - 100.0%".',
+    comportamento: 'Igual ao WebDiet.',
   },
 ]);
 
@@ -218,40 +244,62 @@ export function calcularRefeicao(refeicao) {
 }
 
 /**
- * Análise do total do dia (o que a tela chama de "prescrito"), a partir dos totais já arredondados.
- * @param {number[]} totalMacros [PTN, LIP, CHO, kcal, fibras, peso] arredondados
- * @param {number} pesoReferencia peso do paciente (kg) para os g/kg
+ * Análise do total do dia (o que a tela chama de "prescrito"), como `graficoMacros()` do WebDiet (código lido
+ * na conta em 13/10/2026, igual nas duas páginas de plano, salvo o que `equivalentes` muda):
+ * - gramas: `parseFloat(x.toFixed(1)) + "g"` ("58g", não "58.0g"); kcal: `parseFloat(K.toFixed(0))`;
+ * - g/kg só quando o peso das metas é > 0; CHO disponível = (CHO − fibras).toFixed(1), g/kg sobre o valor sem
+ *   arredondar;
+ * - kcal da PTN e da LIP com 1 casa e em forma de número ("202 Kcal"); os % saem delas; %CHO = 100 − %PTN − %LIP
+ *   (sem kcal no plano, 100%); kcal do CHO = (K − kcal PTN − kcal LIP).toFixed(1);
+ * - kcal não proteica/g N = (LIP×9 e CHO×4, cada um com 1 casa) / (PTN/6,25), 1 casa, em forma de número;
+ * - densidade (só no método por alimentos) = K / peso, 2 casas.
+ * @param {number[]} totalMacros [PTN, LIP, CHO, kcal, fibras, peso]: no método por alimentos, arredondados;
+ *   nos equivalentes, sem arredondar e sem o peso
+ * @param {number|string} pesoReferencia peso das metas (kg) para os g/kg
+ * @param {{equivalentes?: boolean}} [opcoes] `equivalentes`: fibras também com g/kg e sem densidade
+ *   (metodoWebdiet.php)
  */
-export function analisarTotal(totalMacros, pesoReferencia) {
-  const [P, L, C, K, F, W] = totalMacros;
-  const pr = check(pesoReferencia);
-  const choDisponivel = fxn(C - F, 1);
-  const gN = fxn(div(L * 9 + C * 4, P / FATOR_NITROGENIO), 1);
-  const densidade = fxn(div(K, W), 2);
+export function analisarTotal(totalMacros, pesoReferencia, { equivalentes = false } = {}) {
+  const [P, L, C, K, F] = [0, 1, 2, 3, 4].map((i) => check(totalMacros?.[i]));
+  const W = check(totalMacros?.[5]);
+  const peso = check(pesoReferencia);
   const kcalPtn = fxn(P * 4, 1);
   const kcalLip = fxn(L * 9, 1);
-  const kcalCho = fxn(K - kcalPtn - kcalLip, 1);
-  const pct = (x) => fxn(div(x, K) * 100, 1);
+  const kcalChoBruto = fxn(C * 4, 1);
+  const gN = fxn(div(kcalLip + kcalChoBruto, P / FATOR_NITROGENIO), 1);
+  const choDisponivel = C - F;
+  const densidade = div(K, W);
+  const pctPtn = div(kcalPtn, K) * 100;
+  const pctLip = div(kcalLip, K) * 100;
+  const pctCho = 100 - pctPtn - pctLip;
+  const kcalCho = K - kcalPtn - kcalLip;
   const analise = {
-    kcalPtn, kcalLip, kcalCho,
-    pctPtn: pct(kcalPtn), pctLip: pct(kcalLip), pctCho: pct(kcalCho),
+    kcalPtn, kcalLip, kcalCho: fxn(kcalCho, 1),
+    pctPtn: fxn(pctPtn, 1), pctLip: fxn(pctLip, 1), pctCho: fxn(pctCho, 1),
   };
-  const gkg = (x) => fx(div(x, pr), 1);
+  const gkg = (x, unidade = 'g/Kg') => (peso > 0 ? ` (${fx(x / peso, 1)}${unidade})` : '');
+  const g = (x) => `${fxn(x, 1)}g`;
+  const kcal = `${fxn(K, 0)} Kcal`;
   return {
-    ptn: P, lip: L, cho: C, kcal: K, fibras: F, peso: W, choDisponivel, gN, densidade, analise,
+    ptn: P, lip: L, cho: C, kcal: K, fibras: F, peso: W, choDisponivel: fxn(choDisponivel, 1), gN,
+    densidade: fxn(densidade, 2), analise,
     tela: {
-      ptnPrescrita: `${fx(P, 1)}g (${gkg(P)}g/Kg)`,
-      lipPrescrita: `${fx(L, 1)}g (${gkg(L)}g/Kg)`,
-      choPrescrita: `${fx(C, 1)}g (${gkg(C)}g/Kg)`,
-      choDisponivelPrescrita: `${fx(choDisponivel, 1)}g (${gkg(choDisponivel)}g/Kg)`,
-      fibrasPrescrita: `${F}g`,
-      kcalPrescrita: `${fx(K, 0)} Kcal (${gkg(K)} Kcal/Kg)`,
-      gNPrescrita: `${fx(gN, 1)} Kcal`,
-      densidadePrescrita: `${fx(densidade, 2)} Kcal/g`,
-      ptnTotalanalise: `${kcalPtn} Kcal - ${fx(analise.pctPtn, 1)}%`,
-      lipTotalanalise: `${kcalLip} Kcal - ${fx(analise.pctLip, 1)}%`,
-      choTotalanalise: `${kcalCho} Kcal - ${fx(analise.pctCho, 1)}%`,
-      kcalTotalanalise: `${fx(K, 0)} Kcal`,
+      ptnPrescrita: g(P) + gkg(P),
+      lipPrescrita: g(L) + gkg(L),
+      choPrescrita: g(C) + gkg(C),
+      choDisponivelPrescrita: `${fx(choDisponivel, 1)}g${gkg(choDisponivel)}`,
+      fibrasPrescrita: g(F) + (equivalentes ? gkg(F) : ''),
+      kcalPrescrita: kcal + gkg(K, ' Kcal/Kg'),
+      gNPrescrita: `${gN} Kcal`,
+      ...(equivalentes ? {} : { densidadePrescrita: `${fx(densidade, 2)} Kcal/g` }),
+      ptnTotalanalise: `${kcalPtn} Kcal - ${fx(pctPtn, 1)}%`,
+      lipTotalanalise: `${kcalLip} Kcal - ${fx(pctLip, 1)}%`,
+      choTotalanalise: `${fx(kcalCho, 1)} Kcal - ${fx(pctCho, 1)}%`,
+      kcalTotalanalise: kcal,
+      ptnResumo: g(P) + gkg(P),
+      lipResumo: g(L) + gkg(L),
+      choResumo: g(C) + gkg(C),
+      kcalResumo: kcal + gkg(K, ' Kcal/Kg'),
     },
   };
 }
@@ -261,45 +309,52 @@ export function analisarTotal(totalMacros, pesoReferencia) {
 // ---------------------------------------------------------------------------------------------
 
 /**
- * Metas do planejamento (§8.3 "Metas").
- * - tipo "percentual": `get` (kcal) e `ptn`/`lip` em % do GET; CHO% = 100 − PTN% − LIP% (automático,
- *   o `cho` informado é ignorado). Gramas: GET×%/100/4 (PTN, CHO) ou /9 (LIP).
- * - tipo "gkg": `peso` e `ptn`/`lip`/`cho` em g/kg; gramas = valor × peso; GET = PTN×P×4 + LIP×P×9 + CHO×P×4.
- * Gramas com 1 casa (o valor arredondado segue para a kcal não proteica/g N e a adequação).
+ * Metas do planejamento (§8.3 "Metas"), como `mostrarReferencias()` do WebDiet, que lê o que o modal guardou
+ * (`referencias = [ptn, lip, cho, get, peso, tipo]`):
+ * - tipo "percentual": `get` (kcal) e `ptn`/`lip`/`cho` em % do GET. O modal preenche o CHO com
+ *   100 − PTN − LIP a cada tecla; aqui, CHO não informado também vale 100 − PTN − LIP. Gramas: GET×%/100/4
+ *   (PTN, CHO) ou /9 (LIP).
+ * - qualquer outro tipo ("gkg"; o WebDiet chama de "bolso", e plano sem metas salvas também cai aqui):
+ *   `peso` e `ptn`/`lip`/`cho` em g/kg; gramas = valor × peso. O GET é o guardado pelo modal; não informado,
+ *   PTN×P×4 + LIP×P×9 + CHO×P×4 (a mesma conta do modal).
+ * Gramas com 1 casa (o valor arredondado segue para a kcal não proteica/g N e a adequação); g/kg só com peso
+ * > 0; kcal não proteica/g N em forma de número ("72.9 Kcal", "57 Kcal").
  *
- * @param {{tipo:'percentual'|'gkg', get?:number|string, peso:number|string, ptn:number|string,
- *          lip:number|string, cho?:number|string}} metas
+ * @param {{tipo?:'percentual'|'gkg'|'bolso', get?:number|string, peso?:number|string, ptn?:number|string,
+ *          lip?:number|string, cho?:number|string}} metas
  * @param {{corrigir?: boolean}} [opcoes] `corrigir: true` corrige a kcal não proteica/g N planejada (§12 #20)
  */
 export function calcularMetas(metas, opcoes = {}) {
-  const tipo = metas?.tipo === 'gkg' ? 'gkg' : 'percentual';
+  const tipo = metas?.tipo === 'percentual' ? 'percentual' : 'gkg';
   const peso = check(metas?.peso);
+  const informado = (v) => v !== undefined && v !== null && String(v).trim() !== '';
   let get, ptn, lip, cho, percentuais = null;
   if (tipo === 'percentual') {
     get = check(metas?.get);
-    const pP = check(metas?.ptn), pL = check(metas?.lip), pC = 100 - pP - pL;
+    const pP = check(metas?.ptn), pL = check(metas?.lip);
+    const pC = informado(metas?.cho) ? check(metas.cho) : 100 - pP - pL;
     percentuais = { ptn: pP, lip: pL, cho: pC };
     ptn = fxn((get * pP) / 100 / 4, 1);
     lip = fxn((get * pL) / 100 / 9, 1);
     cho = fxn((get * pC) / 100 / 4, 1);
   } else {
     const kP = check(metas?.ptn), kL = check(metas?.lip), kC = check(metas?.cho);
-    get = kP * peso * 4 + kL * peso * 9 + kC * peso * 4;
+    get = informado(metas?.get) ? check(metas.get) : kP * peso * 4 + kL * peso * 9 + kC * peso * 4;
     ptn = fxn(kP * peso, 1);
     lip = fxn(kL * peso, 1);
     cho = fxn(kC * peso, 1);
   }
   const base = opcoes.corrigir ? lip * 9 + cho * 4 : ptn * 9 + lip * 4; // WebDiet §12 #20
   const gN = fxn(div(base, ptn / FATOR_NITROGENIO), 1);
-  const gkg = (x) => fx(div(x, peso), 1);
+  const gkg = (x, unidade = 'g/Kg') => (peso > 0 ? ` (${fx(x / peso, 1)}${unidade})` : '');
   return {
     tipo, peso, get, ptn, lip, cho, percentuais, gN,
     tela: {
-      ptnPlanejada: `${fx(ptn, 1)}g (${gkg(ptn)}g/Kg)`,
-      lipPlanejada: `${fx(lip, 1)}g (${gkg(lip)}g/Kg)`,
-      choPlanejada: `${fx(cho, 1)}g (${gkg(cho)}g/Kg)`,
-      kcalPlanejada: `${fx(get, 0)} Kcal (${gkg(get)} Kcal/Kg)`,
-      gNPlanejada: `${fx(gN, 1)} Kcal`,
+      ptnPlanejada: `${fx(ptn, 1)}g${gkg(ptn)}`,
+      lipPlanejada: `${fx(lip, 1)}g${gkg(lip)}`,
+      choPlanejada: `${fx(cho, 1)}g${gkg(cho)}`,
+      kcalPlanejada: `${fx(get, 0)} Kcal${gkg(get, ' Kcal/Kg')}`,
+      gNPlanejada: `${gN} Kcal`,
     },
   };
 }
@@ -309,28 +364,33 @@ export function calcularMetas(metas, opcoes = {}) {
  * Cor pelo % arredondado: > 105 vermelho; 95–105 verde; senão neutro (planejado 0 = neutro, % null).
  * @param {number} prescrito
  * @param {number} planejado
+ * @param {{neutro?: string}} [opcoes] cor neutra (a do método por equivalentes é outra: CORES_EQUIVALENTES)
  * @returns {{diferenca:number, percentual:number|null, cor:string}}
  */
-export function adequar(prescrito, planejado) {
+export function adequar(prescrito, planejado, { neutro = CORES.neutro } = {}) {
   const percentual = planejado ? fxn(div(prescrito, planejado) * 100, 0) : null;
-  let cor = CORES.neutro;
+  let cor = neutro;
   if (percentual !== null && percentual > 105) cor = CORES.vermelho;
   else if (percentual !== null && percentual >= 95) cor = CORES.verde;
   return { diferenca: prescrito - planejado, percentual, cor };
 }
 
 /**
- * Adequação do dia (PTN, LIP, CHO, kcal e kcal não proteica/g N).
- * @param {ReturnType<typeof analisarTotal>} total
+ * Adequação do dia (PTN, LIP, CHO, kcal e kcal não proteica/g N). Usa os totais que recebe: no método por
+ * alimentos, os arredondados; nos equivalentes, os sem arredondar (como o WebDiet).
+ * @param {{ptn:number, lip:number, cho:number, kcal:number, gN:number}} total p.ex. `analisarTotal(...)`
  * @param {ReturnType<typeof calcularMetas>} metas
+ * @param {{gNPrescrito?: number, neutro?: string}} [opcoes] `gNPrescrito`: kcal não proteica/g N prescrita
+ *   usada na adequação (padrão: a do total; ver §12 #30); `neutro`: cor neutra
  */
-export function calcularAdequacao(total, metas) {
+export function calcularAdequacao(total, metas, { gNPrescrito = total.gN, neutro = CORES.neutro } = {}) {
+  const o = { neutro };
   const r = {
-    ptn: adequar(total.ptn, metas.ptn),
-    lip: adequar(total.lip, metas.lip),
-    cho: adequar(total.cho, metas.cho),
-    kcal: adequar(total.kcal, metas.get),
-    gN: adequar(total.gN, metas.gN),
+    ptn: adequar(total.ptn, metas.ptn, o),
+    lip: adequar(total.lip, metas.lip, o),
+    cho: adequar(total.cho, metas.cho, o),
+    kcal: adequar(total.kcal, metas.get, o),
+    gN: adequar(check(gNPrescrito), metas.gN, o),
   };
   return {
     ...r,
@@ -394,7 +454,10 @@ export function tabelaMicros(valores, referencias = null) {
  *          metas?:Parameters<typeof calcularMetas>[0]|null,
  *          referencias?:{valores:(number|string|null)[], tela:Record<string,string>}|null}} entrada
  *   `metas.peso` também é o peso de referência dos g/kg do total. `referencias` = `referenciasMicros(...)`.
- * @param {{corrigir?: boolean}} [opcoes] `corrigir: true` → kcal não proteica/g N planejada corrigida (§12 #20)
+ * @param {{corrigir?: boolean, gNAnterior?: number}} [opcoes]
+ *   `gNAnterior`: kcal não proteica/g N prescrita do cálculo anterior (o que a tela mostrava; 0 ao abrir o
+ *   plano). O WebDiet usa esse valor na adequação da kcal não proteica/g N (§12 #30); sem ele, usa o atual.
+ *   `corrigir: true` → kcal não proteica/g N planejada corrigida (§12 #20) e adequação com o valor atual (#30).
  * @returns {{refeicoes:ReturnType<typeof calcularRefeicao>[], soma:object, totalMacros:number[],
  *   total:ReturnType<typeof analisarTotal>, metas:object|null, adequacao:object|null, micros:object[],
  *   tela:Record<string, unknown>}}
@@ -408,7 +471,8 @@ export function calcularPlanejamento({ refeicoes = [], metas = null, referencias
   const totalMacros = [fxn(soma.ptn, 1), fxn(soma.lip, 1), fxn(soma.cho, 1), fxn(soma.kcal, 0), fxn(soma.fibras, 1), fxn(soma.peso, 1)];
   const total = analisarTotal(totalMacros, metas?.peso);
   const planejado = metas ? calcularMetas(metas, opcoes) : null;
-  const adequacao = planejado ? calcularAdequacao(total, planejado) : null;
+  const gNPrescrito = opcoes.corrigir || opcoes.gNAnterior === undefined ? total.gN : check(opcoes.gNAnterior);
+  const adequacao = planejado ? calcularAdequacao(total, planejado, { gNPrescrito }) : null;
   const micros = tabelaMicros(soma.micros, referencias);
   const tela = {
     ...total.tela,

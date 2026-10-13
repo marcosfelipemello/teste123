@@ -14,7 +14,9 @@
 // os totais sem arredondar, e só esta ordem os reproduz).
 
 import { check, fx, fxn } from './numeros.js';
-import { medidaDoAlimento, nutrientesPorPeso, tabelaMicros, FATOR_NITROGENIO, N_MICROS } from './planejamento.js';
+import {
+  medidaDoAlimento, nutrientesPorPeso, tabelaMicros, analisarTotal, calcularMetas, calcularAdequacao, CORES, N_MICROS,
+} from './planejamento.js';
 
 /** Os 15 grupos de equivalentes (relatório §8.3). */
 export const GRUPOS = Object.freeze([
@@ -38,10 +40,12 @@ export const GRUPOS = Object.freeze([
 /** Ordem dos valores de cada grupo (como `macrosGrupo` da evidência). */
 export const CAMPOS_GRUPO = Object.freeze(['ptn', 'lip', 'cho', 'kcal', 'fibras']);
 
-/** Nenhum item do §12 se refere ao cálculo por equivalentes (o #26 está em listaCompras.js). */
+/**
+ * Nenhum item do §12 é só do cálculo por equivalentes (o #26 está em listaCompras.js; #20, #31 e #32, das
+ * metas e da análise, valem aqui também e estão em planejamento.js). O #30 não acontece aqui: a página
+ * recalcula o total antes das metas.
+ */
 export const DIVERGENCIAS = Object.freeze([]);
-
-const div = (a, b) => check(a / b);
 
 /**
  * Normaliza o identificador do grupo: 'g4', 'G4', 4 ou '4' → 'g4'. Fora de g1..g15 → null.
@@ -168,14 +172,19 @@ export function calcularAvulso(avulso) {
  * @param {{refeicoes:{porcoes?:Record<string,number|string>, calculada?:boolean|string,
  *            avulsos?:object[]}[],
  *          macrosGrupo:Record<string,number[]>, microsGrupo?:Record<string,number[]|null>,
- *          referencias?:{valores:(number|string|null)[], tela:Record<string,string>}|null}} entrada
- *   `macrosGrupo`/`microsGrupo` = resultado de `calcularGrupos` (ou as médias vistas na tela).
+ *          referencias?:{valores:(number|string|null)[], tela:Record<string,string>}|null,
+ *          metas?:Parameters<typeof calcularMetas>[0]|null}} entrada
+ *   `macrosGrupo`/`microsGrupo` = resultado de `calcularGrupos` (ou as médias vistas na tela). `metas` como
+ *   no método por alimentos (`{}` = plano sem metas salvas: g/kg com tudo 0, como o WebDiet mostra).
+ * @param {{corrigir?: boolean}} [opcoes] repassado a `calcularMetas` (§12 #20)
  * @returns {{porcoesGrupo:Record<string,number>, totalMacros:number[], micros:number[]|null,
- *   tabelaMicros:object[]|null, tela:Record<string, unknown>}}
- *   `totalMacros` = [PTN, LIP, CHO, kcal, fibras] sem arredondar (como na evidência). A tela usa os campos
- *   da evidência; a kcal não proteica/g N e a análise calórica usam os totais sem arredondar.
+ *   tabelaMicros:object[]|null, total:ReturnType<typeof analisarTotal>, metas:object|null,
+ *   adequacao:object|null, tela:Record<string, unknown>}}
+ *   `totalMacros` = [PTN, LIP, CHO, kcal, fibras] sem arredondar (como na evidência). A tela segue
+ *   `graficoMacros()` de metodoWebdiet.php (`analisarTotal` com `equivalentes`); metas e adequação seguem
+ *   `mostrarReferencias()`, sobre os totais SEM arredondar, com o neutro cinza.
  */
-export function calcularTotaisEquivalentes({ refeicoes = [], macrosGrupo, microsGrupo = null, referencias = null } = {}) {
+export function calcularTotaisEquivalentes({ refeicoes = [], macrosGrupo, microsGrupo = null, referencias = null, metas = null } = {}, opcoes = {}) {
   const calc = refeicoes.map(refeicaoCalculada);
   const temMicros = !!microsGrupo && Object.values(microsGrupo).some((m) => Array.isArray(m));
   const total = [0, 0, 0, 0, 0];
@@ -200,24 +209,15 @@ export function calcularTotaisEquivalentes({ refeicoes = [], macrosGrupo, micros
     }
   });
 
-  const [P, L, C, K, F] = total;
-  const kp = P * 4, kl = L * 9, kc = K - kp - kl;
-  const pct = (x) => fx(div(x, K) * 100, 1);
+  const analise = analisarTotal(total, metas?.peso, { equivalentes: true });
+  const planejado = metas ? calcularMetas(metas, opcoes) : null;
+  const adequacao = planejado ? calcularAdequacao(analise, planejado, { neutro: CORES.neutroEquivalentes }) : null;
   const tabela = micros ? tabelaMicros(micros, referencias) : null;
   const tela = {
-    ptnPrescrita: `${fx(P, 1)}g`,
-    lipPrescrita: `${fx(L, 1)}g`,
-    choPrescrita: `${fx(C, 1)}g`,
-    fibrasPrescrita: `${fx(F, 1)}g`,
-    kcalPrescrita: `${fx(K, 0)} Kcal`,
-    gNPrescrita: `${fx(div(L * 9 + C * 4, P / FATOR_NITROGENIO), 1)} Kcal`,
-    ptnTotalanalise: `${fx(kp, 1)} Kcal - ${pct(kp)}%`,
-    lipTotalanalise: `${fx(kl, 1)} Kcal - ${pct(kl)}%`,
-    choTotalanalise: `${fx(kc, 1)} Kcal - ${pct(kc)}%`,
-    kcalTotalanalise: `${fx(K, 0)} Kcal`,
-    ptnResumo: `${fx(P, 1)}g`,
-    kcalResumo: `${fx(K, 0)} Kcal`,
+    ...analise.tela,
+    ...(planejado ? planejado.tela : {}),
+    ...(adequacao ? { ...adequacao.tela, cores: adequacao.cores } : {}),
     ...(tabela ? { micros: tabela.map((m) => m.tela) } : {}),
   };
-  return { porcoesGrupo, totalMacros: total, micros, tabelaMicros: tabela, tela };
+  return { porcoesGrupo, totalMacros: total, micros, tabelaMicros: tabela, total: analise, metas: planejado, adequacao, tela };
 }

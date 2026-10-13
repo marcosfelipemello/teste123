@@ -21,6 +21,12 @@ import { referenciasMicros } from '../src/calc/dris.js';
 const ev = JSON.parse(
   fs.readFileSync(new URL('../../docs/webdiet-evidencias/tela_planejamento_equivalentes.json', import.meta.url), 'utf8'),
 );
+// O plano r1 aberto na conta em 13/10/2026 (só leitura): campos que a evidência acima não registrou.
+const conta = JSON.parse(
+  fs.readFileSync(new URL('../../docs/webdiet-evidencias/tela_planejamento_metas_conta.json', import.meta.url), 'utf8'),
+);
+/** Campos de totais (sem metas) que a conta mostra e a evidência não registrou: CHO disponível e 2 "Resumo". */
+const EXTRAS_R1 = Object.fromEntries(Object.entries(conta.equivalentes.tela).filter(([k]) => ['choDisponivelPrescrita', 'lipResumo', 'choResumo'].includes(k)));
 
 /**
  * Refeições da evidência: PORCOES traz 3 refeições com porções e `calculado` traz 4 (a 4ª não tem porções).
@@ -36,7 +42,8 @@ test('evidência: totais sem arredondar e tela, nos 2 cenários', async (t) => {
       const r = calcularTotaisEquivalentes({ refeicoes: refeicoesDaEvidencia(cen.calculado), macrosGrupo: cen.macrosGrupo });
       assert.deepEqual(r.totalMacros, cen.totalMacros); // floats exatos, ex.: 41.599999999999994
       for (const [campo, valor] of Object.entries(cen.tela)) assert.equal(r.tela[campo], valor, campo);
-      assert.deepEqual(r.tela, cen.tela);
+      assert.deepEqual(Object.keys(r.tela).sort(), [...Object.keys(cen.tela), ...Object.keys(EXTRAS_R1)].sort());
+      if (chave === 'r1') for (const [campo, valor] of Object.entries(EXTRAS_R1)) assert.equal(r.tela[campo], valor, campo);
       assert.equal(r.micros, null);
     });
   }

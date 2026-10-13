@@ -1,0 +1,108 @@
+{
+ "_fonte": "Conta do WebDiet, paciente de teste \"Teste Rea\" (id 18236779), 13/10/2026, só leitura (nada salvo). Texto e cor de cada campo logo depois de abrir o plano, sem editar. totalMacros e referencias são as variáveis da página.",
+ "_notas": [
+  "equivalentes: plano sem metas salvas (referencias = []): metas zeradas no modo g/kg, adequação = prescrito − 0, cor neutra #8E8E92.",
+  "alimentos: referencias[5] = null (conta como g/kg). gNAdequacao = -72 Kcal porque mostrarReferencias() lê o texto de #gNPrescrita antes de graficoMacros() atualizá-lo: ao abrir, o texto ainda é o inicial do HTML (\"0 Kcal\"), e 0 − 71.9 = -72. Na evidência tela_planejamento_alimentos.json (depois de recalcular) o mesmo campo era 26 Kcal.",
+  "fibrasPlanejada e fibrasAdequacao (equivalentes) são \"-\" fixos no HTML; o código não os preenche."
+ ],
+ "equivalentes": {
+  "totalMacros": [
+   58.65,
+   41.599999999999994,
+   101.65000000000002,
+   980.95,
+   16.4
+  ],
+  "referencias": [],
+  "tela": {
+   "ptnPrescrita": "58.6g",
+   "ptnPlanejada": "0.0g",
+   "ptnAdequacao": "58.6g",
+   "ptnResumo": "58.6g",
+   "ptnTotalanalise": "234.6 Kcal - 23.9%",
+   "lipPrescrita": "41.6g",
+   "lipPlanejada": "0.0g",
+   "lipAdequacao": "41.6g",
+   "lipResumo": "41.6g",
+   "lipTotalanalise": "374.4 Kcal - 38.2%",
+   "choPrescrita": "101.7g",
+   "choPlanejada": "0.0g",
+   "choAdequacao": "101.7g",
+   "choResumo": "101.7g",
+   "choTotalanalise": "372.0 Kcal - 37.9%",
+   "choDisponivelPrescrita": "85.3g",
+   "fibrasPrescrita": "16.4g",
+   "fibrasPlanejada": "-",
+   "fibrasAdequacao": "-",
+   "kcalPrescrita": "981 Kcal",
+   "kcalPlanejada": "0 Kcal",
+   "kcalAdequacao": "981 Kcal",
+   "kcalResumo": "981 Kcal",
+   "kcalTotalanalise": "981 Kcal",
+   "gNPrescrita": "83.2 Kcal",
+   "gNPlanejada": "0 Kcal",
+   "gNAdequacao": "83 Kcal"
+  },
+  "cores": {
+   "ptnAdequacao": "rgb(142, 142, 146)",
+   "lipAdequacao": "rgb(142, 142, 146)",
+   "choAdequacao": "rgb(142, 142, 146)",
+   "fibrasAdequacao": "rgb(0, 0, 0)",
+   "kcalAdequacao": "rgb(142, 142, 146)",
+   "gNAdequacao": "rgb(142, 142, 146)"
+  }
+ },
+ "alimentos": {
+  "totalMacros": [
+   50.5,
+   33.2,
+   123.9,
+   994,
+   18,
+   805.5
+  ],
+  "referencias": [
+   1.6,
+   1,
+   4,
+   2512,
+   80,
+   null
+  ],
+  "tela": {
+   "ptnPrescrita": "50.5g (0.6g/Kg)",
+   "ptnPlanejada": "128.0g (1.6g/Kg)",
+   "ptnAdequacao": "-77.5g",
+   "ptnResumo": "50.5g (0.6g/Kg)",
+   "ptnTotalanalise": "202 Kcal - 20.3%",
+   "lipPrescrita": "33.2g (0.4g/Kg)",
+   "lipPlanejada": "80.0g (1.0g/Kg)",
+   "lipAdequacao": "-46.8g",
+   "lipResumo": "33.2g (0.4g/Kg)",
+   "lipTotalanalise": "298.8 Kcal - 30.1%",
+   "choPrescrita": "123.9g (1.5g/Kg)",
+   "choPlanejada": "320.0g (4.0g/Kg)",
+   "choAdequacao": "-196.1g",
+   "choResumo": "123.9g (1.5g/Kg)",
+   "choTotalanalise": "493.2 Kcal - 49.6%",
+   "choDisponivelPrescrita": "105.9g (1.3g/Kg)",
+   "fibrasPrescrita": "18g",
+   "kcalPrescrita": "994 Kcal (12.4 Kcal/Kg)",
+   "kcalPlanejada": "2512 Kcal (31.4 Kcal/Kg)",
+   "kcalAdequacao": "-1518 Kcal",
+   "kcalResumo": "994 Kcal (12.4 Kcal/Kg)",
+   "kcalTotalanalise": "994 Kcal",
+   "gNPrescrita": "98.3 Kcal",
+   "gNPlanejada": "71.9 Kcal",
+   "gNAdequacao": "-72 Kcal",
+   "densidadePrescrita": "1.23 Kcal/g"
+  },
+  "cores": {
+   "ptnAdequacao": "rgb(0, 0, 0)",
+   "lipAdequacao": "rgb(0, 0, 0)",
+   "choAdequacao": "rgb(0, 0, 0)",
+   "kcalAdequacao": "rgb(0, 0, 0)",
+   "gNAdequacao": "rgb(0, 0, 0)"
+  }
+ }
+}

@@ -22,6 +22,6 @@ test('com as médias padrão, os totais saem iguais aos do WebDiet (r1 e r2)', (
     const refeicoes = cen.calculado.map((c, i) => ({ porcoes: ev.PORCOES[i] ?? {}, calculada: c }));
     const r = calcularTotaisEquivalentes({ refeicoes, macrosGrupo: padrao.macrosGrupo });
     assert.deepEqual(r.totalMacros, cen.totalMacros);
-    assert.deepEqual(r.tela, cen.tela);
+    for (const [campo, valor] of Object.entries(cen.tela)) assert.equal(r.tela[campo], valor, campo);
   }
 });

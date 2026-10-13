@@ -22,6 +22,11 @@ import { referenciasMicros } from '../src/calc/dris.js';
 const ev = JSON.parse(
   fs.readFileSync(new URL('../../docs/webdiet-evidencias/tela_planejamento_alimentos.json', import.meta.url), 'utf8'),
 );
+// Os mesmos planos abertos na conta em 13/10/2026 (só leitura): campos que a evidência acima não registrou.
+const conta = JSON.parse(
+  fs.readFileSync(new URL('../../docs/webdiet-evidencias/tela_planejamento_metas_conta.json', import.meta.url), 'utf8'),
+);
+const RESUMO = Object.fromEntries(Object.entries(conta.alimentos.tela).filter(([k]) => /Resumo$/.test(k)));
 
 // Paciente de teste do relatório: masculino, nascido em 15/06/1991, data da análise 13/10/2026 (35 anos).
 const REFS_H35 = referenciasMicros({ sexo: 'M', nascimento: '15/06/1991', dataReferencia: '13/10/2026' });
@@ -72,7 +77,8 @@ test('evidência: linhas, totais das refeições e tela do dia (2 tipos de meta)
         assert.equal(meta.tela.micros.length, 27);
         meta.tela.micros.forEach((linha, k) => assert.deepEqual(r.tela.micros[k], linha, `micro ${k + 1}`));
       });
-      await tm.test('tela inteira igual à evidência', () => assert.deepEqual(r.tela, meta.tela));
+      // + os 4 campos "Resumo" (barra do topo), vistos na conta com os mesmos totais e peso 80
+      await tm.test('tela inteira igual à evidência', () => assert.deepEqual(r.tela, { ...meta.tela, ...RESUMO }));
     });
   }
 });
@@ -140,7 +146,7 @@ test('§12 #20: kcal não proteica/g N planejada — padrão WebDiet, { corrigir
   await t.test('corrigido: (gLIP×9 + gCHO×4)/(gPTN/6,25)', () => {
     const a = calcularPlanejamento({ refeicoes, metas: pct, referencias: REFS_H35 }, { corrigir: true });
     assert.equal(a.metas.gN, 100); // (83.3×9 + 312.5×4)/20 = 99.985
-    assert.equal(a.tela.gNPlanejada, '100.0 Kcal');
+    assert.equal(a.tela.gNPlanejada, '100 Kcal'); // forma de número, como a tela mostra kcalnp
     assert.equal(a.tela.gNAdequacao, '-2 Kcal'); // 98.3 − 100
     assert.equal(a.adequacao.gN.percentual, 98);
     assert.equal(a.tela.cores.gNAdequacao, CORES.verde);
@@ -153,18 +159,24 @@ test('§12 #20: kcal não proteica/g N planejada — padrão WebDiet, { corrigir
       assert.equal(b.tela[campo], gkg.tela[campo], campo);
     }
   });
-  await t.test('DIVERGENCIAS documenta o item 20', () => {
-    assert.deepEqual(DIVERGENCIAS.map((d) => d.item), [20]);
+  await t.test('DIVERGENCIAS documenta os itens 20, 30, 31 e 32', () => {
+    assert.deepEqual(DIVERGENCIAS.map((d) => d.item), [20, 30, 31, 32]);
   });
 });
 
-test('metas: CHO% automático no modo % e GET calculado no modo g/kg', () => {
+test('metas: usa o que o modal guardou (CHO% e GET); sem CHO% ou sem GET, calcula como o modal', () => {
+  // mostrarReferencias() lê referencias[2] (CHO%) e referencias[3] (GET); o modal é que os preenche.
   const m = calcularMetas({ tipo: 'percentual', get: 2500, peso: 80, ptn: 20, lip: 30, cho: 99 });
-  assert.deepEqual(m.percentuais, { ptn: 20, lip: 30, cho: 50 });
-  assert.equal(m.cho, 312.5);
+  assert.deepEqual(m.percentuais, { ptn: 20, lip: 30, cho: 99 });
+  assert.equal(m.cho, 618.8);
+  const auto = calcularMetas({ tipo: 'percentual', get: 2500, peso: 80, ptn: 20, lip: 30 });
+  assert.deepEqual(auto.percentuais, { ptn: 20, lip: 30, cho: 50 });
+  assert.equal(auto.cho, 312.5);
   const g = calcularMetas({ tipo: 'gkg', peso: 80, ptn: 1.6, lip: 1, cho: 4, get: 9999 });
-  assert.equal(g.get, 2512);
+  assert.equal(g.get, 9999); // GET antigo guardado (§12 #31)
   assert.deepEqual([g.ptn, g.lip, g.cho], [128, 80, 320]);
+  assert.equal(calcularMetas({ tipo: 'gkg', peso: 80, ptn: 1.6, lip: 1, cho: 4 }).get, 2512);
+  assert.equal(calcularMetas({ tipo: 'gkg', peso: 80, ptn: 0, lip: 0, cho: 0, get: '-' }).get, 0); // "-" do modal
 });
 
 test('adequação: % arredondado e cores (> 105 vermelho, 95–105 verde, senão neutro)', () => {
