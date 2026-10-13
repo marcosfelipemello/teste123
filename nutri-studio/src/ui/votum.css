@@ -181,3 +181,31 @@ td.num, th.num { text-align: right; }
   main { padding: 24px 16px 48px; }
   h1 { font-size: var(--t-sub); }
 }
+
+/* Abas de medidas da ficha (antropometria, gestação): formulário + painel de resultados ao vivo */
+.painel-duplo { display: grid; gap: 16px 24px; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); align-items: start; }
+.painel-fixo { position: sticky; top: 88px; max-height: calc(100vh - 104px); overflow-y: auto; }
+.campos.compactos { grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); }
+.campos.compactos > .campo { justify-content: flex-end; }
+.campo[data-usada] > span { color: var(--texto); }
+.destaques { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.destaques .resultado { min-width: 0; overflow-wrap: anywhere; }
+.resumo { margin: 0; }
+.resumo > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--filete); }
+.resumo dt { font: 500 var(--t-rotulo)/1.5 var(--fonte-texto); text-transform: uppercase; letter-spacing: var(--tracking-rotulo); color: var(--texto-suave); }
+.resumo dd { margin: 0; text-align: right; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.resumo dd > small { display: block; }
+.painel-fixo > h3 { margin-bottom: 0; }
+.painel-fixo > h3 + * { margin-top: 0; }
+.titulo-grupo { font: 400 var(--t-destaque)/var(--a-destaque) var(--fonte-titulo); color: var(--texto); margin: 0; }
+.lista-avisos { list-style: none; margin: 0; padding: 0; }
+.lista-avisos > li + li { margin-top: 8px; }
+.dobravel > summary { cursor: pointer; font: 400 var(--t-destaque)/var(--a-destaque) var(--fonte-titulo); }
+tr[aria-current="true"] > * { background: var(--bloco); }
+td .botao.discreto, th .botao.discreto { min-height: 32px; padding-block: 6px; }
+.oculto-visual { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 900px) {
+  .painel-duplo { grid-template-columns: minmax(0, 1fr); }
+  .painel-fixo { position: static; max-height: none; overflow: visible; }
+}

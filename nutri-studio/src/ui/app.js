@@ -23,6 +23,9 @@ async function carregarExtras() {
     import('./paginas/alimentos.js'),
     import('./paginas/receitas.js'),
     import('./paginas/referencias.js'),
+    // Abas da ficha do paciente; cada módulo chama registrarAba ao ser importado.
+    import('./abas/antropometria.js'),
+    import('./abas/gestacao.js'),
   ]);
 }
 
