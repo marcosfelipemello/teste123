@@ -2,16 +2,16 @@
 
 Branch de trabalho: `ccr-547159ad-oarva6`.
 
-**Situação em 13/10/2026 (segunda sessão):** a lista "Falta fazer" abaixo foi concluída, item a item, com um commit por parte. O que continua em aberto está em "Ainda não feito" e em "Decisões que dependem do usuário".
+**Situação em 13/10/2026 (quarta sessão):** a lista "Falta fazer" abaixo foi concluída na segunda sessão; a terceira e a quarta deixaram cálculos e telas iguais aos do WebDiet onde dava para conferir. O que continua em aberto está em "Ainda não feito" e em "Decisões que dependem do usuário".
 
 ## Onde está cada coisa
 
 - `docs/webdiet-analise.md` — relatório completo do WebDiet (fórmulas, arredondamentos, classificações, erros §12, pendências §14). **Fonte única de verdade dos cálculos.**
 - `docs/webdiet-evidencias/` — valores que a tela do WebDiet mostrou para entradas de teste. Os testes do app comparam com eles.
 - `nutri-studio/` — o app novo: web app estático, JS puro (módulos ES), sem dependências e sem build. Dados no `localStorage` do navegador, com backup em JSON. Design system Votum (`src/ui/votum.css`): só paleta e tipografia, sem logotipo.
-  - `npm test` → 1589 testes passando (`node --test "test/**/*.test.js"`).
+  - `npm test` → 1617 testes passando (`node --test "test/**/*.test.js"`).
   - `npm start` → abre em http://localhost:8080.
-  - `npm run e2e` → teste de ponta a ponta no Chromium, em 1280 e 375 px: 94 de 94 conferências passando. O Playwright fica fora do repositório (ver `nutri-studio/README.md`).
+  - `npm run e2e` → teste de ponta a ponta no Chromium, em 1280 e 375 px: 122 de 122 conferências passando. O Playwright fica fora do repositório (ver `nutri-studio/README.md`). Com `FOTOS=<pasta>`, salva capturas das metas e do total do dia.
   - `nutri-studio/README.md` → como rodar, arquitetura, política de erros, de onde vem cada dado.
 
 ## Pronto e testado
@@ -114,6 +114,19 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
   - consulta na edição de alimentos, que acrescenta a medida com um clique;
   - os pesos que o WebDiet mostra (arroz colher de sopa cheia 25 g; feijão concha cheia 140 g; azeite colher de sopa 8 g; pão francês 50 g; ovo 45 g) são os do IBGE.
 
+## Quarta sessão: conta do WebDiet aberta só para leitura (autorizada pelo usuário)
+
+Login com as credenciais do usuário e, depois dele, um bloqueio no navegador que só deixava passar leituras; nada foi salvo nem alterado na conta. Só os planos do paciente de teste foram abertos. Detalhes no relatório, §15.9; o que a tela mostrou está em `docs/webdiet-evidencias/tela_planejamento_metas_conta.json`.
+
+- **§15.1 resolvido:** são 23 fórmulas (15–20 não existem). A aba Cálculo energético usa os rótulos e a ordem do WebDiet ("Escolha sua fórmula").
+- **Totais, metas e adequação** (`calc/planejamento.js`, `calc/equivalentes.js`): seguem o código de `graficoMacros()` e `mostrarReferencias()`. Mudanças comprovadas por teste (`test/totaisWebdiet.test.js` falha no código anterior):
+  - gramas e kcal em forma de número ("58g"), g/kg só com peso > 0, kcal não proteica/g N com LIP×9 e CHO×4 arredondados antes;
+  - análise: %CHO = 100 − %PTN − %LIP;
+  - equivalentes: CHO disponível, fibras com g/kg, campos "Resumo", metas e adequação sobre os totais sem arredondar, neutro cinza;
+  - metas usam o CHO% e o GET guardados.
+- **Metas na aba Planejamento:** iguais ao modal do WebDiet (plano novo em g/kg zerado; trocar a distribuição zera; "Usar o GET" passa para % do GET e zera PTN/LIP/CHO; CHO = 100 − PTN − LIP; GET em g/kg refeito ao digitar PTN/LIP/CHO). Planos salvos antes são convertidos sem perder valores (os campos antigos ficam em `metas.formatoAntigo`).
+- **Novos itens do §12, iguais ao WebDiet:** #30 (adequação do gN com o valor do cálculo anterior; ao abrir o plano, 0), #31 (GET em g/kg não refeito ao mudar só o peso), #32 (CHO 100% na análise de plano vazio).
+
 ## Ainda não feito (fora desta lista)
 
 - Não reproduzidos:
@@ -131,7 +144,7 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
 ## Regras combinadas com o usuário (manter)
 
 - **Não apagar nada sem consultar o usuário.**
-- **Não copiar dados de pacientes do WebDiet.** A conta do WebDiet não deve ser usada nesta etapa; o relatório basta.
+- **Não copiar dados de pacientes do WebDiet.** Na quarta sessão o usuário autorizou abrir a conta; ela foi usada só para leitura e só nos planos do paciente de teste. Conteúdo protegido (base de alimentos, listas de equivalentes, textos) não é copiado.
   - O paciente de teste "Teste Rea" (id 18236779) e os registros dele continuam na conta.
   - A exclusão depende do usuário.
 - **Política de erros do app:**
@@ -147,7 +160,7 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
 3. Base de alimentos: o app não traz tabela. Incluir a TACO (pública, NEPA/UNICAMP)?
 4. Hospedagem e acesso por login (hoje os dados ficam só no navegador). Opção: Supabase.
 5. Excluir o paciente de teste da conta do WebDiet.
-6. Metas padrão de um plano novo: hoje PTN 20% e LIP 30% do GET (CHO 50%, automático), os valores usados na evidência. Manter ou trocar?
-7. Adequação no método por equivalentes: o app aplica as regras do §8.3 (a tela do WebDiet para equivalentes não mostra metas). Manter?
+6. ~~Metas padrão de um plano novo~~ — **resolvido na quarta sessão:** igual ao WebDiet (g/kg com tudo 0; o botão "Usar o GET" faz a importação do cálculo energético).
+7. ~~Adequação no método por equivalentes~~ — **resolvido na quarta sessão:** o WebDiet mostra metas e adequação nos equivalentes, e o app faz o mesmo cálculo.
 8. Lista dos grupos de equivalentes: começa vazia e o consultório monta a partir de "Meus alimentos". Se a TACO entrar (decisão 3), dá para sugerir uma lista inicial.
 9. Questionário de sinais e sintomas: montar uma base própria (sinal → nutrientes) a partir da literatura, ou deixar indisponível.

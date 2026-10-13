@@ -37,7 +37,7 @@ PLAYWRIGHT=/tmp/pw/node_modules/playwright/index.mjs npm run e2e
 # CHROMIUM=/caminho/do/chrome se o Playwright não achar o navegador; URL=… para outro endereço
 ```
 
-Resultado atual: `npm test`: 1605 testes passando; `npm run e2e`: 110 de 110 conferências passando.
+Resultado atual: `npm test`: 1617 testes passando; `npm run e2e`: 122 de 122 conferências passando (com `FOTOS=<pasta>`, salva capturas das metas e do total do dia).
 
 ## O que o app faz
 
@@ -46,8 +46,8 @@ Resultado atual: `npm test`: 1605 testes passando; `npm run e2e`: 110 de 110 con
 | Pacientes | Lista, busca, cadastro, ficha com abas | §2.2 |
 | Ficha · Antropometria | Adultos e idosos (IMC, dobras, %G, fracionamento, CMB, RCQ, bioimpedância, Chumlea) e crianças/adolescentes (z-escores OMS, Slaughter), escolhidos pela idade na data da avaliação | §5, §6 |
 | Ficha · Gestação (sexo F) | Classe pré-gestacional, curva de ganho de peso, avaliação da semana, percentis de CMB/DCT, aporte calórico | §7 |
-| Ficha · Cálculo energético | 23 fórmulas, fator atividade, injúria, MET, programação de peso, GET manual, fórmula de bolso, adicional gestante; peso/altura/MLG da última antropometria | §4 |
-| Ficha · Planejamento | Por alimentos (substitutos, metas, adequação, 27 micronutrientes × DRIs) e por equivalentes (15 grupos + avulsos); lista de compras; impressão | §8.3–§8.5, §8.8 |
+| Ficha · Cálculo energético | 23 fórmulas (rótulos e ordem da lista do WebDiet), fator atividade, injúria, MET, programação de peso, GET manual, fórmula de bolso, adicional gestante; peso/altura/MLG da última antropometria | §4 |
+| Ficha · Planejamento | Por alimentos (substitutos, metas, adequação, 27 micronutrientes × DRIs) e por equivalentes (15 grupos + avulsos, metas e adequação); lista de compras; impressão. Metas como o modal do WebDiet: plano novo em g/kg zerado, troca de distribuição zera, "Usar o GET" passa para % do GET | §8.3–§8.5, §8.8 |
 | Ficha · Questionários | Os 10 questionários (Sinais e sintomas aparece como indisponível, ver abaixo) | §10 |
 | Meus alimentos | Cadastro pelo rótulo, cadastro por 100 g, importação/exportação de tabelas em CSV, modelo para baixar | §8.7 |
 | Receitas | Receitas calculadas; a receita salva vira alimento de origem "Receita" | §8.6 |
@@ -98,7 +98,10 @@ nutri-studio/
    - aporte gestacional sem peso registrado ("+7431 Kcal/dia"), com um aviso de que o valor não tem sentido clínico;
    - rótulo "15 mg" do selênio de 0–6 meses;
    - receita substituta na lista de compras pelo nome de compra;
-   - kcal do ingrediente da receita em dois formatos ("256Kcal" ao redesenhar, "117.6 Kcal" na linha recalculada).
+   - kcal do ingrediente da receita em dois formatos ("256Kcal" ao redesenhar, "117.6 Kcal" na linha recalculada);
+   - no plano por alimentos, adequação da kcal não proteica/g N com o valor prescrito do cálculo anterior (ao abrir o plano, 0; item 30);
+   - metas em g/kg: o GET só é refeito ao digitar PTN, LIP ou CHO, não ao mudar o peso (item 31);
+   - análise calórica de plano vazio com "0.0 Kcal - 100.0%" no CHO (item 32).
 
    Onde há versão corrigida, ela fica disponível no cálculo com a opção `{ corrigir: true }`. Continuam diferentes do WebDiet:
    - os casos em que ele trava ou deixa valor antigo (item 2 acima);
@@ -137,6 +140,5 @@ nutri-studio/
   - extensões pagas;
   - as abas sem cálculo do §11.
 - Sinais e sintomas: o motor de contagem existe (`calc/questionarios/sinais.js`), mas falta a base sinal → nutrientes.
-- Adequação no método por equivalentes: usa as regras do método por alimentos (§8.3) sobre os totais arredondados. A evidência do WebDiet para os equivalentes não mostra metas.
 - Grupos de equivalentes com a média padrão do WebDiet não têm micronutrientes (só os macronutrientes das médias foram registrados) nem alimentos para a lista de compras.
 - Meses de amamentação (EER 2023 lactante): são contados até a data do cálculo. O WebDiet usa "hoje", que é o mesmo nos casos conferidos.

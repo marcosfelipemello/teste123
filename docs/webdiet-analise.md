@@ -1588,6 +1588,9 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 | 27 | Alimento próprio | `gorduratrans` não é enviado ao salvar (os outros micronutrientes vão como "0"). A kcal automática soma fibras×2 sobre o CHO digitado; se o rótulo já inclui fibra no CHO, a fibra é contada duas vezes. | código, envio bloqueado |
 | 28 | Receitas · kcal por ingrediente | A mesma linha aparece com 0 casas ("256Kcal") ou 1 casa ("117.6 Kcal"), conforme foi redesenhada ou recalculada. Os totais não são afetados. | na tela |
 | 29 | Antropometria · referência de %G abaixo de 16 anos | Não há referência ("Entre x% e y%") para menores de 16 anos; a tela continua mostrando a do caso anterior (ex.: menina com a referência masculina de 26–35 anos). | na tela (A60, A62) |
+| 30 | Planejamento por alimentos · adequação da kcal não proteica/g N | `calcularCardapio()` chama `mostrarReferencias()` antes de `graficoMacros()`, e a adequação lê o **texto** de `#gNPrescrita`: usa o valor do cálculo **anterior**. Ao abrir o plano, o texto ainda é o inicial do HTML ("0 Kcal"): paciente de teste com "-72 Kcal" ao abrir e "26 Kcal" depois de recalcular. No método por equivalentes a ordem é a outra e não há atraso. | na tela e no código (§15.9) |
+| 31 | Planejamento · metas em g/kg | O modal refaz o GET só ao digitar PTN, LIP ou CHO (`onkeyup="recalcularRef()"`); o campo do peso não tem esse evento. Mudar só o peso deixa o GET antigo na kcal planejada e na adequação de kcal. | código (§15.9) |
+| 32 | Planejamento · análise calórica | Com 0 kcal no plano, %CHO = 100 − 0 − 0: a tela mostra "0.0 Kcal - 100.0%" no CHO. | código (§15.9) |
 
 Para a Etapa 3: o app novo deve **reproduzir os resultados conferidos** nos casos normais. Nos itens desta tabela, a decisão entre "igual ao WebDiet" e "corrigido" precisa ser tomada e documentada caso a caso.
 
@@ -1705,7 +1708,7 @@ Nenhum destes pontos mexe nos casos conferidos: os testes do app (`npm test`) co
 
 - O §2.2 falava em **26 protocolos**, mas o §4 documenta **23**: valores 1–14 e 21–29.
 - Os valores **15 a 20** não aparecem em nenhuma evidência nem no código lido. Podem ser opções ocultas ou removidas, ou a primeira contagem estava errada.
-- **Não dá para confirmar sem abrir a conta**, e a conta não é usada nesta etapa. O §2.2 foi ajustado para "23 documentados".
+- **Resolvido na conta (13/10/2026, só leitura):** a lista "Escolha sua fórmula" tem **23 opções**, de valores 1–14 e 21–29. Os valores 15–20 não existem; a contagem de 26 estava errada. Rótulos e ordem estão no §15.9, e o app usa os mesmos.
 - Cobertura das evidências de tela por fórmula:
   - `tela_energia.json`: 1–9, 12, 13, 21–23 e 25–29;
   - `tela_energia_extras.json`: 10 e 11;
@@ -1777,6 +1780,8 @@ Nenhum destes pontos mexe nos casos conferidos: os testes do app (`npm test`) co
   - As opções sem rótulo no relatório usam "Opção k (N pts)".
   - A interface mostra os itens como "Item n" + categoria.
 
+- **Equivalentes, metas e adequação:** a conta mostra que a página por equivalentes também tem metas e adequação (§15.9), sobre os totais **sem arredondar**. O app faz o mesmo.
+
 ### 15.7 O que continua dependendo do usuário
 
 - As divergências científicas do §12 continuam **iguais ao WebDiet**. A lista completa, com o comportamento de cada uma, está na página "Referências" do app.
@@ -1794,3 +1799,32 @@ A TACO 4ª edição oficial (planilha do NEPA/UNICAMP) foi convertida para o app
   - o arroz cozido aparece sem ácidos graxos (na TACO, saturada 0,2);
   - no azeite de dendê, a monoinsaturada é 4,01 no WebDiet e 40,1 na TACO (vírgula deslocada), e a poli-insaturada é 16,1 contra 16,6.
 - **Resultado:** 249 de 256 valores iguais. O almoço do §8.4 montado com os alimentos da TACO em gramas dá o mesmo total da tela (398 g; 37,1 / 23,5 / 54,8 g; 587 kcal). Teste em `nutri-studio/test/taco.test.js`.
+
+### 15.9 Observado na conta (13/10/2026)
+
+Com a autorização do usuário, a conta foi aberta **só para leitura**: depois do login, um bloqueio no navegador deixava passar apenas leituras (GET e as chamadas `carregar…`, `buscar…`, `listar…`, `consultar…`); qualquer envio que salvasse ou alterasse algo era cancelado, e nenhum diálogo foi confirmado. Só os planos do paciente de teste "Teste Rea" (id 18236779) foram abertos. Nenhum dado de outro paciente e nenhum conteúdo protegido (base de alimentos, listas de equivalentes, textos) foi copiado. O que a tela mostrou ao abrir os dois planos está em `webdiet-evidencias/tela_planejamento_metas_conta.json`.
+
+**Lista de fórmulas** ("Escolha sua fórmula", nesta ordem): 2 Harris-benedict (1984); 1 Harris-benedict (1919); 8 FAO/WHO (2004); 5 EER/IOM (2005); 26 EER (2023); 3 Katch-McArdle (1996); 4 Cunningham (1980); 6 Mifflin-St Jeor (1990); 7 Mifflin-St Jeor - por MLG (1990); 9 Henry & Rees (1991); 12 Tinsley - Por peso (2018); 13 Tinsley - Por MLG (2018); 11 GET por fórmula de bolso; 14 Colocar TMB manualmente; 10 Colocar GET manualmente; 21 EER/IOM (2005) - Protocolo Infantil; 27 EER (2023) - Protocolo Infantil; 22 FAO/WHO (2004) - Protocolo Infantil; 23 Schofield (1985) - Protocolo Infantil; 25 Min. Saúde - Gestante (2005); 28 EER (2023) - Gestante; 29 EER (2023) - Lactante; 24 HandyMET.
+
+**Metas (modal "Cálculos", igual nas duas páginas de plano):**
+
+- `referencias = [ptn, lip, cho, get, peso, tipo]`. Tipo "bolso" = "Distribuir usando fórmula de bolso (g/Kg)"; "percentual" = "Distribuir usando percentual do GET". Qualquer valor que não seja "percentual" (inclusive vazio ou `null`) conta como bolso.
+- **Plano novo:** `referencias` vazio → bolso, tudo 0. Planejada "0.0g" e "0 Kcal"; adequação = prescrito − 0.
+- **Trocar o tipo** (`mudarCalculoRef`) zera PTN, LIP, CHO e GET; o peso fica. No bolso, o GET fica desabilitado.
+- **Ao digitar PTN, LIP ou CHO** (`recalcularRef`): no percentual, CHO = 100 − PTN − LIP; no bolso, GET = PTN×P×4 + LIP×P×9 + CHO×P×4, ou "-" se ≤ 0 (§12 #31).
+- **Importar um cálculo energético** (`importarCalculo2(GET, peso)`): passa para percentual, zera os campos e preenche peso e GET.
+- `mostrarReferencias()` usa o CHO% e o GET **guardados** (não recalcula). Gramas com `toFixed(1)` (texto "100.0g"); g/kg só com peso > 0; kcal não proteica/g N planejada com o erro do §12 #20, em forma de número ("72.9 Kcal", "0 Kcal").
+- **Adequação:** prescrito − planejado (1 casa; kcal e gN 0 casas); % = prescrito/planejado × 100 com 0 casas; > 105 vermelho #EE091D, 95–105 verde #83C688; senão neutro (preto no método por alimentos, **cinza #8E8E92** nos equivalentes). No método por alimentos, o gN tem o atraso do §12 #30.
+
+**Totais (`graficoMacros()`):**
+
+- gramas e kcal em forma de número: `parseFloat(x.toFixed(1)) + "g"` ("58g", não "58.0g") e `parseFloat(K.toFixed(0))`;
+- g/kg só com peso das metas > 0; CHO disponível = (CHO − fibras).toFixed(1), com g/kg; fibras com g/kg só nos equivalentes;
+- kcal não proteica/g N = (LIP×9 e CHO×4, **cada um com 1 casa**) / (PTN/6,25), 1 casa, em forma de número;
+- análise: kcal de PTN e LIP com 1 casa, em forma de número ("202 Kcal"); os % saem delas; %CHO = 100 − %PTN − %LIP; kcal do CHO = (K − kcal PTN − kcal LIP).toFixed(1) (§12 #32);
+- densidade (só por alimentos) = K / peso, 2 casas; campos "Resumo" (PTN, LIP, CHO, kcal) nas duas páginas;
+- nos equivalentes, `fibrasPlanejada` e `fibrasAdequacao` são "-" fixos.
+
+**`check()` do painel:** vazio, NaN, ±Infinity e texto não numérico → 0; "2,5" → 0 (vírgula não é aceita); `null` → NaN. O app aceita vírgula decimal nos formulários (convenção brasileira); nos números que vêm do WebDiet não há vírgula.
+
+Tudo isso está nos testes `nutri-studio/test/totaisWebdiet.test.js` (textos esperados tirados da transcrição literal das duas funções) e no teste de ponta a ponta.
