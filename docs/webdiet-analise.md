@@ -1679,9 +1679,8 @@ Ainda em aberto:
 
 - **Extensões pagas:** Consciência alimentar, LEAF-Q, LEAM-Q, FIB-4, Avaliação imunológica, Magnésio e Food noise. Não acessadas, porque exigem compra.
 - **Questionários, detalhes:**
-  - fenótipo: só Desorganizado e Hedônico foram registrados na tela;
-  - cafeína: a versão completa (47 itens) não foi rodada na tela;
-  - sinais e sintomas: a cor de ≥ 4 foi lida só no código.
+  - ~~fenótipo: só Desorganizado e Hedônico foram registrados na tela~~ e ~~cafeína: a versão completa (47 itens) não foi rodada na tela~~ — **resolvidos em 13/10/2026** pela simulação na conta (§15.9): as 5 subescalas do fenótipo e as duas versões da cafeína conferem;
+  - sinais e sintomas: a cor de ≥ 4 foi lida só no código (a simulação não cobriu, porque a base sinal → nutriente não foi copiada).
 - **Referências de micronutrientes:** faixas 7–12 m, 19–30 a, meninas de 1–8 a, gestante 19–30, lactante ≤ 18 e 19–30. Também não foi testado se a troca de faixa ocorre exatamente no aniversário.
 - **Financeiro:** a divisão de parcelas é feita no servidor e não foi testada.
 - **Lista de compras com IA:** a reescrita pela IA (1 crédito) não foi executada; só o cálculo enviado foi lido no código.
@@ -1830,3 +1829,5 @@ Com a autorização do usuário, a conta foi aberta **só para leitura**: depois
 Tudo isso está nos testes `nutri-studio/test/totaisWebdiet.test.js` (textos esperados tirados da transcrição literal das duas funções) e no teste de ponta a ponta.
 
 **No app:** tudo acima é igual ao WebDiet, menos os itens #30 e #31 do §12, que o usuário pediu para corrigir: a adequação do gN usa o valor prescrito atual, e mudar o peso nas metas em g/kg refaz o GET.
+
+**Simulação dos questionários** (pedido do usuário): no paciente de teste, 40 cenários por questionário (o menor e o maior ponto de cada item, mais 38 sorteados com semente fixa) foram marcados pelas funções da própria página; o resultado é calculado no navegador e nada foi salvo. Rastreamento, FINDRISC, disbiose, cafeína (resumida e completa), fenótipo, sarcopenia, cronotipo e QFA: **360 de 360 cenários iguais** ao cálculo do app, cobrindo todas as faixas de resultado (inclusive "50 pontos de 49 possíveis" da disbiose, §12 #22). Detalhe visto na página da cafeína: a opção 0 ("sem resposta", oculta) não pode ser marcada; um item só fica sem resposta se nunca foi marcado. Dados em `webdiet-evidencias/tela_q_simulacao.json`; teste em `nutri-studio/test/questionariosSimulacao.test.js`. Sinais e sintomas e doshas ficaram de fora (base não copiada; o paciente de teste não tem doshas).

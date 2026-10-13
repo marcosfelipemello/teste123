@@ -9,9 +9,9 @@ Branch de trabalho: `ccr-547159ad-oarva6`.
 - `docs/webdiet-analise.md` — relatório completo do WebDiet (fórmulas, arredondamentos, classificações, erros §12, pendências §14). **Fonte única de verdade dos cálculos.**
 - `docs/webdiet-evidencias/` — valores que a tela do WebDiet mostrou para entradas de teste. Os testes do app comparam com eles.
 - `nutri-studio/` — o app novo: web app estático, JS puro (módulos ES), sem dependências e sem build. Dados no `localStorage` do navegador, com backup em JSON. Design system Votum (`src/ui/votum.css`): só paleta e tipografia, sem logotipo.
-  - `npm test` → 1617 testes passando (`node --test "test/**/*.test.js"`).
+  - `npm test` → 1628 testes passando (`node --test "test/**/*.test.js"`).
   - `npm start` → abre em http://localhost:8080.
-  - `npm run e2e` → teste de ponta a ponta no Chromium, em 1280 e 375 px: 122 de 122 conferências passando. O Playwright fica fora do repositório (ver `nutri-studio/README.md`). Com `FOTOS=<pasta>`, salva capturas das metas e do total do dia.
+  - `npm run e2e` → teste de ponta a ponta no Chromium, em 1280 e 375 px: 124 de 124 conferências passando. O Playwright fica fora do repositório (ver `nutri-studio/README.md`). Com `FOTOS=<pasta>`, salva capturas das metas e do total do dia.
   - `nutri-studio/README.md` → como rodar, arquitetura, política de erros, de onde vem cada dado.
 
 ## Pronto e testado
@@ -126,6 +126,8 @@ Login com as credenciais do usuário e, depois dele, um bloqueio no navegador qu
   - metas usam o CHO% e o GET guardados.
 - **Metas na aba Planejamento:** iguais ao modal do WebDiet (plano novo em g/kg zerado; trocar a distribuição zera; "Usar o GET" passa para % do GET e zera PTN/LIP/CHO; CHO = 100 − PTN − LIP; GET em g/kg refeito ao digitar PTN/LIP/CHO). Planos salvos antes são convertidos sem perder valores (os campos antigos ficam em `metas.formatoAntigo`).
 - **Novos itens do §12:** #30 (adequação do gN com o valor do cálculo anterior; ao abrir o plano, 0) e #31 (GET em g/kg não refeito ao mudar só o peso) foram **corrigidos a pedido do usuário**; #32 (CHO 100% na análise de plano vazio) fica igual ao WebDiet.
+
+- **Simulação dos questionários na conta** (pedido do usuário): 40 cenários por questionário, marcados pelas funções da própria página, sem salvar. 360 de 360 iguais ao app (rastreamento, FINDRISC, disbiose, cafeína resumida e completa, fenótipo, sarcopenia, cronotipo, QFA). Evidência `docs/webdiet-evidencias/tela_q_simulacao.json`, teste `test/questionariosSimulacao.test.js`.
 
 ## Ainda não feito (fora desta lista)
 

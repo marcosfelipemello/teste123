@@ -37,7 +37,7 @@ PLAYWRIGHT=/tmp/pw/node_modules/playwright/index.mjs npm run e2e
 # CHROMIUM=/caminho/do/chrome se o Playwright não achar o navegador; URL=… para outro endereço
 ```
 
-Resultado atual: `npm test`: 1617 testes passando; `npm run e2e`: 122 de 122 conferências passando (com `FOTOS=<pasta>`, salva capturas das metas e do total do dia).
+Resultado atual: `npm test`: 1628 testes passando; `npm run e2e`: 124 de 124 conferências passando (com `FOTOS=<pasta>`, salva capturas das metas e do total do dia).
 
 ## O que o app faz
 
@@ -48,7 +48,7 @@ Resultado atual: `npm test`: 1617 testes passando; `npm run e2e`: 122 de 122 con
 | Ficha · Gestação (sexo F) | Classe pré-gestacional, curva de ganho de peso, avaliação da semana, percentis de CMB/DCT, aporte calórico | §7 |
 | Ficha · Cálculo energético | 23 fórmulas (rótulos e ordem da lista do WebDiet), fator atividade, injúria, MET, programação de peso, GET manual, fórmula de bolso, adicional gestante; peso/altura/MLG da última antropometria | §4 |
 | Ficha · Planejamento | Por alimentos (substitutos, metas, adequação, 27 micronutrientes × DRIs) e por equivalentes (15 grupos + avulsos, metas e adequação); lista de compras; impressão. Metas como o modal do WebDiet: plano novo em g/kg zerado, troca de distribuição zera, "Usar o GET" passa para % do GET | §8.3–§8.5, §8.8 |
-| Ficha · Questionários | Os 10 questionários (Sinais e sintomas aparece como indisponível, ver abaixo) | §10 |
+| Ficha · Questionários | Os 10 questionários (Sinais e sintomas aparece como indisponível, ver abaixo). Conferidos também por simulação na conta do WebDiet: 360 de 360 cenários iguais | §10, §15.9 |
 | Meus alimentos | Cadastro pelo rótulo, cadastro por 100 g, importação/exportação de tabelas em CSV, modelo para baixar | §8.7 |
 | Receitas | Receitas calculadas; a receita salva vira alimento de origem "Receita" | §8.6 |
 | Referências | DRIs por sexo, idade e condição, com a fonte de cada faixa; lista das divergências do WebDiet (§12) e do que o app faz | §8.10, §12 |
