@@ -1,0 +1,123 @@
+{
+ "venta": [
+  {
+   "alvo": 75,
+   "dias": 60,
+   "r1": "Total de -5.0 Kg em 60 dias",
+   "r2": "(-642 Kcal/dia)",
+   "ventaFinal": [
+    75,
+    60,
+    -641
+   ],
+   "pesoPaciente": "-5.0",
+   "sliderMin": "64",
+   "sliderMax": "96",
+   "depois": {
+    "tmb": "1801 Kcal/dia",
+    "get": "2151 Kcal/dia",
+    "getkg": "(26.9 Kcal/kg)",
+    "met": "Programar MET",
+    "venta": "-641 Kcal/dia",
+    "gest": "Incluir adicional"
+   }
+  },
+  {
+   "alvo": 83.3,
+   "dias": 45,
+   "r1": "Total de +3.3 Kg em 45 dias",
+   "r2": "(+565 Kcal/dia)",
+   "ventaFinal": [
+    83.3,
+    45,
+    564
+   ],
+   "pesoPaciente": "3.3",
+   "sliderMin": "64",
+   "sliderMax": "96",
+   "depois": {
+    "tmb": "1801 Kcal/dia",
+    "get": "3356 Kcal/dia",
+    "getkg": "(41.9 Kcal/kg)",
+    "met": "Programar MET",
+    "venta": "564 Kcal/dia",
+    "gest": "Incluir adicional"
+   }
+  },
+  {
+   "alvo": 72.7,
+   "dias": 90,
+   "r1": "Total de -7.3 Kg em 90 dias",
+   "r2": "(-625 Kcal/dia)",
+   "ventaFinal": [
+    72.7,
+    90,
+    -624
+   ],
+   "pesoPaciente": "-7.3",
+   "sliderMin": "64",
+   "sliderMax": "96",
+   "depois": {
+    "tmb": "1801 Kcal/dia",
+    "get": "2168 Kcal/dia",
+    "getkg": "(27.1 Kcal/kg)",
+    "met": "Programar MET",
+    "venta": "-624 Kcal/dia",
+    "gest": "Incluir adicional"
+   }
+  }
+ ],
+ "met": {
+  "atividades": [
+   {
+    "id": "mets336",
+    "fator": "6.0",
+    "nome": "Abate de animais maiores, esforço intenso"
+   },
+   {
+    "id": "mets335",
+    "fator": "3.0",
+    "nome": "Abate de animais pequenos"
+   }
+  ],
+  "minutos": [
+   30,
+   45
+  ],
+  "depois": {
+   "tmb": "1801 Kcal/dia",
+   "get": "3212 Kcal/dia",
+   "getkg": "(40.1 Kcal/kg)",
+   "met": "420 Kcal/dia",
+   "venta": "Programar peso",
+   "gest": "Incluir adicional"
+  }
+ },
+ "fatoresBolso": [
+  "1"
+ ],
+ "bolso": {
+  "r": "2800",
+  "r2": "35.0",
+  "depois": {
+   "tmb": "Não aplicável",
+   "get": "2800 Kcal/dia",
+   "getkg": "(35.0 Kcal/kg)",
+   "met": "Programar MET",
+   "venta": "Programar peso",
+   "gest": "Incluir adicional"
+  }
+ },
+ "manual": {
+  "getTemp": "2640",
+  "getTemp2": "31.3",
+  "depois": {
+   "tmb": "Não aplicável",
+   "get": "3000 Kcal/dia",
+   "getkg": "(37.5 Kcal/kg)",
+   "met": "Programar MET",
+   "venta": "Programar peso",
+   "gest": "Incluir adicional"
+  }
+ }
+}

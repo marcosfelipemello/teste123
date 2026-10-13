@@ -1,0 +1,3837 @@
+[
+ {
+  "cenario": {
+   "ppg": 62,
+   "alt": 163,
+   "tipo": "Única"
+  },
+  "base": {
+   "imcPpg": "23.3 kg/m2",
+   "classe": "Saudável",
+   "semanaAtual": 20,
+   "idade": 35,
+   "tabela": [
+    [
+     1,
+     61.86222222222222,
+     62,
+     62
+    ],
+    [
+     2,
+     61.724444444444444,
+     62,
+     62
+    ],
+    [
+     3,
+     61.586666666666666,
+     62,
+     62
+    ],
+    [
+     4,
+     61.44888888888889,
+     62,
+     62
+    ],
+    [
+     5,
+     61.31111111111111,
+     62,
+     62
+    ],
+    [
+     6,
+     61.17333333333333,
+     62,
+     62
+    ],
+    [
+     7,
+     61.035555555555554,
+     62,
+     62
+    ],
+    [
+     8,
+     60.897777777777776,
+     62,
+     62
+    ],
+    [
+     9,
+     60.76,
+     62,
+     62
+    ],
+    [
+     10,
+     60.76,
+     59.6,
+     62
+    ],
+    [
+     11,
+     60.9555,
+     59.8,
+     62.2
+    ],
+    [
+     12,
+     61.174,
+     60,
+     62.4
+    ],
+    [
+     13,
+     61.374,
+     60.2,
+     62.7
+    ],
+    [
+     14,
+     61.624,
+     60.4,
+     62.9
+    ],
+    [
+     15,
+     61.892,
+     60.7,
+     63.2
+    ],
+    [
+     16,
+     62.142,
+     60.9,
+     63.5
+    ],
+    [
+     17,
+     62.492,
+     61.2,
+     63.8
+    ],
+    [
+     18,
+     62.86,
+     61.6,
+     64.2
+    ],
+    [
+     19,
+     63.31,
+     62,
+     64.7
+    ],
+    [
+     20,
+     63.7095,
+     62.4,
+     65.1
+    ],
+    [
+     21,
+     64.1595,
+     62.8,
+     65.6
+    ],
+    [
+     22,
+     64.596,
+     63.2,
+     66.1
+    ],
+    [
+     23,
+     64.996,
+     63.6,
+     66.5
+    ],
+    [
+     24,
+     65.4455,
+     64,
+     67
+    ],
+    [
+     25,
+     65.864,
+     64.4,
+     67.4
+    ],
+    [
+     26,
+     66.232,
+     64.7,
+     67.9
+    ],
+    [
+     27,
+     66.632,
+     65.1,
+     68.3
+    ],
+    [
+     28,
+     67,
+     65.4,
+     68.7
+    ],
+    [
+     29,
+     67.4,
+     65.8,
+     69.1
+    ],
+    [
+     30,
+     67.75,
+     66.1,
+     69.5
+    ],
+    [
+     31,
+     68.168,
+     66.5,
+     69.9
+    ],
+    [
+     32,
+     68.518,
+     66.8,
+     70.3
+    ],
+    [
+     33,
+     68.936,
+     67.2,
+     70.8
+    ],
+    [
+     34,
+     69.304,
+     67.5,
+     71.2
+    ],
+    [
+     35,
+     69.722,
+     67.9,
+     71.7
+    ],
+    [
+     36,
+     70.172,
+     68.3,
+     72.1
+    ],
+    [
+     37,
+     70.572,
+     68.7,
+     72.6
+    ],
+    [
+     38,
+     70.94,
+     69,
+     73
+    ],
+    [
+     39,
+     71.3575,
+     69.4,
+     73.5
+    ],
+    [
+     40,
+     71.8075,
+     70,
+     74
+    ]
+   ],
+   "linhas": [
+    [
+     "1 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "2 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "3 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "4 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "5 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "6 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "7 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "8 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "9 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "10 semanas",
+     "59.6 Kg",
+     "62.0 Kg",
+     "registrar peso",
+     "+7431 Kcal/dia"
+    ],
+    [
+     "11 semanas",
+     "59.8 Kg",
+     "62.2 Kg",
+     "registrar peso",
+     "+6710 Kcal/dia"
+    ],
+    [
+     "12 semanas",
+     "60.0 Kg",
+     "62.4 Kg",
+     "registrar peso",
+     "+6120 Kcal/dia"
+    ],
+    [
+     "13 semanas",
+     "60.2 Kg",
+     "62.7 Kg",
+     "registrar peso",
+     "+5628 Kcal/dia"
+    ],
+    [
+     "14 semanas",
+     "60.4 Kg",
+     "62.9 Kg",
+     "registrar peso",
+     "+5212 Kcal/dia"
+    ],
+    [
+     "15 semanas",
+     "60.7 Kg",
+     "63.2 Kg",
+     "registrar peso",
+     "+4864 Kcal/dia"
+    ],
+    [
+     "16 semanas",
+     "60.9 Kg",
+     "63.5 Kg",
+     "registrar peso",
+     "+4554 Kcal/dia"
+    ],
+    [
+     "17 semanas",
+     "61.2 Kg",
+     "63.8 Kg",
+     "registrar peso",
+     "+4297 Kcal/dia"
+    ],
+    [
+     "18 semanas",
+     "61.6 Kg",
+     "64.2 Kg",
+     "registrar peso",
+     "+4070 Kcal/dia"
+    ],
+    [
+     "19 semanas",
+     "62.0 Kg",
+     "64.7 Kg",
+     "registrar peso",
+     "+3868 Kcal/dia"
+    ],
+    [
+     "20 semanas",
+     "62.4 Kg",
+     "65.1 Kg",
+     "registrar peso",
+     "+3688 Kcal/dia"
+    ],
+    [
+     "21 semanas",
+     "62.8 Kg",
+     "65.6 Kg",
+     "registrar peso",
+     "+3531 Kcal/dia"
+    ],
+    [
+     "22 semanas",
+     "63.2 Kg",
+     "66.1 Kg",
+     "registrar peso",
+     "+3384 Kcal/dia"
+    ],
+    [
+     "23 semanas",
+     "63.6 Kg",
+     "66.5 Kg",
+     "registrar peso",
+     "+3250 Kcal/dia"
+    ],
+    [
+     "24 semanas",
+     "64.0 Kg",
+     "67.0 Kg",
+     "registrar peso",
+     "+3128 Kcal/dia"
+    ],
+    [
+     "25 semanas",
+     "64.4 Kg",
+     "67.4 Kg",
+     "registrar peso",
+     "+3020 Kcal/dia"
+    ],
+    [
+     "26 semanas",
+     "64.7 Kg",
+     "67.9 Kg",
+     "registrar peso",
+     "+2913 Kcal/dia"
+    ],
+    [
+     "27 semanas",
+     "65.1 Kg",
+     "68.3 Kg",
+     "registrar peso",
+     "+2818 Kcal/dia"
+    ],
+    [
+     "28 semanas",
+     "65.4 Kg",
+     "68.7 Kg",
+     "registrar peso",
+     "+2730 Kcal/dia"
+    ],
+    [
+     "29 semanas",
+     "65.8 Kg",
+     "69.1 Kg",
+     "registrar peso",
+     "+2648 Kcal/dia"
+    ],
+    [
+     "30 semanas",
+     "66.1 Kg",
+     "69.5 Kg",
+     "registrar peso",
+     "+2572 Kcal/dia"
+    ],
+    [
+     "31 semanas",
+     "66.5 Kg",
+     "69.9 Kg",
+     "registrar peso",
+     "+2501 Kcal/dia"
+    ],
+    [
+     "32 semanas",
+     "66.8 Kg",
+     "70.3 Kg",
+     "registrar peso",
+     "+2431 Kcal/dia"
+    ],
+    [
+     "33 semanas",
+     "67.2 Kg",
+     "70.8 Kg",
+     "registrar peso",
+     "+2368 Kcal/dia"
+    ],
+    [
+     "34 semanas",
+     "67.5 Kg",
+     "71.2 Kg",
+     "registrar peso",
+     "+2310 Kcal/dia"
+    ],
+    [
+     "35 semanas",
+     "67.9 Kg",
+     "71.7 Kg",
+     "registrar peso",
+     "+2255 Kcal/dia"
+    ],
+    [
+     "36 semanas",
+     "68.3 Kg",
+     "72.1 Kg",
+     "registrar peso",
+     "+2206 Kcal/dia"
+    ],
+    [
+     "37 semanas",
+     "68.7 Kg",
+     "72.6 Kg",
+     "registrar peso",
+     "+2157 Kcal/dia"
+    ],
+    [
+     "38 semanas",
+     "69.0 Kg",
+     "73.0 Kg",
+     "registrar peso",
+     "+2108 Kcal/dia"
+    ],
+    [
+     "39 semanas",
+     "69.4 Kg",
+     "73.5 Kg",
+     "registrar peso",
+     "+2067 Kcal/dia"
+    ],
+    [
+     "40 semanas",
+     "70.0 Kg",
+     "74.0 Kg",
+     "registrar peso",
+     "+2025 Kcal/dia"
+    ]
+   ]
+  },
+  "testes": [
+   {
+    "sem": 8,
+    "pa": "61.9",
+    "dct": 20,
+    "cb": 27,
+    "tela": {
+     "semana": "8 sem",
+     "imc": "23.3 kg/m2",
+     "en": "N/D",
+     "cmb": "20.7 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "-0.10",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+28 Kcal/dia",
+      "+73 Kcal/dia",
+      "+110 Kcal/dia",
+      "+140 Kcal/dia",
+      "+165 Kcal/dia",
+      "+195 Kcal/dia",
+      "+212 Kcal/dia",
+      "+227 Kcal/dia",
+      "+241 Kcal/dia",
+      "+259 Kcal/dia",
+      "+263 Kcal/dia",
+      "+272 Kcal/dia",
+      "+281 Kcal/dia",
+      "+288 Kcal/dia",
+      "+295 Kcal/dia",
+      "+301 Kcal/dia",
+      "+303 Kcal/dia",
+      "+308 Kcal/dia",
+      "+313 Kcal/dia",
+      "+318 Kcal/dia",
+      "+326 Kcal/dia",
+      "+330 Kcal/dia",
+      "+330 Kcal/dia",
+      "+337 Kcal/dia",
+      "+340 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 14,
+    "pa": "58.6",
+    "dct": 15,
+    "cb": 25,
+    "tela": {
+     "semana": "14 sem",
+     "imc": "22.1 kg/m2",
+     "en": "Abaixo do peso",
+     "cmb": "20.3 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p10 e p15",
+     "pesoTotal": "-3.40",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+3630 Kcal/dia",
+      "+1925 Kcal/dia",
+      "+1430 Kcal/dia",
+      "+1183 Kcal/dia",
+      "+1034 Kcal/dia",
+      "+935 Kcal/dia",
+      "+880 Kcal/dia",
+      "+825 Kcal/dia",
+      "+782 Kcal/dia",
+      "+748 Kcal/dia",
+      "+730 Kcal/dia",
+      "+697 Kcal/dia",
+      "+677 Kcal/dia",
+      "+660 Kcal/dia",
+      "+645 Kcal/dia",
+      "+626 Kcal/dia",
+      "+621 Kcal/dia",
+      "+605 Kcal/dia",
+      "+596 Kcal/dia",
+      "+589 Kcal/dia",
+      "+581 Kcal/dia",
+      "+580 Kcal/dia",
+      "+574 Kcal/dia",
+      "+564 Kcal/dia",
+      "+563 Kcal/dia",
+      "+558 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 20,
+    "pa": "63.7",
+    "dct": 18.5,
+    "cb": 26,
+    "tela": {
+     "semana": "20 sem",
+     "imc": "24.0 kg/m2",
+     "en": "Saudável",
+     "cmb": "20.2 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "1.70",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+550 Kcal/dia",
+      "+495 Kcal/dia",
+      "+477 Kcal/dia",
+      "+468 Kcal/dia",
+      "+484 Kcal/dia",
+      "+458 Kcal/dia",
+      "+456 Kcal/dia",
+      "+454 Kcal/dia",
+      "+452 Kcal/dia",
+      "+440 Kcal/dia",
+      "+450 Kcal/dia",
+      "+440 Kcal/dia",
+      "+440 Kcal/dia",
+      "+440 Kcal/dia",
+      "+440 Kcal/dia",
+      "+447 Kcal/dia",
+      "+446 Kcal/dia",
+      "+440 Kcal/dia",
+      "+446 Kcal/dia",
+      "+446 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 30,
+    "pa": "73.8",
+    "dct": 25,
+    "cb": 29,
+    "tela": {
+     "semana": "30 sem",
+     "imc": "27.8 kg/m2",
+     "en": "Acima do peso",
+     "cmb": "21.1 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p50 e p75",
+     "pesoTotal": "11.80",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "cenario": {
+   "ppg": 45,
+   "alt": 163,
+   "tipo": "Única"
+  },
+  "base": {
+   "imcPpg": "16.9 kg/m2",
+   "classe": "Baixo Peso",
+   "semanaAtual": 20,
+   "idade": 35,
+   "tabela": [
+    [
+     1,
+     44.961333333333336,
+     45,
+     45
+    ],
+    [
+     2,
+     44.922666666666665,
+     45,
+     45
+    ],
+    [
+     3,
+     44.884,
+     45,
+     45
+    ],
+    [
+     4,
+     44.845333333333336,
+     45,
+     45
+    ],
+    [
+     5,
+     44.806666666666665,
+     45,
+     45
+    ],
+    [
+     6,
+     44.768,
+     45,
+     45
+    ],
+    [
+     7,
+     44.72933333333334,
+     45,
+     45
+    ],
+    [
+     8,
+     44.690666666666665,
+     45,
+     45
+    ],
+    [
+     9,
+     44.652,
+     45,
+     45
+    ],
+    [
+     10,
+     44.652,
+     44.3,
+     45.3
+    ],
+    [
+     11,
+     44.952,
+     44.6,
+     45.6
+    ],
+    [
+     12,
+     45.27,
+     44.9,
+     45.9
+    ],
+    [
+     13,
+     45.57,
+     45.2,
+     46.2
+    ],
+    [
+     14,
+     45.92,
+     45.5,
+     46.6
+    ],
+    [
+     15,
+     46.238,
+     45.8,
+     46.9
+    ],
+    [
+     16,
+     46.588,
+     46.2,
+     47.3
+    ],
+    [
+     17,
+     46.988,
+     46.5,
+     47.7
+    ],
+    [
+     18,
+     47.374,
+     46.9,
+     48.1
+    ],
+    [
+     19,
+     47.7555,
+     47.3,
+     48.6
+    ],
+    [
+     20,
+     48.2235,
+     47.7,
+     49
+    ],
+    [
+     21,
+     48.642,
+     48.1,
+     49.5
+    ],
+    [
+     22,
+     49.092,
+     48.5,
+     49.9
+    ],
+    [
+     23,
+     49.5095,
+     49,
+     50.4
+    ],
+    [
+     24,
+     49.9595,
+     49.4,
+     50.9
+    ],
+    [
+     25,
+     50.378,
+     49.8,
+     51.3
+    ],
+    [
+     26,
+     50.796,
+     50.2,
+     51.8
+    ],
+    [
+     27,
+     51.214,
+     50.6,
+     52.2
+    ],
+    [
+     28,
+     51.632,
+     51,
+     52.7
+    ],
+    [
+     29,
+     51.9815,
+     51.3,
+     53.1
+    ],
+    [
+     30,
+     52.4,
+     51.7,
+     53.5
+    ],
+    [
+     31,
+     52.75,
+     52.1,
+     53.9
+    ],
+    [
+     32,
+     53.118,
+     52.4,
+     54.3
+    ],
+    [
+     33,
+     53.486000000000004,
+     52.7,
+     54.7
+    ],
+    [
+     34,
+     53.836,
+     53.1,
+     55.1
+    ],
+    [
+     35,
+     54.153999999999996,
+     53.4,
+     55.4
+    ],
+    [
+     36,
+     54.422,
+     53.6,
+     55.8
+    ],
+    [
+     37,
+     54.74,
+     53.9,
+     56.1
+    ],
+    [
+     38,
+     55.057500000000005,
+     54.2,
+     56.5
+    ],
+    [
+     39,
+     55.326,
+     54.5,
+     56.8
+    ],
+    [
+     40,
+     55.644,
+     54.7,
+     57.2
+    ]
+   ],
+   "linhas": [
+    [
+     "1 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "2 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "3 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "4 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "5 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "6 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "7 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "8 semanas",
+     "-",
+     "-",
+     "61.9 Kg",
+     "-"
+    ],
+    [
+     "9 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "10 semanas",
+     "44.3 Kg",
+     "45.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "11 semanas",
+     "44.6 Kg",
+     "45.6 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "12 semanas",
+     "44.9 Kg",
+     "45.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "13 semanas",
+     "45.2 Kg",
+     "46.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "14 semanas",
+     "45.5 Kg",
+     "46.6 Kg",
+     "58.6 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "15 semanas",
+     "45.8 Kg",
+     "46.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "16 semanas",
+     "46.2 Kg",
+     "47.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "17 semanas",
+     "46.5 Kg",
+     "47.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "18 semanas",
+     "46.9 Kg",
+     "48.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "19 semanas",
+     "47.3 Kg",
+     "48.6 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "20 semanas",
+     "47.7 Kg",
+     "49.0 Kg",
+     "63.7 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "21 semanas",
+     "48.1 Kg",
+     "49.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "22 semanas",
+     "48.5 Kg",
+     "49.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "23 semanas",
+     "49.0 Kg",
+     "50.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "24 semanas",
+     "49.4 Kg",
+     "50.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "25 semanas",
+     "49.8 Kg",
+     "51.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "26 semanas",
+     "50.2 Kg",
+     "51.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "27 semanas",
+     "50.6 Kg",
+     "52.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "28 semanas",
+     "51.0 Kg",
+     "52.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "29 semanas",
+     "51.3 Kg",
+     "53.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "30 semanas",
+     "51.7 Kg",
+     "53.5 Kg",
+     "73.8 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "31 semanas",
+     "52.1 Kg",
+     "53.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "32 semanas",
+     "52.4 Kg",
+     "54.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "33 semanas",
+     "52.7 Kg",
+     "54.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "34 semanas",
+     "53.1 Kg",
+     "55.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "35 semanas",
+     "53.4 Kg",
+     "55.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "36 semanas",
+     "53.6 Kg",
+     "55.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "37 semanas",
+     "53.9 Kg",
+     "56.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "38 semanas",
+     "54.2 Kg",
+     "56.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "39 semanas",
+     "54.5 Kg",
+     "56.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "40 semanas",
+     "54.7 Kg",
+     "57.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ]
+   ]
+  },
+  "testes": [
+   {
+    "sem": 8,
+    "pa": "45.7",
+    "dct": 20,
+    "cb": 27,
+    "tela": {
+     "semana": "8 sem",
+     "imc": "17.2 kg/m2",
+     "en": "N/D",
+     "cmb": "20.7 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "0.70",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 14,
+    "pa": "42.9",
+    "dct": 15,
+    "cb": 25,
+    "tela": {
+     "semana": "14 sem",
+     "imc": "16.1 kg/m2",
+     "en": "Abaixo do peso",
+     "cmb": "20.3 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p10 e p15",
+     "pesoTotal": "-2.10",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 20,
+    "pa": "48.2",
+    "dct": 18.5,
+    "cb": 26,
+    "tela": {
+     "semana": "20 sem",
+     "imc": "18.1 kg/m2",
+     "en": "Saudável",
+     "cmb": "20.2 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "3.20",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 30,
+    "pa": "58.4",
+    "dct": 25,
+    "cb": 29,
+    "tela": {
+     "semana": "30 sem",
+     "imc": "22.0 kg/m2",
+     "en": "Acima do peso",
+     "cmb": "21.1 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p50 e p75",
+     "pesoTotal": "13.40",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "cenario": {
+   "ppg": 72,
+   "alt": 163,
+   "tipo": "Única"
+  },
+  "base": {
+   "imcPpg": "27.1 kg/m2",
+   "classe": "Sobrepeso",
+   "semanaAtual": 20,
+   "idade": 35,
+   "tabela": [
+    [
+     1,
+     71.76666666666667,
+     72,
+     72
+    ],
+    [
+     2,
+     71.53333333333333,
+     72,
+     72
+    ],
+    [
+     3,
+     71.3,
+     72,
+     72
+    ],
+    [
+     4,
+     71.06666666666666,
+     72,
+     72
+    ],
+    [
+     5,
+     70.83333333333334,
+     72,
+     72
+    ],
+    [
+     6,
+     70.60000000000001,
+     72,
+     72
+    ],
+    [
+     7,
+     70.36666666666667,
+     72,
+     72
+    ],
+    [
+     8,
+     70.13333333333334,
+     72,
+     72
+    ],
+    [
+     9,
+     69.9,
+     72,
+     72
+    ],
+    [
+     10,
+     69.9,
+     69.7,
+     70.7
+    ],
+    [
+     11,
+     70.1,
+     69.9,
+     71
+    ],
+    [
+     12,
+     70.4,
+     70.2,
+     71.2
+    ],
+    [
+     13,
+     70.6,
+     70.4,
+     71.5
+    ],
+    [
+     14,
+     70.85,
+     70.6,
+     71.8
+    ],
+    [
+     15,
+     71.15,
+     70.9,
+     72
+    ],
+    [
+     16,
+     71.35,
+     71.1,
+     72.3
+    ],
+    [
+     17,
+     71.65,
+     71.4,
+     72.6
+    ],
+    [
+     18,
+     71.9,
+     71.7,
+     72.9
+    ],
+    [
+     19,
+     72.2,
+     71.9,
+     73.2
+    ],
+    [
+     20,
+     72.5,
+     72.2,
+     73.5
+    ],
+    [
+     21,
+     72.8,
+     72.5,
+     73.8
+    ],
+    [
+     22,
+     73.05,
+     72.8,
+     74.1
+    ],
+    [
+     23,
+     73.35,
+     73.1,
+     74.4
+    ],
+    [
+     24,
+     73.65,
+     73.4,
+     74.7
+    ],
+    [
+     25,
+     73.95,
+     73.7,
+     75.1
+    ],
+    [
+     26,
+     74.3,
+     74,
+     75.4
+    ],
+    [
+     27,
+     74.6,
+     74.3,
+     75.7
+    ],
+    [
+     28,
+     74.95,
+     74.6,
+     76.1
+    ],
+    [
+     29,
+     75.3,
+     75,
+     76.4
+    ],
+    [
+     30,
+     75.65,
+     75.3,
+     76.8
+    ],
+    [
+     31,
+     76,
+     75.7,
+     77.2
+    ],
+    [
+     32,
+     76.35,
+     76,
+     77.6
+    ],
+    [
+     33,
+     76.75,
+     76.4,
+     78
+    ],
+    [
+     34,
+     77.15,
+     76.8,
+     78.4
+    ],
+    [
+     35,
+     77.5,
+     77.2,
+     78.8
+    ],
+    [
+     36,
+     77.9,
+     77.5,
+     79.2
+    ],
+    [
+     37,
+     78.3,
+     77.9,
+     79.6
+    ],
+    [
+     38,
+     78.7,
+     78.4,
+     80
+    ],
+    [
+     39,
+     79.15,
+     78.8,
+     80.5
+    ],
+    [
+     40,
+     79.55,
+     79,
+     81
+    ]
+   ],
+   "linhas": [
+    [
+     "1 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "2 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "3 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "4 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "5 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "6 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "7 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "8 semanas",
+     "-",
+     "-",
+     "45.7 Kg",
+     "-"
+    ],
+    [
+     "9 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "10 semanas",
+     "69.7 Kg",
+     "70.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "11 semanas",
+     "69.9 Kg",
+     "71.0 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "12 semanas",
+     "70.2 Kg",
+     "71.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "13 semanas",
+     "70.4 Kg",
+     "71.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "14 semanas",
+     "70.6 Kg",
+     "71.8 Kg",
+     "42.9 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "15 semanas",
+     "70.9 Kg",
+     "72.0 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "16 semanas",
+     "71.1 Kg",
+     "72.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "17 semanas",
+     "71.4 Kg",
+     "72.6 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "18 semanas",
+     "71.7 Kg",
+     "72.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "19 semanas",
+     "71.9 Kg",
+     "73.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "20 semanas",
+     "72.2 Kg",
+     "73.5 Kg",
+     "48.2 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "21 semanas",
+     "72.5 Kg",
+     "73.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "22 semanas",
+     "72.8 Kg",
+     "74.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "23 semanas",
+     "73.1 Kg",
+     "74.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "24 semanas",
+     "73.4 Kg",
+     "74.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "25 semanas",
+     "73.7 Kg",
+     "75.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "26 semanas",
+     "74.0 Kg",
+     "75.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "27 semanas",
+     "74.3 Kg",
+     "75.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "28 semanas",
+     "74.6 Kg",
+     "76.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "29 semanas",
+     "75.0 Kg",
+     "76.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "30 semanas",
+     "75.3 Kg",
+     "76.8 Kg",
+     "58.4 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "31 semanas",
+     "75.7 Kg",
+     "77.2 Kg",
+     "registrar peso",
+     "+19360 Kcal/dia"
+    ],
+    [
+     "32 semanas",
+     "76.0 Kg",
+     "77.6 Kg",
+     "registrar peso",
+     "+9845 Kcal/dia"
+    ],
+    [
+     "33 semanas",
+     "76.4 Kg",
+     "78.0 Kg",
+     "registrar peso",
+     "+6747 Kcal/dia"
+    ],
+    [
+     "34 semanas",
+     "76.8 Kg",
+     "78.4 Kg",
+     "registrar peso",
+     "+5170 Kcal/dia"
+    ],
+    [
+     "35 semanas",
+     "77.2 Kg",
+     "78.8 Kg",
+     "registrar peso",
+     "+4202 Kcal/dia"
+    ],
+    [
+     "36 semanas",
+     "77.5 Kg",
+     "79.2 Kg",
+     "registrar peso",
+     "+3575 Kcal/dia"
+    ],
+    [
+     "37 semanas",
+     "77.9 Kg",
+     "79.6 Kg",
+     "registrar peso",
+     "+3127 Kcal/dia"
+    ],
+    [
+     "38 semanas",
+     "78.4 Kg",
+     "80.0 Kg",
+     "registrar peso",
+     "+2791 Kcal/dia"
+    ],
+    [
+     "39 semanas",
+     "78.8 Kg",
+     "80.5 Kg",
+     "registrar peso",
+     "+2542 Kcal/dia"
+    ],
+    [
+     "40 semanas",
+     "79.0 Kg",
+     "81.0 Kg",
+     "registrar peso",
+     "+2321 Kcal/dia"
+    ]
+   ]
+  },
+  "testes": [
+   {
+    "sem": 8,
+    "pa": "71.1",
+    "dct": 20,
+    "cb": 27,
+    "tela": {
+     "semana": "8 sem",
+     "imc": "26.8 kg/m2",
+     "en": "N/D",
+     "cmb": "20.7 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "-0.90",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+19360 Kcal/dia",
+      "+9845 Kcal/dia",
+      "+6747 Kcal/dia",
+      "+5170 Kcal/dia",
+      "+4202 Kcal/dia",
+      "+3575 Kcal/dia",
+      "+3127 Kcal/dia",
+      "+2791 Kcal/dia",
+      "+2542 Kcal/dia",
+      "+2321 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 14,
+    "pa": "67.8",
+    "dct": 15,
+    "cb": 25,
+    "tela": {
+     "semana": "14 sem",
+     "imc": "25.5 kg/m2",
+     "en": "Abaixo do peso",
+     "cmb": "20.3 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p10 e p15",
+     "pesoTotal": "-4.20",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+19360 Kcal/dia",
+      "+9845 Kcal/dia",
+      "+6747 Kcal/dia",
+      "+5170 Kcal/dia",
+      "+4202 Kcal/dia",
+      "+3575 Kcal/dia",
+      "+3127 Kcal/dia",
+      "+2791 Kcal/dia",
+      "+2542 Kcal/dia",
+      "+2321 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 20,
+    "pa": "72.5",
+    "dct": 18.5,
+    "cb": 26,
+    "tela": {
+     "semana": "20 sem",
+     "imc": "27.3 kg/m2",
+     "en": "Saudável",
+     "cmb": "20.2 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "0.50",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+19360 Kcal/dia",
+      "+9845 Kcal/dia",
+      "+6747 Kcal/dia",
+      "+5170 Kcal/dia",
+      "+4202 Kcal/dia",
+      "+3575 Kcal/dia",
+      "+3127 Kcal/dia",
+      "+2791 Kcal/dia",
+      "+2542 Kcal/dia",
+      "+2321 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 30,
+    "pa": "81.7",
+    "dct": 25,
+    "cb": 29,
+    "tela": {
+     "semana": "30 sem",
+     "imc": "30.8 kg/m2",
+     "en": "Acima do peso",
+     "cmb": "21.1 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p50 e p75",
+     "pesoTotal": "9.70",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "cenario": {
+   "ppg": 85,
+   "alt": 163,
+   "tipo": "Única"
+  },
+  "base": {
+   "imcPpg": "32.0 kg/m2",
+   "classe": "Obesidade",
+   "semanaAtual": 20,
+   "idade": 35,
+   "tabela": [
+    [
+     1,
+     84.82733333333333,
+     85,
+     85
+    ],
+    [
+     2,
+     84.65466666666667,
+     85,
+     85
+    ],
+    [
+     3,
+     84.482,
+     85,
+     85
+    ],
+    [
+     4,
+     84.30933333333333,
+     85,
+     85
+    ],
+    [
+     5,
+     84.13666666666667,
+     85,
+     85
+    ],
+    [
+     6,
+     83.964,
+     85,
+     85
+    ],
+    [
+     7,
+     83.79133333333333,
+     85,
+     85
+    ],
+    [
+     8,
+     83.61866666666667,
+     85,
+     85
+    ],
+    [
+     9,
+     83.446,
+     85,
+     85
+    ],
+    [
+     10,
+     83.446,
+     83.2,
+     84.2
+    ],
+    [
+     11,
+     83.4985,
+     83.3,
+     84.3
+    ],
+    [
+     12,
+     83.598,
+     83.3,
+     84.4
+    ],
+    [
+     13,
+     83.65,
+     83.3,
+     84.5
+    ],
+    [
+     14,
+     83.776,
+     83.4,
+     84.6
+    ],
+    [
+     15,
+     83.8285,
+     83.5,
+     84.8
+    ],
+    [
+     16,
+     83.9545,
+     83.6,
+     84.9
+    ],
+    [
+     17,
+     84.0805,
+     83.7,
+     85.1
+    ],
+    [
+     18,
+     84.28,
+     83.8,
+     85.3
+    ],
+    [
+     19,
+     84.432,
+     84,
+     85.5
+    ],
+    [
+     20,
+     84.632,
+     84.2,
+     85.7
+    ],
+    [
+     21,
+     84.858,
+     84.4,
+     85.9
+    ],
+    [
+     22,
+     85.084,
+     84.6,
+     86.2
+    ],
+    [
+     23,
+     85.384,
+     84.9,
+     86.4
+    ],
+    [
+     24,
+     85.61,
+     85.2,
+     86.7
+    ],
+    [
+     25,
+     85.91,
+     85.5,
+     87
+    ],
+    [
+     26,
+     86.236,
+     85.8,
+     87.4
+    ],
+    [
+     27,
+     86.536,
+     86.1,
+     87.7
+    ],
+    [
+     28,
+     86.91,
+     86.4,
+     88
+    ],
+    [
+     29,
+     87.236,
+     86.7,
+     88.4
+    ],
+    [
+     30,
+     87.536,
+     87,
+     88.7
+    ],
+    [
+     31,
+     87.862,
+     87.3,
+     89
+    ],
+    [
+     32,
+     88.162,
+     87.7,
+     89.4
+    ],
+    [
+     33,
+     88.562,
+     88,
+     89.7
+    ],
+    [
+     34,
+     88.862,
+     88.3,
+     90.1
+    ],
+    [
+     35,
+     89.188,
+     88.6,
+     90.4
+    ],
+    [
+     36,
+     89.514,
+     89,
+     90.7
+    ],
+    [
+     37,
+     89.84,
+     89.3,
+     91.1
+    ],
+    [
+     38,
+     90.14,
+     89.6,
+     91.4
+    ],
+    [
+     39,
+     90.54,
+     89.9,
+     91.8
+    ],
+    [
+     40,
+     90.866,
+     90,
+     92.2
+    ]
+   ],
+   "linhas": [
+    [
+     "1 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "2 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "3 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "4 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "5 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "6 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "7 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "8 semanas",
+     "-",
+     "-",
+     "71.1 Kg",
+     "-"
+    ],
+    [
+     "9 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "10 semanas",
+     "83.2 Kg",
+     "84.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "11 semanas",
+     "83.3 Kg",
+     "84.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "12 semanas",
+     "83.3 Kg",
+     "84.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "13 semanas",
+     "83.3 Kg",
+     "84.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "14 semanas",
+     "83.4 Kg",
+     "84.6 Kg",
+     "67.8 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "15 semanas",
+     "83.5 Kg",
+     "84.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "16 semanas",
+     "83.6 Kg",
+     "84.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "17 semanas",
+     "83.7 Kg",
+     "85.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "18 semanas",
+     "83.8 Kg",
+     "85.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "19 semanas",
+     "84.0 Kg",
+     "85.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "20 semanas",
+     "84.2 Kg",
+     "85.7 Kg",
+     "72.5 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "21 semanas",
+     "84.4 Kg",
+     "85.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "22 semanas",
+     "84.6 Kg",
+     "86.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "23 semanas",
+     "84.9 Kg",
+     "86.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "24 semanas",
+     "85.2 Kg",
+     "86.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "25 semanas",
+     "85.5 Kg",
+     "87.0 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "26 semanas",
+     "85.8 Kg",
+     "87.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "27 semanas",
+     "86.1 Kg",
+     "87.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "28 semanas",
+     "86.4 Kg",
+     "88.0 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "29 semanas",
+     "86.7 Kg",
+     "88.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "30 semanas",
+     "87.0 Kg",
+     "88.7 Kg",
+     "81.7 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "31 semanas",
+     "87.3 Kg",
+     "89.0 Kg",
+     "registrar peso",
+     "+6820 Kcal/dia"
+    ],
+    [
+     "32 semanas",
+     "87.7 Kg",
+     "89.4 Kg",
+     "registrar peso",
+     "+3575 Kcal/dia"
+    ],
+    [
+     "33 semanas",
+     "88.0 Kg",
+     "89.7 Kg",
+     "registrar peso",
+     "+2530 Kcal/dia"
+    ],
+    [
+     "34 semanas",
+     "88.3 Kg",
+     "90.1 Kg",
+     "registrar peso",
+     "+1980 Kcal/dia"
+    ],
+    [
+     "35 semanas",
+     "88.6 Kg",
+     "90.4 Kg",
+     "registrar peso",
+     "+1650 Kcal/dia"
+    ],
+    [
+     "36 semanas",
+     "89.0 Kg",
+     "90.7 Kg",
+     "registrar peso",
+     "+1430 Kcal/dia"
+    ],
+    [
+     "37 semanas",
+     "89.3 Kg",
+     "91.1 Kg",
+     "registrar peso",
+     "+1273 Kcal/dia"
+    ],
+    [
+     "38 semanas",
+     "89.6 Kg",
+     "91.4 Kg",
+     "registrar peso",
+     "+1155 Kcal/dia"
+    ],
+    [
+     "39 semanas",
+     "89.9 Kg",
+     "91.8 Kg",
+     "registrar peso",
+     "+1076 Kcal/dia"
+    ],
+    [
+     "40 semanas",
+     "90.0 Kg",
+     "92.2 Kg",
+     "registrar peso",
+     "+1012 Kcal/dia"
+    ]
+   ]
+  },
+  "testes": [
+   {
+    "sem": 8,
+    "pa": "84.6",
+    "dct": 20,
+    "cb": 27,
+    "tela": {
+     "semana": "8 sem",
+     "imc": "31.8 kg/m2",
+     "en": "N/D",
+     "cmb": "20.7 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "-0.40",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+6820 Kcal/dia",
+      "+3575 Kcal/dia",
+      "+2530 Kcal/dia",
+      "+1980 Kcal/dia",
+      "+1650 Kcal/dia",
+      "+1430 Kcal/dia",
+      "+1273 Kcal/dia",
+      "+1155 Kcal/dia",
+      "+1076 Kcal/dia",
+      "+1012 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 14,
+    "pa": "80.8",
+    "dct": 15,
+    "cb": 25,
+    "tela": {
+     "semana": "14 sem",
+     "imc": "30.4 kg/m2",
+     "en": "Abaixo do peso",
+     "cmb": "20.3 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p10 e p15",
+     "pesoTotal": "-4.20",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+6820 Kcal/dia",
+      "+3575 Kcal/dia",
+      "+2530 Kcal/dia",
+      "+1980 Kcal/dia",
+      "+1650 Kcal/dia",
+      "+1430 Kcal/dia",
+      "+1273 Kcal/dia",
+      "+1155 Kcal/dia",
+      "+1076 Kcal/dia",
+      "+1012 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 20,
+    "pa": "84.6",
+    "dct": 18.5,
+    "cb": 26,
+    "tela": {
+     "semana": "20 sem",
+     "imc": "31.8 kg/m2",
+     "en": "Saudável",
+     "cmb": "20.2 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "-0.40",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "+6820 Kcal/dia",
+      "+3575 Kcal/dia",
+      "+2530 Kcal/dia",
+      "+1980 Kcal/dia",
+      "+1650 Kcal/dia",
+      "+1430 Kcal/dia",
+      "+1273 Kcal/dia",
+      "+1155 Kcal/dia",
+      "+1076 Kcal/dia",
+      "+1012 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 30,
+    "pa": "93.5",
+    "dct": 25,
+    "cb": 29,
+    "tela": {
+     "semana": "30 sem",
+     "imc": "35.2 kg/m2",
+     "en": "Acima do peso",
+     "cmb": "21.1 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p50 e p75",
+     "pesoTotal": "8.50",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "cenario": {
+   "ppg": 62,
+   "alt": 163,
+   "tipo": "Gemelar"
+  },
+  "base": {
+   "imcPpg": "23.3 kg/m2",
+   "classe": "Saudável",
+   "semanaAtual": 20,
+   "idade": 35,
+   "tabela": [
+    [
+     1,
+     62.62777777777778,
+     62,
+     62
+    ],
+    [
+     2,
+     63.25555555555556,
+     62,
+     62
+    ],
+    [
+     3,
+     63.88333333333333,
+     62,
+     62
+    ],
+    [
+     4,
+     64.51111111111112,
+     62,
+     62
+    ],
+    [
+     5,
+     65.13888888888889,
+     62,
+     62
+    ],
+    [
+     6,
+     65.76666666666667,
+     62,
+     62
+    ],
+    [
+     7,
+     66.39444444444445,
+     62,
+     62
+    ],
+    [
+     8,
+     67.02222222222223,
+     62,
+     62
+    ],
+    [
+     9,
+     67.65,
+     62,
+     62
+    ],
+    [
+     10,
+     67.65,
+     66.5,
+     68.8
+    ],
+    [
+     11,
+     68.215,
+     66.95,
+     69.48
+    ],
+    [
+     12,
+     68.78,
+     67.4,
+     70.16
+    ],
+    [
+     13,
+     69.345,
+     67.85,
+     70.84
+    ],
+    [
+     14,
+     69.91,
+     68.3,
+     71.52
+    ],
+    [
+     15,
+     70.475,
+     68.75,
+     72.2
+    ],
+    [
+     16,
+     71.04,
+     69.2,
+     72.88
+    ],
+    [
+     17,
+     71.605,
+     69.65,
+     73.56
+    ],
+    [
+     18,
+     72.17,
+     70.1,
+     74.24
+    ],
+    [
+     19,
+     72.735,
+     70.55,
+     74.92
+    ],
+    [
+     20,
+     73.3,
+     71,
+     75.6
+    ],
+    [
+     21,
+     73.975,
+     71.56,
+     76.39
+    ],
+    [
+     22,
+     74.65,
+     72.12,
+     77.18
+    ],
+    [
+     23,
+     75.325,
+     72.68,
+     77.97
+    ],
+    [
+     24,
+     76,
+     73.24,
+     78.76
+    ],
+    [
+     25,
+     76.675,
+     73.8,
+     79.55
+    ],
+    [
+     26,
+     77.35,
+     74.36,
+     80.34
+    ],
+    [
+     27,
+     78.025,
+     74.92,
+     81.13
+    ],
+    [
+     28,
+     78.7,
+     75.48,
+     81.92
+    ],
+    [
+     29,
+     79.15,
+     75.93,
+     82.37
+    ],
+    [
+     30,
+     79.6,
+     76.38,
+     82.82
+    ],
+    [
+     31,
+     80.05,
+     76.83,
+     83.27
+    ],
+    [
+     32,
+     80.5,
+     77.28,
+     83.72
+    ],
+    [
+     33,
+     80.95,
+     77.73,
+     84.17
+    ],
+    [
+     34,
+     81.4,
+     78.18,
+     84.62
+    ],
+    [
+     35,
+     81.85,
+     78.63,
+     85.07
+    ],
+    [
+     36,
+     82.3,
+     79.08,
+     85.52
+    ],
+    [
+     37,
+     82.75,
+     79.53,
+     85.97
+    ],
+    [
+     38,
+     83.2,
+     79.98,
+     86.42
+    ],
+    [
+     39,
+     83.65,
+     80.43,
+     86.87
+    ],
+    [
+     40,
+     84.1,
+     80.88,
+     87.32
+    ]
+   ],
+   "linhas": [
+    [
+     "1 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "2 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "3 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "4 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "5 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "6 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "7 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "8 semanas",
+     "-",
+     "-",
+     "84.6 Kg",
+     "-"
+    ],
+    [
+     "9 semanas",
+     "-",
+     "-",
+     "registrar peso",
+     "-"
+    ],
+    [
+     "10 semanas",
+     "66.5 Kg",
+     "68.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "11 semanas",
+     "67.0 Kg",
+     "69.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "12 semanas",
+     "67.4 Kg",
+     "70.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "13 semanas",
+     "67.8 Kg",
+     "70.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "14 semanas",
+     "68.3 Kg",
+     "71.5 Kg",
+     "80.8 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "15 semanas",
+     "68.8 Kg",
+     "72.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "16 semanas",
+     "69.2 Kg",
+     "72.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "17 semanas",
+     "69.7 Kg",
+     "73.6 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "18 semanas",
+     "70.1 Kg",
+     "74.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "19 semanas",
+     "70.5 Kg",
+     "74.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "20 semanas",
+     "71.0 Kg",
+     "75.6 Kg",
+     "84.6 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "21 semanas",
+     "71.6 Kg",
+     "76.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "22 semanas",
+     "72.1 Kg",
+     "77.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "23 semanas",
+     "72.7 Kg",
+     "78.0 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "24 semanas",
+     "73.2 Kg",
+     "78.8 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "25 semanas",
+     "73.8 Kg",
+     "79.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "26 semanas",
+     "74.4 Kg",
+     "80.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "27 semanas",
+     "74.9 Kg",
+     "81.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "28 semanas",
+     "75.5 Kg",
+     "81.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "29 semanas",
+     "75.9 Kg",
+     "82.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "30 semanas",
+     "76.4 Kg",
+     "82.8 Kg",
+     "93.5 Kg",
+     "0 Kcal/dia"
+    ],
+    [
+     "31 semanas",
+     "76.8 Kg",
+     "83.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "32 semanas",
+     "77.3 Kg",
+     "83.7 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "33 semanas",
+     "77.7 Kg",
+     "84.2 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "34 semanas",
+     "78.2 Kg",
+     "84.6 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "35 semanas",
+     "78.6 Kg",
+     "85.1 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "36 semanas",
+     "79.1 Kg",
+     "85.5 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "37 semanas",
+     "79.5 Kg",
+     "86.0 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "38 semanas",
+     "80.0 Kg",
+     "86.4 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "39 semanas",
+     "80.4 Kg",
+     "86.9 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ],
+    [
+     "40 semanas",
+     "80.9 Kg",
+     "87.3 Kg",
+     "registrar peso",
+     "0 Kcal/dia"
+    ]
+   ]
+  },
+  "testes": [
+   {
+    "sem": 8,
+    "pa": "68.0",
+    "dct": 20,
+    "cb": 27,
+    "tela": {
+     "semana": "8 sem",
+     "imc": "25.6 kg/m2",
+     "en": "N/D",
+     "cmb": "20.7 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "6.00",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 14,
+    "pa": "66.9",
+    "dct": 15,
+    "cb": 25,
+    "tela": {
+     "semana": "14 sem",
+     "imc": "25.2 kg/m2",
+     "en": "Abaixo do peso",
+     "cmb": "20.3 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p10 e p15",
+     "pesoTotal": "4.90",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 20,
+    "pa": "73.3",
+    "dct": 18.5,
+    "cb": 26,
+    "tela": {
+     "semana": "20 sem",
+     "imc": "27.6 kg/m2",
+     "en": "Saudável",
+     "cmb": "20.2 cm",
+     "proteico": "Entre p10 e p25",
+     "lipidico": "Entre p25 e p50",
+     "pesoTotal": "11.30",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   },
+   {
+    "sem": 30,
+    "pa": "85.6",
+    "dct": 25,
+    "cb": 29,
+    "tela": {
+     "semana": "30 sem",
+     "imc": "32.2 kg/m2",
+     "en": "Acima do peso",
+     "cmb": "21.1 cm",
+     "proteico": "Entre p25 e p50",
+     "lipidico": "Entre p50 e p75",
+     "pesoTotal": "23.60",
+     "kcal": [
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "-",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia",
+      "0 Kcal/dia"
+     ]
+    }
+   }
+  ]
+ }
+]

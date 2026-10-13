@@ -1,0 +1,1022 @@
+{
+ "alimentos": {
+  "40": {
+   "id": "40",
+   "nome": "Arroz cozido",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Colher(es) de arroz rasa(s)",
+     "peso": "30"
+    },
+    {
+     "nome_mc": "Colher(es) de sopa cheia(s)",
+     "peso": "25"
+    },
+    {
+     "nome_mc": "Xícara(s) de chá",
+     "peso": "130"
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 128,
+   "ptn": 2.5,
+   "lip": 0.2,
+   "cho": 28.1,
+   "fibras": 1.6,
+   "micros": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1.6,
+    4,
+    2,
+    18,
+    0.1,
+    1,
+    15,
+    0.02,
+    0.5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "46": {
+   "id": "46",
+   "nome": "Azeite de dendê",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Colher(es) de sopa",
+     "peso": "8"
+    },
+    {
+     "nome_mc": "Colher(es) de chá",
+     "peso": "2"
+    },
+    {
+     "nome_mc": "Colher(es) de sobremesa",
+     "peso": "5"
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 884,
+   "ptn": 0,
+   "lip": 100,
+   "cho": 0,
+   "fibras": 0,
+   "micros": [
+    4.01,
+    16.1,
+    43.1,
+    0.14,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "59": {
+   "id": "59",
+   "nome": "Banana prata",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Unidade(s) grande(s)",
+     "peso": 55
+    },
+    {
+     "nome_mc": "Unidade(s) pequena(s)",
+     "peso": 30
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 98,
+   "ptn": 1.3,
+   "lip": 0.1,
+   "cho": 26,
+   "fibras": 2,
+   "micros": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    8,
+    26,
+    22,
+    0.4,
+    0,
+    358,
+    0.05,
+    0.1,
+    0,
+    32,
+    16,
+    0,
+    0,
+    0,
+    0.02,
+    0.1,
+    0,
+    21.6,
+    0,
+    0,
+    0
+   ]
+  },
+  "202": {
+   "id": "202",
+   "nome": "Feijão carioca cozido",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Concha(s) cheia(s)",
+     "peso": "140"
+    },
+    {
+     "nome_mc": "Concha(s) rasa(s)",
+     "peso": "80"
+    },
+    {
+     "nome_mc": "Colher(es) de sopa cheia(s)",
+     "peso": "17"
+    },
+    {
+     "nome_mc": "Colher(es) de servir cheia(s)",
+     "peso": "35"
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 76,
+   "ptn": 4.8,
+   "lip": 0.5,
+   "cho": 13.6,
+   "fibras": 8.5,
+   "micros": [
+    0.1,
+    0.3,
+    0.1,
+    0,
+    0,
+    8.5,
+    27,
+    42,
+    87,
+    1.3,
+    2,
+    255,
+    0.19,
+    0.7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.04,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "215": {
+   "id": "215",
+   "nome": "Coração de frango grelhado",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Unidade(s) grande(s)",
+     "peso": "8"
+    },
+    {
+     "nome_mc": "Unidade(s) média(s)",
+     "peso": "5"
+    },
+    {
+     "nome_mc": "Unidade(s) pequena(s)",
+     "peso": "3"
+    },
+    {
+     "nome_mc": "Colher(es) de sopa cheia(s)",
+     "peso": "25"
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 207,
+   "ptn": 22.4,
+   "lip": 12.1,
+   "cho": 0.6,
+   "fibras": 0,
+   "micros": [
+    4.3,
+    1.6,
+    3.5,
+    0.1,
+    280,
+    0,
+    8,
+    20,
+    276,
+    6.5,
+    128,
+    243,
+    0.3,
+    3.4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.2,
+    0.19,
+    0,
+    9.7,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "264": {
+   "id": "264",
+   "nome": "Leite integral ",
+   "origem": "TACO",
+   "unidade": "ml",
+   "mc": [
+    {
+     "nome_mc": "Copo(s) americano(s) pequeno(s)",
+     "peso": "165"
+    },
+    {
+     "nome_mc": "Copo(s) americano(s) duplo(s)",
+     "peso": "240"
+    },
+    {
+     "nome_mc": "Copo(s) médio(s)",
+     "peso": "200"
+    },
+    {
+     "nome_mc": "mililitro(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 60.3,
+   "ptn": 3.22,
+   "lip": 3.25,
+   "cho": 4.52,
+   "fibras": 0,
+   "micros": [
+    0.7,
+    0.1,
+    1.4,
+    0,
+    10,
+    0,
+    123,
+    10,
+    82,
+    0,
+    64,
+    133,
+    0.02,
+    0.4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.04,
+    0.24,
+    0,
+    1.52,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "336": {
+   "id": "336",
+   "nome": "Ovo de galinha cozido",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Unidade(s) média(s)",
+     "peso": "45"
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 146,
+   "ptn": 13.3,
+   "lip": 9.5,
+   "cho": 0.6,
+   "fibras": 0,
+   "micros": [
+    3.8,
+    1.1,
+    2.9,
+    0.02,
+    397,
+    0,
+    49,
+    11,
+    184,
+    1.5,
+    146,
+    139,
+    0.04,
+    1.2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.08,
+    0.3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "348": {
+   "id": "348",
+   "nome": "Pão francês",
+   "origem": "TACO",
+   "unidade": "g",
+   "mc": [
+    {
+     "nome_mc": "Unidade(s)",
+     "peso": "50"
+    },
+    {
+     "nome_mc": "Unidade(s) sem miolo",
+     "peso": "30"
+    },
+    {
+     "nome_mc": "grama(s)",
+     "peso": 1
+    },
+    {
+     "nome_mc": "À vontade",
+     "peso": 0
+    }
+   ],
+   "kcal": 300,
+   "ptn": 8,
+   "lip": 3.1,
+   "cho": 58.6,
+   "fibras": 2.3,
+   "micros": [
+    0.9,
+    0.7,
+    1,
+    0.37,
+    0,
+    2.3,
+    16,
+    25,
+    95,
+    1,
+    648,
+    142,
+    0.13,
+    0.8,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.39,
+    0.67,
+    0.6,
+    2.34,
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ },
+ "refeicoes": [
+  {
+   "linhas": [
+    {
+     "id": "348",
+     "qtd": "1",
+     "medida": "Unidade(s)",
+     "medidaPeso": "50",
+     "peso": "50g",
+     "ptn": "4.0g",
+     "lip": "1.6g",
+     "cho": "29.3 g",
+     "kcal": "150 Kcal"
+    },
+    {
+     "id": "264",
+     "qtd": "1.5",
+     "medida": "Copo(s) americano(s) pequeno(s)",
+     "medidaPeso": "165",
+     "peso": "247.5ml",
+     "ptn": "8.0g",
+     "lip": "8.0g",
+     "cho": "11.2 g",
+     "kcal": "149 Kcal"
+    },
+    {
+     "id": "59",
+     "qtd": "2",
+     "medida": "Unidade(s) grande(s)",
+     "medidaPeso": "55",
+     "peso": "110g",
+     "ptn": "1.4g",
+     "lip": "0.1g",
+     "cho": "28.6g",
+     "kcal": "108 Kcal"
+    }
+   ],
+   "tot": {
+    "peso": "408g",
+    "ptn": "13.4g",
+    "lip": "9.7g",
+    "cho": "69.1g",
+    "kcal": "407 Kcal",
+    "dens": "1.00",
+    "classe": "Refeição com densidade baixa(0.6 até 1.5 Kcal/g)",
+    "gptn": "Proteínas - 13.4g (13.2%)",
+    "glip": "Lipídios - 9.7g (21.5%)",
+    "gcho": "Carbo - 69.1g (65.3%)"
+   }
+  },
+  {
+   "linhas": [
+    {
+     "id": "40",
+     "qtd": "4",
+     "medida": "Colher(es) de arroz rasa(s)",
+     "medidaPeso": "30",
+     "peso": "120g",
+     "ptn": "3.0g",
+     "lip": "0.2g",
+     "cho": "33.7 g",
+     "kcal": "154 Kcal"
+    },
+    {
+     "id": "202",
+     "qtd": "150",
+     "medida": "grama(s)",
+     "medidaPeso": "1",
+     "peso": "150g",
+     "ptn": "7.2g",
+     "lip": "0.8g",
+     "cho": "20.4 g",
+     "kcal": "114 Kcal"
+    },
+    {
+     "id": "215",
+     "qtd": "120",
+     "medida": "grama(s)",
+     "medidaPeso": "1",
+     "peso": "120g",
+     "ptn": "26.9g",
+     "lip": "14.5g",
+     "cho": "0.7 g",
+     "kcal": "248 Kcal"
+    },
+    {
+     "id": "46",
+     "qtd": "1",
+     "medida": "Colher(es) de sopa",
+     "medidaPeso": "8",
+     "peso": "8g",
+     "ptn": "0.0g",
+     "lip": "8.0g",
+     "cho": "0.0g",
+     "kcal": "71 Kcal"
+    }
+   ],
+   "tot": {
+    "peso": "398g",
+    "ptn": "37.1g",
+    "lip": "23.5g",
+    "cho": "54.8g",
+    "kcal": "587 Kcal",
+    "dens": "1.47",
+    "classe": "Refeição com densidade baixa(0.6 até 1.5 Kcal/g)",
+    "gptn": "Proteínas - 37.1g (25.3%)",
+    "glip": "Lipídios - 23.5g (36.1%)",
+    "gcho": "Carbo - 54.8g (38.6%)"
+   }
+  },
+  {
+   "linhas": [
+    {
+     "id": "336",
+     "qtd": "2",
+     "medida": "Unidade(s) média(s)",
+     "medidaPeso": "45",
+     "peso": "90g",
+     "ptn": "12.0g",
+     "lip": "8.6g",
+     "cho": "0.5 g",
+     "kcal": "131 Kcal"
+    },
+    {
+     "id": "40",
+     "qtd": "100",
+     "medida": "grama(s)",
+     "medidaPeso": "1",
+     "peso": "100g",
+     "ptn": "2.5g",
+     "lip": "0.2g",
+     "cho": "28.1g",
+     "kcal": "128 Kcal"
+    }
+   ],
+   "tot": {
+    "peso": "190g",
+    "ptn": "14.5g",
+    "lip": "8.8g",
+    "cho": "28.6g",
+    "kcal": "259 Kcal",
+    "dens": "1.37",
+    "classe": "Refeição com densidade baixa(0.6 até 1.5 Kcal/g)",
+    "gptn": "Proteínas - 14.5g (22.3%)",
+    "glip": "Lipídios - 8.8g (30.4%)",
+    "gcho": "Carbo - 28.6g (47.3%)"
+   }
+  }
+ ],
+ "total": null,
+ "refs": [
+  {
+   "tipo": "percentual",
+   "get": 2500,
+   "peso": 80,
+   "ptn": 20,
+   "lip": 30,
+   "cho": "50",
+   "tela": {
+    "ptnPrescrita": "50.5g (0.6g/Kg)",
+    "lipPrescrita": "33.2g (0.4g/Kg)",
+    "choPrescrita": "123.9g (1.5g/Kg)",
+    "choDisponivelPrescrita": "105.9g (1.3g/Kg)",
+    "fibrasPrescrita": "18g",
+    "kcalPrescrita": "994 Kcal (12.4 Kcal/Kg)",
+    "gNPrescrita": "98.3 Kcal",
+    "densidadePrescrita": "1.23 Kcal/g",
+    "ptnTotalanalise": "202 Kcal - 20.3%",
+    "lipTotalanalise": "298.8 Kcal - 30.1%",
+    "choTotalanalise": "493.2 Kcal - 49.6%",
+    "kcalTotalanalise": "994 Kcal",
+    "ptnPlanejada": "125.0g (1.6g/Kg)",
+    "lipPlanejada": "83.3g (1.0g/Kg)",
+    "choPlanejada": "312.5g (3.9g/Kg)",
+    "kcalPlanejada": "2500 Kcal (31.3 Kcal/Kg)",
+    "gNPlanejada": "72.9 Kcal",
+    "ptnAdequacao": "-74.5g",
+    "lipAdequacao": "-50.1g",
+    "choAdequacao": "-188.6g",
+    "kcalAdequacao": "-1506 Kcal",
+    "gNAdequacao": "25 Kcal",
+    "cores": {
+     "ptnAdequacao": "rgb(0, 0, 0)",
+     "lipAdequacao": "rgb(0, 0, 0)",
+     "choAdequacao": "rgb(0, 0, 0)",
+     "kcalAdequacao": "rgb(0, 0, 0)",
+     "gNAdequacao": "rgb(238, 9, 29)"
+    },
+    "micros": [
+     [
+      "7.8",
+      "",
+      ""
+     ],
+     [
+      "4.3",
+      "",
+      ""
+     ],
+     [
+      "11.8",
+      "",
+      ""
+     ],
+     [
+      "0.3",
+      "",
+      "0"
+     ],
+     [
+      "360.8",
+      "",
+      "N/D"
+     ],
+     [
+      "18.0",
+      "47.4%",
+      "38 g"
+     ],
+     [
+      "376.1",
+      "37.6%",
+      "1000 mg"
+     ],
+     [
+      "155.3",
+      "37.0%",
+      "420 mg"
+     ],
+     [
+      "758.0",
+      "108.3%",
+      "700 mg"
+     ],
+     [
+      "10.8",
+      "135.0%",
+      "8 mg"
+     ],
+     [
+      "640.2",
+      "42.7%",
+      "1500 mg"
+     ],
+     [
+      "1486.1",
+      "43.7%",
+      "3400 mg"
+     ],
+     [
+      "0.8",
+      "88.9%",
+      "0.9 mg"
+     ],
+     [
+      "7.2",
+      "65.5%",
+      "11 mg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "55 mcg"
+     ],
+     [
+      "35.2",
+      "",
+      "N/D"
+     ],
+     [
+      "17.6",
+      "2.0%",
+      "900 mcg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "400 mcg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "2.4 mcg"
+     ],
+     [
+      "0.6",
+      "50.0%",
+      "1.2 mg"
+     ],
+     [
+      "1.2",
+      "92.3%",
+      "1.3 mg"
+     ],
+     [
+      "0.4",
+      "30.8%",
+      "1.3 mg"
+     ],
+     [
+      "16.6",
+      "103.8%",
+      "16 mg"
+     ],
+     [
+      "23.8",
+      "26.4%",
+      "90 mg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "15 mcg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "15 mg"
+     ],
+     [
+      "0.0",
+      "",
+      "0"
+     ]
+    ],
+    "ativos": [
+     "true",
+     "true",
+     "false"
+    ],
+    "totalMacros": [
+     50.5,
+     33.2,
+     123.9,
+     994,
+     18,
+     805.5
+    ]
+   }
+  },
+  {
+   "tipo": "gkg",
+   "peso": 80,
+   "ptn": 1.6,
+   "lip": 1,
+   "cho": 4,
+   "get": "2512",
+   "tela": {
+    "ptnPrescrita": "50.5g (0.6g/Kg)",
+    "lipPrescrita": "33.2g (0.4g/Kg)",
+    "choPrescrita": "123.9g (1.5g/Kg)",
+    "choDisponivelPrescrita": "105.9g (1.3g/Kg)",
+    "fibrasPrescrita": "18g",
+    "kcalPrescrita": "994 Kcal (12.4 Kcal/Kg)",
+    "gNPrescrita": "98.3 Kcal",
+    "densidadePrescrita": "1.23 Kcal/g",
+    "ptnTotalanalise": "202 Kcal - 20.3%",
+    "lipTotalanalise": "298.8 Kcal - 30.1%",
+    "choTotalanalise": "493.2 Kcal - 49.6%",
+    "kcalTotalanalise": "994 Kcal",
+    "ptnPlanejada": "128.0g (1.6g/Kg)",
+    "lipPlanejada": "80.0g (1.0g/Kg)",
+    "choPlanejada": "320.0g (4.0g/Kg)",
+    "kcalPlanejada": "2512 Kcal (31.4 Kcal/Kg)",
+    "gNPlanejada": "71.9 Kcal",
+    "ptnAdequacao": "-77.5g",
+    "lipAdequacao": "-46.8g",
+    "choAdequacao": "-196.1g",
+    "kcalAdequacao": "-1518 Kcal",
+    "gNAdequacao": "26 Kcal",
+    "cores": {
+     "ptnAdequacao": "rgb(0, 0, 0)",
+     "lipAdequacao": "rgb(0, 0, 0)",
+     "choAdequacao": "rgb(0, 0, 0)",
+     "kcalAdequacao": "rgb(0, 0, 0)",
+     "gNAdequacao": "rgb(238, 9, 29)"
+    },
+    "micros": [
+     [
+      "7.8",
+      "",
+      ""
+     ],
+     [
+      "4.3",
+      "",
+      ""
+     ],
+     [
+      "11.8",
+      "",
+      ""
+     ],
+     [
+      "0.3",
+      "",
+      "0"
+     ],
+     [
+      "360.8",
+      "",
+      "N/D"
+     ],
+     [
+      "18.0",
+      "47.4%",
+      "38 g"
+     ],
+     [
+      "376.1",
+      "37.6%",
+      "1000 mg"
+     ],
+     [
+      "155.3",
+      "37.0%",
+      "420 mg"
+     ],
+     [
+      "758.0",
+      "108.3%",
+      "700 mg"
+     ],
+     [
+      "10.8",
+      "135.0%",
+      "8 mg"
+     ],
+     [
+      "640.2",
+      "42.7%",
+      "1500 mg"
+     ],
+     [
+      "1486.1",
+      "43.7%",
+      "3400 mg"
+     ],
+     [
+      "0.8",
+      "88.9%",
+      "0.9 mg"
+     ],
+     [
+      "7.2",
+      "65.5%",
+      "11 mg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "55 mcg"
+     ],
+     [
+      "35.2",
+      "",
+      "N/D"
+     ],
+     [
+      "17.6",
+      "2.0%",
+      "900 mcg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "400 mcg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "2.4 mcg"
+     ],
+     [
+      "0.6",
+      "50.0%",
+      "1.2 mg"
+     ],
+     [
+      "1.2",
+      "92.3%",
+      "1.3 mg"
+     ],
+     [
+      "0.4",
+      "30.8%",
+      "1.3 mg"
+     ],
+     [
+      "16.6",
+      "103.8%",
+      "16 mg"
+     ],
+     [
+      "23.8",
+      "26.4%",
+      "90 mg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "15 mcg"
+     ],
+     [
+      "0.0",
+      "0.0%",
+      "15 mg"
+     ],
+     [
+      "0.0",
+      "",
+      "0"
+     ]
+    ],
+    "ativos": [
+     "true",
+     "true",
+     "false"
+    ],
+    "totalMacros": [
+     50.5,
+     33.2,
+     123.9,
+     994,
+     18,
+     805.5
+    ]
+   }
+  }
+ ]
+}

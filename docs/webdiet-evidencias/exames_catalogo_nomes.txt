@@ -1,0 +1,196 @@
+ACTH (Homônio Adrenocorticotrófico)
+Alanina Aminotransferase (ALT ou TGP)
+Albumina
+Aldosterona
+Alfa-1 globulina
+Alfa-2 globulina
+Amilase
+Amilase urinária
+Anti-mulleriano (HAM)
+Anticorpo Anti-endomísio
+Anticorpo anti-gliadina deaminada
+Anticorpo Anti-gliadina IgA
+Anticorpo Antimicrossomal (anti-TPO)
+Antitransglutaminase tecidual IgA
+Apolipoproteína A-I (apo A-I)
+Apoliproteína B (apo B)
+Aspartato Aminotransferase (AST ou TGO)
+Basófilos
+Beta HCG
+Betaglobulina
+Bilirrubina direta
+Bilirrubina indireta
+Bilirrubina total
+CA125
+Calcitonina
+Calciúria
+Capacidade total de ligação de ferro (CTLF)
+Ceruloplasmina
+Clearence de Creatinina
+Cloretos
+Cobre
+Colesterol não HDL
+Colesterol Total
+Concentração de HCM (CHCM)
+Concentração de hemoglobina corposcular média (CHCM)
+Contagem de Plaquetas
+Cortisol (saliva)
+Cortisol (soro)
+Cortisol livre na urina de 24h
+Creatinina
+Creatinofosfoquinase (CPK)
+Creatinoquinase (CK)
+Creatinoquinase fração MB (CK-MB)
+Cromo
+Cálcio ionizado
+Cálcio Total
+Cálcio Urinário
+Desidrogenase Láctica (LDH)
+DHEA
+DHT
+Eosinófilos
+Estradiol
+Estrona
+Exame de fezes - Coproporfirina
+Exame de fezes - Cor
+Exame de fezes - Células epiteliais
+Exame de fezes - Fungos
+Exame de fezes - Gorduras
+Exame de fezes - Hemácias
+Exame de fezes - Ph
+Exame de fezes - Sangue oculto
+Exame de fezes - Tripsina
+Exame de fezes - Volume
+Exame de fezes - Água
+Fator de crescimento (IGF-1)
+Fator de necrose tumoral (TNF)
+Ferritina sérica
+Ferro sérico
+Fibrinogênio
+Fosfatase Alcalina (FA)
+Fosfatúria
+Frutosamina
+Fósforo
+Gamaglobulina
+Gamaglutamiltransferase (GGT)
+GH ( Homônio do Crescimento )
+Glicemia de jejum
+Glicemia pós-prandial
+Glob. Ligadora de Tiroxina
+Globulina
+Glucagon
+Hematócrito
+Hemoglobina
+Hemoglobina Corpuscular Média (HCM)
+Hemoglobina Glicada A1c
+Hemácias
+Hiato aniônico
+HLA DQ2 e DQ8
+Homocisteína
+Hormônio estimulante da tireóide (TSH)
+Hormônio Folículo-Estimulante (FSH)
+Hormônio Luteinizante (LH)
+IgG anti gliadina
+Insulina
+Insulina pós-prandial
+Interleucina 1 (IL-1)
+Interleucina 6 (IL-6)
+Leucócitos
+Linfócitos
+Linfócitos reativos
+Lipase
+Lipoproteína de alta densidade (HDL)
+Lipoproteína de baixa densidade (LDL)
+Lipoproteína de muito baixa densidade (VLDL)
+Magnésio
+Manganês
+Microalbuminúria
+Mioglobina
+Monócitos
+Neutrófilos
+Neutrófilos bastonetes
+Neutrófilos segmentares
+Osmolalidade sérica
+Parasitológico - Crist. Hematoidina
+Parasitológico - Magnésio
+Parasitológico - nas fezes
+Parasitológico - Nitrogênio
+Parasitológico - Osmolaridade
+Parasitológico - Potássio
+Parasitológico - Sódio
+Parasitológico - Urobilinogênio
+Paratormônio (PTH)
+Peptídeo C
+Pesquisa Pg. Biliares
+Plaquetas
+Potássio
+Progesterona
+Prolactina
+Proteinúria de 24 horas
+Proteína C-reativa (PC-R)
+Proteína C-reativa (PC-R) ultrassensível
+Proteína transportadora de retinol (RBP)
+Proteínas totais e frações
+Pré-albumina
+RDW
+RDW (índice de anisocitose)
+Receptor solúvel de transferrina
+Selênio
+SHBG
+Sódio
+T3 Livre
+T4 livre
+Taxa de filtração glomerular estimada
+Tempo de atividade de protombina (TAP)
+Teste oral de tolerância à glicose (TOTG)
+Testosterona Livre
+Testosterona total
+Tireoglobulina
+Tiroxina total (T4 total)
+Transferrina
+Transglutaminase
+Tri-iodotironina (T3 total)
+Triglicerídios
+Ureia
+Urina - Aspecto
+Urina - Bilirrubina
+Urina - Cilindros
+Urina - Cor
+Urina - Cristais
+Urina - Células epiteliais
+Urina - Densidade
+Urina - Esterase leucocitária
+Urina - Filamento de muco
+Urina - Leucócitos
+Urina - Pesquisa de corpos cetônicos
+Urina - Pesquisa de glicose
+Urina - Pesquisa de Nitrito
+Urina - Pesquisa Hemoglobina
+Urina - Pesquisa Proteinas
+Urina - Pesquisa urobilinogênio
+Urina - PH
+Urina - Sangue
+Velocidade de hemossedimentação (VHS)
+Vitamina A (retinol)
+Vitamina B1 (Tiamina)
+Vitamina B12
+Vitamina B2 (Riboflavina)
+Vitamina B3 (Niacina)
+Vitamina B5 (Ácido pantotênico)
+Vitamina B6 (Piridoxina)
+Vitamina B7 (Biotina)
+Vitamina C
+Vitamina D
+Vitamina E
+Vitamina K
+Volume corpuscular médio (VCM)
+Volume Plaquetário Médio (VPM)
+Zinco
+Ácido fólico
+Ácido lático ou lactato
+Ácido metilmalônico
+Ácido Úrico
+Índice de Castelli I
+Índice de Castelli II
+Índice de saturação da transferrina (IST)
+Índice HOMA-IR

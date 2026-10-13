@@ -1,0 +1,2351 @@
+[
+ {
+  "caso": {
+   "formula": 1,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E01",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1806 Kcal/dia",
+   "tmbkg": "(22.6 Kcal/kg)",
+   "get": "2799 Kcal/dia",
+   "getkg": "(35.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 2,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E02",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1801 Kcal/dia",
+   "tmbkg": "(22.5 Kcal/kg)",
+   "get": "2792 Kcal/dia",
+   "getkg": "(34.9 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 3,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E03",
+   "fatorUsado": "1.11"
+  },
+  "tela": {
+   "tmb": "1774 Kcal/dia",
+   "tmbkg": "(22.2 Kcal/kg)",
+   "get": "1969 Kcal/dia",
+   "getkg": "(24.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.11,1.25,1.48",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 4,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E04",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1930 Kcal/dia",
+   "tmbkg": "(24.1 Kcal/kg)",
+   "get": "2992 Kcal/dia",
+   "getkg": "(37.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 6,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E05",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1726 Kcal/dia",
+   "tmbkg": "(21.6 Kcal/kg)",
+   "get": "2675 Kcal/dia",
+   "getkg": "(33.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 7,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E06",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1694 Kcal/dia",
+   "tmbkg": "(21.2 Kcal/kg)",
+   "get": "2626 Kcal/dia",
+   "getkg": "(32.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 9,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E07",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1635 Kcal/dia",
+   "tmbkg": "(20.4 Kcal/kg)",
+   "get": "2534 Kcal/dia",
+   "getkg": "(31.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 12,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E08",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1994 Kcal/dia",
+   "tmbkg": "(24.9 Kcal/kg)",
+   "get": "3091 Kcal/dia",
+   "getkg": "(38.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 13,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E09",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1968 Kcal/dia",
+   "tmbkg": "(24.6 Kcal/kg)",
+   "get": "3050 Kcal/dia",
+   "getkg": "(38.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 8,
+   "fator": "1.85",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E10",
+   "fatorUsado": "1.85"
+  },
+  "tela": {
+   "tmb": "1791 Kcal/dia",
+   "tmbkg": "(22.4 Kcal/kg)",
+   "get": "3313 Kcal/dia",
+   "getkg": "(41.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.55,1.85,2.20,1.55,1.80,2.10",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 5,
+   "fator": "1.25",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E11",
+   "fatorUsado": "1.25"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "3100 Kcal/dia",
+   "getkg": "(38.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.11,1.25,1.48",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E12",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2640 Kcal/dia",
+   "getkg": "(33.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "2",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E13",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2850 Kcal/dia",
+   "getkg": "(35.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E14",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "3040 Kcal/dia",
+   "getkg": "(38.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "4",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E15",
+   "fatorUsado": "4"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "3364 Kcal/dia",
+   "getkg": "(42.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 1,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E16",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1391 Kcal/dia",
+   "tmbkg": "(22.2 Kcal/kg)",
+   "get": "2156 Kcal/dia",
+   "getkg": "(34.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 2,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E17",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1379 Kcal/dia",
+   "tmbkg": "(22.1 Kcal/kg)",
+   "get": "2137 Kcal/dia",
+   "getkg": "(34.2 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 3,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E18",
+   "fatorUsado": "1.12"
+  },
+  "tela": {
+   "tmb": "1348 Kcal/dia",
+   "tmbkg": "(21.6 Kcal/kg)",
+   "get": "1510 Kcal/dia",
+   "getkg": "(24.2 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.12,1.27,1.45",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 4,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E19",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1497 Kcal/dia",
+   "tmbkg": "(23.9 Kcal/kg)",
+   "get": "2320 Kcal/dia",
+   "getkg": "(37.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 6,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E20",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1310 Kcal/dia",
+   "tmbkg": "(21.0 Kcal/kg)",
+   "get": "2031 Kcal/dia",
+   "getkg": "(32.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 7,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E21",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1305 Kcal/dia",
+   "tmbkg": "(20.9 Kcal/kg)",
+   "get": "2023 Kcal/dia",
+   "getkg": "(32.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 9,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E22",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1302 Kcal/dia",
+   "tmbkg": "(20.8 Kcal/kg)",
+   "get": "2018 Kcal/dia",
+   "getkg": "(32.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 12,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E23",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1560 Kcal/dia",
+   "tmbkg": "(25.0 Kcal/kg)",
+   "get": "2418 Kcal/dia",
+   "getkg": "(38.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 13,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E24",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1457 Kcal/dia",
+   "tmbkg": "(23.3 Kcal/kg)",
+   "get": "2258 Kcal/dia",
+   "getkg": "(36.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 8,
+   "fator": "1.85",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E25",
+   "fatorUsado": "1.85"
+  },
+  "tela": {
+   "tmb": "1353 Kcal/dia",
+   "tmbkg": "(21.7 Kcal/kg)",
+   "get": "2503 Kcal/dia",
+   "getkg": "(40.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.55,1.85,2.20,1.56,1.64,1.82",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 5,
+   "fator": "1.27",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E26",
+   "fatorUsado": "1.27"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2358 Kcal/dia",
+   "getkg": "(37.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.12,1.27,1.45",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E27",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2004 Kcal/dia",
+   "getkg": "(32.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "2",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E28",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2165 Kcal/dia",
+   "getkg": "(34.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E29",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2302 Kcal/dia",
+   "getkg": "(36.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 26,
+   "fator": "4",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E30",
+   "fatorUsado": "4"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2530 Kcal/dia",
+   "getkg": "(40.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 2,
+   "fator": "1.200",
+   "injuria": "4",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E31",
+   "fatorUsado": "1.200"
+  },
+  "tela": {
+   "tmb": "1801 Kcal/dia",
+   "tmbkg": "(22.5 Kcal/kg)",
+   "get": "2810 Kcal/dia",
+   "getkg": "(35.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 2,
+   "fator": "1.900",
+   "injuria": "12",
+   "sexo": "M",
+   "nasc": "15/06/1991",
+   "peso": 80,
+   "altura": 175,
+   "mlg": 65,
+   "id": "E32",
+   "fatorUsado": "1.900"
+  },
+  "tela": {
+   "tmb": "1801 Kcal/dia",
+   "tmbkg": "(22.5 Kcal/kg)",
+   "get": "6844 Kcal/dia",
+   "getkg": "(85.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 6,
+   "fator": "1.375",
+   "injuria": "16",
+   "sexo": "F",
+   "nasc": "15/06/1991",
+   "peso": 62.5,
+   "altura": 163,
+   "mlg": 45.3,
+   "id": "E33",
+   "fatorUsado": "1.375"
+  },
+  "tela": {
+   "tmb": "1310 Kcal/dia",
+   "tmbkg": "(21.0 Kcal/kg)",
+   "get": "1621 Kcal/dia",
+   "getkg": "(25.9 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 8,
+   "fator": "1.55",
+   "sexo": "M",
+   "nasc": "20/03/1959",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E34",
+   "fatorUsado": "1.55"
+  },
+  "tela": {
+   "tmb": "1410 Kcal/dia",
+   "tmbkg": "(20.1 Kcal/kg)",
+   "get": "2186 Kcal/dia",
+   "getkg": "(31.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.55,1.85,2.20,1.55,1.80,2.10",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 9,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "20/03/1959",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E35",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1527 Kcal/dia",
+   "tmbkg": "(21.8 Kcal/kg)",
+   "get": "2367 Kcal/dia",
+   "getkg": "(33.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 1,
+   "fator": "1.200",
+   "sexo": "M",
+   "nasc": "20/03/1959",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E36",
+   "fatorUsado": "1.200"
+  },
+  "tela": {
+   "tmb": "1422 Kcal/dia",
+   "tmbkg": "(20.3 Kcal/kg)",
+   "get": "1706 Kcal/dia",
+   "getkg": "(24.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 8,
+   "fator": "1.55",
+   "sexo": "F",
+   "nasc": "01/01/1954",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E37",
+   "fatorUsado": "1.55"
+  },
+  "tela": {
+   "tmb": "1296 Kcal/dia",
+   "tmbkg": "(18.5 Kcal/kg)",
+   "get": "2009 Kcal/dia",
+   "getkg": "(28.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.55,1.85,2.20,1.56,1.64,1.82",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 9,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "01/01/1954",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E38",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1390 Kcal/dia",
+   "tmbkg": "(19.8 Kcal/kg)",
+   "get": "2155 Kcal/dia",
+   "getkg": "(30.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 1,
+   "fator": "1.200",
+   "sexo": "F",
+   "nasc": "01/01/1954",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E39",
+   "fatorUsado": "1.200"
+  },
+  "tela": {
+   "tmb": "1301 Kcal/dia",
+   "tmbkg": "(18.5 Kcal/kg)",
+   "get": "1561 Kcal/dia",
+   "getkg": "(22.2 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 8,
+   "fator": "1.55",
+   "sexo": "M",
+   "nasc": "10/10/2001",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E40",
+   "fatorUsado": "1.55"
+  },
+  "tela": {
+   "tmb": "1749 Kcal/dia",
+   "tmbkg": "(24.9 Kcal/kg)",
+   "get": "2711 Kcal/dia",
+   "getkg": "(38.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.55,1.85,2.20,1.55,1.80,2.10",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 9,
+   "fator": "1.550",
+   "sexo": "M",
+   "nasc": "10/10/2001",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E41",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1609 Kcal/dia",
+   "tmbkg": "(22.9 Kcal/kg)",
+   "get": "2494 Kcal/dia",
+   "getkg": "(35.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 1,
+   "fator": "1.200",
+   "sexo": "M",
+   "nasc": "10/10/2001",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E42",
+   "fatorUsado": "1.200"
+  },
+  "tela": {
+   "tmb": "1706 Kcal/dia",
+   "tmbkg": "(24.3 Kcal/kg)",
+   "get": "2047 Kcal/dia",
+   "getkg": "(29.2 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 8,
+   "fator": "1.55",
+   "sexo": "F",
+   "nasc": "10/10/2001",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E43",
+   "fatorUsado": "1.55"
+  },
+  "tela": {
+   "tmb": "1527 Kcal/dia",
+   "tmbkg": "(21.7 Kcal/kg)",
+   "get": "2367 Kcal/dia",
+   "getkg": "(33.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.55,1.85,2.20,1.56,1.64,1.82",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 9,
+   "fator": "1.550",
+   "sexo": "F",
+   "nasc": "10/10/2001",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E44",
+   "fatorUsado": "1.550"
+  },
+  "tela": {
+   "tmb": "1418 Kcal/dia",
+   "tmbkg": "(20.2 Kcal/kg)",
+   "get": "2198 Kcal/dia",
+   "getkg": "(31.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 1,
+   "fator": "1.200",
+   "sexo": "F",
+   "nasc": "10/10/2001",
+   "peso": 70.2,
+   "altura": 168.5,
+   "mlg": 50,
+   "id": "E45",
+   "fatorUsado": "1.200"
+  },
+  "tela": {
+   "tmb": "1521 Kcal/dia",
+   "tmbkg": "(21.7 Kcal/kg)",
+   "get": "1825 Kcal/dia",
+   "getkg": "(26.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 28,
+   "fator": "2",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 68,
+   "altura": 165,
+   "semanas": 24,
+   "estadoNut": "Baixo peso",
+   "id": "E46",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2791 Kcal/dia",
+   "getkg": "(41.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 28,
+   "fator": "2",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 68,
+   "altura": 165,
+   "semanas": 24,
+   "estadoNut": "Saudável",
+   "id": "E47",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2691 Kcal/dia",
+   "getkg": "(39.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 28,
+   "fator": "2",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 68,
+   "altura": 165,
+   "semanas": 24,
+   "estadoNut": "Sobrepeso",
+   "id": "E48",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2641 Kcal/dia",
+   "getkg": "(38.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 28,
+   "fator": "2",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 68,
+   "altura": 165,
+   "semanas": 24,
+   "estadoNut": "Obesidade",
+   "id": "E49",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2441 Kcal/dia",
+   "getkg": "(35.9 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 28,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 68,
+   "altura": 165,
+   "semanas": 10,
+   "estadoNut": "Saudável",
+   "id": "E50",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "Escolha o fator atividade",
+   "getkg": "0.0 Kcal/kg",
+   "erro": "Para o 1º trimestre de gravidez, deve ser usada a equação de predição de EER não grávida. Assume-se que a disposição de ",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 25,
+   "fator": "1.64",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 68,
+   "altura": 165,
+   "id": "E51",
+   "fatorUsado": "1.64"
+  },
+  "tela": {
+   "tmb": "1496 Kcal/dia",
+   "tmbkg": "(22.0 Kcal/kg)",
+   "get": "2453 Kcal/dia",
+   "getkg": "(36.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.0,1.56,1.64,1.82",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 25,
+   "fator": "1.56",
+   "sexo": "F",
+   "nasc": "15/06/2009",
+   "peso": 58,
+   "altura": 160,
+   "id": "E52",
+   "fatorUsado": "1.56"
+  },
+  "tela": {
+   "tmb": "1454 Kcal/dia",
+   "tmbkg": "(25.1 Kcal/kg)",
+   "get": "2268 Kcal/dia",
+   "getkg": "(39.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.0,1.56,1.64,1.82",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 29,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 66,
+   "altura": 165,
+   "parto": "13/07/2026",
+   "id": "E53",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2491 Kcal/dia",
+   "getkg": "(37.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 29,
+   "fator": "4",
+   "sexo": "F",
+   "nasc": "15/06/1996",
+   "peso": 66,
+   "altura": 165,
+   "parto": "13/01/2026",
+   "id": "E54",
+   "fatorUsado": "4"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "3007 Kcal/dia",
+   "getkg": "(45.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 29,
+   "fator": "2",
+   "sexo": "F",
+   "nasc": "15/06/2009",
+   "peso": 56,
+   "altura": 160,
+   "parto": "13/07/2026",
+   "id": "E55",
+   "fatorUsado": "2"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2592 Kcal/dia",
+   "getkg": "(46.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "M",
+   "nasc": "01/02/2010",
+   "peso": 62,
+   "altura": 172,
+   "id": "E56",
+   "fatorUsado": "1.13"
+  },
+  "tela": {
+   "tmb": "1755 Kcal/dia",
+   "tmbkg": "(28.3 Kcal/kg)",
+   "get": "1983 Kcal/dia",
+   "getkg": "(32.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.13,1.26,1.42",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "M",
+   "nasc": "01/02/2010",
+   "peso": 62,
+   "altura": 172,
+   "id": "E57",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "1759 Kcal/dia",
+   "tmbkg": "(28.4 Kcal/kg)",
+   "get": "1759 Kcal/dia",
+   "getkg": "(28.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "M",
+   "nasc": "01/02/2010",
+   "peso": 62,
+   "altura": 172,
+   "id": "E58",
+   "fatorUsado": "1.13"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2749 Kcal/dia",
+   "getkg": "(44.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.13,1.26,1.42",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "01/02/2010",
+   "peso": 62,
+   "altura": 172,
+   "id": "E59",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2684 Kcal/dia",
+   "getkg": "(43.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "01/02/2010",
+   "peso": 62,
+   "altura": 172,
+   "id": "E60",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "3137 Kcal/dia",
+   "getkg": "(50.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "F",
+   "nasc": "05/05/2014",
+   "peso": 40,
+   "altura": 150,
+   "id": "E61",
+   "fatorUsado": "1.16"
+  },
+  "tela": {
+   "tmb": "1228 Kcal/dia",
+   "tmbkg": "(30.7 Kcal/kg)",
+   "get": "1424 Kcal/dia",
+   "getkg": "(35.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.16,1.31,1.56",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "F",
+   "nasc": "05/05/2014",
+   "peso": 40,
+   "altura": 150,
+   "id": "E62",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "1232 Kcal/dia",
+   "tmbkg": "(30.8 Kcal/kg)",
+   "get": "1232 Kcal/dia",
+   "getkg": "(30.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "F",
+   "nasc": "05/05/2014",
+   "peso": 40,
+   "altura": 150,
+   "id": "E63",
+   "fatorUsado": "1.16"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1880 Kcal/dia",
+   "getkg": "(47.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.16,1.31,1.56",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "05/05/2014",
+   "peso": 40,
+   "altura": 150,
+   "id": "E64",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1766 Kcal/dia",
+   "getkg": "(44.1 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "05/05/2014",
+   "peso": 40,
+   "altura": 150,
+   "id": "E65",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "2068 Kcal/dia",
+   "getkg": "(51.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "M",
+   "nasc": "10/01/2020",
+   "peso": 22,
+   "altura": 118,
+   "id": "E66",
+   "fatorUsado": "1.13"
+  },
+  "tela": {
+   "tmb": "1004 Kcal/dia",
+   "tmbkg": "(45.6 Kcal/kg)",
+   "get": "1135 Kcal/dia",
+   "getkg": "(51.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.13,1.26,1.42",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "M",
+   "nasc": "10/01/2020",
+   "peso": 22,
+   "altura": 118,
+   "id": "E67",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "1000 Kcal/dia",
+   "tmbkg": "(45.4 Kcal/kg)",
+   "get": "1000 Kcal/dia",
+   "getkg": "(45.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "M",
+   "nasc": "10/01/2020",
+   "peso": 22,
+   "altura": 118,
+   "id": "E68",
+   "fatorUsado": "1.13"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1605 Kcal/dia",
+   "getkg": "(73.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.13,1.26,1.42",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "10/01/2020",
+   "peso": 22,
+   "altura": 118,
+   "id": "E69",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1414 Kcal/dia",
+   "getkg": "(64.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "10/01/2020",
+   "peso": 22,
+   "altura": 118,
+   "id": "E70",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1593 Kcal/dia",
+   "getkg": "(72.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "F",
+   "nasc": "10/01/2020",
+   "peso": 21,
+   "altura": 116,
+   "id": "E71",
+   "fatorUsado": "1.16"
+  },
+  "tela": {
+   "tmb": "913 Kcal/dia",
+   "tmbkg": "(43.5 Kcal/kg)",
+   "get": "1059 Kcal/dia",
+   "getkg": "(50.4 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.16,1.31,1.56",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "F",
+   "nasc": "10/01/2020",
+   "peso": 21,
+   "altura": 116,
+   "id": "E72",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "914 Kcal/dia",
+   "tmbkg": "(43.5 Kcal/kg)",
+   "get": "914 Kcal/dia",
+   "getkg": "(43.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "F",
+   "nasc": "10/01/2020",
+   "peso": 21,
+   "altura": 116,
+   "id": "E73",
+   "fatorUsado": "1.16"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1471 Kcal/dia",
+   "getkg": "(70.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.00,1.16,1.31,1.56",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "10/01/2020",
+   "peso": 21,
+   "altura": 116,
+   "id": "E74",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1273 Kcal/dia",
+   "getkg": "(60.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "10/01/2020",
+   "peso": 21,
+   "altura": 116,
+   "id": "E75",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1439 Kcal/dia",
+   "getkg": "(68.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "M",
+   "nasc": "13/04/2024",
+   "peso": 13,
+   "altura": 90,
+   "id": "E76",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "743 Kcal/dia",
+   "tmbkg": "(57.2 Kcal/kg)",
+   "get": "743 Kcal/dia",
+   "getkg": "(57.2 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "M",
+   "nasc": "13/04/2024",
+   "peso": 13,
+   "altura": 90,
+   "id": "E77",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "750 Kcal/dia",
+   "tmbkg": "(57.7 Kcal/kg)",
+   "get": "750 Kcal/dia",
+   "getkg": "(57.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "M",
+   "nasc": "13/04/2024",
+   "peso": 13,
+   "altura": 90,
+   "id": "E78",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "1077 Kcal/dia",
+   "tmbkg": "(82.8 Kcal/kg)",
+   "get": "1077 Kcal/dia",
+   "getkg": "(82.8 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "13/04/2024",
+   "peso": 13,
+   "altura": 90,
+   "id": "E79",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1101 Kcal/dia",
+   "getkg": "(84.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "13/04/2024",
+   "peso": 13,
+   "altura": 90,
+   "id": "E80",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1101 Kcal/dia",
+   "getkg": "(84.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "F",
+   "nasc": "13/04/2024",
+   "peso": 12.5,
+   "altura": 88,
+   "id": "E81",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "698 Kcal/dia",
+   "tmbkg": "(55.8 Kcal/kg)",
+   "get": "698 Kcal/dia",
+   "getkg": "(55.8 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "F",
+   "nasc": "13/04/2024",
+   "peso": 12.5,
+   "altura": 88,
+   "id": "E82",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "690 Kcal/dia",
+   "tmbkg": "(55.2 Kcal/kg)",
+   "get": "690 Kcal/dia",
+   "getkg": "(55.2 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "F",
+   "nasc": "13/04/2024",
+   "peso": 12.5,
+   "altura": 88,
+   "id": "E83",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "1033 Kcal/dia",
+   "tmbkg": "(82.6 Kcal/kg)",
+   "get": "1033 Kcal/dia",
+   "getkg": "(82.6 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "13/04/2024",
+   "peso": 12.5,
+   "altura": 88,
+   "id": "E84",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1016 Kcal/dia",
+   "getkg": "(81.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "13/04/2024",
+   "peso": 12.5,
+   "altura": 88,
+   "id": "E85",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1016 Kcal/dia",
+   "getkg": "(81.3 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "M",
+   "nasc": "13/08/2026",
+   "peso": 5.2,
+   "altura": 58,
+   "id": "E86",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "279 Kcal/dia",
+   "tmbkg": "(53.7 Kcal/kg)",
+   "get": "279 Kcal/dia",
+   "getkg": "(53.7 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "M",
+   "nasc": "13/08/2026",
+   "peso": 5.2,
+   "altura": 58,
+   "id": "E87",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "263 Kcal/dia",
+   "tmbkg": "(50.6 Kcal/kg)",
+   "get": "263 Kcal/dia",
+   "getkg": "(50.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "M",
+   "nasc": "13/08/2026",
+   "peso": 5.2,
+   "altura": 58,
+   "id": "E88",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "538 Kcal/dia",
+   "tmbkg": "(103.4 Kcal/kg)",
+   "get": "538 Kcal/dia",
+   "getkg": "(103.5 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "13/08/2026",
+   "peso": 5.2,
+   "altura": 58,
+   "id": "E89",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "595 Kcal/dia",
+   "getkg": "(114.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "13/08/2026",
+   "peso": 5.2,
+   "altura": 58,
+   "id": "E90",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "595 Kcal/dia",
+   "getkg": "(114.5 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "F",
+   "nasc": "13/05/2026",
+   "peso": 6.8,
+   "altura": 64,
+   "id": "E91",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "365 Kcal/dia",
+   "tmbkg": "(53.7 Kcal/kg)",
+   "get": "365 Kcal/dia",
+   "getkg": "(53.7 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "F",
+   "nasc": "13/05/2026",
+   "peso": 6.8,
+   "altura": 64,
+   "id": "E92",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "352 Kcal/dia",
+   "tmbkg": "(51.7 Kcal/kg)",
+   "get": "352 Kcal/dia",
+   "getkg": "(51.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "F",
+   "nasc": "13/05/2026",
+   "peso": 6.8,
+   "altura": 64,
+   "id": "E93",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "561 Kcal/dia",
+   "tmbkg": "(82.5 Kcal/kg)",
+   "get": "561 Kcal/dia",
+   "getkg": "(82.5 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "13/05/2026",
+   "peso": 6.8,
+   "altura": 64,
+   "id": "E94",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "529 Kcal/dia",
+   "getkg": "(77.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "13/05/2026",
+   "peso": 6.8,
+   "altura": 64,
+   "id": "E95",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "529 Kcal/dia",
+   "getkg": "(77.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "M",
+   "nasc": "13/01/2026",
+   "peso": 8.9,
+   "altura": 71,
+   "id": "E96",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "499 Kcal/dia",
+   "tmbkg": "(56.1 Kcal/kg)",
+   "get": "499 Kcal/dia",
+   "getkg": "(56.1 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "M",
+   "nasc": "13/01/2026",
+   "peso": 8.9,
+   "altura": 71,
+   "id": "E97",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "461 Kcal/dia",
+   "tmbkg": "(51.8 Kcal/kg)",
+   "get": "461 Kcal/dia",
+   "getkg": "(51.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "M",
+   "nasc": "13/01/2026",
+   "peso": 8.9,
+   "altura": 71,
+   "id": "E98",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "714 Kcal/dia",
+   "tmbkg": "(80.2 Kcal/kg)",
+   "get": "714 Kcal/dia",
+   "getkg": "(80.2 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "13/01/2026",
+   "peso": 8.9,
+   "altura": 71,
+   "id": "E99",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "703 Kcal/dia",
+   "getkg": "(79.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "13/01/2026",
+   "peso": 8.9,
+   "altura": 71,
+   "id": "E100",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "703 Kcal/dia",
+   "getkg": "(79.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "F",
+   "nasc": "13/01/2026",
+   "peso": 8.3,
+   "altura": 70,
+   "id": "E101",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "453 Kcal/dia",
+   "tmbkg": "(54.6 Kcal/kg)",
+   "get": "453 Kcal/dia",
+   "getkg": "(54.6 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "F",
+   "nasc": "13/01/2026",
+   "peso": 8.3,
+   "altura": 70,
+   "id": "E102",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "438 Kcal/dia",
+   "tmbkg": "(52.7 Kcal/kg)",
+   "get": "438 Kcal/dia",
+   "getkg": "(52.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "F",
+   "nasc": "13/01/2026",
+   "peso": 8.3,
+   "altura": 70,
+   "id": "E103",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "661 Kcal/dia",
+   "tmbkg": "(79.6 Kcal/kg)",
+   "get": "661 Kcal/dia",
+   "getkg": "(79.6 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "F",
+   "nasc": "13/01/2026",
+   "peso": 8.3,
+   "altura": 70,
+   "id": "E104",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "586 Kcal/dia",
+   "getkg": "(70.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "F",
+   "nasc": "13/01/2026",
+   "peso": 8.3,
+   "altura": 70,
+   "id": "E105",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "586 Kcal/dia",
+   "getkg": "(70.6 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 22,
+   "sexo": "M",
+   "nasc": "13/10/2023",
+   "peso": 14.5,
+   "altura": 95,
+   "id": "E106",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "833 Kcal/dia",
+   "tmbkg": "(57.4 Kcal/kg)",
+   "get": "833 Kcal/dia",
+   "getkg": "(57.4 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 23,
+   "fator": "1.000",
+   "sexo": "M",
+   "nasc": "13/10/2023",
+   "peso": 14.5,
+   "altura": 95,
+   "id": "E107",
+   "fatorUsado": "1.000"
+  },
+  "tela": {
+   "tmb": "826 Kcal/dia",
+   "tmbkg": "(57.0 Kcal/kg)",
+   "get": "826 Kcal/dia",
+   "getkg": "(57.0 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1.000,1.200,1.375,1.550,1.725,1.900",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 21,
+   "sexo": "M",
+   "nasc": "13/10/2023",
+   "peso": 14.5,
+   "altura": 95,
+   "id": "E108",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "1211 Kcal/dia",
+   "tmbkg": "(83.5 Kcal/kg)",
+   "get": "826 Kcal/dia",
+   "getkg": "(57.0 Kcal/kg)",
+   "erro": "",
+   "fatores": "1",
+   "excecao": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'toFixed')"
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "1",
+   "sexo": "M",
+   "nasc": "13/10/2023",
+   "peso": 14.5,
+   "altura": 95,
+   "id": "E109",
+   "fatorUsado": "1"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1010 Kcal/dia",
+   "getkg": "(69.7 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "formula": 27,
+   "fator": "3",
+   "sexo": "M",
+   "nasc": "13/10/2023",
+   "peso": 14.5,
+   "altura": 95,
+   "id": "E110",
+   "fatorUsado": "3"
+  },
+  "tela": {
+   "tmb": "Não aplicável",
+   "tmbkg": "",
+   "get": "1142 Kcal/dia",
+   "getkg": "(78.8 Kcal/kg)",
+   "erro": "",
+   "fatores": ",1,2,3,4",
+   "excecao": ""
+  }
+ }
+]

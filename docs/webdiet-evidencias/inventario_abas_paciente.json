@@ -1,0 +1,268 @@
+{
+ "360": {
+  "titulos": [
+   "Nenhuma avaliação"
+  ],
+  "botoes": [
+   "nova avaliação"
+  ],
+  "rotulos": [
+   "Crie agora a primeira avaliacão para seu paciente."
+  ]
+ },
+ "dados": {
+  "titulos": [
+   "Dados básicos",
+   "Fluxo de consulta",
+   "Ajustes do paciente",
+   "Diário alimentar",
+   "Reações a refeições",
+   "Resumo do paciente Editar"
+  ],
+  "botoes": [
+   "Editar",
+   "Configurar"
+  ],
+  "rotulos": [
+   "Nome completo",
+   "Data de nascimento",
+   "Telefone com DDD",
+   "Link do paciente",
+   "Já logou no aplicativo?",
+   "Habilitar acesso ao link do paciente (conteúdos do paciente.me/<link-do-paciente>)",
+   "Habilitar acesso ao aplicativo WebDiet",
+   "Habilitar funcionalidade WebDiet+ para o paciente",
+   "Configurações app do paciente Configurar",
+   "Configurações mensagens automatizadas Configurar",
+   "Você não escreveu informação ou histórico sobre este paciente."
+  ]
+ },
+ "farmaco": {
+  "titulos": [
+   "Nenhuma análise fármaco-nutriente"
+  ],
+  "botoes": [
+   "nova análise de fármaco"
+  ],
+  "rotulos": [
+   "Registre os medicamentos em uso para gerar orientações nutricionais personalizadas."
+  ]
+ },
+ "acompanhamento": {
+  "titulos": [
+   "Acompanhamento",
+   "Nutrientes",
+   "Atividade física",
+   "Peso",
+   "Ingestão hídrica"
+  ],
+  "botoes": [],
+  "rotulos": []
+ },
+ "historico": {
+  "titulos": [
+   "Nenhuma consulta registrada"
+  ],
+  "botoes": [
+   "novo registro de consulta"
+  ],
+  "rotulos": [
+   "Registre as consultas dos seus pacientes e tenha um relatório completo na aba estatíticas."
+  ]
+ },
+ "anamnese": {
+  "titulos": [
+   "Nenhuma anamnese"
+  ],
+  "botoes": [
+   "nova anamnese"
+  ],
+  "rotulos": [
+   "Crie agora a primeira anamnese para seu paciente."
+  ]
+ },
+ "diagnostico": {
+  "titulos": [
+   "Questionários de saúde"
+  ],
+  "botoes": [
+   "novo questionário",
+   "Evolução",
+   "PDF",
+   "Editar",
+   "Duplicar",
+   "Excluir"
+  ],
+  "rotulos": []
+ },
+ "exames": {
+  "titulos": [
+   "Exames laboratoriais"
+  ],
+  "botoes": [
+   "novo pedido ou registro de exames",
+   "Evolução",
+   "Editar",
+   "Duplicar",
+   "Excluir"
+  ],
+  "rotulos": []
+ },
+ "evolucao": {
+  "titulos": [
+   "Nenhuma foto enviada nesta posição"
+  ],
+  "botoes": [
+   "comparar fotos",
+   "fotos de frente",
+   "fotos de costas",
+   "fotos à direita",
+   "fotos à esquerda",
+   "enviar primeira foto"
+  ],
+  "rotulos": [
+   "Escolha a posição da foto acima e envie sua primeira foto"
+  ]
+ },
+ "antropometria": {
+  "titulos": [
+   "Antropometria"
+  ],
+  "botoes": [
+   "nova avaliação antropométrica",
+   "Evolução",
+   "Relatório",
+   "Editar",
+   "Duplicar",
+   "Excluir"
+  ],
+  "rotulos": []
+ },
+ "gestantes": {
+  "titulos": [
+   "Acompanhamento de gestantes"
+  ],
+  "botoes": [
+   "iniciar acompanhamento gestacional",
+   "Abrir acompanhamento",
+   "Excluir"
+  ],
+  "rotulos": []
+ },
+ "calculo": {
+  "titulos": [
+   "Cálculo energético"
+  ],
+  "botoes": [
+   "novo planejamento teórico",
+   "Editar",
+   "Duplicar",
+   "Excluir"
+  ],
+  "rotulos": []
+ },
+ "dieta": {
+  "titulos": [
+   "Planejamento alimentar Ordenar dietas"
+  ],
+  "botoes": [
+   "Ordenar dietas",
+   "nova prescrição alimentar",
+   "PDF",
+   "Periodização",
+   "Editar",
+   "Favoritar",
+   "Duplicar",
+   "Excluir"
+  ],
+  "rotulos": []
+ },
+ "wdmarket": {
+  "titulos": [
+   "Nenhum produto indicado"
+  ],
+  "botoes": [
+   "criar lista de produtos"
+  ],
+  "rotulos": [
+   "Monte uma lista de produtos para complementar a dieta do seu paciente."
+  ]
+ },
+ "metas": {
+  "titulos": [
+   "Nenhuma meta"
+  ],
+  "botoes": [
+   "nova meta"
+  ],
+  "rotulos": [
+   "Crie metas e potencialize os resultados do seu paciente."
+  ]
+ },
+ "manipulados": {
+  "titulos": [
+   "Nenhuma fórmula"
+  ],
+  "botoes": [
+   "novo manipulado"
+  ],
+  "rotulos": [
+   "Prescreva fórmulas manipuladas para seu paciente."
+  ]
+ },
+ "orientacoes": {
+  "titulos": [
+   "Nenhuma orientação nutricional"
+  ],
+  "botoes": [
+   "nova orientação"
+  ],
+  "rotulos": [
+   "Crie listas e orientações para seu paciente."
+  ]
+ },
+ "anexos": {
+  "titulos": [
+   "Nenhum arquivo anexo"
+  ],
+  "botoes": [
+   "novo arquivo anexo"
+  ],
+  "rotulos": [
+   "Anexe arquivos ou lâminas para seu paciente"
+  ]
+ },
+ "prontuario": {
+  "titulos": [
+   "Nenhum registro no prontuário"
+  ],
+  "botoes": [
+   "escrever no prontuário"
+  ],
+  "rotulos": [
+   "O documento oficial do seu paciente. Escreva de maneira tecnica e objetiva."
+  ]
+ },
+ "documentos": {
+  "titulos": [
+   "Nenhuma documento ou atestado"
+  ],
+  "botoes": [
+   "novo documento ou atestado"
+  ],
+  "rotulos": [
+   "Emita documentos ou atestados para seu paciente."
+  ]
+ },
+ "financeiro": {
+  "titulos": [
+   "Nenhuma registro ou recibo"
+  ],
+  "botoes": [
+   "novo registro financeiro"
+  ],
+  "rotulos": [
+   "Controle suas contas e recebimentos deste paciente."
+  ]
+ }
+}

@@ -1,0 +1,651 @@
+[
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 3,
+   "peso": 6.4,
+   "altura": 61.4,
+   "id": "I01"
+  },
+  "tela": {
+   "imc": "17.0 Kg/m2",
+   "peso": "0.032 (Adequado)",
+   "altura": "-0.014 (Estatura adequada)",
+   "imcz": "0.07 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 6,
+   "peso": 7.3,
+   "altura": 65.7,
+   "id": "I02"
+  },
+  "tela": {
+   "imc": "16.9 Kg/m2",
+   "peso": "0.003 (Adequado)",
+   "altura": "-0.014 (Estatura adequada)",
+   "imcz": "-0.005 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 12,
+   "peso": 9.6,
+   "altura": 75.7,
+   "id": "I03"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "-0.046 (Adequado)",
+   "altura": "-0.021 (Estatura adequada)",
+   "imcz": "0.001 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 18,
+   "peso": 10.2,
+   "altura": 80.7,
+   "id": "I04"
+  },
+  "tela": {
+   "imc": "15.7 Kg/m2",
+   "peso": "-0.025 (Adequado)",
+   "altura": "-0.003 (Estatura adequada)",
+   "imcz": "-0.019 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 24,
+   "peso": 12.2,
+   "altura": 87.8,
+   "id": "I05"
+  },
+  "tela": {
+   "imc": "15.8 Kg/m2",
+   "peso": "0.035 (Adequado)",
+   "altura": "-0.005 (Estatura adequada)",
+   "imcz": "0.052 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 30,
+   "peso": 12,
+   "altura": 90,
+   "id": "I06"
+  },
+  "tela": {
+   "imc": "14.8 Kg/m2",
+   "peso": "-0.458 (Adequado)",
+   "altura": "-0.193 (Estatura adequada)",
+   "imcz": "-0.842 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 36,
+   "peso": 14.2,
+   "altura": 95.1,
+   "id": "I07"
+  },
+  "tela": {
+   "imc": "15.7 Kg/m2",
+   "peso": "0.192 (Adequado)",
+   "altura": "0.013 (Estatura adequada)",
+   "imcz": "0.081 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 48,
+   "peso": 16.3,
+   "altura": 103.3,
+   "id": "I08"
+  },
+  "tela": {
+   "imc": "15.3 Kg/m2",
+   "peso": "-0.023 (Adequado)",
+   "altura": "-0.007 (Estatura adequada)",
+   "imcz": "-0.026 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 60,
+   "peso": 18.2,
+   "altura": 109.4,
+   "id": "I09"
+  },
+  "tela": {
+   "imc": "15.2 Kg/m2",
+   "peso": "-0.007 (Adequado)",
+   "altura": "-0.005 (Estatura adequada)",
+   "imcz": "0.006 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 72,
+   "peso": 20.5,
+   "altura": 116,
+   "id": "I10"
+  },
+  "tela": {
+   "imc": "15.2 Kg/m2",
+   "peso": "-0.005 (Adequado)",
+   "altura": "0.01 (Estatura adequada)",
+   "imcz": "-0.08 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 90,
+   "peso": 25,
+   "altura": 126,
+   "id": "I11"
+  },
+  "tela": {
+   "imc": "15.7 Kg/m2",
+   "peso": "0.348 (Adequado)",
+   "altura": "0.414 (Estatura adequada)",
+   "imcz": "0.102 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 102,
+   "peso": 26,
+   "altura": 128,
+   "id": "I12"
+  },
+  "tela": {
+   "imc": "15.9 Kg/m2",
+   "peso": "-0.191 (Adequado)",
+   "altura": "-0.331 (Estatura adequada)",
+   "imcz": "0.009 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138.6,
+   "id": "I13"
+  },
+  "tela": {
+   "imc": "16.7 Kg/m2",
+   "peso": "0.026 (Adequado)",
+   "altura": "-0.006 (Estatura adequada)",
+   "imcz": "0.042 (Eutrófico)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 132,
+   "peso": 40,
+   "altura": 143,
+   "id": "I14"
+  },
+  "tela": {
+   "imc": "19.6 Kg/m2",
+   "peso": "-",
+   "altura": "-0.017 (Estatura adequada)",
+   "imcz": "1.16 (Sobrepeso)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 150,
+   "peso": 45,
+   "altura": 155,
+   "id": "I15"
+  },
+  "tela": {
+   "imc": "18.7 Kg/m2",
+   "peso": "-",
+   "altura": "0.144 (Estatura adequada)",
+   "imcz": "0.121 (Eutrófico)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 180,
+   "peso": 60,
+   "altura": 170,
+   "id": "I16"
+  },
+  "tela": {
+   "imc": "20.8 Kg/m2",
+   "peso": "-",
+   "altura": "0.134 (Estatura adequada)",
+   "imcz": "0.392 (Eutrófico)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 204,
+   "peso": 55,
+   "altura": 162,
+   "id": "I17"
+  },
+  "tela": {
+   "imc": "21.0 Kg/m2",
+   "peso": "-",
+   "altura": "-0.128 (Estatura adequada)",
+   "imcz": "-0.012 (Eutrófico)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 228,
+   "peso": 70,
+   "altura": 176,
+   "id": "I18"
+  },
+  "tela": {
+   "imc": "22.6 Kg/m2",
+   "peso": "-",
+   "altura": "-0.074 (Estatura adequada)",
+   "imcz": "0.141 (Eutrófico)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 48,
+   "peso": 23.5,
+   "altura": 103.3,
+   "id": "I19"
+  },
+  "tela": {
+   "imc": "22.0 Kg/m2",
+   "peso": "2.786 (Peso elevado)",
+   "altura": "-0.007 (Estatura adequada)",
+   "imcz": "4.108 (Obesidade)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 48,
+   "peso": 12,
+   "altura": 92,
+   "id": "I20"
+  },
+  "tela": {
+   "imc": "14.2 Kg/m2",
+   "peso": "-2.467 (Baixo peso)",
+   "altura": "-2.701 (Baixa estatura)",
+   "imcz": "-0.945 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 90,
+   "peso": 40,
+   "altura": 126,
+   "id": "I21"
+  },
+  "tela": {
+   "imc": "25.2 Kg/m2",
+   "peso": "2.878 (Peso elevado)",
+   "altura": "0.414 (Estatura adequada)",
+   "imcz": "3.242 (Obesidade grave)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 90,
+   "peso": 17,
+   "altura": 126,
+   "id": "I22"
+  },
+  "tela": {
+   "imc": "10.7 Kg/m2",
+   "peso": "-2.276 (Baixo peso)",
+   "altura": "0.414 (Estatura adequada)",
+   "imcz": "-4.368 (Magreza severa)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 150,
+   "peso": 70,
+   "altura": 150,
+   "id": "I23"
+  },
+  "tela": {
+   "imc": "31.1 Kg/m2",
+   "peso": "-",
+   "altura": "-0.336 (Estatura adequada)",
+   "imcz": "3.026 (Obesidade grave)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 150,
+   "peso": 28,
+   "altura": 150,
+   "id": "I24"
+  },
+  "tela": {
+   "imc": "12.4 Kg/m2",
+   "peso": "-",
+   "altura": "-0.336 (Estatura adequada)",
+   "imcz": "-4.368 (Magreza severa)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 24,
+   "peso": 9,
+   "altura": 78,
+   "id": "I25"
+  },
+  "tela": {
+   "imc": "14.8 Kg/m2",
+   "peso": "-2.034 (Baixo peso)",
+   "altura": "-2.608 (Baixa estatura)",
+   "imcz": "-0.475 (Adequado)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 36,
+   "peso": 20,
+   "altura": 96,
+   "id": "I26"
+  },
+  "tela": {
+   "imc": "21.7 Kg/m2",
+   "peso": "2.713 (Peso elevado)",
+   "altura": "-0.023 (Estatura adequada)",
+   "imcz": "3.956 (Obesidade)",
+   "gc": "-",
+   "gcClas": "-",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 8,
+   "dcse": 6,
+   "id": "I27"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.162 (Adequado)",
+   "altura": "0.035 (Estatura adequada)",
+   "imcz": "0.199 (Eutrófico)",
+   "gc": "12.56%",
+   "gcClas": "Ótimo",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 15,
+   "dcse": 12,
+   "id": "I28"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.162 (Adequado)",
+   "altura": "0.035 (Estatura adequada)",
+   "imcz": "0.199 (Eutrófico)",
+   "gc": "22.74%",
+   "gcClas": "Elevado",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 25,
+   "dcse": 20,
+   "id": "I29"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.162 (Adequado)",
+   "altura": "0.035 (Estatura adequada)",
+   "imcz": "0.199 (Eutrófico)",
+   "gc": "36.84%",
+   "gcClas": "Muito alto",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 10,
+   "dcse": 8,
+   "id": "I30"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.026 (Adequado)",
+   "altura": "-0.099 (Estatura adequada)",
+   "imcz": "0.09 (Eutrófico)",
+   "gc": "17.23%",
+   "gcClas": "Ótimo",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 20,
+   "dcse": 18,
+   "id": "I31"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.026 (Adequado)",
+   "altura": "-0.099 (Estatura adequada)",
+   "imcz": "0.09 (Eutrófico)",
+   "gc": "30.45%",
+   "gcClas": "Alto",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 12,
+   "dcse": 9,
+   "id": "I32"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.026 (Adequado)",
+   "altura": "-0.099 (Estatura adequada)",
+   "imcz": "0.09 (Eutrófico)",
+   "gc": "19.7%",
+   "gcClas": "Ótimo",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 9,
+   "dcp": 10,
+   "id": "I33"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.162 (Adequado)",
+   "altura": "0.035 (Estatura adequada)",
+   "imcz": "0.199 (Eutrófico)",
+   "gc": "14.96%",
+   "gcClas": "Ótimo",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "F",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 14,
+   "dcp": 15,
+   "id": "I34"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.026 (Adequado)",
+   "altura": "-0.099 (Estatura adequada)",
+   "imcz": "0.09 (Eutrófico)",
+   "gc": "22.79%",
+   "gcClas": "Ótimo",
+   "excecao": ""
+  }
+ },
+ {
+  "caso": {
+   "sexo": "M",
+   "meses": 120,
+   "peso": 32,
+   "altura": 138,
+   "dct": 14,
+   "dcse": 10,
+   "dcp": 12,
+   "id": "I35"
+  },
+  "tela": {
+   "imc": "16.8 Kg/m2",
+   "peso": "0.162 (Adequado)",
+   "altura": "0.035 (Estatura adequada)",
+   "imcz": "0.199 (Eutrófico)",
+   "gc": "20.11%",
+   "gcClas": "Elevado",
+   "excecao": ""
+  }
+ }
+]
