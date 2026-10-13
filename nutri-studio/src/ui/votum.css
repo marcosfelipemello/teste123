@@ -285,3 +285,7 @@ select.medida-linha { min-height: 36px; padding: 6px 8px; min-width: 9em; }
 .tabela-plano select.medida-linha { min-width: 0; max-width: 9.5em; }
 .tabela-plano td .acoes { flex-wrap: wrap !important; gap: 0; }
 @media (max-width: 900px) { .painel-duplo.plano { grid-template-columns: minmax(0, 1fr); } }
+.lista-divergencias { list-style: none; margin: 0; padding: 0; }
+.lista-divergencias > li { padding: 10px 0; border-bottom: 1px solid var(--filete); }
+.lista-divergencias p { margin: 0 0 4px; }
+input[readonly] { background: var(--bloco); }
