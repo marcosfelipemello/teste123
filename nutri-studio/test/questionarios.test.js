@@ -368,23 +368,21 @@ test('§10.4 evidência tela_q_cafeina.json (modo resumido, padrão): "Fator" + 
 
 test('§10.4 evidência tela_q_fronteiras.json: média 4.00 → "alto"; item não "R" ignorado no resumido', () => {
   const fr = evidencia('tela_q_fronteiras.json');
-  const tudo4 = calcularCafeina(repetir(47, 4));
-  const dep392 = calcularCafeina([3, ...repetir(46, 4)]);
-  for (const [r, linha] of [[tudo4, fr.cafeina_tudo4], [dep392, fr.cafeina_dep_392]]) {
+  // cafeina_dep_392: item 1 (não "R") = 3, demais 4.
+  for (const [resp, linha] of [[repetir(47, 4), fr.cafeina_tudo4], [[3, ...repetir(46, 4)], fr.cafeina_dep_392]]) {
+    const r = calcularCafeina(resp);
     const f = r.tela.fatores[0];
     const prefixo = `•${f.nome}${f.media}`;
     assert.ok(linha.startsWith(prefixo), `${linha} começa com ${prefixo}`);
     assert.equal(f.media, 'Média: 4.00');
     assert.equal(r.fatores[0].nivel, 'alto');
     assert.equal(f.cor, '#f44336');
+    assert.equal(f.texto, null, 'sem textos fornecidos, texto = null');
     // O texto autoral (abreviado na evidência) entra por opcoes.textos e aparece depois da média.
-    const textoAlto = linha.slice(prefixo.length).replace(/…$/, '');
-    const comTexto = calcularCafeina(dep392 === r ? [3, ...repetir(46, 4)] : repetir(47, 4), {
-      textos: { Dependência: { alto: textoAlto, baixo: 'baixo' } },
-    });
-    assert.equal(`•${comTexto.tela.fatores[0].nome}${comTexto.tela.fatores[0].media}${comTexto.tela.fatores[0].texto}…`, linha);
+    const alto = linha.slice(prefixo.length).replace(/…$/, '');
+    const g = calcularCafeina(resp, { textos: { Dependência: { alto, baixo: 'x' } } }).tela.fatores[0];
+    assert.equal(`•${g.nome}${g.media}${g.texto}…`, linha);
   }
-  assert.equal(tudo4.fatores[0].texto, null, 'sem textos fornecidos, texto = null');
 });
 
 test('§10.4 média 3.67 → "baixo"; cores por fator; todos 1/3/6', () => {
@@ -417,16 +415,19 @@ test('§10.4 modo completo: soma / nº de itens do fator; em branco conta 0', ()
   const padrao = Array.from({ length: 47 }, (_, i) => (i % 6) + 1);
   assert.deepEqual(
     calcularCafeina(padrao, { modo: 'completo' }).tela.fatores.map((f) => f.media),
-    ['Média: 3.50', 'Média: 3.38', 'Média: 3.00', 'Média: 3.50', 'Média: 3.00', 'Média: 3.67', 'Média: 3.50'],
+    // 42/12 · 24/8 · 19/5 · 21/6 · 9/3 · 33/9 · 14/4
+    ['Média: 3.50', 'Média: 3.00', 'Média: 3.80', 'Média: 3.50', 'Média: 3.00', 'Média: 3.67', 'Média: 3.50'],
   );
   // Sem resposta (ou 0 oculto) soma 0 e continua no divisor.
   const vazio = calcularCafeina([]);
   assert.ok(vazio.tela.fatores.every((f) => f.media === 'Média: 0.00'));
   assert.equal(vazio.semResposta.length, 21, 'resumido: só os itens "R"');
   assert.equal(calcularCafeina([], { modo: 'completo' }).semResposta.length, 47);
-  const umR = calcularCafeina([0, 6, 6, 0, 0, 0, 0, 6]);
-  assert.equal(umR.tela.fatores[0].media, 'Média: 4.00');
-  assert.equal(calcularCafeina([0, 6, 6, 0, 0, 0, 0, 6], { modo: 'completo' }).tela.fatores[0].media, 'Média: 1.50');
+  // Itens "R" 2 e 3 = 6, item "R" 8 em branco: resumido 12/3; completo 12/12.
+  const doisR = calcularCafeina([0, 6, 6]);
+  assert.equal(doisR.tela.fatores[0].media, 'Média: 4.00');
+  assert.equal(doisR.semResposta[0], 8);
+  assert.equal(calcularCafeina([0, 6, 6], { modo: 'completo' }).tela.fatores[0].media, 'Média: 1.00');
   assert.throws(() => calcularCafeina([], { modo: 'longo' }), RangeError);
 });
 
@@ -529,7 +530,8 @@ test('§10.6 evidência tela_q_disbiose.json: pontuação, máximo exibido e res
 });
 
 test('§12 #22: 50 pontos de 49 possíveis → classe null + aviso, texto da pontuação mantido', () => {
-  const r = calcularDisbiose(pontosDe('disbiose').map((p) => p[0]));
+  const maximo = (p) => Math.max(...p.filter((x) => x !== '-'));
+  const r = calcularDisbiose(pontosDe('disbiose').map(maximo));
   assert.equal(r.total, 50);
   assert.equal(r.tela.pontuacao, '50 pontos de 49 possíveis');
   assert.equal(r.classe, null);
@@ -538,11 +540,11 @@ test('§12 #22: 50 pontos de 49 possíveis → classe null + aviso, texto da pon
   assert.match(r.aviso, /§12 #22/);
   assert.match(r.aviso, /50 pontos de 49 possíveis/);
   // Mesmo estouro pelas tabelas com "-" (não visto na tela): 47 de 46 e 44 de 43.
-  const um = calcularDisbiose(pontosDe('disbiose').map((p, i) => (i === 1 ? '-' : p[0])));
+  const um = calcularDisbiose(pontosDe('disbiose').map((p, i) => (i === 1 ? '-' : maximo(p))));
   assert.equal(um.tela.pontuacao, '47 pontos de 46 possíveis');
   assert.equal(um.classe, null);
   assert.match(um.aviso, /§12 #22/);
-  const dois = calcularDisbiose(pontosDe('disbiose').map((p, i) => (i === 1 || i === 2 ? '-' : p[0])));
+  const dois = calcularDisbiose(pontosDe('disbiose').map((p, i) => (i === 1 || i === 2 ? '-' : maximo(p))));
   assert.equal(dois.tela.pontuacao, '44 pontos de 43 possíveis');
   assert.equal(dois.classe, null);
   assert.ok(DIVERGENCIAS.some((d) => d.item === 22 && d.questionario === 'disbiose'));
@@ -612,7 +614,7 @@ test('§10.7 campo vazio = 0, vírgula decimal, soma 0 vira 1 só no gráfico de
   assert.deepEqual(r.tela.consumido.slice(1), [0, 0, 0, 0, 0, 0, 0]);
   assert.deepEqual(r.bebidas, { acucaradas: 0, saudaveis: 0 });
   assert.deepEqual(r.tela.bebidas, [1, 1]);
-  assert.equal(r.semResposta.length, 40);
+  assert.equal(r.semResposta.length, 39, '"abc" foi digitado (vale 0, mas não está em branco)');
   const s = repetir(42, 0);
   s[35] = 7;
   assert.deepEqual(calcularQfa(s).tela.bebidas, [1, 7]);

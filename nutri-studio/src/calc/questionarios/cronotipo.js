@@ -13,7 +13,8 @@ import { MENSAGEM_INCOMPLETO, congelar, criarItem, faixaDe, lerRespostas, somar 
 const PONTOS = [
   [5, 4, 3, 2, 1, 0], // 1
   [5, 4, 3, 2, 1, 0], // 2
-  [1, 2, 3, 4], // 3 — WebDiet §12 #21: pontuação invertida em relação ao MEQ original (despertador).
+  // WebDiet §12 #21: item 3 (despertador) com a pontuação invertida em relação ao MEQ original.
+  [1, 2, 3, 4], // 3
   [1, 2, 3, 4], // 4
   [1, 2, 3, 4], // 5
   [1, 2, 3, 4], // 6
@@ -22,7 +23,8 @@ const PONTOS = [
   [4, 3, 2, 1], // 9
   [5, 4, 3, 2, 1], // 10
   [4, 3, 2, 1], // 11
-  [1, 2, 3, 4], // 12 — WebDiet §12 #21: 1/2/3/4 no lugar de 0/2/3/5 do MEQ original (cansaço às 23 h).
+  // WebDiet §12 #21: item 12 (cansaço às 23 h) com 1/2/3/4 no lugar de 0/2/3/5 do MEQ original.
+  [1, 2, 3, 4], // 12
   [4, 3, 2, 1], // 13
   [1, 2, 3, 4], // 14
   [4, 3, 2, 1], // 15
