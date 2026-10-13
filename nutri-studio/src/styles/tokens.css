@@ -1,0 +1,64 @@
+/*
+ * Kryven Design System v1.1 · tokens
+ * Fonte única de cor do app. Componentes consomem apenas estas variáveis, nunca hex soltos.
+ * Regra WCAG (auditoria 2.1): --violet-500 apenas não-texto · --violet-300 texto de marca · --mist-100 texto primário.
+ */
+:root {
+  /* Marca · Violet */
+  --violet-100: #e5d9ff;
+  --violet-300: #a876ff;
+  --violet-400: #8b2bff;
+  --violet-500: #6a00ff;
+  --violet-600: #5a00d9;
+  --violet-700: #4700ad;
+  --violet-800: #2a0066;
+
+  /* Superfície & texto */
+  --ink-900: #0f1116;
+  --ink-800: #151820;
+  --slate-700: #1e233c;
+  --slate-600: #2a3054;
+  --mist-100: #e6e8ee;
+  --mist-200: #c9cdd8;
+  --neutral-300: #9aa0b4;
+  --neutral-500: #5f6577;
+
+  /* Semânticas · DEFAULT / surface / text */
+  --success: #22c55e;
+  --success-surface: #0e2e1a;
+  --success-text: #4ade80;
+  --warning: #f5a524;
+  --warning-surface: #2e1f0a;
+  --warning-text: #fcd34d;
+  --error: #f5334d;
+  --error-surface: #2e0a10;
+  --error-text: #fca5a5;
+  --info: #3b82f6;
+  --info-surface: #0a1a2e;
+  --info-text: #93c5fd;
+
+  /* Papéis */
+  --bg: var(--ink-900);
+  --bg-elevado: var(--ink-800);
+  --card: var(--slate-700);
+  --card-hover: var(--slate-600);
+  --texto: var(--mist-100);
+  --texto-2: var(--mist-200);
+  --texto-3: var(--neutral-300);
+  --linha: rgba(201, 205, 216, 0.12);
+  --glow-brand: 0 0 0 1px var(--violet-500), 0 0 18px rgba(106, 0, 255, 0.35);
+
+  /* Tipografia */
+  --fonte-display: 'Sora', system-ui, sans-serif;
+  --fonte-texto: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Espaço (a marca respira) */
+  --e1: 4px;
+  --e2: 8px;
+  --e3: 12px;
+  --e4: 16px;
+  --e5: 24px;
+  --e6: 32px;
+  --e7: 48px;
+  --raio: 6px;
+}
