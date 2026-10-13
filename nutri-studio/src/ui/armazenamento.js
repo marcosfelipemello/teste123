@@ -90,6 +90,19 @@ export function criarArmazenamento(backend = globalThis.localStorage) {
       delete carregar()[colecao][id];
       gravar();
     },
+    /**
+     * Salva vários itens de uma coleção gravando uma vez só (importação de tabelas de alimentos).
+     * Devolve {itens, gravado}; gravado = false se o navegador recusou (armazenamento cheio).
+     */
+    salvarVarios(colecao, itens) {
+      const dados = carregar();
+      const salvos = itens.map((item) => {
+        const id = item.id || novoId();
+        dados[colecao][id] = { ...item, id };
+        return dados[colecao][id];
+      });
+      return { itens: salvos, gravado: gravar() };
+    },
     /** Backup completo (para baixar em JSON). */
     exportarBackup() {
       const d = carregar();

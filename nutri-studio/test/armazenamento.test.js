@@ -26,6 +26,25 @@ test('importação sempre cria pacientes novos e o backup devolve tudo', () => {
   assert.equal(a.exportarBackup().pacientes.length, 2);
 });
 
+test('coleções gerais: salvar, salvarVarios (uma gravação) e excluir', () => {
+  const b = backendMemoria();
+  let gravacoes = 0;
+  const contando = { getItem: b.getItem, setItem: (k, v) => { gravacoes++; b.setItem(k, v); } };
+  const a = criarArmazenamento(contando);
+  const r = a.salvarVarios('alimentos', [{ nome: 'Arroz' }, { nome: 'Feijão' }, { id: 'x', nome: 'Ovo' }]);
+  assert.equal(r.gravado, true);
+  assert.equal(gravacoes, 1);
+  assert.equal(r.itens.length, 3);
+  assert.equal(r.itens[2].id, 'x');
+  a.salvar('receitas', { nome: 'Bolo' });
+  a.excluir('alimentos', 'x');
+  const outra = criarArmazenamento(b);
+  assert.deepEqual(outra.listar('alimentos').map((x) => x.nome).sort(), ['Arroz', 'Feijão']);
+  assert.equal(outra.listar('receitas')[0].nome, 'Bolo');
+  const cheio = criarArmazenamento({ getItem: () => null, setItem() { throw new Error('cheio'); } });
+  assert.equal(cheio.salvarVarios('alimentos', [{ nome: 'X' }]).gravado, false);
+});
+
 test('backend com erro não derruba o app', () => {
   const a = criarArmazenamento({ getItem() { throw new Error('bloqueado'); }, setItem() { throw new Error('cheio'); } });
   assert.equal(a.salvarPaciente({ nome: 'X' }).nome, 'X');
