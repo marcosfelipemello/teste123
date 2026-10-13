@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test \"test/**/*.test.js\"",
-    "start": "node scripts/servidor.js"
+    "start": "node scripts/servidor.js",
+    "e2e": "node scripts/ponta-a-ponta.mjs"
   },
   "engines": {
     "node": ">=20"
