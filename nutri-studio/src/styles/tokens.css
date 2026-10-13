@@ -4,6 +4,7 @@
  * Regra WCAG (auditoria 2.1): --violet-500 apenas não-texto · --violet-300 texto de marca · --mist-100 texto primário.
  */
 :root {
+  color-scheme: dark;
   /* Marca · Violet */
   --violet-100: #e5d9ff;
   --violet-300: #a876ff;

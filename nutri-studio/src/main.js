@@ -43,7 +43,7 @@ function layout(/** @type {string} */ ativo, /** @type {import('./ui/html.js').R
         <div><strong>Nutri Studio</strong><small>CONSULTÓRIO DIGITAL</small></div>
       </a>
       <nav class="menu" aria-label="Principal">
-        ${MENU.map(([id, href, nome]) => html`<a href="${href}" class="${ativo === id ? 'ativo' : ''}" title="${nome}">${icon(id)}<span>${nome}</span></a>`)}
+        ${MENU.map(([id, href, nome]) => html`<a href="${href}" class="${ativo === id ? 'ativo' : ''}" title="${nome}">${icon(id === 'calculadoras' ? 'calculadora' : id)}<span>${nome}</span></a>`)}
       </nav>
       <div class="rodape">Dados salvos neste navegador.<br />Faça backup em Configurações.</div>
     </aside>
