@@ -3,8 +3,10 @@
 //   refeição, total do dia, análise calórica, metas (GET do último cálculo energético), adequação e os 27
 //   micronutrientes contra as DRIs do paciente (calc/dris.js, §8.10).
 // - Método por equivalentes (calc/equivalentes.js, §8.5): porções dos 15 grupos por refeição, mais avulsos.
-//   As listas de alimentos de cada grupo do WebDiet não foram copiadas (§1.2): o consultório monta a sua a
-//   partir de "Meus alimentos" (coleção "equivalentes"; cada alimento com a medida de 1 porção).
+//   As listas de alimentos de cada grupo do WebDiet não foram copiadas (§1.2). Cada grupo usa a lista do
+//   consultório, montada a partir de "Meus alimentos" (coleção "equivalentes"; cada alimento com a medida de
+//   1 porção); sem lista própria, usa as médias padrão que o WebDiet mostra (dados/equivalentes_padrao.json),
+//   e os totais saem iguais aos do WebDiet.
 // - Lista de compras (calc/listaCompras.js, §8.8) e versão para impressão.
 // Os alimentos vêm do catálogo do consultório (Meus alimentos + receitas, ui/catalogo.js); o plano guarda uma
 // cópia de cada alimento, para não mudar se o cadastro for editado depois.
@@ -20,6 +22,7 @@ import {
   nutrientesPorPeso, tabelaMicros, CORES, FATOR_NITROGENIO,
 } from '../../calc/planejamento.js';
 import { GRUPOS, CAMPOS_GRUPO, calcularGrupos, calcularTotaisEquivalentes } from '../../calc/equivalentes.js';
+import PADRAO_EQUIVALENTES from '../../dados/equivalentes_padrao.json' with { type: 'json' };
 import {
   importarComprasAlimentos, importarComprasEquivalentes, montarListaComQuantidades, PERIODOS, PERIODO_PADRAO,
 } from '../../calc/listaCompras.js';
@@ -361,12 +364,21 @@ function montar(raiz, { db, paciente: p }) {
         try { return [porcaoEquivalente(it)]; } catch (e) { erros.push(`${it.alimento?.nome}: ${e.message}`); return []; }
       });
       grupos = calcularGrupos(porcoes);
+      // Grupo sem alimentos do consultório: médias padrão do WebDiet (só macronutrientes foram registrados).
+      grupos.padrao = {};
+      for (const { id } of GRUPOS) {
+        if (grupos.n[id]) continue;
+        grupos.padrao[id] = true;
+        grupos.macrosGrupo[id] = PADRAO_EQUIVALENTES.macrosGrupo[id].slice();
+        grupos.macros_desvp[id] = PADRAO_EQUIVALENTES.macros_desvp[id].slice();
+        grupos.tela[id] = grupos.macros_desvp[id].map((d, j) => `± ${fx(d, CAMPOS_GRUPO[j] === 'kcal' ? 0 : 1)}`);
+      }
       return { porcoes, erros };
     }
 
     function desenharGrupos() {
       const { erros } = calcularGruposAtuais();
-      const vazios = GRUPOS.filter((g) => !grupos.n[g.id]).length;
+      const comPadrao = GRUPOS.filter((g) => grupos.padrao[g.id]).length;
       corpoGrupos.replaceChildren(
         h('div', { class: 'tabela-rolagem' }, h('table', { class: 'medidas' },
           h('caption', { class: 'oculto-visual' }, 'Média por porção de cada grupo'),
@@ -374,9 +386,10 @@ function montar(raiz, { db, paciente: p }) {
             ...CAMPOS_GRUPO.map((c) => h('th', { scope: 'col', class: 'num' }, c === 'kcal' ? 'kcal' : c.toUpperCase())))),
           h('tbody', {}, GRUPOS.map((g) => h('tr', {},
             h('th', { scope: 'row' }, `${g.id.slice(1)}. ${g.nome}`),
-            h('td', { class: 'num' }, String(grupos.n[g.id])),
-            ...grupos.macrosGrupo[g.id].map((v, j) => h('td', { class: 'num' }, String(v), grupos.n[g.id] ? h('div', {}, h('small', {}, grupos.tela[g.id][j])) : null))))))),
-        h('p', { class: 'legenda' }, `Média simples dos alimentos selecionados de cada grupo (valores de 1 porção com 1 casa), ± desvio-padrão. ${vazios ? `${vazios} grupo(s) sem alimentos valem 0.` : ''}`),
+            h('td', { class: 'num' }, grupos.padrao[g.id] ? h('span', {}, 'padrão', h('div', {}, h('small', {}, `WebDiet, ${PADRAO_EQUIVALENTES.n[g.id]}`))) : String(grupos.n[g.id])),
+            ...grupos.macrosGrupo[g.id].map((v, j) => h('td', { class: 'num' }, String(v), h('div', {}, h('small', {}, grupos.tela[g.id][j]))))))))),
+        h('p', { class: 'legenda' }, 'Média simples dos alimentos selecionados de cada grupo (valores de 1 porção com 1 casa), ± desvio-padrão.' +
+          (comPadrao ? ` ${comPadrao === GRUPOS.length ? 'Todos os grupos usam' : `${comPadrao} grupo(s) usam`} as médias padrão do WebDiet (relatório §8.5), com os mesmos totais do WebDiet. Ao montar a lista do consultório para um grupo, ele passa a usar a média dessa lista.` : '')),
         erros.length ? h('ul', { class: 'lista-avisos' }, erros.map((e) => h('li', { class: 'aviso' }, e))) : null,
         h('div', { class: 'acoes' }, h('button', { type: 'button', class: 'botao secundario', onclick: editarGrupos }, 'Editar os alimentos dos grupos')));
     }
@@ -590,7 +603,7 @@ function montar(raiz, { db, paciente: p }) {
       });
       corpoMicros.replaceChildren(
         h('p', { class: 'legenda' }, refs.rotulo ? `Referência: ${refs.rotulo}${condicao ? ` (${condicao})` : ''}, ${fonte}. Detalhes em "Referências".` : 'Sem referência para este perfil (informe sexo e nascimento no cadastro).'),
-        eq && !resultado.tabelaMicros ? h('p', { class: 'legenda' }, 'Os grupos de equivalentes ainda não têm alimentos: os micronutrientes saem zerados.') : null,
+        eq && grupos && Object.keys(grupos.padrao).length ? h('p', { class: 'legenda' }, 'Grupos com a média padrão do WebDiet não têm micronutrientes (só os macronutrientes das médias foram registrados): eles contam 0 nesta tabela.') : null,
         h('div', { class: 'tabela-rolagem' }, h('table', { class: 'medidas tabela-micros' },
           h('caption', { class: 'oculto-visual' }, 'Micronutrientes do plano e adequação'),
           h('thead', {}, h('tr', {}, h('th', { scope: 'col' }, 'Nutriente'), h('th', { scope: 'col', class: 'num' }, 'Plano'), h('th', { scope: 'col', class: 'num' }, 'Adequação'), h('th', { scope: 'col', class: 'num' }, 'Referência'))),
