@@ -1,6 +1,8 @@
 # Próximos passos — continuação da Etapa 3 (app nutri-studio)
 
-Branch de trabalho: `ccr-547159ad-oarva6`. Tudo o que está aqui foi feito na sessão anterior.
+Branch de trabalho: `ccr-547159ad-oarva6`.
+
+**Situação em 13/10/2026 (segunda sessão):** a lista "Falta fazer" abaixo foi concluída, item a item, com um commit por parte. O que continua em aberto está em "Ainda não feito" e em "Decisões que dependem do usuário".
 
 ## Onde está cada coisa
 
@@ -9,6 +11,8 @@ Branch de trabalho: `ccr-547159ad-oarva6`. Tudo o que está aqui foi feito na se
 - `nutri-studio/` — o app novo: web app estático, JS puro (módulos ES), sem dependências e sem build. Dados no `localStorage` do navegador, com backup em JSON. Design system Votum (`src/ui/votum.css`): só paleta e tipografia, sem logotipo.
   - `npm test` → 1589 testes passando (`node --test "test/**/*.test.js"`).
   - `npm start` → abre em http://localhost:8080.
+  - `npm run e2e` → teste de ponta a ponta no Chromium, em 1280 e 375 px: 94 de 94 conferências passando. O Playwright fica fora do repositório (ver `nutri-studio/README.md`).
+  - `nutri-studio/README.md` → como rodar, arquitetura, política de erros, de onde vem cada dado.
 
 ## Pronto e testado
 
@@ -31,16 +35,33 @@ Branch de trabalho: `ccr-547159ad-oarva6`. Tudo o que está aqui foi feito na se
 - `abas/antropometria.js` (adulto e infantil) e `abas/gestacao.js`, testadas no navegador
 - `abas/painel-resultados.js`: painel de resultados reutilizável
 
-## Interrompido no meio (o limite de uso acabou) — revisar antes de usar
+## Interrompido no meio na primeira sessão — revisado e testado na segunda
 
 - `src/ui/alimentosCsv.js` + `test/alimentosCsv.test.js` (importação de tabela de alimentos por CSV)
 - `src/ui/catalogo.js`
 - `src/ui/paginas/alimentos.js`
 - `armazenamento.js`: `salvarVarios`
 
-Esses arquivos ainda **não foram testados no navegador** e a página de alimentos pode estar incompleta.
+Revisão: a página estava completa. Foi testada no navegador (cadastro pelo rótulo = §8.7; importação, exportação e modelo CSV; persistência). Duas mudanças:
+- a nota técnica da divergência 27 virou um texto para o usuário;
+- um alimento do rótulo agora pode ser editado por 100 g, para preencher os micronutrientes.
 
-## Falta fazer
+## Falta fazer — concluído na segunda sessão
+
+Todos os itens abaixo foram feitos e conferidos no navegador. Nenhum arquivo de `src/calc/` foi alterado. Resumo:
+1. **Cálculo energético** (`abas/energia.js`): E01 confere (1806 / 22,6; 2799 / 35,0), assim como E02, E31, EER 2023 categorias 1–4, VENTA, MET, GET manual e bolso.
+2. **Questionários** (`abas/questionarios.js`): cronotipo com as primeiras opções dá 62 pontos / Moderadamente matutino.
+3. **Planejamento** (`abas/planejamento.js`):
+   - §8.4 confere (398 g; 37,1/23,5/54,8; 587 kcal);
+   - equivalentes com uma lista de grupos do consultório (nova coleção `equivalentes`);
+   - lista de compras com quantidades conforme o §8.8;
+   - impressão.
+4. **Páginas:** alimentos (§8.7), receitas (§8.6: 480 g, 576 kcal, 120 g; 105 g com peso final de 420 g) e referências (DRIs com a fonte + lista das divergências do §12).
+5. **Ponta a ponta:** `nutri-studio/scripts/ponta-a-ponta.mjs`, 94/94 em 1280 e 375 px, console sem erros.
+6. **README** do app.
+7. **Relatório:** nova §15, "Lacunas encontradas na reconstrução". A contagem de protocolos foi conferida: são 23 documentados, não 26 (§15.1).
+
+Texto original da lista, para referência:
 
 Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os testes para entender a API.
 
@@ -80,6 +101,20 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
    - semana inicial etc.
    Conferir também a contagem "26 protocolos" (§2.2), porque só 23 estão documentados em §4.
 
+## Ainda não feito (fora desta lista)
+
+- Não reproduzidos:
+  - planejamento qualitativo;
+  - piloto automático (modelos do WebDiet);
+  - lista de compras reescrita por IA;
+  - PDF (há impressão pelo navegador);
+  - periodização;
+  - integração HandyMET (a TMB é digitada);
+  - receitas "comuns" (só texto);
+  - abas sem cálculo do §11.
+- Sinais e sintomas: o motor de contagem existe, mas falta a base sinal → nutrientes (decisão 2).
+- Hospedagem e login (decisão 4): hoje os dados ficam só no navegador, com backup em JSON.
+
 ## Regras combinadas com o usuário (manter)
 
 - **Não apagar nada sem consultar o usuário.**
@@ -99,3 +134,7 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
 3. Base de alimentos: o app não traz tabela. Incluir a TACO (pública, NEPA/UNICAMP)?
 4. Hospedagem e acesso por login (hoje os dados ficam só no navegador). Opção: Supabase.
 5. Excluir o paciente de teste da conta do WebDiet.
+6. Metas padrão de um plano novo: hoje PTN 20% e LIP 30% do GET (CHO 50%, automático), os valores usados na evidência. Manter ou trocar?
+7. Adequação no método por equivalentes: o app aplica as regras do §8.3 (a tela do WebDiet para equivalentes não mostra metas). Manter?
+8. Lista dos grupos de equivalentes: começa vazia e o consultório monta a partir de "Meus alimentos". Se a TACO entrar (decisão 3), dá para sugerir uma lista inicial.
+9. Questionário de sinais e sintomas: montar uma base própria (sinal → nutrientes) a partir da literatura, ou deixar indisponível.
