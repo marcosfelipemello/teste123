@@ -9,7 +9,7 @@
 import { h, campo, selecao, lerFormulario, avisar, baixar, lerArquivo } from '../dom.js';
 import { registrarRota, db } from '../app.js';
 import { fx } from '../../calc/numeros.js';
-import { cadastrarAlimento, kcalAutomatica, DIVERGENCIAS as DIV_ROTULO } from '../../calc/alimentoProprio.js';
+import { cadastrarAlimento, kcalAutomatica } from '../../calc/alimentoProprio.js';
 import { CHAVES_MICROS } from '../../calc/dris.js';
 import {
   importarAlimentosCsv, exportarAlimentosCsv, planejarImportacao, modeloCsv, lerNumero, lerMedidas,
@@ -149,8 +149,11 @@ export function paginaAlimentos(raiz, banco = db) {
         painel.el,
         h('div', { class: 'acoes' },
           h('button', { class: 'botao', type: 'submit' }, existente ? 'Salvar alterações' : 'Salvar alimento'),
-          h('button', { class: 'botao secundario', type: 'button', onclick: lista }, 'Cancelar')),
-        h('p', { class: 'legenda' }, DIV_ROTULO.map((d) => `Divergência ${d.item} do WebDiet: ${d.comportamento}`).join(' '))));
+          h('button', { class: 'botao secundario', type: 'button', onclick: lista }, 'Cancelar'),
+          existente ? h('button', { class: 'botao discreto', type: 'button', onclick: () => formPorCem(existente) }, 'Editar por 100 g') : null),
+        h('p', { class: 'legenda' }, existente
+          ? 'Os micronutrientes do cadastro pelo rótulo ficam zerados. "Editar por 100 g" permite preenchê-los (o alimento deixa de ser editável pelo rótulo).'
+          : 'Os micronutrientes ficam zerados, como no WebDiet. Depois de salvar, "Editar" → "Editar por 100 g" permite preenchê-los.')));
 
     const NOMES_FALTANDO = { nome: 'nome', peso: 'peso da porção', medida: 'medida caseira', quantidadeMedidas: 'quantidade de medidas' };
 
