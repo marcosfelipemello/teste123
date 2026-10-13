@@ -64,12 +64,11 @@ export function criarPainel() {
     if (nova !== assinatura) {
       assinatura = nova;
       celulas = new Map();
-      corpo.replaceChildren(
-        destaques.length ? h('div', { class: 'destaques' }, destaques.map((i) => celula(i, true))) : null,
-        grupos.map((g) => h('div', {},
-          g.titulo ? h('h4', { class: 'titulo-grupo' }, g.titulo) : null,
-          h('dl', { class: 'resumo' }, g.itens.map((i) => celula(i, false))))),
-      );
+      const blocos = grupos.map((g) => h('div', {},
+        g.titulo ? h('h4', { class: 'titulo-grupo' }, g.titulo) : null,
+        h('dl', { class: 'resumo' }, g.itens.map((i) => celula(i, false)))));
+      if (destaques.length) blocos.unshift(h('div', { class: 'destaques' }, destaques.map((i) => celula(i, true))));
+      corpo.replaceChildren(...blocos);
     }
     destaques.forEach(preencher);
     grupos.forEach((g) => g.itens.forEach(preencher));
