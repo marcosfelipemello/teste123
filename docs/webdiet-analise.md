@@ -132,6 +132,7 @@ Estas convenções valem para todos os cálculos e precisam ser reproduzidas exa
 | Valores intermediários arredondados | Vários cálculos usam um valor **já exibido/arredondado** como entrada do passo seguinte: TMB → GET (§4.3), IMC → classificação (§5.2), IMC → z-score (§6.2), peso do alimento → totais (§8.3). |
 | Idade | Anos completos na **data do exame/avaliação**: `ano2-ano1`, menos 1 se o mês ou dia ainda não chegou. Meses: `anos*12 + meses`, menos 1 se `dia2 < dia1`. |
 | Data "de hoje" | Vem do servidor (ex.: `moment("13/10/2026")`), não do relógio do navegador. |
+| Sexo | Nas tabelas deste relatório, **H = homens e M = mulheres**. Nos arquivos de evidência, o campo `sexo` usa **"M" = masculino e "F" = feminino**. |
 
 ---
 
@@ -1585,6 +1586,7 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 | 26 | Lista de compras · método por equivalentes | O diálogo oferece "com" ou "sem" receitas, mas `importarCompras2()` ignora a escolha. | código |
 | 27 | Alimento próprio | `gorduratrans` não é enviado ao salvar (os outros micronutrientes vão como "0"). A kcal automática soma fibras×2 sobre o CHO digitado; se o rótulo já inclui fibra no CHO, a fibra é contada duas vezes. | código, envio bloqueado |
 | 28 | Receitas · kcal por ingrediente | A mesma linha aparece com 0 casas ("256Kcal") ou 1 casa ("117.6 Kcal"), conforme foi redesenhada ou recalculada. Os totais não são afetados. | na tela |
+| 29 | Antropometria · referência de %G abaixo de 16 anos | Não há referência ("Entre x% e y%") para menores de 16 anos; a tela continua mostrando a do caso anterior (ex.: menina com a referência masculina de 26–35 anos). | na tela (A60, A62) |
 
 Para a Etapa 3: o app novo deve **reproduzir os resultados conferidos** nos casos normais. Nos itens desta tabela, a decisão entre "igual ao WebDiet" e "corrigido" precisa ser tomada e documentada caso a caso.
 

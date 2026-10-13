@@ -1,0 +1,14 @@
+{
+  "name": "nutri-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Consultório de nutrição: cálculos reproduzidos a partir de docs/webdiet-analise.md",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "start": "node scripts/servidor.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

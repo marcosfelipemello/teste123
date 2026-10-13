@@ -1,0 +1,210 @@
+{
+  "_descricao": "Referências de micronutrientes por estágio de vida, como o WebDiet mostra no planejamento por alimentos (relatório §8.3 e §8.10; DRIs do IOM, RDA ou AI; Na e K pelos valores NASEM 2019). Só há valores para as faixas conferidas na tela. As faixas com \"conferido\": false ficam com \"valores\": null até serem preenchidas a partir de uma fonte oficial (IOM/NASEM); ao preencher, troque \"conferido\" para true e registre a fonte em \"evidencia\".",
+  "_idade": "Idade em meses completos (\"meses\") ou anos completos (\"anos\") na data de referência; limites inclusivos; null = sem limite.",
+  "_formato": "Cada valor é número (exibido como \"<valor> <unidade>\") ou \"N/D\". Os nutrientes sem referência por faixa estão em \"fixos\" e já trazem o texto da tela.",
+  "nutrientes": [
+    { "n": 1, "chave": "gorduramono", "nome": "Gordura monoinsaturada", "unidade": null },
+    { "n": 2, "chave": "gordurapoli", "nome": "Gordura poli-insaturada", "unidade": null },
+    { "n": 3, "chave": "gordurasat", "nome": "Gordura saturada", "unidade": null },
+    { "n": 4, "chave": "gorduratrans", "nome": "Gordura trans", "unidade": null },
+    { "n": 5, "chave": "colesterol", "nome": "Colesterol", "unidade": null },
+    { "n": 6, "chave": "fibras", "nome": "Fibras", "unidade": "g" },
+    { "n": 7, "chave": "ca", "nome": "Cálcio", "unidade": "mg" },
+    { "n": 8, "chave": "mg", "nome": "Magnésio", "unidade": "mg" },
+    { "n": 9, "chave": "p", "nome": "Fósforo", "unidade": "mg" },
+    { "n": 10, "chave": "fe", "nome": "Ferro", "unidade": "mg" },
+    { "n": 11, "chave": "na", "nome": "Sódio", "unidade": "mg" },
+    { "n": 12, "chave": "k", "nome": "Potássio", "unidade": "mg" },
+    { "n": 13, "chave": "co", "nome": "Cobre", "unidade": "mg" },
+    { "n": 14, "chave": "zn", "nome": "Zinco", "unidade": "mg" },
+    { "n": 15, "chave": "se", "nome": "Selênio", "unidade": "mcg" },
+    { "n": 16, "chave": "re", "nome": "Retinol", "unidade": null },
+    { "n": 17, "chave": "rea", "nome": "Vitamina A (RAE)", "unidade": "mcg" },
+    { "n": 18, "chave": "vitb9", "nome": "Folato", "unidade": "mcg" },
+    { "n": 19, "chave": "vitb12", "nome": "Vitamina B12", "unidade": "mcg" },
+    { "n": 20, "chave": "tiamina", "nome": "Tiamina (B1)", "unidade": "mg" },
+    { "n": 21, "chave": "riboflavina", "nome": "Riboflavina (B2)", "unidade": "mg" },
+    { "n": 22, "chave": "piridoxina", "nome": "Piridoxina (B6)", "unidade": "mg" },
+    { "n": 23, "chave": "niacina", "nome": "Niacina", "unidade": "mg" },
+    { "n": 24, "chave": "vitc", "nome": "Vitamina C", "unidade": "mg" },
+    { "n": 25, "chave": "vitd", "nome": "Vitamina D", "unidade": "mcg" },
+    { "n": 26, "chave": "vite", "nome": "Vitamina E", "unidade": "mg" },
+    { "n": 27, "chave": "alcool", "nome": "Álcool", "unidade": null }
+  ],
+  "fixos": {
+    "gorduramono": "",
+    "gordurapoli": "",
+    "gordurasat": "",
+    "gorduratrans": "0",
+    "colesterol": "N/D",
+    "re": "N/D",
+    "alcool": "0"
+  },
+  "estagios": [
+    {
+      "id": "M_0-6m", "rotulo": "Lactente masculino, 0–6 meses", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "meses", "min": 0, "max": 6 },
+      "conferido": true,
+      "evidencia": "tela_dris.json, perfil M 15/06/2026 (3 meses); relatório §8.10. O WebDiet mostra o selênio como \"15 mg\" (§12 item 24); aqui a unidade é mcg.",
+      "valores": { "fibras": "N/D", "ca": 200, "mg": 30, "p": 100, "fe": 0.27, "na": 110, "k": 400, "co": 0.2, "zn": 2, "se": 15,
+        "rea": 400, "vitb9": 65, "vitb12": 0.4, "tiamina": 0.2, "riboflavina": 0.3, "piridoxina": 0.1, "niacina": 2, "vitc": 40, "vitd": 10, "vite": 4 }
+    },
+    {
+      "id": "F_0-6m", "rotulo": "Lactente feminino, 0–6 meses", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "meses", "min": 0, "max": 6 },
+      "conferido": false,
+      "evidencia": "Não observado: o relatório (§8.10) só registra o perfil masculino de 3 meses.",
+      "valores": null
+    },
+    {
+      "id": "M_7-12m", "rotulo": "Lactente masculino, 7–12 meses", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "meses", "min": 7, "max": 11 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "F_7-12m", "rotulo": "Lactente feminino, 7–12 meses", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "meses", "min": 7, "max": 11 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "M_1-3a", "rotulo": "Criança masculina, 1–3 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 1, "max": 3 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil M 15/06/2024 (2 anos); relatório §8.10.",
+      "valores": { "fibras": 19, "ca": 700, "mg": 80, "p": 460, "fe": 7, "na": 800, "k": 2000, "co": 0.34, "zn": 3, "se": 20,
+        "rea": 300, "vitb9": 150, "vitb12": 0.9, "tiamina": 0.5, "riboflavina": 0.5, "piridoxina": 0.5, "niacina": 6, "vitc": 15, "vitd": 15, "vite": 6 }
+    },
+    {
+      "id": "F_1-3a", "rotulo": "Criança feminina, 1–3 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 1, "max": 3 },
+      "conferido": false, "evidencia": "Não observado: meninas de 1–8 anos (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "M_4-8a", "rotulo": "Criança masculina, 4–8 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 4, "max": 8 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil M 15/06/2021 (5 anos); relatório §8.10.",
+      "valores": { "fibras": 25, "ca": 1000, "mg": 130, "p": 500, "fe": 10, "na": 1000, "k": 2300, "co": 0.44, "zn": 5, "se": 30,
+        "rea": 400, "vitb9": 200, "vitb12": 1.2, "tiamina": 0.6, "riboflavina": 0.6, "piridoxina": 0.6, "niacina": 8, "vitc": 25, "vitd": 15, "vite": 7 }
+    },
+    {
+      "id": "F_4-8a", "rotulo": "Criança feminina, 4–8 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 4, "max": 8 },
+      "conferido": false, "evidencia": "Não observado: meninas de 1–8 anos (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "M_9-13a", "rotulo": "Masculino, 9–13 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 9, "max": 13 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil M 15/06/2016 (10 anos); relatório §8.10.",
+      "valores": { "fibras": 31, "ca": 1300, "mg": 240, "p": 1250, "fe": 8, "na": 1200, "k": 2500, "co": 0.7, "zn": 8, "se": 40,
+        "rea": 600, "vitb9": 300, "vitb12": 1.8, "tiamina": 0.9, "riboflavina": 0.9, "piridoxina": 1, "niacina": 12, "vitc": 45, "vitd": 15, "vite": 11 }
+    },
+    {
+      "id": "F_9-13a", "rotulo": "Feminino, 9–13 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 9, "max": 13 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/2016 (10 anos); relatório §8.10.",
+      "valores": { "fibras": 26, "ca": 1300, "mg": 240, "p": 1250, "fe": 8, "na": 1200, "k": 2300, "co": 0.7, "zn": 8, "se": 40,
+        "rea": 600, "vitb9": 300, "vitb12": 1.8, "tiamina": 0.9, "riboflavina": 0.9, "piridoxina": 1, "niacina": 12, "vitc": 45, "vitd": 15, "vite": 11 }
+    },
+    {
+      "id": "M_14-18a", "rotulo": "Masculino, 14–18 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 14, "max": 18 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil M 15/06/2010 (16 anos); relatório §8.10.",
+      "valores": { "fibras": 38, "ca": 1300, "mg": 410, "p": 1250, "fe": 11, "na": 1500, "k": 3000, "co": 0.89, "zn": 11, "se": 55,
+        "rea": 900, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.2, "riboflavina": 1.3, "piridoxina": 1.3, "niacina": 16, "vitc": 75, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "F_14-18a", "rotulo": "Feminino, 14–18 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 14, "max": 18 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/2010 (16 anos); relatório §8.10.",
+      "valores": { "fibras": 26, "ca": 1300, "mg": 360, "p": 1250, "fe": 15, "na": 1500, "k": 2300, "co": 0.89, "zn": 9, "se": 55,
+        "rea": 700, "vitb9": 400, "vitb12": 2.4, "tiamina": 1, "riboflavina": 1, "piridoxina": 1.2, "niacina": 14, "vitc": 65, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "M_19-30a", "rotulo": "Masculino, 19–30 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 19, "max": 30 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "F_19-30a", "rotulo": "Feminino, 19–30 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 19, "max": 30 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "M_31-50a", "rotulo": "Masculino, 31–50 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 31, "max": 50 },
+      "conferido": true, "evidencia": "Relatório §8.3 (homem de 35 anos) e tela_planejamento_alimentos.json (coluna de referência dos micronutrientes).",
+      "valores": { "fibras": 38, "ca": 1000, "mg": 420, "p": 700, "fe": 8, "na": 1500, "k": 3400, "co": 0.9, "zn": 11, "se": 55,
+        "rea": 900, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.2, "riboflavina": 1.3, "piridoxina": 1.3, "niacina": 16, "vitc": 90, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "F_31-50a", "rotulo": "Feminino, 31–50 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 31, "max": 50 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/1991 não gestante (35 anos); relatório §8.10.",
+      "valores": { "fibras": 25, "ca": 1000, "mg": 320, "p": 700, "fe": 18, "na": 1500, "k": 2600, "co": 0.9, "zn": 8, "se": 55,
+        "rea": 700, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.1, "riboflavina": 1.1, "piridoxina": 1.3, "niacina": 14, "vitc": 75, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "M_51-70a", "rotulo": "Masculino, 51–70 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 51, "max": 70 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil M 15/06/1971 (55 anos); relatório §8.10.",
+      "valores": { "fibras": 30, "ca": 1000, "mg": 420, "p": 700, "fe": 8, "na": 1500, "k": 3400, "co": 0.9, "zn": 11, "se": 55,
+        "rea": 900, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.2, "riboflavina": 1.3, "piridoxina": 1.7, "niacina": 16, "vitc": 90, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "F_51-70a", "rotulo": "Feminino, 51–70 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 51, "max": 70 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/1971 (55 anos); relatório §8.10.",
+      "valores": { "fibras": 21, "ca": 1200, "mg": 320, "p": 700, "fe": 8, "na": 1500, "k": 2600, "co": 0.9, "zn": 8, "se": 55,
+        "rea": 700, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.1, "riboflavina": 1.1, "piridoxina": 1.5, "niacina": 14, "vitc": 75, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "M_71+a", "rotulo": "Masculino, mais de 70 anos", "sexo": "M", "condicao": null,
+      "idade": { "unidade": "anos", "min": 71, "max": null },
+      "conferido": true, "evidencia": "tela_dris.json, perfil M 15/06/1951 (75 anos); relatório §8.10.",
+      "valores": { "fibras": 30, "ca": 1200, "mg": 420, "p": 700, "fe": 8, "na": 1500, "k": 3400, "co": 0.9, "zn": 11, "se": 55,
+        "rea": 900, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.2, "riboflavina": 1.3, "piridoxina": 1.7, "niacina": 16, "vitc": 90, "vitd": 20, "vite": 15 }
+    },
+    {
+      "id": "F_71+a", "rotulo": "Feminino, mais de 70 anos", "sexo": "F", "condicao": null,
+      "idade": { "unidade": "anos", "min": 71, "max": null },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/1951 (75 anos); relatório §8.10.",
+      "valores": { "fibras": 21, "ca": 1200, "mg": 320, "p": 700, "fe": 8, "na": 1500, "k": 2600, "co": 0.9, "zn": 8, "se": 55,
+        "rea": 700, "vitb9": 400, "vitb12": 2.4, "tiamina": 1.1, "riboflavina": 1.1, "piridoxina": 1.5, "niacina": 14, "vitc": 75, "vitd": 20, "vite": 15 }
+    },
+    {
+      "id": "gestante_<=18a", "rotulo": "Gestante, até 18 anos", "sexo": "F", "condicao": "gestante",
+      "idade": { "unidade": "anos", "min": null, "max": 18 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/2008 gestante (18 anos); relatório §8.10.",
+      "valores": { "fibras": 28, "ca": 1300, "mg": 400, "p": 1250, "fe": 27, "na": 1500, "k": 2600, "co": 1, "zn": 12, "se": 60,
+        "rea": 750, "vitb9": 600, "vitb12": 2.6, "tiamina": 1.4, "riboflavina": 1.4, "piridoxina": 1.9, "niacina": 18, "vitc": 80, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "gestante_19-30a", "rotulo": "Gestante, 19–30 anos", "sexo": "F", "condicao": "gestante",
+      "idade": { "unidade": "anos", "min": 19, "max": 30 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "gestante_31-50a", "rotulo": "Gestante, 31–50 anos", "sexo": "F", "condicao": "gestante",
+      "idade": { "unidade": "anos", "min": 31, "max": 50 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/1991 gestante (35 anos); relatório §8.10.",
+      "valores": { "fibras": 28, "ca": 1000, "mg": 360, "p": 700, "fe": 27, "na": 1500, "k": 2900, "co": 1, "zn": 11, "se": 60,
+        "rea": 770, "vitb9": 600, "vitb12": 2.6, "tiamina": 1.4, "riboflavina": 1.4, "piridoxina": 1.9, "niacina": 18, "vitc": 85, "vitd": 15, "vite": 15 }
+    },
+    {
+      "id": "lactante_<=18a", "rotulo": "Lactante, até 18 anos", "sexo": "F", "condicao": "lactante",
+      "idade": { "unidade": "anos", "min": null, "max": 18 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "lactante_19-30a", "rotulo": "Lactante, 19–30 anos", "sexo": "F", "condicao": "lactante",
+      "idade": { "unidade": "anos", "min": 19, "max": 30 },
+      "conferido": false, "evidencia": "Não observado (relatório §8.10 e §14).", "valores": null
+    },
+    {
+      "id": "lactante_31-50a", "rotulo": "Lactante, 31–50 anos", "sexo": "F", "condicao": "lactante",
+      "idade": { "unidade": "anos", "min": 31, "max": 50 },
+      "conferido": true, "evidencia": "tela_dris.json, perfil F 15/06/1991 lactante (35 anos); relatório §8.10.",
+      "valores": { "fibras": 29, "ca": 1000, "mg": 320, "p": 700, "fe": 9, "na": 1500, "k": 2800, "co": 1.3, "zn": 12, "se": 70,
+        "rea": 1300, "vitb9": 500, "vitb12": 2.8, "tiamina": 1.4, "riboflavina": 1.6, "piridoxina": 2, "niacina": 17, "vitc": 120, "vitd": 15, "vite": 19 }
+    }
+  ]
+}
