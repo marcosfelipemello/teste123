@@ -196,7 +196,8 @@ export function montarListaComQuantidades({ refeicoes = [], alimentos = [] } = {
       const al = av?.alimento ?? {};
       const med = av.medida === undefined ? null : medidaDoAlimento(al, av.medida);
       const peso = med ? check(av.quantidade) * med.peso : check(av.peso);
-      const q = { qtd: med ? check(av.quantidade) : peso, medida: med ? med.nome : '', peso };
+      const porPeso = al.unidade === 'ml' ? 'mililitro(s)' : 'grama(s)';
+      const q = { qtd: med ? check(av.quantidade) : peso, medida: med ? med.nome : porPeso, peso };
       lista.push({ refeicao: i, grupo: null, porcoes: null, principal: item(al, q), opcoes: [] });
     }
   });

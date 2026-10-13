@@ -36,11 +36,11 @@ export const DIVERGENCIAS = Object.freeze([
 /**
  * kcal automática (`autoCompletarNovoAlimento`): CHO×4 + PTN×4 + LIP×9 + fibras×2; campo vazio = 0.
  * @param {{cho?:number|string, ptn?:number|string, lip?:number|string, fibras?:number|string}} porcao
- * @returns {{kcal:number, tela:string}} `kcal` sem arredondar; `tela` com 0 casas (valor do campo)
+ * @returns {{kcal:number, tela:{kcalAuto:string}}} `kcal` sem arredondar; `tela.kcalAuto` com 0 casas (valor do campo)
  */
 export function kcalAutomatica({ cho, ptn, lip, fibras } = {}) {
   const kcal = check(cho) * 4 + check(ptn) * 4 + check(lip) * 9 + check(fibras) * 2;
-  return { kcal, tela: fx(kcal, 0) };
+  return { kcal, tela: { kcalAuto: fx(kcal, 0) } };
 }
 
 /**
@@ -65,7 +65,7 @@ export function cadastrarAlimento(entrada = {}) {
   if (!(check(entrada.quantidadeMedidas) > 0)) faltando.push('quantidadeMedidas');
   if (faltando.length) return { valido: false, faltando, kcalPorcao: null, porCem: null, medida: null, envio: null };
 
-  const kcalPorcao = String(entrada.kcal ?? '').trim() !== '' ? fx(check(entrada.kcal), 0) : kcalAutomatica(entrada).tela;
+  const kcalPorcao = String(entrada.kcal ?? '').trim() !== '' ? fx(check(entrada.kcal), 0) : kcalAutomatica(entrada).tela.kcalAuto;
   const peso = check(entrada.peso);
   const por100 = (v) => (check(v) / peso) * 100;
   const texto = {
