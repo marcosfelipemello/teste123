@@ -23,6 +23,7 @@ Este relatório é a base da Etapa 3. Ele registra **o que o WebDiet faz**: fór
 12. [Erros e inconsistências encontrados no WebDiet](#12-erros-e-inconsistências-encontrados-no-webdiet)
 13. [Evidências e rastreabilidade (REA)](#13-evidências-e-rastreabilidade-rea)
 14. [Pendências — o que não foi verificado](#14-pendências--o-que-não-foi-verificado)
+15. [Lacunas encontradas na reconstrução](#15-lacunas-encontradas-na-reconstrução)
 
 ---
 
@@ -106,7 +107,7 @@ Itens do menu com cálculo: **Receitas culinárias** (§8.6), **Meus alimentos**
 | Evolução fotográfica | Fotos frente, costas, direita e esquerda; comparação | não | §11 |
 | Antropometria geral | Adultos/idosos, crianças/adolescentes, PDF externo, Body3D | **sim** | §5, §6 |
 | Acompanhamento gestacional | Curvas de ganho de peso, conduta, aporte calórico | **sim** | §7 |
-| Cálculo energético | TMB/GET por 26 protocolos + injúria, MET, programação de peso, adicional gestante | **sim** | §4 |
+| Cálculo energético | TMB/GET por 23 protocolos documentados (a primeira contagem dizia 26; ver §15.1) + injúria, MET, programação de peso, adicional gestante | **sim** | §4 |
 | Planejamento alimentar | Por alimentos, por equivalentes ou qualitativo; PDF; periodização | **sim** | §8 |
 | Suplementos e produtos | Lista de produtos (marketplace) | não | §11 |
 | Prescrição de metas | Metas com check-in no app | não | §11 |
@@ -1688,3 +1689,95 @@ Ainda em aberto:
   - estatísticas.
 - **Literatura:** itens 8 (Schofield 161,08 × 161,8) e 10 (Chumlea, sexo trocado) de §12 precisam do artigo original.
 - **Itens criados na conta:** o paciente "Teste Rea" (`18236779`) e seus registros continuam lá. A exclusão depende de autorização do responsável.
+
+---
+
+## 15. Lacunas encontradas na reconstrução
+
+Na Etapa 3 o app `nutri-studio/` reimplementou os cálculos a partir deste relatório. Em alguns pontos o texto não bastava, e a regra teve de ser **inferida das evidências** ou **decidida**. Esta seção lista esses pontos para que o relatório e o código digam a mesma coisa.
+
+- **Inferido:** a regra foi tirada dos valores da tela em `webdiet-evidencias/`, e o código reproduz esses valores.
+- **Decidido:** nem o relatório nem as evidências cobrem o caso. A escolha está documentada no módulo indicado.
+
+Nenhum destes pontos mexe nos casos conferidos: os testes do app (`npm test`) continuam iguais à tela em todos eles.
+
+### 15.1 Contagem de protocolos do cálculo energético
+
+- O §2.2 falava em **26 protocolos**, mas o §4 documenta **23**: valores 1–14 e 21–29.
+- Os valores **15 a 20** não aparecem em nenhuma evidência nem no código lido. Podem ser opções ocultas ou removidas, ou a primeira contagem estava errada.
+- **Não dá para confirmar sem abrir a conta**, e a conta não é usada nesta etapa. O §2.2 foi ajustado para "23 documentados".
+- Cobertura das evidências de tela por fórmula:
+  - `tela_energia.json`: 1–9, 12, 13, 21–23 e 25–29;
+  - `tela_energia_extras.json`: 10 e 11;
+  - 14 (TMB manual) e 24 (HandyMET): nenhuma conferência de tela, só a regra do §4.3/§4.5.
+
+### 15.2 Cálculo energético (§4)
+
+| Ponto | O que o relatório diz | O que foi preciso | Tipo |
+|---|---|---|---|
+| Lista de fatores da fórmula 22 (FAO/WHO infantil) | Só a da 21 (§4.4.2) | A 22 usa **a mesma lista da 21**: "Não se aplica" (1) até 36 meses e as listas EER infantil por sexo acima disso (E56, E61, E66, E71) | inferido |
+| Limite de 36 meses nas fórmulas 21 e 22 | "até 36 meses" | **Inclusive**: com exatamente 36 meses vale a lista de até 36 meses e a TMB da 21 ainda é calculada (E76–E108) | inferido |
+| Ids das opções de injúria | Só os valores | Conferidos 4 (Sepse 1,3), 12 (Queimadura 100%) e 16 (Doença cardiopulmonar 0,9). Os demais seguem a ordem da lista, com 0 = "Não utilizar" | inferido |
+| EER 2023 infantil (27): injúria e adicionais | Não diz | Como na EER 2023 adultos: equação × injúria + VENTA + MET + gestante | decidido |
+| EER 2023 lactante (29) com menos de 19 anos | Não diz | Equação feminina de 3–18 anos **sem** custo energético e sem o +20 (E55) | inferido |
+| Meses de amamentação (29) | "meses desde o parto" | (ano − ano do parto) × 12 + (mês − mês do parto), **sem olhar o dia** | inferido |
+| Base da fórmula de bolso (11) antes do fator | GET = soma dos g/kg × peso × kcal | O fator e a injúria multiplicam o GET **já arredondado** (`toFixed(0)`), como no GET manual. No caso conferido (2800 kcal exatos) não há diferença | decidido |
+| Rótulos das listas de fator EER 2005, HandyMET e categorias 27/28 | Só os valores | O app mostra o próprio valor ou "Categoria n" | decidido |
+| Mensagens de aviso | Algumas só pelo começo (ex.: "A fórmula EER 2023 já considera o adicional energético…") | Textos próprios, marcados em `MENSAGENS` (`calc/energia.js`) | decidido |
+
+### 15.3 Antropometria (§5 e §6)
+
+- **RCQ:** o §5.6 só cita `toFixed(2)`.
+  - A **classificação usa o valor bruto**, com limites `<` estritos.
+  - Exemplo: 74/98 = 0,7551 aparece como "0.76", mas uma mulher de 60–69 anos fica em "Risco baixo", porque 0,7551 < 0,76 (inferido das evidências de adultos).
+- **CMB:**
+  - A adequação usa a CMB **sem arredondar** (A33: 27,29/28,6 → "95.4%"; com 27,3 daria 95,5).
+  - A CMB **exige a dobra tricipital** e a circunferência do braço; sem a DCT, a tela mostra "-" (A68/A69).
+  - Inferido.
+- **Somatório no protocolo "nenhum":** a soma das 10 dobras aparece **crua** ("156 mm", "178.5 mm"), sem as 2 casas dos outros protocolos (A07, A19, A45–A73). Inferido.
+
+### 15.4 Acompanhamento gestacional (§7)
+
+- **Semanas 1–9:** o §7.3 diz "interpolação linear de ppg até o valor esperado na 10ª semana".
+  - As evidências mostram que o esperado da 10ª já é alcançado **na 9ª**: `esperado(s) = ppg + (esp10 − ppg) · s/9`, com s = 1…9.
+  - Exemplo: ppg 62 kg, Saudável: 60,76 kg na 9ª e na 10ª semana.
+  - Inferido de `tela_gestante.json`.
+- **Semana inicial do aporte:** sem peso registrado, `ult` = 1 (§7.6). O WebDiet então calcula contra 0 kg (§12 #18).
+  - O app mantém `ult` = 1 e devolve o aporte `null` + aviso.
+  - Decidido, conforme a política de erros.
+
+### 15.5 Planejamento, equivalentes e DRIs (§8)
+
+- **CHO da última linha de cada refeição:** sai "x.xg" (sem espaço); nas outras linhas, "x.x g". Visto nas 3 refeições da evidência. Inferido.
+- **Densidade:**
+  - só o texto da faixa "baixa" foi visto na tela;
+  - os outros seguem o mesmo molde, com os limites do §8.3;
+  - inferido.
+- **Equivalentes, desvio-padrão:**
+  - é o desvio populacional em torno da média **sem arredondar**, com cada valor arredondado em 1 casa antes;
+  - só assim o desvio de fibras do g4 bate bit a bit;
+  - inferido.
+- **DRIs, limites de faixa** (o §8.10 diz que a troca no aniversário não foi testada):
+  - idade em meses ou anos **completos** na data de referência, com limites inclusivos;
+  - 7–12 meses = 7 a 11 meses completos;
+  - decidido.
+- **DRIs, faixas não observadas** (7–12 m, 19–30 a, meninas de 1–8 a, gestante 19–30, lactante ≤ 18 e 19–30):
+  - valores das tabelas oficiais NASEM, marcados `nasem-oficial` em `dados/dris.json`;
+  - decidido.
+
+### 15.6 Questionários (§10)
+
+- **Disbiose, item sem resposta:** não soma. O relatório não diz o que o WebDiet faz; o app faz como no FINDRISC e na sarcopenia. Decidido.
+- **Itens que vêm da tabela ou do código, sem conferência de tela** (conforme o §14):
+  - fenótipo: as subescalas Compulsivo, Emocional e Hiperfágico vêm da tabela do §10.8 (só Desorganizado e Hedônico foram vistos);
+  - cafeína: a versão completa vem do código;
+  - sinais e sintomas: a cor para ≥ 4 vem do código.
+- **Doshas:** com as 24 respostas, a evidência ainda mostra a mensagem de incompleto ao lado do resultado. É provavelmente um texto antigo que o código não limpa. **Não reproduzido.**
+- **Textos das perguntas e das opções:** não foram copiados (§1.2).
+  - As opções sem rótulo no relatório usam "Opção k (N pts)".
+  - A interface mostra os itens como "Item n" + categoria.
+
+### 15.7 O que continua dependendo do usuário
+
+- As divergências científicas do §12 continuam **iguais ao WebDiet**. A lista completa, com o comportamento de cada uma, está na página "Referências" do app.
+- A decisão de corrigir ou manter cada uma, os textos dos questionários e a base de alimentos estão em `docs/PROXIMOS-PASSOS.md` ("Decisões que dependem do usuário").
