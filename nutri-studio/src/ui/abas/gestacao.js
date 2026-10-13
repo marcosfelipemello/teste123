@@ -33,12 +33,12 @@ function montar(raiz, { db, paciente: p, recarregar }) {
   // ---- Formulários ----------------------------------------------------------------------------
   const formBase = h('form', { class: 'cartao pilha', novalidate: true, 'aria-labelledby': 'gest-dados' },
     h('h3', { id: 'gest-dados' }, 'Dados da gestação'),
-    h('div', { class: 'campos' },
+    h('div', { class: 'campos alinhados' },
       numero('ppg', 'Peso pré-gestacional (kg)'),
       numero('altura', 'Estatura (cm)'),
       campo('Tipo de gestação', selecao({ name: 'tipo' }, [{ valor: 'Única', rotulo: 'Única' }, { valor: 'Gemelar', rotulo: 'Gemelar' }], 'Única')),
       numero('semanas', 'Idade gestacional hoje (semanas)', { inputmode: 'numeric' }),
-      campo('DUM', h('input', { name: 'dum', placeholder: 'dd/mm/aaaa', inputmode: 'numeric', autocomplete: 'off' }), 'Data da última menstruação.'),
+      campo('Última menstruação (DUM)', h('input', { name: 'dum', placeholder: 'dd/mm/aaaa', inputmode: 'numeric', autocomplete: 'off' })),
       temNascimento ? null : numero('idade', 'Idade da paciente (anos)', { inputmode: 'numeric' })),
     h('p', { class: 'legenda' }, `Informe as semanas ou a DUM: um preenche o outro. A referência é a data de hoje (${hoje}); nas próximas consultas a semana avança sozinha.`));
 
@@ -133,7 +133,7 @@ function montar(raiz, { db, paciente: p, recarregar }) {
         { chave: 'tipo', rotulo: 'Gestação', valor: r.tipo },
         { chave: 'idade', rotulo: 'Idade da paciente', valor: r.idade === null ? '-' : `${r.idade} anos` },
         { chave: 'ultimo', rotulo: 'Último peso', valor: r.pesoUlt === null ? '-' : `${fx(r.pesoUlt, 1)} Kg (semana ${r.ult})`, detalhe: ultimaLinha?.avaliacao || '' },
-        { chave: 'ganho', rotulo: 'Ganho desde o pré-gestacional', valor: r.pesoUlt === null ? '-' : `${fx(r.pesoUlt - check(v.ppg), 2)} Kg` },
+        { chave: 'ganho', rotulo: 'Ganho de peso', valor: r.pesoUlt === null ? '-' : `${fx(r.pesoUlt - check(v.ppg), 2)} Kg` },
         { chave: 'faixa', rotulo: 'Faixa recomendada hoje', valor: linha && linha.semana >= 10 ? `${fx(linha.minimo, 1)} a ${fx(linha.maximo, 1)} Kg` : '-' },
         { chave: 'esperado', rotulo: 'Peso esperado hoje', valor: linha ? `${fx(linha.esperado, 1)} Kg` : '-' },
         { chave: 'aporte', rotulo: 'Aporte calórico hoje', valor: i === null ? '-' : r.tela.linhas[i][4] },
@@ -168,7 +168,7 @@ function montar(raiz, { db, paciente: p, recarregar }) {
       return;
     }
     const tela = r.tela.linhas;
-    corpoTabela.replaceChildren(h('div', { class: 'tabela-rolagem' }, h('table', {},
+    corpoTabela.replaceChildren(h('div', { class: 'tabela-rolagem' }, h('table', { class: 'medidas' },
       h('caption', { class: 'oculto-visual' }, 'Curva de ganho de peso, pesos registrados e aporte calórico por semana de gestação'),
       h('thead', {}, h('tr', {},
         h('th', { scope: 'col' }, 'Semana'),
@@ -182,7 +182,7 @@ function montar(raiz, { db, paciente: p, recarregar }) {
       h('tbody', {}, r.linhas.map((l, i) => {
         const atual = l.semana === r.semanaAtual;
         return h('tr', { 'aria-current': atual ? 'true' : null },
-          h('th', { scope: 'row', style: 'white-space:nowrap' }, tela[i][0], atual ? [' ', h('span', { class: 'etiqueta' }, 'hoje')] : null),
+          h('th', { scope: 'row' }, String(l.semana), atual ? [' ', h('span', { class: 'etiqueta' }, 'hoje')] : null),
           h('td', { class: 'num' }, `${fx(l.esperado, 1)} Kg`),
           h('td', { class: 'num' }, tela[i][1]),
           h('td', { class: 'num' }, tela[i][2]),
@@ -190,7 +190,7 @@ function montar(raiz, { db, paciente: p, recarregar }) {
             ? h('button', { type: 'button', class: 'botao discreto', 'aria-label': `Registrar peso da semana ${l.semana}`, onclick: () => prepararRegistro(l.semana) }, 'registrar peso')
             : tela[i][3]),
           h('td', {}, l.avaliacao ? h('span', { class: estadoClasse(l.avaliacao) || null }, l.avaliacao) : ''),
-          h('td', { class: 'num', style: 'white-space:nowrap' }, tela[i][4]),
+          h('td', { class: 'num' }, tela[i][4]),
           h('td', {}, l.peso === null ? null : h('div', { class: 'acoes', style: 'flex-wrap:nowrap' },
             h('button', { type: 'button', class: 'botao discreto', 'aria-label': `Abrir a avaliação da semana ${l.semana}`, onclick: () => abrirSemana(l.semana) }, 'Abrir'),
             h('button', { type: 'button', class: 'botao discreto', 'aria-label': `Remover o peso da semana ${l.semana}`, onclick: () => removerSemana(l.semana) }, 'Remover'))));
@@ -198,7 +198,7 @@ function montar(raiz, { db, paciente: p, recarregar }) {
   }
 
   function tabelaEncerrados(lista) {
-    return h('div', { class: 'tabela-rolagem' }, h('table', {},
+    return h('div', { class: 'tabela-rolagem' }, h('table', { class: 'medidas' },
       h('thead', {}, h('tr', {},
         h('th', { scope: 'col' }, 'DUM'),
         h('th', { scope: 'col' }, 'Gestação'),

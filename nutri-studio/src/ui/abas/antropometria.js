@@ -191,7 +191,10 @@ function montar(raiz, { db, paciente: p }) {
 
   // ---- Histórico ------------------------------------------------------------------------------
   const corpoLista = h('div', {});
-  const secLista = h('div', { class: 'cartao pilha' }, h('h3', {}, 'Avaliações salvas'), corpoLista);
+  const secLista = h('div', { class: 'cartao pilha' },
+    h('h3', { id: 'antropo-historico' }, 'Avaliações salvas'),
+    h('p', { class: 'legenda' }, 'Peso, IMC e % de gordura por data de avaliação, da mais recente para a mais antiga.'),
+    corpoLista);
 
   // O conteúdo da aba fica fora do aria-live da ficha (só o painel de resultados anuncia mudanças).
   raiz.append(h('div', { class: 'pilha', 'aria-live': 'off' },
@@ -533,8 +536,7 @@ function montar(raiz, { db, paciente: p }) {
     }
     const nota = (texto) => (texto ? h('div', {}, h('small', {}, texto)) : null);
     const origem = { dobras: 'dobras', bioimpedancia: 'bioimpedância', slaughter: 'Slaughter' };
-    corpoLista.replaceChildren(h('div', { class: 'tabela-rolagem' }, h('table', {},
-      h('caption', { class: 'legenda', style: 'text-align:left;padding-bottom:8px' }, 'Peso, IMC e % de gordura por data de avaliação, da mais recente para a mais antiga.'),
+    corpoLista.replaceChildren(h('div', { class: 'tabela-rolagem' }, h('table', { class: 'medidas', 'aria-labelledby': 'antropo-historico' },
       h('thead', {}, h('tr', {},
         h('th', { scope: 'col' }, 'Data'),
         h('th', { scope: 'col' }, 'Referência'),

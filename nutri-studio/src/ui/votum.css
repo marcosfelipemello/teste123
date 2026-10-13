@@ -186,14 +186,15 @@ td.num, th.num { text-align: right; }
 .painel-duplo { display: grid; gap: 16px 24px; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); align-items: start; }
 .painel-fixo { position: sticky; top: 88px; max-height: calc(100vh - 104px); overflow-y: auto; }
 .campos.compactos { grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); }
-.campos.compactos > .campo { justify-content: flex-end; }
+.campos.compactos > .campo, .campos.alinhados > .campo { justify-content: flex-end; }
+.campos.compactos > .campo > span, .campos.alinhados > .campo > span { line-height: 1.4; }
 .campo[data-usada] > span { color: var(--texto); }
 .destaques { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
 .destaques .resultado { min-width: 0; overflow-wrap: anywhere; }
 .resumo { margin: 0; }
 .resumo > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--filete); }
-.resumo dt { font: 500 var(--t-rotulo)/1.5 var(--fonte-texto); text-transform: uppercase; letter-spacing: var(--tracking-rotulo); color: var(--texto-suave); }
-.resumo dd { margin: 0; text-align: right; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.resumo dt { flex: 1 1 0; min-width: 0; font: 500 var(--t-rotulo)/1.5 var(--fonte-texto); text-transform: uppercase; letter-spacing: var(--tracking-rotulo); color: var(--texto-suave); }
+.resumo dd { flex: 0 0 auto; max-width: 62%; margin: 0; text-align: right; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
 .resumo dd > small { display: block; }
 .painel-fixo > h3 { margin-bottom: 0; }
 .painel-fixo > h3 + * { margin-top: 0; }
@@ -202,7 +203,11 @@ td.num, th.num { text-align: right; }
 .lista-avisos > li + li { margin-top: 8px; }
 .dobravel > summary { cursor: pointer; font: 400 var(--t-destaque)/var(--a-destaque) var(--fonte-titulo); }
 tr[aria-current="true"] > * { background: var(--bloco); }
-td .botao.discreto, th .botao.discreto { min-height: 32px; padding-block: 6px; }
+.tabela-rolagem { position: relative; } /* contém o texto .oculto-visual das tabelas largas */
+table.medidas td.num, table.medidas th[scope="row"] { white-space: nowrap; }
+table.medidas th, table.medidas td { vertical-align: baseline; }
+table.medidas td small { white-space: normal; }
+td .botao.discreto, th .botao.discreto { min-height: 32px; padding-block: 6px; white-space: nowrap; }
 .oculto-visual { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 @media (max-width: 900px) {
