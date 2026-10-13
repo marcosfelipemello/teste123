@@ -191,6 +191,8 @@ td.num, th.num { text-align: right; }
 .campo[data-usada] > span { color: var(--texto); }
 .destaques { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
 .destaques .resultado { min-width: 0; overflow-wrap: anywhere; }
+.destaques .resultado.largo { grid-column: 1 / -1; overflow-wrap: break-word; }
+.destaques .resultado.largo .valor { font-size: var(--t-destaque); line-height: 1.4; }
 .resumo { margin: 0; }
 .resumo > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--filete); }
 .resumo dt { flex: 1 1 0; min-width: 0; font: 500 var(--t-rotulo)/1.5 var(--fonte-texto); text-transform: uppercase; letter-spacing: var(--tracking-rotulo); color: var(--texto-suave); }
@@ -213,4 +215,41 @@ td .botao.discreto, th .botao.discreto { min-height: 32px; padding-block: 6px; w
 @media (max-width: 900px) {
   .painel-duplo { grid-template-columns: minmax(0, 1fr); }
   .painel-fixo { position: static; max-height: none; overflow: visible; }
+}
+
+/* Filtros de listas, opções com caixa de marcar e seletor de alimento (alimentos, receitas, planejamento) */
+.filtros { display: grid; gap: 12px; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.opcao { display: flex; align-items: flex-start; gap: 10px; }
+.opcao > input { margin-top: .35em; flex: 0 0 auto; }
+.seletor-linha { display: grid; gap: 12px 16px; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(90px, .6fr) auto; align-items: end; }
+.seletor-botao .botao { width: 100%; }
+input.qtd-linha { width: 7em; min-height: 36px; padding: 6px 8px; text-align: right; }
+select.medida-linha { min-height: 36px; padding: 6px 8px; min-width: 9em; }
+@media (max-width: 640px) {
+  .filtros { grid-template-columns: minmax(0, 1fr); }
+  .seletor-linha { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .seletor-busca { grid-column: 1 / -1; }
+  .seletor-botao { grid-column: 1 / -1; }
+}
+
+/* Questionários: um item por linha, opções em rádio */
+.itens-questionario > * + * { margin-top: 4px; }
+.item-questionario { border: 0; border-bottom: 1px solid var(--filete); margin: 0; padding: 10px 0; min-width: 0; }
+.item-questionario::after { content: ''; display: block; clear: both; }
+.item-questionario > legend { float: left; width: 12em; padding: 9px 16px 0 0; } /* legend ao lado das opções */
+.item-questionario > .opcoes-questionario { overflow: hidden; }
+.item-questionario.numerico { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; }
+.item-questionario.numerico > .item-titulo { flex: 0 0 12em; }
+.item-titulo { font: 500 var(--t-rotulo)/1.5 var(--fonte-texto); text-transform: uppercase; letter-spacing: var(--tracking-rotulo); color: var(--texto); }
+.item-titulo small { text-transform: none; letter-spacing: 0; font-weight: 300; }
+.opcoes-questionario { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
+.opcao-questionario { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; min-height: 36px; border: 1px solid var(--filete); border-radius: var(--raio); cursor: pointer; background: var(--superficie); }
+.opcao-questionario:has(input:checked) { border-color: var(--acao); background: var(--bloco); color: var(--texto); }
+.opcao-questionario input { margin: 0; }
+.selecao .opcoes-questionario { flex-direction: column; align-items: stretch; }
+.item-numero { display: flex; align-items: center; gap: 8px; }
+.item-numero input { width: 7em; }
+@media (max-width: 640px) {
+  .item-questionario > legend { float: none; width: auto; padding: 0 0 6px; }
+  .item-questionario.numerico > .item-titulo { flex-basis: 100%; }
 }

@@ -23,7 +23,8 @@ export function estadoClasse(texto) {
 
 /**
  * Cria o painel. `atualizar({destaques, grupos, avisos})`:
- * - destaques: [{chave, rotulo, valor, detalhe?, estado?, estadoValor?}] em blocos grandes;
+ * - destaques: [{chave, rotulo, valor, detalhe?, estado?, estadoValor?, largo?}] em blocos grandes
+ *   (largo = ocupa a linha toda, para textos longos);
  * - grupos: [{titulo, itens: [mesmo formato]}] em listas rótulo → valor;
  * - avisos: textos (todos são mostrados).
  * `estado` (cor do detalhe) omitido = estadoClasse(detalhe); `estadoValor` colore o próprio valor.
@@ -40,7 +41,7 @@ export function criarPainel() {
     const valor = h('span', { class: 'valor' });
     const detalhe = h('small', {});
     const no = destaque
-      ? h('div', { class: 'resultado', 'aria-atomic': 'true' }, h('span', { class: 'rotulo' }, item.rotulo), valor, detalhe)
+      ? h('div', { class: item.largo ? 'resultado largo' : 'resultado', 'aria-atomic': 'true' }, h('span', { class: 'rotulo' }, item.rotulo), valor, detalhe)
       : h('div', { 'aria-atomic': 'true' }, h('dt', {}, item.rotulo), h('dd', {}, valor, detalhe));
     celulas.set(item.chave, { valor, detalhe });
     return no;
@@ -60,7 +61,7 @@ export function criarPainel() {
   }
 
   function atualizar({ destaques = [], grupos = [], avisos = [] } = {}) {
-    const nova = [destaques.map((i) => i.chave).join(','), ...grupos.map((g) => `${g.titulo}:${g.itens.map((i) => i.chave).join(',')}`)].join('|');
+    const nova = [destaques.map((i) => `${i.chave}${i.largo ? '+' : ''}`).join(','), ...grupos.map((g) => `${g.titulo}:${g.itens.map((i) => i.chave).join(',')}`)].join('|');
     if (nova !== assinatura) {
       assinatura = nova;
       celulas = new Map();
