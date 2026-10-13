@@ -26,7 +26,8 @@ async function carregarExtras() {
     // Abas da ficha do paciente; cada módulo chama registrarAba ao ser importado.
     import('./abas/antropometria.js'),
     import('./abas/gestacao.js'),
-  ]);
+    import('./abas/energia.js'),
+  ]).then((resultados) => resultados.forEach((r) => { if (r.status === 'rejected') console.error(r.reason); }));
 }
 
 function render() {
