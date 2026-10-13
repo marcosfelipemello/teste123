@@ -2,6 +2,8 @@
 // por isso o app oferece backup em JSON. A interface é pequena para poder trocar por um servidor depois.
 
 const CHAVE = 'nutri-studio:v1';
+/** Coleções do consultório: pacientes (com os registros) e as listas gerais. */
+const COLECOES = ['pacientes', 'alimentos', 'receitas', 'equivalentes'];
 
 /** Cria um armazenamento sobre um backend {getItem, setItem} (localStorage no navegador; um objeto nos testes). */
 export function criarArmazenamento(backend = globalThis.localStorage) {
@@ -15,8 +17,8 @@ export function criarArmazenamento(backend = globalThis.localStorage) {
     } catch {
       cache = null;
     }
-    if (!cache || typeof cache !== 'object') cache = { versao: 1, pacientes: {}, alimentos: {}, receitas: {} };
-    for (const k of ['pacientes', 'alimentos', 'receitas']) cache[k] ||= {};
+    if (!cache || typeof cache !== 'object') cache = { versao: 1, pacientes: {}, alimentos: {}, receitas: {}, equivalentes: {} };
+    for (const k of COLECOES) cache[k] ||= {};
     return cache;
   }
 
@@ -75,7 +77,7 @@ export function criarArmazenamento(backend = globalThis.localStorage) {
       p.registros[tipo] = p.registros[tipo].filter((r) => r.id !== idRegistro);
       gravar();
     },
-    /** Coleções gerais do consultório: "alimentos" (meus alimentos) e "receitas". */
+    /** Coleções gerais do consultório: "alimentos" (meus alimentos), "receitas" e "equivalentes" (alimentos dos grupos). */
     listar(colecao) {
       return Object.values(carregar()[colecao] || {});
     },
@@ -106,7 +108,10 @@ export function criarArmazenamento(backend = globalThis.localStorage) {
     /** Backup completo (para baixar em JSON). */
     exportarBackup() {
       const d = carregar();
-      return { app: 'nutri-studio', versao: 1, exportadoEm: new Date().toISOString(), pacientes: Object.values(d.pacientes), alimentos: Object.values(d.alimentos), receitas: Object.values(d.receitas) };
+      return {
+        app: 'nutri-studio', versao: 1, exportadoEm: new Date().toISOString(),
+        pacientes: Object.values(d.pacientes), alimentos: Object.values(d.alimentos), receitas: Object.values(d.receitas), equivalentes: Object.values(d.equivalentes),
+      };
     },
     /** Acrescenta pacientes importados (sempre como novos, sem sobrescrever). Devolve quantos entraram. */
     importarPacientes(lista) {

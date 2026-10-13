@@ -253,3 +253,35 @@ select.medida-linha { min-height: 36px; padding: 6px 8px; min-width: 9em; }
   .item-questionario > legend { float: none; width: auto; padding: 0 0 6px; }
   .item-questionario.numerico > .item-titulo { flex-basis: 100%; }
 }
+
+/* Planejamento alimentar */
+.cabecalho-refeicao { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: flex-end; justify-content: space-between; }
+.cabecalho-refeicao > .campos { flex: 1 1 320px; }
+.total-refeicao { margin: 0; padding: 10px 14px; background: var(--bloco); border-radius: var(--raio); font-variant-numeric: tabular-nums; }
+.linha-substituto > * { background: var(--fundo); }
+.linha-substituto td[colspan] { padding: 12px; }
+.grade-porcoes { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); }
+.grade-porcoes .campo > span { letter-spacing: .12em; }
+.barra { display: block; height: 4px; margin-top: 4px; background: var(--filete); border-radius: 2px; overflow: hidden; }
+.barra > span { display: block; height: 100%; background: var(--acao); }
+.lista-compras { list-style: none; margin: 0; padding: 0; }
+.lista-compras li { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-bottom: 1px solid var(--filete); }
+.lista-compras li input[type="checkbox"] { flex: 0 0 auto; }
+.lista-compras li input:not([type]) { min-height: 36px; border-color: transparent; background: transparent; }
+.impressao ul { padding-left: 1.2em; margin: 0; }
+.impressao section { break-inside: avoid; }
+
+@media print {
+  .topo, .abas, .nao-imprimir, #mensagem-global, #app > .cabecalho-pagina { display: none !important; }
+  body { background: #fff; color: #000; }
+  main { padding: 0; max-width: none; }
+  .cartao { border: 0; box-shadow: none; padding: 0; }
+}
+.painel-duplo.plano { grid-template-columns: minmax(0, 1fr) minmax(250px, 300px); }
+.tabela-plano th, .tabela-plano td { padding: 8px 6px; }
+.tabela-plano tbody th[scope="row"] { font: 400 var(--t-legenda)/1.4 var(--fonte-texto); text-transform: none; letter-spacing: 0; color: var(--texto); white-space: normal; min-width: 8em; }
+.tabela-plano tbody th small { color: var(--texto-suave); }
+.tabela-plano input.qtd-linha { width: 4.5em; }
+.tabela-plano select.medida-linha { min-width: 0; max-width: 9.5em; }
+.tabela-plano td .acoes { flex-wrap: wrap !important; gap: 0; }
+@media (max-width: 900px) { .painel-duplo.plano { grid-template-columns: minmax(0, 1fr); } }

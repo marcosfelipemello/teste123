@@ -27,6 +27,7 @@ async function carregarExtras() {
     import('./abas/antropometria.js'),
     import('./abas/gestacao.js'),
     import('./abas/energia.js'),
+    import('./abas/planejamento.js'),
     import('./abas/questionarios.js'),
   ]).then((resultados) => resultados.forEach((r) => { if (r.status === 'rejected') console.error(r.reason); }));
 }
