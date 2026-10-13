@@ -1,0 +1,113 @@
+[
+ {
+  "cenario": {
+   "nome": "primeira opção",
+   "resp": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "",
+   "#condutaNutricionalTexto": "Predomínio de respostas A corresponde ao Dosha VATA",
+   "#cronotipo": "Há perguntas que ainda não foram preenchidas. Assim que terminar, você poderá ver o resultado aqui.",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "última opção",
+   "resp": [
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "",
+   "#condutaNutricionalTexto": "Predomínio de respostas C corresponde ao Dosha KAPHA",
+   "#cronotipo": "Há perguntas que ainda não foram preenchidas. Assim que terminar, você poderá ver o resultado aqui.",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "segunda opção",
+   "resp": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "",
+   "#condutaNutricionalTexto": "Predomínio de respostas B corresponde ao Dosha PITTA",
+   "#cronotipo": "Há perguntas que ainda não foram preenchidas. Assim que terminar, você poderá ver o resultado aqui.",
+   "#resultadoRast": ""
+  }
+ }
+]

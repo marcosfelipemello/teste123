@@ -1,0 +1,354 @@
+[
+ {
+  "cenario": {
+   "nome": "primeira opção",
+   "resp": [
+    "5",
+    "5",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "4",
+    "4",
+    "5",
+    "4",
+    "1",
+    "4",
+    "1",
+    "4",
+    "4",
+    "5",
+    "5",
+    "6"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 62 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Moderadamente matutino",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "última opção",
+   "resp": [
+    "0",
+    "0",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "1",
+    "1",
+    "1",
+    "1",
+    "4",
+    "1",
+    "4",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 37 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Moderadamente vespertino",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "segunda opção",
+   "resp": [
+    "4",
+    "4",
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "3",
+    "3",
+    "4",
+    "3",
+    "2",
+    "3",
+    "2",
+    "3",
+    "3",
+    "4",
+    "4",
+    "4"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 56 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Intermediário",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 30",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "2",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 30 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Vespertino extremo ou noturno",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 31",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "3",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 31 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Moderadamente vespertino",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 41",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 41 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Moderadamente vespertino",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 42",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "2",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 42 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Intermediário",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 58",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "5",
+    "4",
+    "4",
+    "2",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 58 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Intermediário",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 59",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "5",
+    "4",
+    "4",
+    "3",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 59 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Moderadamente matutino",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 69",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "1",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 69 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Moderadamente matutino",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 70",
+   "resp": [
+    "5",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "5",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "4",
+    "2",
+    "1",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "Resultado: 70 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "Perfil: Matutino extremo",
+   "#resultadoRast": ""
+  }
+ }
+]

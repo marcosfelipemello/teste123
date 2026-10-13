@@ -45,6 +45,12 @@ Este relatório é a base da Etapa 3. Ele registra **o que o WebDiet faz**: fór
   - 10 questionários de saúde
 - **Nada foi apagado.**
 - **Testes com outros sexos e idades:** para não criar outros pacientes, o sexo, o nascimento ou a idade foram trocados **apenas na memória do navegador**, no objeto do paciente de teste. Nada disso foi salvo. O cálculo continua sendo feito pelo próprio código do WebDiet.
+- **Exceções na segunda passada** (só no paciente de teste):
+  - **Referências de micronutrientes (§8.10).** Elas vêm do servidor, então a troca na memória não bastava. O cadastro do paciente de teste foi **salvo 15 vezes** com outro sexo, nascimento ou condição (gestante/lactante). Depois foi **restaurado** para masculino, 15/06/1991.
+  - **Antropometria de adulto (§5.1).** A data da avaliação de teste foi trocada para 13/10/2000 e depois **restaurada** para 13/10/2026.
+  - **Questionários.** Os 10 questionários de teste foram respondidos várias vezes, porque a página salva sozinha. A última resposta de cada um ficou gravada.
+  - **Receita e alimento próprio (§8.6, §8.7).** Nada foi salvo. A receita foi montada no editor e fechada sem salvar. No alimento próprio, o envio (`api/salvarFavorito.php`) foi **bloqueado** no navegador.
+  - **Financeiro e extensões pagas:** não foram usados (§10, §11).
 
 ### 1.2 O que não foi copiado
 
@@ -64,8 +70,9 @@ Este relatório é a base da Etapa 3. Ele registra **o que o WebDiet faz**: fór
 - Alguns valores vêm prontos do servidor, e o cálculo deles não é visível:
   - idade na antropometria;
   - referências de micronutrientes por idade e sexo;
-  - lista de alimentos.
-- Esses casos estão marcados como **"servidor"**.
+  - lista de alimentos;
+  - divisão de parcelas no financeiro.
+- Esses casos estão marcados como **"servidor"**. Os dois primeiros foram conferidos pelo resultado na tela: a idade em §5.1 e as referências em §8.10.
 
 ---
 
@@ -81,6 +88,8 @@ Este relatório é a base da Etapa 3. Ele registra **o que o WebDiet faz**: fór
 | Ferramentas | Videochamada · MoveHealth · Estatísticas · Benefícios para você · NutriValoriza · Ver chat |
 | Suporte | WhatsApp · Vídeos tutoriais · Agendar treinamento · Contatos |
 | Atalhos (+) | nova tarefa · novo paciente · novo agendamento · novo registro financeiro · novo questionário · novo arquivo no cloud |
+
+Itens do menu com cálculo: **Receitas culinárias** (§8.6), **Meus alimentos** (§8.7) e **Financeiro** (parcelas no servidor, §11).
 
 ### 2.2 Ficha do paciente (21 abas)
 
@@ -241,7 +250,7 @@ O resultado é multiplicado pela injúria e somado a VENTA + MET + gestante.
 
 #### 4.4.4 EER 2023 infantil (fórmula 27)
 
-**0 a 2,99 anos.** O termo de idade usa `I` em **anos** (ver §12).
+**0 a 2,99 anos.** O termo de idade usa `I` em **anos**. A tabela de equações da Health Canada para a NASEM 2023 também usa idade em anos, estatura em cm e peso em kg, com as mesmas constantes +200 / +50 / +20 dos meninos. Ver §12, item 4.
 
 | Faixa | Meninos | Meninas |
 |---|---|---|
@@ -373,7 +382,10 @@ A lista completa (110 casos) está em `tela_energia.json`.
 
 ### 5.1 Geral
 
-- **Idade e sexo:** vêm do servidor. **Sem verificação** de qual data é usada (hoje ou data da avaliação).
+- **Idade e sexo:** vêm do servidor (`window.idade`). **Conferido na tela:** a idade é calculada na **data da avaliação**, em anos completos.
+  - Paciente de teste nascido em 15/06/1991, avaliação com data trocada para 13/10/2000: `idade = 9`. Com a data 13/10/2026: `idade = 35`.
+  - A data da avaliação de teste foi restaurada depois.
+  - Portanto, uma avaliação antiga continua com a idade daquela época. Isso afeta todas as fórmulas que usam idade: classificação do IMC em ≥ 60 anos, %G, RCQ, Chumlea e CMB.
 - **Padrões:** % de gordura por **Brozek**; braço para a CMB **esquerdo**.
 - **Salvamento:** a cada 60 s.
 - **Campos aceitos:**
@@ -413,7 +425,7 @@ A lista completa (110 casos) está em `tela_energia.json`.
   - H: 0,98CB + 1,27CP + 0,40DSE + 0,87AJ − 62,35
   - M: 1,73CB + 0,98CP + 0,37DSE + 1,16AJ − 81,69
   - Exige DSE, CB esquerdo, CP e AJ; senão mostra "Dados incompletos!".
-  - Ver §12: no artigo original, estas equações estão com o sexo trocado.
+  - Ver §12, item 10. Na forma em que estas equações costumam ser citadas (Chumlea 1988), a de coeficiente −81,69 é a **masculina** e a de −62,35 é a **feminina**. No WebDiet está ao contrário. O artigo original não foi consultado.
 
 ### 5.4 Composição corporal por dobras
 
@@ -823,6 +835,7 @@ Planejamento em branco: Café da manhã, Almoço, Jantar.
   | Vit. E | 15 mg | Vit. D | 15 mcg |
 
   - Colesterol e retinol: "N/D". Mono, poli e saturada: sem referência. Trans e álcool: 0.
+  - Outros sexos, idades, gestação e lactação: §8.10.
 
 **Substitutos:** quando o peso do principal muda, `fator = novo/antigo`. A quantidade e o peso de cada substituto são multiplicados (`toFixed(1)`). O sistema pergunta antes.
 
@@ -897,6 +910,214 @@ Almoço: arroz 4 colheres de arroz rasas (120 g), feijão carioca 150 g, frango 
 | g14 suplementos (17) | 12,6 | 0,6 | 1,7 | 62 | 0,1 |
 | g15 açúcares (18) | 0,1 | 0 | 11,2 | 42,5 | 0,1 |
 
+### 8.6 Receitas culinárias (receita "calculada")
+
+**Status: conferido na tela** (editor aberto, receita **não salva**).
+
+- Evidência: `tela_receita.json`
+- Página: `receitas.php`; REA `ev_c259e055…`
+
+**Tipos de receita:**
+
+- **"Comum":** só texto e PDF, sem nutrientes.
+- **"Calculada":** ingredientes vindos da base de alimentos.
+
+**Cálculo de cada ingrediente** (`recalcularAvulso` e `calcularMacrosAvulsos`):
+
+- **peso** = quantidade × peso da medida caseira escolhida (sem arredondar), mais a unidade do alimento.
+  - "personalizada" pede nome e peso da medida, só para aquela receita.
+- Na linha, PTN, LIP e CHO = valor/100 × peso, `toFixed(1)` + "g".
+- A kcal da linha tem dois formatos:
+  - quando a linha é recalculada: `toFixed(1)` + " Kcal" (ex.: "117.6 Kcal");
+  - quando a lista é redesenhada ao incluir outro ingrediente: 0 casas e sem espaço (ex.: "256Kcal", "88Kcal").
+
+**Totais** (`updateAvulsos`):
+
+- Somam valor/100 × peso **com os valores da base, sem arredondar** (não somam as linhas exibidas).
+- Peso `toFixed(0)` → vai para o campo editável **`#peso`** ("peso final").
+- kcal `toFixed(0)`.
+- PTN, LIP e CHO `toFixed(1)`.
+- Os 27 micronutrientes também são somados, sem arredondar.
+
+**Porção:**
+
+- **Automática**, quando há rendimento > 0: porção = **soma dos pesos dos ingredientes** / rendimento, `toFixed(0)`, com o nome "Porção".
+  - Recalculada a cada mudança nos ingredientes.
+- **Botão "gerar medida"** (`gerarMedida`): porção = **`#peso`** (o peso final digitado, ex.: depois do cozimento) / rendimento, `parseFloat(toFixed(1))`, com o nome "Porção(ões)".
+  - Se rendimento ou peso estiver vazio, mostra um aviso.
+
+**Ao salvar** (`salvarReceita`):
+
+- Grava os valores **por 100 g**: `parseFloat((valor / peso × 100).toFixed(1))` para kcal, PTN, LIP, CHO e os 27 micronutrientes.
+  - `peso` = campo `#peso` (peso final).
+  - kcal, PTN, LIP e CHO saem dos **campos já arredondados** (kcal com 0 casas, macros com 1).
+  - Os micronutrientes saem das somas sem arredondar.
+- A medida caseira gravada é a única linha "mc1" (nome + gramas da porção).
+- Exige nome, rendimento, peso, macros, descrição e medida.
+
+**Ficha da receita** (`infoReceita`):
+
+- Valor por porção = valor por 100 g × (peso da porção / 100).
+- PTN, LIP e CHO `toFixed(1)`; kcal `toFixed(0)`. O texto diz "Cálculo referente a uma porção".
+
+**Exemplo conferido** (valores da base TACO como estão no WebDiet):
+
+| Ingrediente | Peso | kcal/100 g | PTN/100 g | LIP/100 g | CHO/100 g |
+|---|---|---|---|---|---|
+| Arroz cozido | 200 g | 128 | 2,5 | 0,2 | 28,1 |
+| Feijão carioca cozido | 150 g | 76 | 4,8 | 0,5 | 13,6 |
+| Azeite de dendê | 10 g | 884 | 0 | 100 | 0 |
+| Banana prata | 120 g | 98 | 1,3 | 0,1 | 26 |
+
+Resultados na tela:
+
+- Totais: **480 g · 576 kcal · PTN 13,8 · LIP 11,3 · CHO 107,8**.
+- Rendimento 4: porção automática **120 g**.
+- Peso final digitado 420 g + "gerar medida": porção **105 g**.
+
+### 8.7 Alimento próprio ("Meus alimentos", cadastro por rótulo)
+
+**Status: conferido na tela.** O envio foi bloqueado, e nada foi salvo.
+
+- Evidência: `tela_alimento_rotulo.json`
+
+**Entrada:** nome, unidade (g ou ml), medida caseira, quantidade de medidas, peso da porção do rótulo, kcal, CHO, PTN, LIP e fibras **da porção**.
+
+**kcal automática** (`autoCompletarNovoAlimento`):
+
+- kcal = CHO×4 + PTN×4 + LIP×9 + **fibras×2**, `toFixed(0)`.
+- Campo vazio conta como 0.
+
+**Conversão para 100 g** (`cadastrarAlimento`):
+
+- Cada valor = valor da porção / peso × 100.
+- kcal `toFixed(0)`; PTN, LIP, CHO e fibras `toFixed(1)`.
+- **Peso da medida caseira** = peso / quantidade de medidas, `parseFloat(toFixed(1))`.
+- Micronutrientes são gravados como "0". O campo `gorduratrans` não é enviado.
+
+**Exemplo conferido** ("Barra TESTE REA"): rótulo de 45 g = 2 unidades, CHO 27,3, PTN 6,1, LIP 4,6, fibras 3,2.
+
+| Saída | Valor |
+|---|---|
+| kcal automática | **181** (181,4) |
+| Por 100 g | kcal **402** · PTN **13,6** · LIP **10,2** · CHO **60,7** · fibras **7,1** |
+| Medida | "Unidade(s)" = **22,5 g** |
+
+### 8.8 Lista de compras
+
+Existe nos dois métodos de planejamento. Há dois caminhos.
+
+**1) "Importar alimentos" (sem quantidades)** (`importarCompras2`):
+
+- Junta o **nome de compra** (`compras`) de cada alimento principal e de cada substituto.
+- Remove repetidos e ordena alfabeticamente.
+- Mostra uma lista com caixas de marcar (◯/✓), editável.
+- **Método por alimentos:** opção "com" ou "sem" os ingredientes das receitas.
+  - Com receitas, uma receita principal é trocada pelos seus ingredientes (`getIngredientes`).
+  - Dois erros no código (§12):
+    - nos substitutos, `final.concat(...)` não é atribuído, então os ingredientes de receitas substitutas são descartados;
+    - `parseInt(origem) == "Receita"` nunca é verdadeiro, então uma receita substituta entra pelo nome de compra.
+- **Método por equivalentes:** o botão também oferece "com" ou "sem" receitas, mas a função ignora o parâmetro.
+  - Entram todos os alimentos de cada grupo com porção > 0 em cada refeição, mais os avulsos.
+
+**2) Lista com quantidades** (só no método por equivalentes; ela é enviada à IA do WebDiet, `api/reescreverListaComprasIA.php`, que reescreve a lista):
+
+- **Opções:**
+  - período: 7, **15 (padrão)**, 30, 45 ou 60 dias, ou personalizado;
+  - agrupamento ("tema");
+  - com ou sem quantidades;
+  - com ou sem substitutos.
+- **Custo:** para assinatura Premium ou plano 3, o sistema avisa que custa **1 crédito de IA**. Esta parte não foi executada.
+- **Antes de enviar**, o próprio navegador calcula as quantidades (`carregarDadosListaGeral`):
+  - Uma entrada por refeição e por grupo com porção > 0: o primeiro alimento do grupo é o principal; os demais viram "opções".
+  - Os avulsos também entram.
+  - **Não há soma entre refeições.**
+- **Quantidade de um alimento de grupo** (`calcularQuantidadeGrupoEquivalente`):
+  - qtd = porções × quantidade da medida do alimento;
+  - peso = porções × peso;
+  - usa o nome da medida no plural quando qtd > 1.
+- **Conversão para compra** (`calcularQuantidadeCompra(qtd, medida, peso, unidade, período)`):
+
+  | Caso | Resultado |
+  |---|---|
+  | medida contém "unidade" | `Math.round(qtd × período)` + " Unidade(s)" |
+  | ml, total = peso × período > 1000 | `(total/1000).toFixed(2)` com vírgula + " Litros" |
+  | ml, até 1000 | `Math.round(total)` + " ml" (vazio se 0) |
+  | g, total > 1000 | `(total/1000).toFixed(2)` com vírgula + " Kg" |
+  | g, até 1000 | `Math.round(total)` + " g" (vazio se 0) |
+
+  - O período vale 1 quando vazio ou inválido.
+
+### 8.9 Piloto automático (método por equivalentes)
+
+- Não há fórmula. Monta o cardápio a partir de **modelos de refeição prontos** (`piloto`), que são conteúdo do WebDiet e não foram copiados.
+- Perfis: todos, low carb, vegetariana, vegana, paleo.
+- Os alimentos vêm de listas fixas de IDs da base.
+- A soma de macros dos modelos escolhidos é exibida com `toFixed(1)`.
+- No app novo, o equivalente seria uma biblioteca de modelos próprios.
+
+### 8.10 Referências de micronutrientes (DRIs) por perfil
+
+**Status: conferido na tela.** As referências vêm do servidor (atributo `referencia_micro` de `#refMicro1..27` no planejamento por alimentos). Foram lidas para 15 perfis do paciente de teste, além do homem de 35 anos já registrado em §8.3.
+
+- Evidência: `tela_dris.json`
+- Como foi feito: §1.1.
+
+Todos os valores coincidem com as **DRIs do IOM** (RDA ou AI) da faixa de vida correspondente. Para **sódio e potássio**, são os valores de **2019** (NASEM): Na 1500 mg nos adultos e K 3400 (H) / 2600 (M).
+
+Em todos os perfis:
+
+- mono, poli e saturada: sem referência;
+- trans e álcool: "0";
+- colesterol e retinol: "N/D".
+
+Minerais e fibras:
+
+| Perfil | Fibras (g) | Ca (mg) | Mg (mg) | P (mg) | Fe (mg) | Na (mg) | K (mg) | Cu (mg) | Zn (mg) | Se (mcg) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| F 35 a | 25 | 1000 | 320 | 700 | 18 | 1500 | 2600 | 0,9 | 8 | 55 |
+| F 35 a gestante | 28 | 1000 | 360 | 700 | 27 | 1500 | 2900 | 1 | 11 | 60 |
+| F 35 a lactante | 29 | 1000 | 320 | 700 | 9 | 1500 | 2800 | 1,3 | 12 | 70 |
+| F 18 a gestante | 28 | 1300 | 400 | 1250 | 27 | 1500 | 2600 | 1 | 12 | 60 |
+| M 16 a | 38 | 1300 | 410 | 1250 | 11 | 1500 | 3000 | 0,89 | 11 | 55 |
+| F 16 a | 26 | 1300 | 360 | 1250 | 15 | 1500 | 2300 | 0,89 | 9 | 55 |
+| M 10 a | 31 | 1300 | 240 | 1250 | 8 | 1200 | 2500 | 0,7 | 8 | 40 |
+| F 10 a | 26 | 1300 | 240 | 1250 | 8 | 1200 | 2300 | 0,7 | 8 | 40 |
+| M 5 a | 25 | 1000 | 130 | 500 | 10 | 1000 | 2300 | 0,44 | 5 | 30 |
+| M 2 a | 19 | 700 | 80 | 460 | 7 | 800 | 2000 | 0,34 | 3 | 20 |
+| M 3 meses | N/D | 200 | 30 | 100 | 0,27 | 110 | 400 | 0,2 | 2 | **"15 mg"** (§12) |
+| M 55 a | 30 | 1000 | 420 | 700 | 8 | 1500 | 3400 | 0,9 | 11 | 55 |
+| F 55 a | 21 | 1200 | 320 | 700 | 8 | 1500 | 2600 | 0,9 | 8 | 55 |
+| M 75 a | 30 | 1200 | 420 | 700 | 8 | 1500 | 3400 | 0,9 | 11 | 55 |
+| F 75 a | 21 | 1200 | 320 | 700 | 8 | 1500 | 2600 | 0,9 | 8 | 55 |
+
+Vitaminas:
+
+| Perfil | RAE (mcg) | Folato (mcg) | B12 (mcg) | B1 (mg) | B2 (mg) | B6 (mg) | Niacina (mg) | C (mg) | D (mcg) | E (mg) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| F 35 a | 700 | 400 | 2,4 | 1,1 | 1,1 | 1,3 | 14 | 75 | 15 | 15 |
+| F 35 a gestante | 770 | 600 | 2,6 | 1,4 | 1,4 | 1,9 | 18 | 85 | 15 | 15 |
+| F 35 a lactante | 1300 | 500 | 2,8 | 1,4 | 1,6 | 2 | 17 | 120 | 15 | 19 |
+| F 18 a gestante | 750 | 600 | 2,6 | 1,4 | 1,4 | 1,9 | 18 | 80 | 15 | 15 |
+| M 16 a | 900 | 400 | 2,4 | 1,2 | 1,3 | 1,3 | 16 | 75 | 15 | 15 |
+| F 16 a | 700 | 400 | 2,4 | 1 | 1 | 1,2 | 14 | 65 | 15 | 15 |
+| M 10 a | 600 | 300 | 1,8 | 0,9 | 0,9 | 1 | 12 | 45 | 15 | 11 |
+| F 10 a | 600 | 300 | 1,8 | 0,9 | 0,9 | 1 | 12 | 45 | 15 | 11 |
+| M 5 a | 400 | 200 | 1,2 | 0,6 | 0,6 | 0,6 | 8 | 25 | 15 | 7 |
+| M 2 a | 300 | 150 | 0,9 | 0,5 | 0,5 | 0,5 | 6 | 15 | 15 | 6 |
+| M 3 meses | 400 | 65 | 0,4 | 0,2 | 0,3 | 0,1 | 2 | 40 | 10 | 4 |
+| M 55 a | 900 | 400 | 2,4 | 1,2 | 1,3 | 1,7 | 16 | 90 | 15 | 15 |
+| F 55 a | 700 | 400 | 2,4 | 1,1 | 1,1 | 1,5 | 14 | 75 | 15 | 15 |
+| M 75 a | 900 | 400 | 2,4 | 1,2 | 1,3 | 1,7 | 16 | 90 | 20 | 15 |
+| F 75 a | 700 | 400 | 2,4 | 1,1 | 1,1 | 1,5 | 14 | 75 | 20 | 15 |
+
+**Faixas cobertas e não cobertas:**
+
+- **Cobertas** (faixas do IOM): 0–6 m, 1–3 a, 4–8 a, 9–13 a, 14–18 a, 31–50 a, 51–70 a, > 70 a, gestante ≤ 18 e 31–50, lactante 31–50.
+- **Não observadas:** 7–12 m, 19–30 a, meninas de 1–8 a, gestante 19–30, lactante ≤ 18 e 19–30.
+  - O app novo pode usar a tabela pública do IOM/NASEM para essas faixas.
+- **Não testado:** se as mudanças de faixa acontecem exatamente no aniversário.
+
 ---
 
 ## 9. Exames laboratoriais
@@ -919,11 +1140,17 @@ Página: `registroExames.php`; REA `ev_98d01989…`.
 
 REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39f81d40…`, cafeína `ev_9d0b18f8…`, cronotipo `ev_2d9f188a…`, sinais `ev_b57b15ab…`, disbiose `ev_9ddf2008…`, QFA `ev_5f73e19c…`, fenótipo `ev_509f2d23…`, doshas `ev_261c2328…`.
 
-**Status:** regras extraídas do código. Não houve conferência na tela com respostas variadas (§14).
+**Status: regras extraídas do código e conferidas na tela.**
+
+- Os 10 questionários de teste foram respondidos pelas funções da própria página, em vários cenários: mínimo, máximo, padrões mistos e **totais exatamente nas fronteiras** de cada faixa.
+- O texto exibido foi registrado. Evidências: `tela_q_<nome>.json` e `tela_q_fronteiras.json`.
+- O resultado de cada um aparece na subseção correspondente ("Conferido na tela").
 
 **Criação:** data + tipo. Há 10 tipos (abaixo).
 
-- A lista do paciente reconhece outros 7, criados por outros fluxos (pré-consulta ou extensões): Consciência alimentar, LEAF-Q, LEAM-Q, Índice de Fibrose-4, Avaliação imunológica, Calculadora do risco de deficiência de magnésio, Food noise. **Estes 7 não foram analisados.**
+- A lista do paciente reconhece outros 7: Consciência alimentar, LEAF-Q, LEAM-Q, Índice de Fibrose-4 (FIB-4), Avaliação imunológica, Calculadora do risco de deficiência de magnésio e Food noise.
+  - Eles pertencem a **extensões pagas** que a conta não tem (por exemplo "GLP-1" e "Endurance"). Ao expandir, a página mostra "comprar extensão".
+  - **Não foram acessados nem comprados.** As fórmulas deles não estão neste relatório.
 - Todos geram PDF; alguns têm "Evolução".
 - O texto do resultado é salvo junto (`salvarDiagnostico.php`).
 
@@ -953,6 +1180,22 @@ REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39
   | > 100 | "Saúde muito ruim, com possível relação com doenças crônicas/degenerativas" |
 
 - Também mostra a soma de cada categoria sobre o máximo.
+- **Conferido na tela:**
+  - **Fronteiras:**
+
+    | Total | Texto exibido |
+    |---|---|
+    | 30 | "Saudável…" |
+    | 31 e 40 | "Indicativo…" |
+    | 41 e 100 | "Absoluta certeza…" |
+    | 101 | "Saúde muito ruim…" |
+
+  - **Somas por categoria:**
+    - tudo 0 → "0 pontos";
+    - tudo 4 → **264 pontos**, cada categoria no máximo (ex.: "Mente 32/32");
+    - tudo 2 → 132;
+    - notas `i mod 5` → 130 (Cabeça 6/16, Olhos 7/16…).
+  - Formato: "N pontos" e "Categoria x/máx".
 
 ### 10.2 FINDRISC (diabetes mellitus)
 
@@ -970,6 +1213,18 @@ REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39
 
 - Máximo de 26.
 - Classificação: < 7 BAIXO · 7–11 DISCRETAMENTE AUMENTADO · 12–14 MODERADO · 15–20 ALTO · > 20 MUITO ALTO.
+- **Conferido na tela:**
+  - **Fronteiras:**
+
+    | Total | Texto exibido |
+    |---|---|
+    | 6 | "RISCO BAIXO" |
+    | 7 e 11 | "RISCO DISCRETAMENTE AUMENTADO" |
+    | 12 e 14 | "RISCO MODERADO" |
+    | 15 e 20 | "RISCO ALTO" |
+    | 21 e 26 | "RISCO MUITO ALTO" |
+
+  - Formato: "N pontos de 26 possíveis".
 
 ### 10.3 Sarcopenia em idosos
 
@@ -986,6 +1241,8 @@ REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39
 
 Mostra **só o total** ("N pontos"). O trecho de classificação está comentado no código.
 
+**Conferido na tela:** o total aparece sem classificação ("11 pontos", "16 pontos", "8 pontos").
+
 ### 10.4 Dependência de cafeína (CaffEQ)
 
 - 47 afirmações, escala de 1 a 6 (0 = não respondido), 7 fatores:
@@ -1000,8 +1257,13 @@ Mostra **só o total** ("N pontos"). O trecho de classificação está comentado
   | Ansiedade e efeitos negativos | 9 | 54 |
   | Distúrbios do sono | 4 | 24 |
 
-- Versão resumida: 21 itens marcados "R" (3 por fator).
+- Versão resumida: 21 itens marcados "R" (3 por fator). **A página abre na versão resumida**, que conta só os itens "R".
 - Média do fator = soma / nº de itens (na resumida, /3). **Média ≥ 4** mostra o texto "alto" do fator; abaixo de 4, o texto "baixo".
+- **Conferido na tela** (versão resumida):
+  - O resultado sai por fator, no formato "Fator — Média: x.xx — texto". A média tem 2 casas e ponto decimal.
+  - Média 4.00 → texto "alto" (Dependência: "Dependência à cafeína. Para este paciente, sugere-se a prescrição da cafeína em momentos-chave do dia…").
+  - Média 3.67 → texto "baixo" ("Não há dependência à cafeína.").
+  - Todos 1 → 1.00; todos 3 → 3.00; todos 6 → 6.00.
 
 ### 10.5 Sono e cronotipo (MEQ, Horne-Östberg, 19 itens)
 
@@ -1015,6 +1277,21 @@ Mostra **só o total** ("N pontos"). O trecho de classificação está comentado
 
 Vem acompanhado de uma conduta de distribuição do VET por refeição. Há diferenças em relação ao MEQ original (§12).
 
+**Conferido na tela:**
+
+- Fronteiras:
+
+  | Total | Perfil exibido |
+  |---|---|
+  | 30 | Vespertino extremo ou noturno |
+  | 31 e 41 | Moderadamente vespertino |
+  | 42 e 58 | Intermediário |
+  | 59 e 69 | Moderadamente matutino |
+  | 70 | Matutino extremo |
+
+- Formato: "Resultado: N pontos" e "Perfil: …".
+- Com as pontuações do WebDiet: todas as primeiras opções → 62; todas as últimas → 37; todas as segundas → 56.
+
 ### 10.6 Risco de disbiose
 
 - 17 itens, de 0 a 3 pontos cada (fumante: 0/2).
@@ -1026,6 +1303,22 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
   | nenhuma | 0–10 | 11–23 | 24–36 | 37–49 | "de 49 possíveis" |
   | uma | 0–10 | 11–22 | 23–34 | 35–46 | 46 |
   | duas | 0–10 | 11–21 | 22–32 | 33–43 | 43 |
+
+- **Conferido na tela:**
+  - **Fronteiras sem "−":**
+
+    | Total | Texto exibido |
+    |---|---|
+    | 0 e 10 | "baixo risco de disbiose" |
+    | 11 e 23 | "médio risco" |
+    | 24 e 36 | "risco alto" |
+    | 37 | "risco muito alto" |
+
+  - Formato: "O paciente encontra-se com … de disbiose" e "N pontos de 49 possíveis".
+  - **Todas as respostas no máximo:** "**50 pontos de 49 possíveis**", com o texto do resultado **vazio** (erro confirmado, §12).
+  - **Com "−":**
+    - um "−" → "17 pontos de **46** possíveis" (médio);
+    - dois "−" → "14 pontos de **43** possíveis" (médio).
 
 ### 10.7 Frequência alimentar (QFA)
 
@@ -1044,6 +1337,10 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 
 - **Gráfico:** consumido (soma por categoria) × recomendado de **21, 14, 7, 42, 42, 7, 7, 7** porções por semana, na ordem das categorias.
 - **Bebidas:** saudáveis (água, café sem açúcar, suco natural ou chá sem açúcar) × açucaradas (refrigerante, café ou chá com açúcar, suco adoçado, suco de caixinha).
+- **Conferido na tela** (gráficos Chart.js), com a resposta do item i = (i mod 7) + 1:
+  - consumido = **[10, 21, 26, 30, 18, 13, 22, 28]**;
+  - recomendado = [21, 14, 7, 42, 42, 7, 7, 7];
+  - bebidas, na ordem do gráfico [açucaradas, saudáveis] = **[22, 6]**.
 
 ### 10.8 Fenótipo do comportamento alimentar
 
@@ -1058,12 +1355,21 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
   | Hiperfágico | 3 | 15 | ≤ 5 | 6–8 | > 8 |
 
 - Há texto de conduta por subescala.
+- **Conferido na tela:** formato "Subescala X — Escala: BAIXO/MÉDIO/ALTO — texto".
+  - Tudo 1 → BAIXO.
+  - Tudo 5 → ALTO.
+  - Tudo 3 → Desorganizado **ALTO** (9 > 6) e Hedônico **MÉDIO** (12).
+  - **Limite:** a captura guardou só os primeiros 400 caracteres do resultado. Por isso só Desorganizado e Hedônico foram registrados. As outras 3 subescalas não foram conferidas na tela (§14).
 
 ### 10.9 Doshas Ayurveda
 
 - Respostas A/B/C (valores 0/1/2). Conta quantas A, B e C.
 - A maior contagem define o dosha: **VATA** (A), **PITTA** (B), **KAPHA** (C).
 - Empate: sem resultado. Exige todas as perguntas respondidas.
+- **Conferido na tela:**
+  - tudo A → "Predomínio de respostas A corresponde ao Dosha VATA";
+  - tudo B → "… B … PITTA";
+  - tudo C → "… C … KAPHA".
 
 ### 10.10 Análise de sinais e sintomas
 
@@ -1081,6 +1387,12 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
   | ≥ 4 | #e61c24 |
 
 - A base de associações é conteúdo autoral e não foi copiada.
+- **Conferido na tela:**
+  - Um nutriente apontado por 1 sinal fica amarelo (classe `amareloRastreamento`).
+  - Apontado por 2 sinais: fundo `#ffa425`. Ex.: Vitamina A e Zinco com 3 sinais marcados.
+  - Apontado por 3 sinais: fundo `#fa5423`. Ex.: Zinco com 6 sinais marcados.
+  - A contagem é separada para deficiência e excesso.
+  - A cor de ≥ 4 (`#e61c24`) foi lida só no código.
 
 ---
 
@@ -1089,6 +1401,9 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 - **Agenda:** sincronização com o Google, recorrência e conflitos de horário. Tarefas (planner).
 - **Pré-consulta:** questionários enviados antes da consulta. As respostas podem ser importadas para anamnese e questionários.
 - **Financeiro:** lançamentos, categorias, parcelas, recibos (validação de CPF). Há financeiro geral e por paciente.
+  - **Parcelas:** a página envia valor, nº de parcelas e data da cobrança. **A divisão em parcelas é feita no servidor**, e a regra (centavos, datas) não aparece no código do navegador.
+  - **Não foi testado**, para não criar lançamentos na conta.
+  - Formas de pagamento (códigos 1–7): dinheiro, débito, crédito, cheque, plano, transferência, pix.
 - **Documentos e prontuário:**
   - prontuário (registro técnico);
   - atestados e receituários;
@@ -1112,14 +1427,14 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 | 1 | Cálculo energético · EER/IOM 2005 infantil | Com **exatamente 36 meses**, nenhum ramo se aplica e dá exceção de JS ("Cannot read properties of undefined (reading 'toFixed')"). A tela fica com valores antigos. | E108 na tela |
 | 2 | Cálculo energético · EER 2023 gestante | Precedência: `… + disposição × injúria` (só a disposição é multiplicada). | código |
 | 3 | Cálculo energético · EER 2023 lactante | `+540 − 140 × injúria` (só o 140 é multiplicado). | código |
-| 4 | Cálculo energético · EER 2023 infantil 0–2,99 a | O termo de idade usa idade em **anos** (`I`); a equação NASEM 2023 parece usar meses. **Verificar no original.** | código |
+| 4 | Cálculo energético · EER 2023 infantil 0–2,99 a | O termo de idade usa idade em **anos** (`I`). **Revisado:** a tabela da Health Canada para as equações NASEM 2023 também usa anos, então **provavelmente não é erro**. O relatório NASEM em si não foi lido por completo. | código + literatura |
 | 5 | Cálculo energético · injúria "Queimadura 100%" | Rótulo "2.100", mas o valor usado é 2,0. | E32 na tela |
 | 6 | Cálculo energético · Henry < 3 anos | Sem equação: a TMB não é recalculada (fica a anterior). | código |
 | 7 | Cálculo energético · Katch-McArdle | Usa a lista de fatores do EER (1,00/1,11/1,25/1,48…) em vez da lista padrão. | E03 na tela |
-| 8 | Cálculo energético · Schofield meninas 3–10 a | Coeficiente da estatura 161,08; o original (Schofield 1985) traz 161,8. **Verificar.** | código |
+| 8 | Cálculo energético · Schofield meninas 3–10 a | Coeficiente da estatura 161,08; a forma usual (Schofield 1985, com peso e estatura) traz 161,8. A busca não achou fonte primária que confirme um ou outro. **Continua a verificar.** | código |
 | 9 | Programação de peso | Mostra o valor arredondado e aplica o truncado (ex.: −642 / −641). | na tela |
-| 10 | Antropometria · estimativa de peso (Chumlea 1988) | As equações estão com o **sexo trocado** em relação ao artigo (H usa a equação feminina e vice-versa). **Verificar no original.** | código, na tela |
-| 11 | Antropometria · Pollock 3 feminino | Constante 1,099421; o original (Jackson, Pollock & Ward 1980) traz 1,0994921. | código |
+| 10 | Antropometria · estimativa de peso (Chumlea 1988) | As equações estão com o **sexo trocado** em relação à forma usualmente citada: H usa a equação de −62,35 (feminina) e M a de −81,69 (masculina). A busca não achou o artigo original. **Continua a verificar.** | código, na tela |
+| 11 | Antropometria · Pollock 3 feminino | Constante 1,099421; o original (Jackson, Pollock & Ward 1980) traz **1,0994921**. **Confirmado** em fontes secundárias independentes (pacote R `bodycomp`; artigo de divulgação). Diferença no %G ≈ 0,03 ponto. | código + literatura |
 | 12 | Antropometria · %G | Acima de 65 anos não há classificação (vazio) e a referência anterior continua na tela. | A41–A44 na tela |
 | 13 | Antropometria · RCQ | A partir de 70 anos não há classificação (texto anterior permanece). | código, na tela |
 | 14 | Antropometria · CMB p50 | Meninas de 4 anos = 11 (fora da sequência 13,2 → 14,2). | código |
@@ -1130,8 +1445,13 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 | 19 | Gestante · DCT 16 anos | Corte p5 = 1,5 (provável 10,5). | código |
 | 20 | Planejamento · kcal não proteica/g N planejada | Usa (gPTN×9 + gLIP×4) no lugar de (gLIP×9 + gCHO×4). | na tela |
 | 21 | Cronotipo (MEQ) | Item 3 (despertador) com pontuação invertida; item 12 (cansaço às 23 h) com 1/2/3/4 no lugar de 0/2/3/5; texto "de 43 possíveis" errado. | código |
-| 22 | Disbiose | Soma máxima real = 50, mas a faixa vai até 49 (50 pontos fica sem classificação). | código |
+| 22 | Disbiose | Soma máxima real = 50, mas a faixa vai até 49 (50 pontos fica sem classificação). | **na tela:** "50 pontos de 49 possíveis", sem texto |
 | 23 | Doshas | Empate entre A/B/C não gera resultado. | código |
+| 24 | Referências de micronutrientes · 0–6 meses | Selênio exibido como **"15 mg"**; a DRI é 15 **mcg**. Os outros perfis mostram mcg. O % de adequação compara números, então a conta não muda, mas o rótulo está errado. | na tela (§8.10) |
+| 25 | Lista de compras · método por alimentos | `final.concat(...)` sem atribuição descarta os ingredientes de receitas **substitutas**. `parseInt(origem) == "Receita"` nunca é verdadeiro, então a receita substituta entra pelo nome de compra. | código |
+| 26 | Lista de compras · método por equivalentes | O diálogo oferece "com" ou "sem" receitas, mas `importarCompras2()` ignora a escolha. | código |
+| 27 | Alimento próprio | `gorduratrans` não é enviado ao salvar (os outros micronutrientes vão como "0"). A kcal automática soma fibras×2 sobre o CHO digitado; se o rótulo já inclui fibra no CHO, a fibra é contada duas vezes. | código, envio bloqueado |
+| 28 | Receitas · kcal por ingrediente | A mesma linha aparece com 0 casas ("256Kcal") ou 1 casa ("117.6 Kcal"), conforme foi redesenhada ou recalculada. Os totais não são afetados. | na tela |
 
 Para a Etapa 3: o app novo deve **reproduzir os resultados conferidos** nos casos normais. Nos itens desta tabela, a decisão entre "igual ao WebDiet" e "corrigido" precisa ser tomada e documentada caso a caso.
 
@@ -1159,6 +1479,9 @@ Para a Etapa 3: o app novo deve **reproduzir os resultados conferidos** nos caso
 | qfa.php | `ev_5f73e19c1ce4540fec864521a6ab1665719a6ffb7df43ca309448fe645ee09aa` |
 | fenotipo.php | `ev_509f2d23a44106b5ade68492bd9490434d69466cf59f2909c16bc053ef13ce9d` |
 | doshasa_ayurveda_questionario.php | `ev_261c23289525558df431f66942f6290b5d94ece66f916fcf981f7398d3634b70` |
+| receitas.php (receitas e alimento próprio) | `ev_c259e05597fc243dd65efbe3a56510149b15d499b754391c3f4884358f84837d` |
+
+A lista de compras e o piloto automático estão nos scripts de `metodoPlanning.php` e `metodoWebdiet.php`, já capturados acima.
 
 **Fluxo REA usado:**
 
@@ -1186,18 +1509,47 @@ As capturas brutas contêm tokens de sessão e **não** foram versionadas.
 | `curvas_ganho_peso_gestacional.json` | percentis e faixas por semana (curvas brasileiras) |
 | `exames_catalogo_nomes.txt` | nomes dos 196 exames do catálogo |
 | `inventario_abas_paciente.json` | títulos, botões e rótulos das 21 abas |
+| `tela_receita.json` | receita calculada com 4 ingredientes TACO: linhas, totais, porção automática e "gerar medida" |
+| `tela_alimento_rotulo.json` | alimento por rótulo: kcal automática e valores por 100 g que seriam enviados (envio bloqueado; sem tokens) |
+| `tela_dris.json` | referências de micronutrientes de 15 perfis (sexo, idade, gestante, lactante) |
+| `tela_q_<nome>.json` (10 arquivos) | questionários: respostas de cada cenário e texto exibido |
+| `tela_q_fronteiras.json` | fronteiras do rastreamento (30/31, 40/41, 100/101) e média 4 da cafeína |
+
+**Literatura consultada na segunda passada** (para os itens 4, 8, 10 e 11 de §12):
+
+- NASEM 2023, *Dietary Reference Intakes for Energy*: <https://www.nationalacademies.org/read/26818/chapter/18>
+- Health Canada, *Equations to estimate energy requirement*: <https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/dietary-reference-intakes/tables/equations-estimate-energy-requirement.html>
+- Jackson, Pollock & Ward 1980 (3 dobras, mulheres), reproduzido em:
+  - <https://rdrr.io/github/GleidsonUERN/bodycomp/man/Jackson.3sites.html>
+  - <https://livestrong.com/article/354812-body-fat-percentage-test-using-jackson-pollock-formula>
+- Schofield 1985: <https://en.wikipedia.org/wiki/Schofield_equation> (não traz a versão com estatura; item 8 continua aberto).
 
 ---
 
 ## 14. Pendências — o que não foi verificado
 
-- **Questionários (§10):** as regras foram extraídas do código, **sem rodar casos na tela**. Faltam também os 7 tipos que não podem ser criados pelo menu: Consciência alimentar, LEAF-Q, LEAM-Q, FIB-4, Avaliação imunológica, Magnésio e Food noise.
-- **Referências de micronutrientes** para outras idades, sexos, gestação e lactação: vêm do servidor e só **homem de 35 anos** foi observado.
-- **Idade na antropometria de adultos:** não foi confirmado se é calculada na data de hoje ou na data da avaliação.
+Resolvido na segunda passada:
+
+- os 10 questionários foram conferidos na tela;
+- referências de micronutrientes de 15 perfis (§8.10);
+- idade na antropometria é calculada na data da avaliação (§5.1);
+- receitas, alimento próprio e lista de compras (§8.6–8.8);
+- itens 4 e 11 de §12 revistos na literatura.
+
+Ainda em aberto:
+
+- **Extensões pagas:** Consciência alimentar, LEAF-Q, LEAM-Q, FIB-4, Avaliação imunológica, Magnésio e Food noise. Não acessadas, porque exigem compra.
+- **Questionários, detalhes:**
+  - fenótipo: só Desorganizado e Hedônico foram registrados na tela;
+  - cafeína: a versão completa (47 itens) não foi rodada na tela;
+  - sinais e sintomas: a cor de ≥ 4 foi lida só no código.
+- **Referências de micronutrientes:** faixas 7–12 m, 19–30 a, meninas de 1–8 a, gestante 19–30, lactante ≤ 18 e 19–30. Também não foi testado se a troca de faixa ocorre exatamente no aniversário.
+- **Financeiro:** a divisão de parcelas é feita no servidor e não foi testada.
+- **Lista de compras com IA:** a reescrita pela IA (1 crédito) não foi executada; só o cálculo enviado foi lido no código.
 - **Não analisados:**
   - Avaliação integrada (360), Fármaco-nutrientes, Body3D e HandyMET;
   - funções de IA (pagas);
   - periodização do plano e o PDF;
-  - estatísticas;
-  - itens 4, 8 e 10 de §12, que precisam ser conferidos nos artigos originais.
+  - estatísticas.
+- **Literatura:** itens 8 (Schofield 161,08 × 161,8) e 10 (Chumlea, sexo trocado) de §12 precisam do artigo original.
 - **Itens criados na conta:** o paciente "Teste Rea" (`18236779`) e seus registros continuam lá. A exclusão depende de autorização do responsável.

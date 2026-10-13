@@ -1,0 +1,77 @@
+[
+ {
+  "cenario": {
+   "nome": "primeira opção",
+   "resp": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "2",
+    "5",
+    "1",
+    "3"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "11 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "última opção",
+   "resp": [
+    "2",
+    "2",
+    "2",
+    "2",
+    "2",
+    "1",
+    "2",
+    "2",
+    "1",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "16 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "segunda opção",
+   "resp": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoSelecionados": "8 pontos",
+   "#condutaNutricionalTexto": "",
+   "#cronotipo": "",
+   "#resultadoRast": ""
+  }
+ }
+]

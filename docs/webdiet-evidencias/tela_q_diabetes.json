@@ -1,0 +1,211 @@
+[
+ {
+  "cenario": {
+   "nome": "mínimo",
+   "resp": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "2",
+    "5",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "7 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO DISCRETAMENTE AUMENTADO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "máximo",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "2",
+    "1",
+    "2",
+    "5",
+    "5"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "26 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO MUITO ALTO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "meio",
+   "resp": [
+    "3",
+    "1",
+    "3",
+    "2",
+    "1",
+    "0",
+    "0",
+    "3"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "13 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO MODERADO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 6",
+   "resp": [
+    "4",
+    "1",
+    "0",
+    "0",
+    "1",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "6 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO BAIXO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 7",
+   "resp": [
+    "4",
+    "3",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "7 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO DISCRETAMENTE AUMENTADO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 11",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "11 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO DISCRETAMENTE AUMENTADO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 12",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "0",
+    "1",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "12 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO MODERADO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 14",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "2",
+    "1",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "14 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO MODERADO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 15",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "2",
+    "0",
+    "2",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "15 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO ALTO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 20",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "2",
+    "0",
+    "2",
+    "5",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "20 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO ALTO"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 21",
+   "resp": [
+    "4",
+    "3",
+    "4",
+    "2",
+    "1",
+    "2",
+    "5",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "21 pontos de 26 possíveis",
+   "#resultadoRast": "RISCO MUITO ALTO"
+  }
+ }
+]

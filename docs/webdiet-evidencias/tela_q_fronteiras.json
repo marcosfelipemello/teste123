@@ -1,0 +1,31 @@
+{
+ "cafeina_tudo4": "•DependênciaMédia: 4.00Dependência à cafeína. Para este paci…",
+ "cafeina_dep_392": "•DependênciaMédia: 4.00Dependência à cafeína. Para este paci…",
+ "rast": {
+  "30": [
+   "30 pontos",
+   "Saudável, baixa chance de ter hipersensibilidades"
+  ],
+  "31": [
+   "31 pontos",
+   "Indicativo de existência de hipersensibilidades"
+  ],
+  "40": [
+   "40 pontos",
+   "Indicativo de existência de hipersensibilidades"
+  ],
+  "41": [
+   "41 pontos",
+   "Absoluta certeza de existência de hipersensibilidades"
+  ],
+  "100": [
+   "100 pontos",
+   "Absoluta certeza de existência de hipersensibilidades"
+  ],
+  "101": [
+   "101 pontos",
+   "Saúde muito ruim, com possível relação com doenças crônicas/degenerativas"
+  ]
+ },
+ "nota": "cafeina_dep_392: item 0 (não \"R\") alterado para 3; na versão resumida a média continua 4.00. A fronteira 3.67 foi vista com o item R índice 1 = 3 (cafeina_modo.js, saída no console)."
+}

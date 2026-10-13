@@ -1,0 +1,126 @@
+[
+ {
+  "cenario": {
+   "nome": "tudo 0/min",
+   "resp": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  "tela": {
+   ".total-pontos": "",
+   "#resultadoRast": "",
+   "#resultadoRastCategoria": [
+    "Subescala Desorganizado Escala: BAIXO",
+    "Subescala Hedônico Escala: BAIXO"
+   ]
+  }
+ },
+ {
+  "cenario": {
+   "nome": "padrão i%5",
+   "resp": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    1,
+    2,
+    3,
+    4,
+    5,
+    1,
+    2,
+    3,
+    4,
+    5,
+    1
+   ]
+  },
+  "tela": {
+   ".total-pontos": "",
+   "#resultadoRast": "",
+   "#resultadoRastCategoria": [
+    "Subescala Desorganizado Escala: MÉDIO",
+    "Subescala Hedônico Escala: MÉDIO"
+   ]
+  }
+ },
+ {
+  "cenario": {
+   "nome": "tudo máximo",
+   "resp": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+   ]
+  },
+  "tela": {
+   ".total-pontos": "",
+   "#resultadoRast": "",
+   "#resultadoRastCategoria": [
+    "Subescala Desorganizado Escala: ALTO",
+    "Subescala Hedônico Escala: ALTO"
+   ]
+  }
+ },
+ {
+  "cenario": {
+   "nome": "tudo 2/3",
+   "resp": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  "tela": {
+   ".total-pontos": "",
+   "#resultadoRast": "",
+   "#resultadoRastCategoria": [
+    "Subescala Desorganizado Escala: ALTO",
+    "Subescala Hedônico Escala: MÉDIO"
+   ]
+  }
+ }
+]

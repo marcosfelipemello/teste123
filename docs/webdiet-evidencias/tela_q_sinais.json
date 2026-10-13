@@ -1,0 +1,66 @@
+[
+ {
+  "cenario": {
+   "nome": "marcados 0"
+  },
+  "tela": {
+   "def": [
+    "Vitamina A@microNut amareloRastreamento"
+   ],
+   "exc": [
+    "Ferro@microNut amareloRastreamento"
+   ],
+   "defTxt": "Vitamina A ",
+   "excTxt": "Ferro "
+  }
+ },
+ {
+  "cenario": {
+   "nome": "marcados 0,1,2"
+  },
+  "tela": {
+   "def": [
+    "Ferro@microNut amareloRastreamento",
+    "Vitamina A@background: #ffa425",
+    "Vitamina C@microNut amareloRastreamento",
+    "Zinco@background: #ffa425"
+   ],
+   "exc": [
+    "Ferro@microNut amareloRastreamento"
+   ],
+   "defTxt": "Ferro Vitamina A Vitamina C Zinco ",
+   "excTxt": "Ferro "
+  }
+ },
+ {
+  "cenario": {
+   "nome": "marcados 2,5,9,14,20,33"
+  },
+  "tela": {
+   "def": [
+    "Ácido Fólico@microNut amareloRastreamento",
+    "Biotina@microNut amareloRastreamento",
+    "Cobre@microNut amareloRastreamento",
+    "Cromo@microNut amareloRastreamento",
+    "Fósforo@microNut amareloRastreamento",
+    "Magnésio@microNut amareloRastreamento",
+    "Niacina@microNut amareloRastreamento",
+    "Proteína@microNut amareloRastreamento",
+    "Vitamina A@microNut amareloRastreamento",
+    "Vitamina B1@microNut amareloRastreamento",
+    "Vitamina B12@microNut amareloRastreamento",
+    "Vitamina C@microNut amareloRastreamento",
+    "Vitamina D@microNut amareloRastreamento",
+    "Zinco@background: #fa5423"
+   ],
+   "exc": [
+    "Chumbo@microNut amareloRastreamento",
+    "Ferro@microNut amareloRastreamento",
+    "Selênio@microNut amareloRastreamento",
+    "Vanádio@microNut amareloRastreamento"
+   ],
+   "defTxt": "Ácido Fólico Biotina Cobre Cromo Fósforo Magnésio Niacina Proteína Vitamina A Vi",
+   "excTxt": "Chumbo Ferro Selênio Vanádio "
+  }
+ }
+]

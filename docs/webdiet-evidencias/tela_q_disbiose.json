@@ -1,0 +1,282 @@
+[
+ {
+  "cenario": {
+   "nome": "mínimo",
+   "resp": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "0 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com baixo risco de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "máximo numérico",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "2",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "50 pontos de 49 possíveis",
+   "#resultadoRast": ""
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 10",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "1",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "10 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com baixo risco de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 11",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "2",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "11 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com médio risco de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 23",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "2",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "23 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com médio risco de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 24",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "24 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com risco alto de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 36",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "2",
+    "3",
+    "3",
+    "0",
+    "1",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "36 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com risco alto de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "total 37",
+   "resp": [
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "3",
+    "2",
+    "3",
+    "3",
+    "0",
+    "2",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "37 pontos de 49 possíveis",
+   "#resultadoRast": "O paciente encontra-se com risco muito alto de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "um \"-\" (item 2)",
+   "resp": [
+    "3",
+    "-",
+    "3",
+    "3",
+    "3",
+    "3",
+    "2",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "17 pontos de 46 possíveis",
+   "#resultadoRast": "O paciente encontra-se com médio risco de disbiose"
+  }
+ },
+ {
+  "cenario": {
+   "nome": "dois \"-\"",
+   "resp": [
+    "3",
+    "-",
+    "-",
+    "3",
+    "3",
+    "3",
+    "2",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  "tela": {
+   "#pontuacaoResultado": "14 pontos de 43 possíveis",
+   "#resultadoRast": "O paciente encontra-se com médio risco de disbiose"
+  }
+ }
+]
