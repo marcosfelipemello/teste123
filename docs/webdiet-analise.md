@@ -1180,6 +1180,21 @@ REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39
   | > 100 | "Saúde muito ruim, com possível relação com doenças crônicas/degenerativas" |
 
 - Também mostra a soma de cada categoria sobre o máximo.
+- **Estrutura** (itens numerados na ordem da tela, todos com nota 0–4, padrão 0):
+
+  | Categoria | Itens | Categoria | Itens |
+  |---|---|---|---|
+  | Cabeça | 1–4 | Pulmões | 31–34 |
+  | Olhos | 5–8 | Trato digestivo | 35–41 |
+  | Ouvidos | 9–12 | Articulações / Músculos | 42–46 |
+  | Nariz | 13–17 | Energia / Atividade | 47–50 |
+  | Boca e Garganta | 18–22 | Mente | 51–58 |
+  | Pele | 23–27 | Emoções | 59–62 |
+  | Coração | 28–30 | Outros | 63–66 |
+
+  - Cor da nota marcada: 0 verde · 1 amarelo · 2 laranja · 3 vermelho · 4 vermelho-escuro.
+  - Cor do resultado: ≤ 30 verde · 31–40 amarelo · 41–100 `#fa5423` · > 100 `#e61c24`.
+  - Todo item começa marcado com 0, então as 14 categorias sempre aparecem, no formato "Categoria soma/máximo".
 - **Conferido na tela:**
   - **Fronteiras:**
 
@@ -1213,6 +1228,23 @@ REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39
 
 - Máximo de 26.
 - Classificação: < 7 BAIXO · 7–11 DISCRETAMENTE AUMENTADO · 12–14 MODERADO · 15–20 ALTO · > 20 MUITO ALTO.
+  - O texto exibido é "RISCO " + classe (ex.: "RISCO MODERADO").
+  - Cores: verde · `#f8ce4f` · `#FFA500` · `#E53935` · `#8B0000`.
+- **Estrutura:** pontos de cada opção, na ordem em que aparecem na tela.
+
+  | Item | Pontos das opções |
+  |---|---|
+  | 1 Idade | 0, 2, 3, 4 |
+  | 2 IMC | 0, 1, 3 |
+  | 3 Cintura | 0, 3, 4 (H); 0, 3, 4 (M) — 6 opções |
+  | 4 Atividade 30 min | 0, 2 |
+  | 5 Frutas/verduras | 0, 1 |
+  | 6 Anti-hipertensivo | 2 (sim), 0 (não) |
+  | 7 Glicemia alta | 5 (sim), 0 (não) |
+  | 8 Família | 0, 3, 5 |
+
+  - Item sem resposta não soma.
+  - Escolher a primeira opção de todos os itens dá 7 pontos, porque nos itens 6 e 7 a primeira opção é "sim".
 - **Conferido na tela:**
   - **Fronteiras:**
 
@@ -1241,7 +1273,23 @@ REA: rastreamento `ev_a8aeb317…`, sarcopenia `ev_b5e0ea29…`, FINDRISC `ev_39
 
 Mostra **só o total** ("N pontos"). O trecho de classificação está comentado no código.
 
-**Conferido na tela:** o total aparece sem classificação ("11 pontos", "16 pontos", "8 pontos").
+**Estrutura:** pontos de cada opção, na ordem da tela.
+
+| Itens | Pontos das opções |
+|---|---|
+| 1–5 SARC-F | 0, 1, 2 |
+| 6 Sexo | 0 (F), 1 (M) |
+| 7 Idade | 0, 1, 2 |
+| 8 Medicamentos | 0, 1, 2 |
+| 9 IMC | 2 (< 22), 0 (22–27), 1 (> 27) |
+| 10 Preensão baixa | 5, 0 |
+| 11 Braço ≤ 32 cm | 1, 0 |
+| 12 Panturrilha baixa | 3, 0 |
+
+- Máximo de 26.
+- Itens sem resposta não somam. O total aparece mesmo com itens em branco.
+
+**Conferido na tela:** o total aparece sem classificação. Todas as primeiras opções = **11**, todas as últimas = **16**, todas as segundas = **8**.
 
 ### 10.4 Dependência de cafeína (CaffEQ)
 
@@ -1259,6 +1307,24 @@ Mostra **só o total** ("N pontos"). O trecho de classificação está comentado
 
 - Versão resumida: 21 itens marcados "R" (3 por fator). **A página abre na versão resumida**, que conta só os itens "R".
 - Média do fator = soma / nº de itens (na resumida, /3). **Média ≥ 4** mostra o texto "alto" do fator; abaixo de 4, o texto "baixo".
+- **Estrutura** (itens na ordem da tela):
+
+  | Fator | Itens | Itens "R" (resumida) |
+  |---|---|---|
+  | 1 Dependência | 1–12 | 2, 3, 8 |
+  | 2 Energia e disposição | 13–20 | 13, 17, 20 |
+  | 3 Supressão do apetite | 21–25 | 22, 23, 25 |
+  | 4 Melhoras no humor | 26–31 | 27, 30, 31 |
+  | 5 Melhoria do desempenho físico | 32–34 | 32, 33, 34 |
+  | 6 Ansiedade e efeitos negativos | 35–43 | 37, 38, 41 |
+  | 7 Distúrbios do sono | 44–47 | 44, 45, 46 |
+
+  - Cada item vale 1 a 6; 0 = sem resposta. Na resumida, os itens não "R" ficam ocultos e não entram na média.
+  - Formato exibido: "• {nome do fator} Média: {média.toFixed(2)} {texto}".
+  - Todo item começa com a marcação oculta "0", então os 7 fatores sempre aparecem. Item sem resposta conta 0 na soma.
+  - **Cor:**
+    - fatores 2–5 (efeitos desejados): média ≥ 4 verde; < 4 cinza `#a2a2a2`;
+    - fatores 1, 6 e 7: média ≥ 4 vermelho `#f44336`; < 4 verde.
 - **Conferido na tela** (versão resumida):
   - O resultado sai por fator, no formato "Fator — Média: x.xx — texto". A média tem 2 casas e ponto decimal.
   - Média 4.00 → texto "alto" (Dependência: "Dependência à cafeína. Para este paciente, sugere-se a prescrição da cafeína em momentos-chave do dia…").
@@ -1276,6 +1342,31 @@ Mostra **só o total** ("N pontos"). O trecho de classificação está comentado
 | 70–86 | Matutino extremo |
 
 Vem acompanhado de uma conduta de distribuição do VET por refeição. Há diferenças em relação ao MEQ original (§12).
+
+**Estrutura:** pontos de cada opção, na ordem da tela (cada item é uma lista de seleção).
+
+| Item | Pontos | Item | Pontos |
+|---|---|---|---|
+| 1 | 5, 4, 3, 2, 1, 0 | 11 | 4, 3, 2, 1 |
+| 2 | 5, 4, 3, 2, 1, 0 | 12 | 1, 2, 3, 4 |
+| 3 | 1, 2, 3, 4 | 13 | 4, 3, 2, 1 |
+| 4 | 1, 2, 3, 4 | 14 | 1, 2, 3, 4 |
+| 5 | 1, 2, 3, 4 | 15 | 4, 3, 2, 1 |
+| 6 | 1, 2, 3, 4 | 16 | 4, 3, 2, 1 |
+| 7 | 1, 2, 3, 4 | 17 | 5, 4, 3, 2, 1 |
+| 8 | 4, 3, 2, 1 | 18 | 5, 4, 3, 2, 1 |
+| 9 | 4, 3, 2, 1 | 19 | 6, 4, 2, 0 |
+| 10 | 5, 4, 3, 2, 1 | | |
+
+- Faixa possível com estes pontos: 16 a 83.
+- **Item sem resposta:** não há resultado. Aparece a mensagem "Há perguntas que ainda não foram preenchidas. Assim que terminar, você poderá ver o resultado aqui."
+- O código monta um texto "N pontos de 43 possíveis", mas **não o exibe** na tela.
+- **Conduta: distribuição do VET por refeição.**
+
+  | Perfil | Café da manhã | Lanche da manhã | Almoço | Lanche da tarde | Jantar |
+  |---|---|---|---|---|---|
+  | Total ≤ 41 (vespertinos) | 20% | 5% | 35% | 10% | 30% |
+  | Total > 41 (intermediário e matutinos) | 30% | 10% | 35% | 5% | 20% |
 
 **Conferido na tela:**
 
@@ -1304,6 +1395,21 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
   | uma | 0–10 | 11–22 | 23–34 | 35–46 | 46 |
   | duas | 0–10 | 11–21 | 22–32 | 33–43 | 43 |
 
+- **Estrutura:** pontos de cada opção, na ordem da tela.
+
+  | Item | Pontos | Item | Pontos |
+  |---|---|---|---|
+  | 1 | 3, 0 | 10 (fumante) | 2, 0 |
+  | 2 (parto) | 3, 0, − | 11 | 3, 0 |
+  | 3 (amamentação) | 3, 2, 0, − | 12 | 3, 0 |
+  | 4–9 | 3, 2, 1, 0 | 13 | 0, 3 |
+  | | | 14 | 3, 2, 1, 0 |
+  | | | 15–17 | 3, 0 |
+
+  - Soma máxima: 50 (§12, item 22).
+  - **Contagem de "−":** o código conta os caracteres "-" na lista de respostas convertida em texto. Um "−" usa a tabela "uma"; dois usam a tabela "duas".
+  - Cores: baixo verde · médio `#ffcd16` · alto `#fa5423` · muito alto `#e61c24`.
+  - Texto: "O paciente encontra-se com {baixo risco | médio risco | risco alto | risco muito alto} de disbiose".
 - **Conferido na tela:**
   - **Fronteiras sem "−":**
 
@@ -1337,6 +1443,11 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 
 - **Gráfico:** consumido (soma por categoria) × recomendado de **21, 14, 7, 42, 42, 7, 7, 7** porções por semana, na ordem das categorias.
 - **Bebidas:** saudáveis (água, café sem açúcar, suco natural ou chá sem açúcar) × açucaradas (refrigerante, café ou chá com açúcar, suco adoçado, suco de caixinha).
+- **Estrutura:**
+  - Itens por categoria, na ordem da tela: leites 1–4; carnes 5–9; óleos 10–15; cereais 16–23; frutas/verduras/legumes 24–27; petiscos 28–31; sobremesas 32–35; bebidas 36–42.
+  - Consumido = soma das porções digitadas da categoria (campo vazio = 0).
+  - Gráfico de bebidas: saudáveis = itens **36–38**; açucaradas = itens **39–42**. A ordem dos dados é [açucaradas, saudáveis].
+  - **Se uma das somas for 0, o gráfico usa 1** (só para desenhar a pizza).
 - **Conferido na tela** (gráficos Chart.js), com a resposta do item i = (i mod 7) + 1:
   - consumido = **[10, 21, 26, 30, 18, 13, 22, 28]**;
   - recomendado = [21, 14, 7, 42, 42, 7, 7, 7];
@@ -1355,6 +1466,20 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
   | Hiperfágico | 3 | 15 | ≤ 5 | 6–8 | > 8 |
 
 - Há texto de conduta por subescala.
+- **Estrutura:**
+  - Itens na ordem do cadastro (a tela os agrupa por subescala):
+
+    | Subescala | Itens |
+    |---|---|
+    | Desorganizado | 9, 11, 16 |
+    | Hedônico | 5, 8, 12, 14 |
+    | Compulsivo | 13, 15 |
+    | Emocional | 2, 4, 7, 10 |
+    | Hiperfágico | 1, 3, 6 |
+
+  - Nota de 1 a 5. **Todo item começa marcado com 1.**
+  - A classificação usa a **soma** da subescala (o código chama de "média", mas não divide).
+  - Cores: BAIXO `#2eca9a` · MÉDIO `#00985E` · ALTO `#006639`.
 - **Conferido na tela:** formato "Subescala X — Escala: BAIXO/MÉDIO/ALTO — texto".
   - Tudo 1 → BAIXO.
   - Tudo 5 → ALTO.
@@ -1366,6 +1491,10 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
 - Respostas A/B/C (valores 0/1/2). Conta quantas A, B e C.
 - A maior contagem define o dosha: **VATA** (A), **PITTA** (B), **KAPHA** (C).
 - Empate: sem resultado. Exige todas as perguntas respondidas.
+- **Estrutura:**
+  - 24 perguntas, cada uma com 3 opções valendo 0 (A), 1 (B) e 2 (C).
+  - Com pergunta em branco, aparece a mesma mensagem do cronotipo ("Há perguntas que ainda não foram preenchidas…").
+  - Texto: "Predomínio de respostas {A|B|C} corresponde ao Dosha {VATA|PITTA|KAPHA}".
 - **Conferido na tela:**
   - tudo A → "Predomínio de respostas A corresponde ao Dosha VATA";
   - tudo B → "… B … PITTA";
@@ -1387,6 +1516,10 @@ Vem acompanhado de uma conduta de distribuição do VET por refeição. Há dife
   | ≥ 4 | #e61c24 |
 
 - A base de associações é conteúdo autoral e não foi copiada.
+- **Regra de contagem:**
+  - Cada sinal marcado acrescenta sua lista de nutrientes (IDs) às listas de deficiência e de excesso.
+  - A contagem é feita por ID. Os nutrientes aparecem na ordem crescente do ID (ordem das chaves numéricas de um objeto JS).
+  - Lista vazia: "Nenhuma deficiência associada aos sinais" / "Nenhum excesso associado aos sinais".
 - **Conferido na tela:**
   - Um nutriente apontado por 1 sinal fica amarelo (classe `amareloRastreamento`).
   - Apontado por 2 sinais: fundo `#ffa425`. Ex.: Vitamina A e Zinco com 3 sinais marcados.
