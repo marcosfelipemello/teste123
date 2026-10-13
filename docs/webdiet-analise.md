@@ -1777,6 +1777,19 @@ Nenhum destes pontos mexe nos casos conferidos: os testes do app (`npm test`) co
   - As opções sem rótulo no relatório usam "Opção k (N pts)".
   - A interface mostra os itens como "Item n" + categoria.
 
+### 15.8 Base TACO (terceira sessão)
+
+A TACO 4ª edição oficial (planilha do NEPA/UNICAMP) foi convertida para o app e comparada com os 8 alimentos que a evidência do planejamento marca como origem TACO.
+
+- **Arredondamento:** é o da tabela publicada, com meio para cima (kcal 0 casas; PTN, LIP, CHO e fibras 1 casa; Ca, Mg, P, Na, K 0 casas; Fe e Zn 1 casa; Cu 2 casas). Com ele, macros e minerais saem iguais aos do WebDiet. Inferido.
+- **Gordura trans:** o WebDiet usa 18:1t + 18:2t com **2 casas** (dendê 0,14; pão francês 0,35 + 0,02 = 0,37). Inferido.
+- **"Retinol" do WebDiet:** é a coluna **RE** da TACO, não a coluna "Retinol" (banana prata: RE 32 → 32; ovo cozido: só Retinol → 0). Inferido.
+- **Diferenças que são dado do WebDiet, não conversão:**
+  - "Leite integral" (origem TACO no WebDiet) tem 60,3 kcal, 3,22 / 3,25 / 4,52 g, mas na TACO esse item está sem análise ("*");
+  - o arroz cozido aparece sem ácidos graxos (na TACO, saturada 0,2);
+  - no azeite de dendê, a monoinsaturada é 4,01 no WebDiet e 40,1 na TACO (vírgula deslocada), e a poli-insaturada é 16,1 contra 16,6.
+- **Resultado:** 249 de 256 valores iguais. O almoço do §8.4 montado com os alimentos da TACO em gramas dá o mesmo total da tela (398 g; 37,1 / 23,5 / 54,8 g; 587 kcal). Teste em `nutri-studio/test/taco.test.js`.
+
 ### 15.7 O que continua dependendo do usuário
 
 - As divergências científicas do §12 continuam **iguais ao WebDiet**. A lista completa, com o comportamento de cada uma, está na página "Referências" do app.

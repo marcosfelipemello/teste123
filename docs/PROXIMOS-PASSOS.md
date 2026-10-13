@@ -101,6 +101,19 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
    - semana inicial etc.
    Conferir também a contagem "26 protocolos" (§2.2), porque só 23 estão documentados em §4.
 
+## Terceira sessão (pedido do usuário: cálculos e telas idênticos ao WebDiet)
+
+- **Equivalentes:** os grupos sem lista do consultório usam as médias padrão que o WebDiet mostra (§8.5). Os totais da evidência saem iguais (r1: 981 kcal; r2: 707 kcal).
+- **Defeitos de exibição do §12 (itens 18, 24, 25 e 28):** passaram a ser iguais ao WebDiet por padrão. A versão corrigida fica disponível com `{ corrigir: true }`. O item 26 continua corrigido, porque não se sabe qual resultado o WebDiet dá.
+- **Linhas de alimentos e ingredientes:** mostram os textos exatos da tela do WebDiet.
+- **TACO 4ª edição** (decisão 3):
+  - 593 alimentos em `src/dados/taco.json`, com botão "Carregar a TACO" em "Meus alimentos";
+  - mesmos valores do WebDiet nos alimentos TACO da evidência: 249 de 256 valores, e os 7 restantes são dados do próprio WebDiet que diferem da TACO oficial (§15.8);
+  - o almoço do §8.4 montado com a TACO em gramas dá o mesmo resultado da tela.
+- **Não feito, bloqueado pela política de permissões do ambiente:**
+  - entrar na conta do WebDiet para observar as metas padrão (decisão 6), a adequação nos equivalentes (decisão 7) e os protocolos 15–20 (§15.1);
+  - ler a tabela de medidas caseiras do IBGE (POF 2008–2009), já baixada.
+
 ## Ainda não feito (fora desta lista)
 
 - Não reproduzidos:

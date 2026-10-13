@@ -3,7 +3,9 @@
 // alimentos entram por:
 //   - cadastro pelo rótulo (calc/alimentoProprio.js, relatório §8.7): valores da porção → por 100 g;
 //   - cadastro direto por 100 g (ou edição de um alimento importado);
-//   - importação de uma tabela em CSV (src/ui/alimentosCsv.js; formato documentado na própria página).
+//   - importação de uma tabela em CSV (src/ui/alimentosCsv.js; formato documentado na própria página);
+//   - carga da TACO 4ª edição (src/dados/taco.json, NEPA/UNICAMP), com os mesmos valores que o WebDiet mostra
+//     para os alimentos TACO (test/taco.test.js). A TACO não traz medidas caseiras: só "grama(s)".
 // Cada alimento fica na coleção "alimentos": {id, nome, unidade, mc, kcal, ptn, lip, cho, fibras,
 // micros[27], origem, compras?, rotulo? (entrada do rótulo, para editar)} — valores por 100 g ou 100 mL.
 import { h, campo, selecao, lerFormulario, avisar, baixar, lerArquivo } from '../dom.js';
@@ -89,8 +91,9 @@ export function paginaAlimentos(raiz, banco = db) {
         h('button', { class: 'botao', type: 'button', onclick: () => formRotulo(null) }, 'Cadastrar pelo rótulo'),
         h('button', { class: 'botao secundario', type: 'button', onclick: () => formPorCem(null) }, 'Cadastrar por 100 g'),
         h('button', { class: 'botao secundario', type: 'button', onclick: telaImportar }, 'Importar tabela (CSV)'),
+        h('button', { class: 'botao secundario', type: 'button', onclick: carregarTaco }, todos.some((a) => a.origem === 'TACO') ? 'Atualizar a TACO' : 'Carregar a TACO'),
         h('button', { class: 'botao secundario', type: 'button', disabled: todos.length ? null : true, onclick: exportar }, 'Exportar CSV')),
-      h('p', { class: 'legenda' }, 'O app não traz uma tabela de alimentos pronta: cadastre pelo rótulo dos produtos ou importe uma tabela (TACO, TBCA, a sua) em CSV. Valores por 100 g ou 100 mL. As receitas salvas também entram no planejamento como alimento.'),
+      h('p', { class: 'legenda' }, '"Carregar a TACO" acrescenta os 593 alimentos da TACO 4ª edição (NEPA/UNICAMP), com os mesmos valores que o WebDiet usa. A TACO não traz medidas caseiras: edite o alimento para acrescentá-las. Também dá para cadastrar pelo rótulo ou importar outra tabela em CSV. Valores por 100 g ou 100 mL. As receitas salvas também entram no planejamento como alimento.'),
       h('div', { class: 'pilha' },
         h('div', { class: 'filtros' }, busca, origem),
         contagem,
@@ -102,6 +105,45 @@ export function paginaAlimentos(raiz, banco = db) {
     if (!confirm(`Excluir "${a.nome}"? Planos e receitas que já usam este alimento guardam uma cópia e não mudam.`)) return;
     banco.excluir('alimentos', a.id);
     avisar(`"${a.nome}" excluído.`);
+    lista();
+  }
+
+  /** Acrescenta a TACO. Alimento com o mesmo nome de um já cadastrado não é sobrescrito, exceto os da própria TACO. */
+  async function carregarTaco() {
+    let taco;
+    try {
+      taco = await (await fetch(new URL('../../dados/taco.json', import.meta.url))).json();
+    } catch (e) {
+      console.error(e);
+      avisar('Não foi possível ler a TACO.');
+      return;
+    }
+    const existentes = banco.listar('alimentos');
+    const lidos = taco.alimentos.map((a) => ({ alimento: {
+      nome: a.nome, unidade: a.unidade, kcal: a.kcal, ptn: a.ptn, lip: a.lip, cho: a.cho, fibras: a.fibras, micros: a.micros,
+      mc: [], compras: '', origem: 'TACO', grupo: a.grupo, tacoNumero: a.numero,
+    } }));
+    const plano = planejarImportacao(lidos, existentes, { atualizar: true });
+    const porId = new Map(existentes.map((a) => [a.id, a]));
+    // Só atualiza o que já veio da TACO, preservando as medidas caseiras e o nome de compra editados depois.
+    const atualizados = plano.atualizados.filter(({ id }) => porId.get(id)?.origem === 'TACO');
+    const ignorados = plano.atualizados.length - atualizados.length;
+    const mensagem = `Carregar ${plano.novos.length} alimento(s) novo(s) da TACO 4ª edição` +
+      (atualizados.length ? ` e atualizar ${atualizados.length} já carregado(s) (as medidas caseiras ficam)` : '') +
+      (ignorados ? `? ${ignorados} com o mesmo nome de um alimento seu ficam como estão.` : '?');
+    if (!plano.novos.length && !atualizados.length) { avisar('A TACO já está carregada.'); return; }
+    if (!confirm(mensagem)) return;
+    const agora = new Date().toISOString();
+    const itens = [
+      ...plano.novos.map((a) => ({ ...a, criadoEm: agora, atualizadoEm: agora })),
+      ...atualizados.map(({ id, alimento }) => {
+        const antigo = porId.get(id);
+        return { ...antigo, ...alimento, mc: antigo.mc || [], compras: antigo.compras ?? '', id, atualizadoEm: agora };
+      }),
+    ];
+    const r = banco.salvarVarios('alimentos', itens);
+    if (!r.gravado) { avisar('O navegador recusou a gravação (armazenamento cheio?). Baixe um backup e libere espaço.'); return; }
+    avisar(`TACO: ${plano.novos.length} alimento(s) novo(s), ${atualizados.length} atualizado(s).`);
     lista();
   }
 

@@ -205,6 +205,26 @@ async function rodar(largura) {
   const backup = JSON.parse(readFileSync(await download.path(), 'utf8'));
   confere('Backup: pacientes, alimentos e receitas', `${backup.pacientes.length}/${backup.alimentos.length}/${backup.receitas.length}`, '2/9/1');
 
+  // TACO 4ª edição: carga em "Meus alimentos" e uso no planejamento (§8.4 em gramas).
+  await page.goto(`${URL_APP}/#/alimentos`);
+  await page.click('button:has-text("Carregar a TACO")');
+  await page.waitForFunction(() => /^602 /.test(document.querySelector('p[role=status]')?.textContent || ''));
+  confere('TACO: 593 alimentos a mais', await texto('p[role=status]'), /^602 alimentos encontrados; mostrando os 200 primeiros/);
+  await page.fill('input[type=search]', 'Arroz, tipo 1, cozido');
+  confere('TACO: arroz tipo 1 cozido', await texto('table.tabela-alimentos tbody tr'), /128 2\.5 0\.2 28\.1 1\.6/);
+  await semRolagem('Meus alimentos com a TACO');
+  await page.reload();
+  await page.waitForSelector('p[role=status]');
+  confere('TACO: persistiu', await texto('p[role=status]'), /^602 alimentos/);
+  await page.goto(`${URL_APP}/#/pacientes`);
+  await page.click('a:has-text("Paciente E2E")');
+  await aba('Planejamento');
+  await page.click('text=Novo plano por alimentos');
+  for (const [nome, g] of [['Arroz, tipo 1, cozido', 120], ['Feijão, carioca, cozido', 150], ['Frango, coração, grelhado', 120], ['Azeite, de dendê', 8]]) {
+    await adicionar(page.locator('section.refeicao').nth(1), `${nome} · TACO`, 'grama(s)', g);
+  }
+  confere('§8.4 com a TACO', await texto('section.refeicao >> nth=1 >> .total-refeicao'), /^Total: 398g · PTN 37\.1g · LIP 23\.5g · CHO 54\.8g · 587 Kcal/);
+
   confere('Console sem erros', erros.join(' | '), '');
   await browser.close();
 }
