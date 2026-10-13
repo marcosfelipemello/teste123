@@ -63,8 +63,9 @@ export const DIVERGENCIAS = Object.freeze([
       'então usa o valor do cálculo anterior; ao abrir o plano, o texto inicial "0 Kcal" (paciente de teste: ' +
       '"-72 Kcal" ao abrir, "26 Kcal" depois de recalcular).',
     comportamento:
-      'calcularPlanejamento recebe { gNAnterior } (o valor que a tela mostrava; a aba Planejamento passa 0 ao abrir ' +
-      'e depois o do cálculo anterior), igual ao WebDiet; sem gNAnterior, ou com { corrigir: true }, usa o atual.',
+      'Corrigido a pedido do usuário (13/10/2026): a aba Planejamento usa o valor atual. Para reproduzir o WebDiet, ' +
+      'calcularPlanejamento aceita { gNAnterior } (o valor que a tela mostrava: 0 ao abrir o plano, depois o do ' +
+      'cálculo anterior); { corrigir: true } ignora gNAnterior.',
   },
   {
     item: 31,
@@ -72,8 +73,8 @@ export const DIVERGENCIAS = Object.freeze([
       'Metas em g/kg: o modal refaz o GET só ao digitar PTN, LIP ou CHO; mudar o peso não refaz o GET, que fica ' +
       'com o valor antigo na kcal planejada e na adequação de kcal.',
     comportamento:
-      'calcularMetas usa o GET guardado (como o WebDiet); a aba Planejamento refaz o GET nos mesmos momentos que ' +
-      'o modal.',
+      'Corrigido a pedido do usuário (13/10/2026): na aba Planejamento, mudar o peso também refaz o GET. ' +
+      'calcularMetas continua usando o GET guardado (o que o formulário de metas guarda).',
   },
   {
     item: 32,

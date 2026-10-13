@@ -1828,3 +1828,5 @@ Com a autorização do usuário, a conta foi aberta **só para leitura**: depois
 **`check()` do painel:** vazio, NaN, ±Infinity e texto não numérico → 0; "2,5" → 0 (vírgula não é aceita); `null` → NaN. O app aceita vírgula decimal nos formulários (convenção brasileira); nos números que vêm do WebDiet não há vírgula.
 
 Tudo isso está nos testes `nutri-studio/test/totaisWebdiet.test.js` (textos esperados tirados da transcrição literal das duas funções) e no teste de ponta a ponta.
+
+**No app:** tudo acima é igual ao WebDiet, menos os itens #30 e #31 do §12, que o usuário pediu para corrigir: a adequação do gN usa o valor prescrito atual, e mudar o peso nas metas em g/kg refaz o GET.

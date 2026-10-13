@@ -99,14 +99,13 @@ nutri-studio/
    - rótulo "15 mg" do selênio de 0–6 meses;
    - receita substituta na lista de compras pelo nome de compra;
    - kcal do ingrediente da receita em dois formatos ("256Kcal" ao redesenhar, "117.6 Kcal" na linha recalculada);
-   - no plano por alimentos, adequação da kcal não proteica/g N com o valor prescrito do cálculo anterior (ao abrir o plano, 0; item 30);
-   - metas em g/kg: o GET só é refeito ao digitar PTN, LIP ou CHO, não ao mudar o peso (item 31);
    - análise calórica de plano vazio com "0.0 Kcal - 100.0%" no CHO (item 32).
 
    Onde há versão corrigida, ela fica disponível no cálculo com a opção `{ corrigir: true }`. Continuam diferentes do WebDiet:
    - os casos em que ele trava ou deixa valor antigo (item 2 acima);
    - "com/sem receitas" nos equivalentes (§12, item 26), porque o relatório não diz qual dos dois resultados o WebDiet dá ao ignorar a escolha;
-   - o envio de `gorduratrans` no alimento pelo rótulo, que não muda nada na tela.
+   - o envio de `gorduratrans` no alimento pelo rótulo, que não muda nada na tela;
+   - corrigidos a pedido do usuário: a adequação da kcal não proteica/g N usa o valor prescrito atual (o WebDiet usa o do cálculo anterior, e ao abrir o plano mostra 0 − planejado; item 30), e nas metas em g/kg mudar o peso também refaz o GET (item 31). O cálculo ainda aceita `{ gNAnterior }` para reproduzir o #30.
 4. **Na interface:**
    - Entrada faltando não vira número sem sentido. Por exemplo, sem peso e altura a TMB não é calculada (no WebDiet, campo vazio vale 0).
    - Ações que apagam dados pedem confirmação.

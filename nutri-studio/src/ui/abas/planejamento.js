@@ -163,12 +163,14 @@ function montar(raiz, { db, paciente: p }) {
     const m = plano.metas;
     const camposMeta = {};
     const sinais = [];
-    const metaCampo = (chave, rotulo, { macro = false } = {}) => {
+    // `refaz`: o campo refaz CHO (%) ou GET (g/kg). No WebDiet só PTN, LIP e CHO refazem; aqui o peso também
+    // (§12 #31, corrigido a pedido do usuário).
+    const metaCampo = (chave, rotulo, { macro = false, refaz = macro } = {}) => {
       const el = h('input', { name: `meta-${chave}`, inputmode: 'decimal', autocomplete: 'off', value: m[chave] ?? '' });
       camposMeta[chave] = el;
       el.addEventListener('input', () => {
         m[chave] = el.value;
-        if (macro) recalcularRef();
+        if (refaz) recalcularRef();
         marcarAlterado();
         recalcular();
       });
@@ -221,9 +223,9 @@ function montar(raiz, { db, paciente: p }) {
       h('h3', { id: 'plan-metas' }, 'Metas'),
       h('div', { class: 'campos' }, campo('Distribuição', tipoMeta)),
       h('div', { class: 'campos compactos' },
-        metaCampo('peso', 'Peso (kg)'), metaCampo('ptn', 'PTN', { macro: true }), metaCampo('lip', 'LIP', { macro: true }),
+        metaCampo('peso', 'Peso (kg)', { refaz: true }), metaCampo('ptn', 'PTN', { macro: true }), metaCampo('lip', 'LIP', { macro: true }),
         metaCampo('cho', 'CHO', { macro: true }), metaCampo('get', 'GET (kcal)')),
-      h('p', { class: 'legenda' }, 'Como no WebDiet: trocar a distribuição zera as metas; em "% do GET" o CHO é 100 − PTN − LIP; em g/kg o GET é refeito ao digitar PTN, LIP ou CHO (mudar só o peso não o refaz).'),
+      h('p', { class: 'legenda' }, 'Como no WebDiet: trocar a distribuição zera as metas; em "% do GET" o CHO é 100 − PTN − LIP; em g/kg o GET é refeito ao digitar PTN, LIP ou CHO. Diferente do WebDiet: mudar o peso também refaz o GET (relatório §12, item 31).'),
       h('p', { class: 'legenda' }, ultimaEnergia ? `Último cálculo energético: ${ultimaEnergia.data} (${ultimaEnergia.protocolo}).` : 'Nenhum cálculo energético salvo: digite o GET ou faça o cálculo na aba Cálculo energético.'),
       botaoGet ? h('div', { class: 'acoes' }, botaoGet) : null);
 
@@ -483,8 +485,6 @@ function montar(raiz, { db, paciente: p }) {
 
     // ---- Cálculo ------------------------------------------------------------------------------
     const metasCalculo = () => ({ tipo: m.tipo, ptn: m.ptn, lip: m.lip, cho: m.cho, get: m.get, peso: m.peso });
-    // kcal não proteica/g N prescrita do cálculo anterior: o WebDiet a usa na adequação (§12 #30); 0 ao abrir.
-    let gNAnterior = 0;
 
     function referencias() {
       return referenciasMicros({ sexo: p.sexo, ...(p.nascimento ? { nascimento: p.nascimento } : {}), dataReferencia: normalizarData(dataEl.value) || hojeTexto(), condicao });
@@ -496,8 +496,8 @@ function montar(raiz, { db, paciente: p }) {
         metas: metasCalculo(),
         referencias: refs.valores ? refs : null,
       };
-      const res = calcularPlanejamento(entrada, { gNAnterior });
-      gNAnterior = res.total.gN;
+      // Adequação do gN com o prescrito atual: o WebDiet usa o do cálculo anterior (§12 #30, corrigido a pedido do usuário).
+      const res = calcularPlanejamento(entrada);
       // Substitutos: só exibição (não entram no total, como no WebDiet).
       res.substitutos = plano.refeicoes.map((r) => r.itens.map((it) => (it.subs || []).map((s) => {
         const c = calcularPlanejamento({ refeicoes: [{ itens: [{ alimento: s.alimento, quantidade: s.quantidade, medida: s.medida }] }] });
@@ -787,7 +787,7 @@ function montar(raiz, { db, paciente: p }) {
         h('button', { type: 'button', class: 'botao discreto', onclick: voltar }, 'Voltar')),
       h('p', { class: 'legenda' }, eq
         ? 'kcal não proteica/g N planejada: fórmula do WebDiet mantida (relatório §12, item 20).'
-        : 'kcal não proteica/g N: fórmula planejada do WebDiet mantida (relatório §12, item 20); a adequação usa o valor prescrito do cálculo anterior, como o WebDiet (item 30).'));
+        : 'kcal não proteica/g N: fórmula planejada do WebDiet mantida (relatório §12, item 20); a adequação usa o valor prescrito atual (o WebDiet usa o do cálculo anterior, item 30).'));
 
     area.replaceChildren(
       catalogo.datalist,

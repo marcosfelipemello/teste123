@@ -125,7 +125,7 @@ Login com as credenciais do usuário e, depois dele, um bloqueio no navegador qu
   - equivalentes: CHO disponível, fibras com g/kg, campos "Resumo", metas e adequação sobre os totais sem arredondar, neutro cinza;
   - metas usam o CHO% e o GET guardados.
 - **Metas na aba Planejamento:** iguais ao modal do WebDiet (plano novo em g/kg zerado; trocar a distribuição zera; "Usar o GET" passa para % do GET e zera PTN/LIP/CHO; CHO = 100 − PTN − LIP; GET em g/kg refeito ao digitar PTN/LIP/CHO). Planos salvos antes são convertidos sem perder valores (os campos antigos ficam em `metas.formatoAntigo`).
-- **Novos itens do §12, iguais ao WebDiet:** #30 (adequação do gN com o valor do cálculo anterior; ao abrir o plano, 0), #31 (GET em g/kg não refeito ao mudar só o peso), #32 (CHO 100% na análise de plano vazio).
+- **Novos itens do §12:** #30 (adequação do gN com o valor do cálculo anterior; ao abrir o plano, 0) e #31 (GET em g/kg não refeito ao mudar só o peso) foram **corrigidos a pedido do usuário**; #32 (CHO 100% na análise de plano vazio) fica igual ao WebDiet.
 
 ## Ainda não feito (fora desta lista)
 

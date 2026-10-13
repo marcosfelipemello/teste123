@@ -184,7 +184,7 @@ async function rodar(largura) {
   await page.click('button[aria-label^="Abrir Plano alimentar"]');
   confere('Persistiu: almoço do plano', await texto('section.refeicao >> nth=1 >> .total-refeicao'), /^Total: 398g/);
   confere('Persistiu: metas', await metas(), 'percentual 80 20 30 50 2799');
-  // §12 #30: ao abrir, a adequação do gN usa o prescrito anterior (0), como o WebDiet; depois do próximo cálculo, o atual.
+  // §12 #30 corrigido: ao abrir, a adequação do gN já usa o prescrito atual (o WebDiet usa 0).
   const gN = async () => {
     const item = (grupo) => page.locator(`aside div:has(> h4:text-is("${grupo}")) dl > div:has(> dt:text-is("kcal não proteica/g N")) dd`);
     const adequacao = item('Adequação (prescrito − planejado)');
@@ -193,10 +193,15 @@ async function rodar(largura) {
     return { prescrita, planejada, adequacao: await adequacao.locator('.valor').innerText() };
   };
   const g0 = await gN();
-  confere('Ao abrir: adequação do gN = 0 − planejado', g0.adequacao, `${(0 - g0.planejada).toFixed(0)} Kcal`);
-  await page.fill(meta('get'), '2799');
-  const g1 = await gN();
-  confere('Depois de recalcular: adequação do gN = prescrito − planejado', g1.adequacao, `${(g1.prescrita - g1.planejada).toFixed(0)} Kcal`);
+  confere('Ao abrir: adequação do gN = prescrito − planejado (§12 #30 corrigido)', g0.adequacao, `${(g0.prescrita - g0.planejada).toFixed(0)} Kcal`);
+  // §12 #31 corrigido: em g/kg, mudar só o peso refaz o GET.
+  await page.selectOption(meta('tipo'), 'gkg');
+  await page.fill(meta('ptn'), '1.5');
+  await page.fill(meta('lip'), '1');
+  await page.fill(meta('cho'), '4');
+  confere('Metas g/kg: GET = PTN×P×4 + LIP×P×9 + CHO×P×4', await metas(), 'gkg 80 1.5 1 4 2480');
+  await page.fill(meta('peso'), '70');
+  confere('Metas g/kg: mudar o peso refaz o GET (§12 #31 corrigido)', await metas(), 'gkg 70 1.5 1 4 2170');
   confere('Persistiu: lista de compras', (await page.$$eval('.lista-compras input:not([type])', (els) => els.map((e) => e.value))).join(', '),
     'Arroz cozido, Azeite de dendê, Banana prata, Coração de frango grelhado, Feijão carioca cozido');
   await aba('Questionários');
