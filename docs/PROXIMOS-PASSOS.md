@@ -110,9 +110,9 @@ Siga o padrão das abas existentes. Não altere `src/calc/`; leia o código e os
   - 593 alimentos em `src/dados/taco.json`, com botão "Carregar a TACO" em "Meus alimentos";
   - mesmos valores do WebDiet nos alimentos TACO da evidência: 249 de 256 valores, e os 7 restantes são dados do próprio WebDiet que diferem da TACO oficial (§15.8);
   - o almoço do §8.4 montado com a TACO em gramas dá o mesmo resultado da tela.
-- **Não feito, bloqueado pela política de permissões do ambiente:**
-  - entrar na conta do WebDiet para observar as metas padrão (decisão 6), a adequação nos equivalentes (decisão 7) e os protocolos 15–20 (§15.1);
-  - ler a tabela de medidas caseiras do IBGE (POF 2008–2009), já baixada.
+- **Medidas caseiras do IBGE** (POF 2008–2009):
+  - consulta na edição de alimentos, que acrescenta a medida com um clique;
+  - os pesos que o WebDiet mostra (arroz colher de sopa cheia 25 g; feijão concha cheia 140 g; azeite colher de sopa 8 g; pão francês 50 g; ovo 45 g) são os do IBGE.
 
 ## Ainda não feito (fora desta lista)
 

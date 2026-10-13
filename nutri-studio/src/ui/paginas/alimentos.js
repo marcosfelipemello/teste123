@@ -258,10 +258,60 @@ export function paginaAlimentos(raiz, banco = db) {
     form.elements.nome.focus();
   }
 
+  // ---- Consulta às medidas caseiras do IBGE (POF 2008-2009) ----------------------------------------
+  /**
+   * Busca nas medidas da Tabela de Medidas Referidas do IBGE (src/dados/medidas_ibge.json); cada medida
+   * encontrada vira um botão que acrescenta "nome: peso" ao campo de medidas do alimento.
+   */
+  function consultaIbge(campoMedidas, nomeAlimento) {
+    const busca = h('input', { type: 'search', autocomplete: 'off', 'aria-label': 'Buscar medidas caseiras do IBGE', placeholder: 'Ex.: pão de sal, feijão, arroz' });
+    const resultados = h('div', { class: 'pilha', 'aria-live': 'polite' });
+    let dados = null;
+
+    async function carregar() {
+      if (!dados) dados = (await (await fetch(new URL('../../dados/medidas_ibge.json', import.meta.url))).json()).alimentos;
+      return dados;
+    }
+
+    function acrescentar(m) {
+      const linhas = campoMedidas.value.split(/\r?\n/).filter((l) => l.trim());
+      if (linhas.some((l) => semAcento(l.split(':')[0]).trim() === semAcento(m.nome))) { avisar(`"${m.nome}" já está nas medidas.`); return; }
+      campoMedidas.value = [...linhas, `${m.nome}: ${num(m.peso, 2)}`].join('\n');
+      avisar(`Medida acrescentada: ${m.nome} = ${num(m.peso, 2)} g.`);
+    }
+
+    async function buscar() {
+      const termos = semAcento(busca.value).split(/[^a-z0-9]+/).filter((t) => t.length > 1);
+      if (!termos.length) { resultados.replaceChildren(); return; }
+      let lista;
+      try { lista = await carregar(); } catch (e) { console.error(e); resultados.replaceChildren(h('p', { class: 'aviso' }, 'Não foi possível ler a tabela do IBGE.')); return; }
+      const achados = lista.filter((x) => { const t = semAcento(`${x.nome} ${x.preparo}`); return termos.every((p) => t.includes(p)); });
+      resultados.replaceChildren(
+        h('p', { class: 'legenda' }, achados.length ? `${achados.length} alimento(s) no IBGE${achados.length > 12 ? '; mostrando 12, refine a busca' : ''}.` : 'Nada encontrado no IBGE.'),
+        ...achados.slice(0, 12).map((x) => h('div', { class: 'medidas-ibge' },
+          h('p', {}, x.nome, x.preparo ? h('small', {}, ` · ${x.preparo}`) : null),
+          h('div', { class: 'acoes' }, x.medidas.map((m) => h('button', {
+            type: 'button', class: 'botao discreto', title: m.ref, 'aria-label': `Acrescentar ${m.nome}, ${num(m.peso, 2)} gramas (${x.nome})`, onclick: () => acrescentar(m),
+          }, `+ ${m.nome} · ${num(m.peso, 2)} g`))))));
+    }
+
+    busca.addEventListener('input', buscar);
+    busca.addEventListener('keydown', (e) => { if (e.key === 'Enter') e.preventDefault(); }); // não envia o alimento
+    // Começa pela primeira palavra do nome do alimento (ex.: "Arroz, tipo 1, cozido" → "arroz").
+    const primeira = String(nomeAlimento ?? '').split(/[ ,(]/)[0];
+    if (primeira.length > 2) { busca.value = primeira.toLowerCase(); buscar(); }
+    return h('details', { class: 'dobravel pilha', open: primeira.length > 2 ? true : null },
+      h('summary', {}, 'Medidas caseiras do IBGE'),
+      h('p', { class: 'legenda' }, 'Pesos de 1 medida da Tabela de Medidas Referidas para os Alimentos Consumidos no Brasil (IBGE, POF 2008–2009), as mesmas referências (Pinheiro et al., Guia Alimentar) dos pesos que o WebDiet usa. Os nomes dos alimentos são os da pesquisa (ex.: pão francês = "pão de sal").'),
+      campo('Buscar no IBGE', busca),
+      resultados);
+  }
+
   // ---- Cadastro / edição por 100 g ----------------------------------------------------------------
   function formPorCem(existente) {
     const a = existente || { unidade: 'g', micros: [] };
     const medidasTexto = (a.mc || []).map((m) => `${m.nome_mc}: ${num(m.peso, 2)}`).join('\n');
+    const textoMedidas = h('textarea', { name: 'medidas', rows: 4, spellcheck: 'false', placeholder: 'Colher(es) de sopa: 25\nXícara(s) de chá: 130' }, medidasTexto);
     const form = h('form', { class: 'pilha', novalidate: true, 'aria-label': 'Alimento por 100 g' },
       h('div', { class: 'cartao pilha', role: 'group', 'aria-labelledby': 'cem-dados' },
         h('h3', { id: 'cem-dados' }, 'Alimento'),
@@ -280,8 +330,9 @@ export function paginaAlimentos(raiz, banco = db) {
           numero('fibras', 'Fibras (g)', { value: existente ? num(a.fibras, 4) : '' }))),
       h('div', { class: 'cartao pilha', role: 'group', 'aria-labelledby': 'cem-medidas' },
         h('h3', { id: 'cem-medidas' }, 'Medidas caseiras'),
-        campo('Uma por linha: nome: peso de 1 medida', h('textarea', { name: 'medidas', rows: 4, spellcheck: 'false', placeholder: 'Colher(es) de sopa: 25\nXícara(s) de chá: 130' }, medidasTexto),
-          '"grama(s)" ou "mililitro(s)" = 1 já vem sempre.')),
+        campo('Uma por linha: nome: peso de 1 medida', textoMedidas,
+          '"grama(s)" ou "mililitro(s)" = 1 já vem sempre.'),
+        consultaIbge(textoMedidas, a.nome)),
       h('details', { class: 'cartao pilha dobravel' },
         h('summary', {}, 'Micronutrientes (por 100 g ou 100 mL)'),
         h('div', { class: 'campos compactos' }, MICROS.filter((m) => m.chave !== 'fibras').map((m) =>

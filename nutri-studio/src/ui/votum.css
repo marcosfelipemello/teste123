@@ -289,3 +289,6 @@ select.medida-linha { min-height: 36px; padding: 6px 8px; min-width: 9em; }
 .lista-divergencias > li { padding: 10px 0; border-bottom: 1px solid var(--filete); }
 .lista-divergencias p { margin: 0 0 4px; }
 input[readonly] { background: var(--bloco); }
+.medidas-ibge { padding: 8px 0; border-bottom: 1px solid var(--filete); }
+.medidas-ibge > p { margin: 0 0 4px; }
+.medidas-ibge .botao.discreto { padding-inline: 6px; min-height: 32px; letter-spacing: .08em; text-transform: none; font-size: var(--t-legenda); }

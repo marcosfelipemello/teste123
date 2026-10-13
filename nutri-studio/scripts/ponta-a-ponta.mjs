@@ -213,6 +213,14 @@ async function rodar(largura) {
   await page.fill('input[type=search]', 'Arroz, tipo 1, cozido');
   confere('TACO: arroz tipo 1 cozido', await texto('table.tabela-alimentos tbody tr'), /128 2\.5 0\.2 28\.1 1\.6/);
   await semRolagem('Meus alimentos com a TACO');
+  // Medida caseira do IBGE acrescentada ao arroz da TACO pela consulta da edição.
+  await page.click('button[aria-label="Editar Arroz, tipo 1, cozido"]');
+  await page.fill('input[aria-label="Buscar medidas caseiras do IBGE"]', 'arroz polido');
+  await page.click('button[aria-label^="Acrescentar Colher de sopa cheia, 25 gramas"]');
+  await semRolagem('Edição com a consulta do IBGE');
+  await page.click('button:has-text("Salvar alterações")');
+  await page.fill('input[type=search]', 'Arroz, tipo 1, cozido');
+  confere('IBGE: medida no arroz da TACO', await texto('table.tabela-alimentos tbody tr'), /Colher de sopa cheia = 25 g/);
   await page.reload();
   await page.waitForSelector('p[role=status]');
   confere('TACO: persistiu', await texto('p[role=status]'), /^602 alimentos/);
@@ -220,7 +228,8 @@ async function rodar(largura) {
   await page.click('a:has-text("Paciente E2E")');
   await aba('Planejamento');
   await page.click('text=Novo plano por alimentos');
-  for (const [nome, g] of [['Arroz, tipo 1, cozido', 120], ['Feijão, carioca, cozido', 150], ['Frango, coração, grelhado', 120], ['Azeite, de dendê', 8]]) {
+  await adicionar(page.locator('section.refeicao').nth(1), 'Arroz, tipo 1, cozido · TACO', 'Colher de sopa cheia (25 g)', 4.8); // 120 g
+  for (const [nome, g] of [['Feijão, carioca, cozido', 150], ['Frango, coração, grelhado', 120], ['Azeite, de dendê', 8]]) {
     await adicionar(page.locator('section.refeicao').nth(1), `${nome} · TACO`, 'grama(s)', g);
   }
   confere('§8.4 com a TACO', await texto('section.refeicao >> nth=1 >> .total-refeicao'), /^Total: 398g · PTN 37\.1g · LIP 23\.5g · CHO 54\.8g · 587 Kcal/);

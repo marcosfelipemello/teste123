@@ -37,7 +37,7 @@ PLAYWRIGHT=/tmp/pw/node_modules/playwright/index.mjs npm run e2e
 # CHROMIUM=/caminho/do/chrome se o Playwright não achar o navegador; URL=… para outro endereço
 ```
 
-Resultado atual: `npm test`: 1602 testes passando; `npm run e2e`: 106 de 106 conferências passando.
+Resultado atual: `npm test`: 1605 testes passando; `npm run e2e`: 110 de 110 conferências passando.
 
 ## O que o app faz
 
@@ -117,6 +117,7 @@ nutri-studio/
 | `src/dados/curvas_ganho_peso_gestacional.json` | Curvas brasileiras de ganho de peso gestacional (Kac et al., 2021), como usadas pelo WebDiet |
 | `src/dados/dris.json` | DRIs (RDA/AI): 16 perfis conferidos na tela do WebDiet (`fonte: "webdiet-conferido"`); as faixas não observadas vêm das tabelas oficiais NASEM (Na e K de 2019; fibras pela Health Canada), com `fonte: "nasem-oficial"` |
 | Alimentos | **TACO 4ª edição** (NEPA/UNICAMP), em `src/dados/taco.json`, carregada em "Meus alimentos" com um botão: 593 alimentos (os 4 sem análise na TACO ficam de fora). Gerada da planilha oficial por `scripts/converter-taco.py`, com os mesmos valores que o WebDiet mostra para os alimentos TACO (`test/taco.test.js`). A base completa do WebDiet não foi copiada (§1.2). Outros alimentos entram pelo rótulo, por 100 g ou por CSV |
+| Medidas caseiras | `src/dados/medidas_ibge.json`: Tabela de Medidas Referidas para os Alimentos Consumidos no Brasil (IBGE, POF 2008–2009), gerada por `scripts/medidas-ibge.py`. Só entram as medidas cuja referência descreve a própria medida e as porções do Guia Alimentar. Os pesos que o WebDiet mostra nos alimentos da evidência são os mesmos (`test/medidasIbge.test.js`) |
 | Listas dos grupos de equivalentes | Montadas pelo consultório a partir de "Meus alimentos" (as listas curadas do WebDiet não foram copiadas). Grupo sem lista própria usa as médias padrão que o WebDiet mostra (`src/dados/equivalentes_padrao.json`, relatório §8.5), com os mesmos totais do WebDiet |
 | Textos das perguntas dos questionários | **Não copiados.** Os itens aparecem como "Item n" + categoria |
 | Base de sinais e sintomas → nutrientes | **Não copiada.** O questionário fica indisponível |
@@ -124,7 +125,7 @@ nutri-studio/
 ## Limitações conhecidas
 
 - Os dados ficam só neste navegador. Faça backup com frequência (página "Dados e backup"). Não há login nem sincronização.
-- A TACO não traz medidas caseiras: os alimentos dela vêm só com "grama(s)", e as medidas são acrescentadas editando o alimento. As medidas da tabela do IBGE (POF 2008–2009) ainda não foram incorporadas.
+- A TACO não traz medidas caseiras: os alimentos dela vêm só com "grama(s)". Ao editar um alimento, a consulta "Medidas caseiras do IBGE" acrescenta as medidas oficiais com um clique. Elas não são ligadas automaticamente, porque os nomes do IBGE são categorias da pesquisa (ex.: "pão de sal", "feijão (preto, mulatinho…)").
 - Não foram reproduzidos:
   - planejamento qualitativo (texto livre);
   - piloto automático (modelos do WebDiet);
