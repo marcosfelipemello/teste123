@@ -2,6 +2,8 @@
 
 Branch de trabalho: `ccr-547159ad-oarva6`.
 
+**Em 14/10/2026 o app passou para o repositório `marcosfelipemello/diet-kryven` (branch `main`), de onde será publicado no subdomínio. Continue o trabalho lá; esta branch fica como histórico das sessões 1–4.**
+
 **Situação em 13/10/2026 (quarta sessão):** a lista "Falta fazer" abaixo foi concluída na segunda sessão; a terceira e a quarta deixaram cálculos e telas iguais aos do WebDiet onde dava para conferir. O que continua em aberto está em "Ainda não feito" e em "Decisões que dependem do usuário".
 
 ## Onde está cada coisa
