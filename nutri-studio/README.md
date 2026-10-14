@@ -39,6 +39,15 @@ PLAYWRIGHT=/tmp/pw/node_modules/playwright/index.mjs npm run e2e
 
 Resultado atual: `npm test`: 1628 testes passando; `npm run e2e`: 124 de 124 conferências passando (com `FOTOS=<pasta>`, salva capturas das metas e do total do dia).
 
+## Publicação (link fixo)
+
+`.github/workflows/publicar-app.yml` publica o app no GitHub Pages a cada push na `master` (ou pelo botão "Run workflow" em Actions). Os testes rodam antes; se algum falhar, nada vai para o ar. Só `index.html` e `src/` são publicados: os documentos de análise e os testes ficam de fora.
+
+- **Ligar uma vez:** no GitHub, *Settings → Pages → Build and deployment → Source: GitHub Actions*. O endereço fica `https://marcosfelipemello.github.io/teste123/`.
+- **Subdomínio próprio:** no provedor do domínio, crie um registro **CNAME** do subdomínio (ex.: `nutri`) apontando para `marcosfelipemello.github.io`. Depois, em *Settings → Pages → Custom domain*, digite o subdomínio completo (ex.: `nutri.seudominio.com.br`), espere a verificação do DNS e marque *Enforce HTTPS*.
+- **Os dados ficam no navegador e são separados por endereço.** O que for cadastrado no endereço `github.io` não aparece no subdomínio, e vice-versa. Para o uso de verdade, use só o subdomínio. Para levar dados de um endereço para outro, use "Baixar backup" e "Importar backup" (página "Dados e backup").
+- **Backup:** não há servidor. Se os dados do navegador forem apagados (limpeza de histórico, troca de computador, perfil novo), só o backup em JSON os traz de volta. No Safari, dados de sites sem visita por 7 dias podem ser apagados; prefira Chrome, Edge ou Firefox no computador.
+
 ## O que o app faz
 
 | Onde | O que faz | Relatório |

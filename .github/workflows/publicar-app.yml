@@ -1,0 +1,51 @@
+# Publica o app nutri-studio no GitHub Pages a cada push na master (ou pelo botão "Run workflow").
+# Só a pasta do app vai para o ar (index.html + src/); os documentos de análise e os testes ficam de fora.
+# Antes de publicar, roda os testes (npm test); se algum falhar, nada é publicado.
+name: Publicar o app
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nutri-studio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+
+  publicar:
+    needs: testar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacao.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Montar o site (só o app)
+        run: |
+          mkdir _site
+          cp nutri-studio/index.html _site/
+          cp -r nutri-studio/src _site/src
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: publicacao
+        uses: actions/deploy-pages@v4
